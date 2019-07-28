@@ -12,6 +12,7 @@ deploy:
 
 before_script:
   - composer self-update
+  - composer install
   - npm update
 
 script:
