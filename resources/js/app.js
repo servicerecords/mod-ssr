@@ -1,0 +1,1 @@
+require('govuk-frontend/all');
