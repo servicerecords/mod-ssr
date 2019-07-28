@@ -1,3 +1,5 @@
+language: php
+
 deploy:
   edge: true
   provider: cloudfoundry
@@ -7,3 +9,10 @@ deploy:
   space: development
   password:
     secure: KVhjRiemFPgEZaaKLdR2fxuVsRQfLk6v/0CbRf4EWa+Vq8WHauI6Jt2ZzIEneMbjbgJSgpcJ4j0aVLPjCbtxZMtikjR9CT7o96XoPaK8YBKIceMN+29MPn8BS4aVTF9OiYCygA0Go983ZFRW7FCtNyUzxmJCv1Qre7B2hy2vIXCniqxVdoNdpBSikqcHv4bVJ4IGVq5vO58byTgBFrSANVzakv1r/a8lQRAy71qq9yBSOGPzKuPSzPR2ov009UvKcbdwd9GxTLj2qZwnCv6liBjqp2F9AO4b1dvLk3FPN0Lpi0lGAjxz41d/O/kkwwnfiMocSRZZL68EuJ5I3xgzzh1214DbzKDGoyQyAX1n7r+U/EK3WBSwfQlRwHv3mV9108xG5kRza3h57wynr9GUWxReQ4fLPvfGkCYNu+o6Al+w61TeAfAsNwqd+aEDDnw9+VPJ6sIzhz6CKEagOzwJ6zqs5NOucnSSXOJdINnVNLBF2alhPDPxT4DG8AdaZgvnk+NVa0mLefAVvY4+nK3qhafa33tHORMRd5MTQeWIN4tL2EQjgfJMb102Rs84qojTyjKtkuxqD764mtC+pnnwWaFcNRlEeTF2C7J8YoglNKoDVYVXhvZE/B84BrDFaVbez68BNDfvH7m/DkRWpwU5V2M0PcX6I+PdtKaXF0NywRg=
+
+before_script:
+  - composer self-update
+  - npm update
+
+script:
+  - vendor/bin/phpunit
