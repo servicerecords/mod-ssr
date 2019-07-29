@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +123,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="gitignore" value="87" />
           <entry key="json" value="6" />
           <entry key="php" value="83" />
           <entry key="yml" value="115" />
@@ -134,12 +134,14 @@
           <entry key="Blade" value="1" />
           <entry key="JSON" value="6" />
           <entry key="PHP" value="82" />
+          <entry key="PLAIN_TEXT" value="87" />
           <entry key="YAML" value="115" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="env" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="php" value="21" />
           <entry key="yml" value="2" />
         </counts>
@@ -149,6 +151,7 @@
           <entry key=".env file" value="1" />
           <entry key="Blade" value="3" />
           <entry key="PHP" value="18" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
@@ -165,11 +168,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="23">
               <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -240,15 +252,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="50" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -294,7 +297,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/js/form-card-type.js" />
         <option value="$PROJECT_DIR$/app/Http/Requests/PaymentRequest.php" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
         <option value="$PROJECT_DIR$/resources/views/payment.blade.php" />
@@ -345,6 +347,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php" />
         <option value="$PROJECT_DIR$/tests/Feature/ConfirmationTest.php" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -479,61 +482,6 @@
               <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
               <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-              <item name="answers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Feature" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -649,7 +597,7 @@
       <workItem from="1563803047681" duration="6821000" />
       <workItem from="1563894384266" duration="9364000" />
       <workItem from="1564034739424" duration="14296000" />
-      <workItem from="1564345633940" duration="7477000" />
+      <workItem from="1564345633940" duration="7650000" />
     </task>
     <servers />
   </component>
@@ -686,19 +634,19 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202404000" />
+    <option name="totallyTimeSpent" value="202577000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="53" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2851038" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2851038" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32963374" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.47007617" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47007617" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934713" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -745,9 +693,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/communication.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/payment.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1063,6 +1008,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
         </state>
       </provider>
     </entry>
