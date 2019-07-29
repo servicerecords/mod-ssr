@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('back', $referer)
+
 @section('title', 'Death in service')
 
 @section('content')

@@ -56,7 +56,9 @@
                 </span>
             </p>
         </div>
-        <a href="#" class="govuk-back-link">Back</a>
+        @hasSection('back')
+            <a href="@yield('back')" class="govuk-back-link">Back</a>
+        @endif
     </div>
     <div class="govuk-width-container">
         <main class="govuk-main-wrapper {{(isset($paying) ? 'charge-new' : '')}}" id="main-content" role="main">

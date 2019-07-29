@@ -8,9 +8,14 @@ use GuzzleHttp\Client;
 
 class PaymentController extends Controller
 {
-	protected $cost = 3000;
+	protected $cost;
 	protected $description = "Service Record Request";
 	protected $return_url;
+
+	public function __construct()
+	{
+		$this->cost = env('REQUEST_PRICE');
+	}
 
 	public function payment(Request $request)
 	{
@@ -39,10 +44,10 @@ class PaymentController extends Controller
 //		die(print_r($result->getBody()->getContents()));
 		//dd($request);
 		$post_params = [
-			'amount' => 3000,
+			'amount' => 100,
 			'reference' => $request->session()->get('reference'),
 			'description' => $this->description,
-			'return_url' => env('GOV_PAY_RETURN_URL') . '/' . $request->session()->get('reference')
+			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation'
 		];
 
 		//die(print_r(json_encode($post_params, JSON_UNESCAPED_SLASHES)));

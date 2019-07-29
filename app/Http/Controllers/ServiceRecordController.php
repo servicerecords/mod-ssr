@@ -20,9 +20,10 @@ class ServiceRecordController extends Controller
 		return view('welcome');
 	}
 
-	public function recordRequest()
+	public function recordRequest(Request $request)
 	{
-		return view('request');
+		$referrer = $request->server('HTTP_REFERER');
+		return view('request', ['referer' => $referrer]);
 	}
 
 	public function recordRequestSave(RecordRequestSave $request)
@@ -34,7 +35,8 @@ class ServiceRecordController extends Controller
 	public function serviceChoice(Request $request)
 	{
 		$service = $request->session()->get('service');
-		return view('service', compact('service'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('service', ['service' => $service, 'referer' => $referer]);
 	}
 
 	public function serviceChoiceSave(ServiceChoiceSave $request)
@@ -52,7 +54,8 @@ class ServiceRecordController extends Controller
 	public function deathInService(Request $request)
 	{
 		$death_in_service = $request->session()->get('death_in_service');
-		return view('deathInService', compact('death_in_service'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('deathInService', ['death_in_service' => $death_in_service, 'referer' => $referer]);
 	}
 
 	public function deathInServiceSave(DeathInServiceSave $request)
@@ -66,7 +69,8 @@ class ServiceRecordController extends Controller
 	public function essentialInformation(Request $request)
 	{
 		$essential_information = $request->session()->get('essential_information');
-		return view('essentialInformation', compact('essential_information'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('essentialInformation', ['essential_information' => $essential_information, 'referer' => $referer]);
 	}
 
 	public function essentialInformationSave(EssentialInformationSave $request)
@@ -81,6 +85,7 @@ class ServiceRecordController extends Controller
 	public function serviceDetails(Request $request)
 	{
 		//die(print_r($request->session()));
+		$referer = $request->server('HTTP_REFERER');
 		switch($request->session()->get('service'))
 		{
 			case "Royal Navy / Royal Marines":
@@ -102,17 +107,18 @@ class ServiceRecordController extends Controller
 		if($request->session()->get('death_in_service.death') == 'Yes' && $request->session()->get('service') != 'Unknown')
 		{
 			$service_details = $request->session()->get('service_details');
-			return view($template.'-dis', compact('service_details'));
+
+			return view($template.'-dis', ['service_details' => $service_details, 'referer' => $referer]);
 		}
 		elseif($request->session()->get('death_in_service.death') == 'No')
 		{
 			$service_details = $request->session()->get('service_details');
-			return view($template, compact('service_details'));
+			return view($template, ['service_details' => $service_details, 'referer' => $referer]);
 		}
 		else
 		{
 			$service_details = $request->session()->get('service_details');
-			return view($template, compact('service_details'));
+			return view($template, ['service_details' => $service_details, 'referer' => $referer]);
 		}
 	}
 
@@ -135,19 +141,22 @@ class ServiceRecordController extends Controller
 	public function yourDetails(Request $request)
 	{
 		$your_details = $request->session()->get('your_details');
-		return view('your-information', compact('your_details'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('your-information', ['your_details' => $your_details, 'referer' => $referer]);
 	}
 
 	public function relationship(Request $request)
 	{
 		$your_details_relationship = $request->session()->get('your_details.relationship');
-		return view('your-details-relationship', compact('your_details_relationship'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('your-details-relationship', ['your_details_relationship' => $your_details_relationship, 'referer' => $referer]);
 	}
 
 	public function relation(Request $request)
 	{
 		$your_details_relation = $request->session()->get('your_details.relation');
-		return view('your-details-relation', compact('your_details_relation'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('your-details-relation', ['your_details_relation' => $your_details_relation, 'referer' => $referer]);
 	}
 
 	public function yourDetailsSave(YourInformationSave $request)
@@ -189,7 +198,8 @@ class ServiceRecordController extends Controller
 	public function yourDetailsCommunication(Request $request)
 	{
 		$communication = $request->session()->get('your_details.communication');
-		return view('your-details-communication', compact('communication'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('your-details-communication', ['communication' => $communication, 'referer' => $referer]);
 	}
 
 	public function youDetailsCommunicationSave(CommunicationRequest $request)
@@ -202,7 +212,8 @@ class ServiceRecordController extends Controller
 
 	public function verify(Request $request)
 	{
-		return view('verify');
+		$referer = $request->server('HTTP_REFERER');
+		return view('verify', ['referer' => $referer]);
 	}
 
 	public function verifySave(Request $request)
@@ -228,8 +239,8 @@ class ServiceRecordController extends Controller
 	public function checkYourAnswers(Request $request)
 	{
 		$data = $request->session();
-		//dd($data);
-		return view('check-your-answers', compact('data'));
+		$referer = $request->server('HTTP_REFERER');
+		return view('check-your-answers', ['data' =>  $data, 'referer' => $referer]);
 	}
 
 	private function _createDateString($day, $month, $year)

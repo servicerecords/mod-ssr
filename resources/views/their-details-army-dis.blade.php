@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('back', $referer)
+
 @section('title', 'Details of the serviveman/woman')
 
 @section('content')

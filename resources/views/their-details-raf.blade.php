@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('back', $referer)
+
 @section('title', 'Details of serviceman/woman')
 
 @section('content')
 
-    <form action="/their-details" method="post" class="govuk-form" id="subject-raf" novalidate="novalidate">
+    <form action="/service-details" method="post" class="govuk-form" id="subject-raf" novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">
