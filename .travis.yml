@@ -1,0 +1,19 @@
+language: php
+
+deploy:
+  provider: cloudfoundry
+  api: https://api.cloud.service.gov.uk
+  username: simon@87development.co.uk
+  password:
+    secure: OL3X80LOcjrk73KbbEl7NFUnbt9dO8i16vVABMK9ub6tBcoaGhVy9tvtErn7OcLZO84RLMBa+YgbGretLP2LsQ4yOfw9i7iVahjkkYCQ68p28DGDaAtBWOYAU6ot65Kj+E1B6wGI9wy/ucESzyhmubHj2VGmZnbnsVi0tOFAbvivqKT4XFwxBZ6IJuxI+g6dV6fLcejze1ARYfzH+198ReiTrZ0ZODaVGvYUIx5T9lZTTHEgg8iHzBjmw8KKJaXmxBjXg5Cib7e/mbN/sacNEM7KwzgMQCtdXNWiaAg+C/W7ehRgHhQjks4TeqUcE+6ITo1rekCRlfT5/QB/yQuoruXSiUPjFA6PotMU5cPSS8uthvPm9tnTnDnElJOrJZBs/I7wEttXp9HUEDGjfzkWCqzZm5GfqENKbG4UhDMwDy0NhqYadB8Eky6uEOxJ1vDujaWShooE2gAihaVky26fy8HVv3aHbQpQgArI+l08CojbS1j37L7b2ytzIctSr3BRB/xvTNx14DzFffFloUZm2MhzBA40Jz0AZhANGxdSuUjMDiyXrJbimWE5s6i4jIviSqv0Jz86TVx1aBATxJMoNrcXxS1AhXPQfQR5jc1Rc4r19nvCso0BaXtyZN0b7nZz41tlm+gnNP78gW8jyKvn4AQUHOwQ/o9RFolPigUUv3Q=
+  organization: mod-request-a-historic-service-record
+  space: development
+before_script:
+  - composer self-update
+  - composer install
+  - composer update
+  - composer dump-autoload
+  - npm update
+
+script:
+  - php vendor/bin/phpunit --configuration phpunit.xml
