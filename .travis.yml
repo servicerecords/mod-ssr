@@ -8,10 +8,10 @@ deploy:
   organization: mod-request-a-historic-service-record
   space: development
 before_script:
-- composer self-update
-- composer install
-- composer update
-- composer dump-autoload
-- npm update
+  - composer self-update
+  - composer install
+  - composer update
+  - composer dump-autoload
+  - npm update
 script:
-- php vendor/bin/phpunit --configuration phpunit.xml
+  - php vendor/bin/phpunit --configuration phpunit.xml
