@@ -55,7 +55,7 @@ class ConfirmationController extends Controller
 			case 'Royal Navy / Royal Marines':
 				$emails = $this->sea_email;
 				$request->session()->put('dbs_office', 'Navy');
-				$template_shortcode = 'NAV';
+				$template_shortcode = 'SEA';
 				break;
 			case 'Army':
 				$emails = $this->land_email;
