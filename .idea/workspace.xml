@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/check-your-answers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/check-your-answers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/communication.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/communication.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/deathInService.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/deathInService.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/essentialInformation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/essentialInformation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/request.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/service.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-army.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-army.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-navy-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-navy-dis.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-navy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-navy.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-raf-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-raf-dis.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-raf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-raf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-unknown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-unknown.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/your-information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-information.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +128,7 @@
           <entry key="gitignore" value="87" />
           <entry key="json" value="6" />
           <entry key="php" value="872" />
-          <entry key="yml" value="126" />
+          <entry key="yml" value="140" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -161,7 +138,7 @@
           <entry key="JSON" value="6" />
           <entry key="PHP" value="692" />
           <entry key="PLAIN_TEXT" value="87" />
-          <entry key="YAML" value="126" />
+          <entry key="YAML" value="140" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -207,8 +184,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            <state relative-caret-position="115">
+              <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -660,7 +637,7 @@
       <workItem from="1563803047681" duration="6821000" />
       <workItem from="1563894384266" duration="9364000" />
       <workItem from="1564034739424" duration="14296000" />
-      <workItem from="1564345633940" duration="12798000" />
+      <workItem from="1564345633940" duration="12961000" />
     </task>
     <servers />
   </component>
@@ -697,7 +674,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207725000" />
+    <option name="totallyTimeSpent" value="207888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -1073,8 +1050,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        <state relative-caret-position="115">
+          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
