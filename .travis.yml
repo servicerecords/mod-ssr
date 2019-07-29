@@ -18,4 +18,4 @@ before_script:
   - npm update
 
 script:
-  - php vendor/bin/phpunit
+  - php vendor/bin/phpunit --configuration phpunit.xml
