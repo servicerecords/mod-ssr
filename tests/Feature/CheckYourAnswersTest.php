@@ -17,14 +17,12 @@ class CheckYourAnswersTest extends TestCase
        $response = $this->withSession([
        		'service' => 'Royal Navy / Royal Marines',
 		    'service_details' => [
-		    	'service_number' => '123456'
+		    	'service_number' => '123456',
+				'discharge_date' => '01/01/1930',
+				'join_date' => '01/01/1950'
 			],
 		   'death_in_service' => [
 		   	 'death' => 'Yes'
-		   ],
-		   'service_record' => [
-		   		'date_left' => '01/01/1930',
-			   'date_joined' => ''
 		   ],
 		   'essential_information' => [
 		   		'firstnames' => 'John',
@@ -33,7 +31,7 @@ class CheckYourAnswersTest extends TestCase
 			   'dob_accurate' => 'Yes'
 		   ],
 		   'your_details' => [
-		   		'fullname' => 'Joe Bloggs',
+		   	   'fullname' => 'Joe Bloggs',
 			   'address_line_1' => '1 The Avenue',
 			   'address_line_2' => '',
 			   'address_town' => 'City',
@@ -70,14 +68,12 @@ class CheckYourAnswersTest extends TestCase
 		$response = $this->withSession([
 			'service' => 'Royal Navy / Royal Marines',
 			'service_details' => [
-				'service_number' => '123456'
+				'service_number' => '123456',
+				'discharge_date' => '01/01/1930',
+				'join_date' => '01/01/1950'
 			],
 			'death_in_service' => [
 				'death' => 'Yes'
-			],
-			'service_record' => [
-				'date_left' => '01/01/1930',
-				'date_joined' => ''
 			],
 			'essential_information' => [
 				'firstnames' => 'John',
@@ -108,14 +104,12 @@ class CheckYourAnswersTest extends TestCase
 		$response = $this->withSession([
 			'service' => 'Royal Navy / Royal Marines',
 			'service_details' => [
-				'service_number' => '123456'
+				'service_number' => '123456',
+				'discharge_date' => '01/01/1930',
+				'join_date' => '01/01/1950'
 			],
 			'death_in_service' => [
 				'death' => 'Yes'
-			],
-			'service_record' => [
-				'date_left' => '01/01/1930',
-				'date_joined' => ''
 			],
 			'essential_information' => [
 				'firstnames' => 'John',

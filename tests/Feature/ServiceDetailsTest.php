@@ -50,7 +50,6 @@ class ServiceDetailsTest extends TestCase
 		$this->withSession(['service' => 'Army', 'death_in_service' => ['death' => 'No']]);
 		$response = $this->get('/service-details');
 		$response->assertStatus(200);
-		$response->assertSeeText('Date they joined the Royal Navy/Royal Marines');
 		$response->assertSeeText('Year of discharge');
 	}
 
@@ -70,7 +69,8 @@ class ServiceDetailsTest extends TestCase
 			'ta_army_dates' => '01/01/1912',
 			'aer_dates' => '??/??/??',
 			'discharge_date' => '??/??/2018',
-			'disability_benefit' => 'No'
+			'disability_benefit' => 'No',
+			'join_date' => '??/??/??'
 		];
 		$response = $this->post('/service-details', $stub);
 		$response->assertStatus(302);

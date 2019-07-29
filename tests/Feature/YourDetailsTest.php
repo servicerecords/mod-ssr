@@ -84,8 +84,8 @@ class YourDetailsTest extends TestCase
 			'address_line_1' => 'Address Line 1',
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
-			'address_county' => '',
-			'address_postcode' => 'Postcode'
+			'address_county' => 'County',
+			'address_postcode' => ''
 		];
 
 		$response = $this->post('/your-details', $stub);
