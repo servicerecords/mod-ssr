@@ -1,5 +1,5 @@
 language: php
-
+edge: true
 deploy:
   provider: cloudfoundry
   api: https://api.cloud.service.gov.uk

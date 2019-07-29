@@ -56,12 +56,17 @@
                 </span>
             </p>
         </div>
+        <a href="#" class="govuk-back-link">Back</a>
     </div>
     <div class="govuk-width-container">
         <main class="govuk-main-wrapper {{(isset($paying) ? 'charge-new' : '')}}" id="main-content" role="main">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl">@yield('title')</h1>
+                    @hasSection('title')
+                        <h1 class="govuk-heading-xl">
+                            @yield('title')
+                        </h1>
+                    @endif
                     @yield('content')
                 </div>
             </div>
@@ -74,22 +79,22 @@
                 <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
 
 
-                    <h2 class="govuk-visually-hidden">Support links</h2>
-                    <ul class="govuk-footer__inline-list">
+                    {{--<h2 class="govuk-visually-hidden">Support links</h2>--}}
+                    {{--<ul class="govuk-footer__inline-list">--}}
 
-                        <li class="govuk-footer__inline-list-item">
-                            <a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">
-                                GOV.UK Prototype Kit v8.11.0
-                            </a>
-                        </li>
+                        {{--<li class="govuk-footer__inline-list-item">--}}
+                            {{--<a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">--}}
+                                {{--GOV.UK Prototype Kit v8.11.0--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
 
-                        <li class="govuk-footer__inline-list-item">
-                            <a class="govuk-footer__link" href="/prototype-admin/clear-data">
-                                Clear data
-                            </a>
-                        </li>
+                        {{--<li class="govuk-footer__inline-list-item">--}}
+                            {{--<a class="govuk-footer__link" href="/prototype-admin/clear-data">--}}
+                                {{--Clear data--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
 
-                    </ul>
+                    {{--</ul>--}}
 
 
 
