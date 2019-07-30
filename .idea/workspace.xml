@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.travis" beforeDir="false" afterPath="$PROJECT_DIR$/.env.travis" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -130,7 +129,7 @@
           <entry key="json" value="6" />
           <entry key="php" value="950" />
           <entry key="travis" value="48" />
-          <entry key="yml" value="208" />
+          <entry key="yml" value="249" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -140,7 +139,7 @@
           <entry key="JSON" value="6" />
           <entry key="PHP" value="770" />
           <entry key="PLAIN_TEXT" value="87" />
-          <entry key="YAML" value="208" />
+          <entry key="YAML" value="249" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -150,7 +149,7 @@
           <entry key="gitignore" value="1" />
           <entry key="php" value="97" />
           <entry key="travis" value="1" />
-          <entry key="yml" value="4" />
+          <entry key="yml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -159,13 +158,18 @@
           <entry key="Blade" value="55" />
           <entry key="PHP" value="42" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="YAML" value="4" />
+          <entry key="YAML" value="5" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manifest.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Feature/DeathServiceTest.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -180,15 +184,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-291">
               <caret line="338" column="94" selection-start-line="338" selection-start-column="94" selection-end-line="338" selection-end-column="94" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Feature/StartNowTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="29" column="73" selection-start-line="29" selection-start-column="73" selection-end-line="29" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -211,20 +206,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env.travis">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="460">
+              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            <state relative-caret-position="276">
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -244,8 +239,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="81" column="53" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
+            <state relative-caret-position="823">
+              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
             </state>
           </provider>
         </entry>
@@ -356,8 +351,8 @@
         <option value="$PROJECT_DIR$/tests/Feature/DeathServiceTest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/.env.travis" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -654,7 +649,7 @@
       <workItem from="1563803047681" duration="6821000" />
       <workItem from="1563894384266" duration="9364000" />
       <workItem from="1564034739424" duration="14296000" />
-      <workItem from="1564345633940" duration="19599000" />
+      <workItem from="1564345633940" duration="20318000" />
     </task>
     <servers />
   </component>
@@ -691,7 +686,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214526000" />
+    <option name="totallyTimeSpent" value="215245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="53" width="1680" height="1027" extended-state="0" />
@@ -727,13 +722,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.env.production">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1081">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env.testing">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="966">
@@ -1048,20 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="81" column="53" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -1071,8 +1045,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.env.travis">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="460">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="823">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
         </state>
       </provider>
     </entry>
