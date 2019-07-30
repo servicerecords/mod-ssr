@@ -2,37 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/check-your-answers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/check-your-answers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/communication.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/communication.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/deathInService.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/deathInService.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/essentialInformation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/essentialInformation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/request.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/service.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-army.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-army.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-navy-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-navy-dis.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-navy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-navy.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-raf-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-raf-dis.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-raf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-raf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/their-details-unknown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-unknown.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/your-information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-information.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/DeathServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/DeathServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/RelationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/RelationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/RelationshipTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/RelationshipTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/RequestTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/RequestTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/StartNowTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/StartNowTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/YourDetailsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/YourDetailsTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +132,7 @@
           <entry key="gitignore" value="87" />
           <entry key="json" value="6" />
           <entry key="md" value="2" />
-          <entry key="php" value="1137" />
+          <entry key="php" value="1148" />
           <entry key="travis" value="110" />
           <entry key="xml" value="1" />
           <entry key="yml" value="466" />
@@ -172,7 +144,7 @@
           <entry key="Blade" value="182" />
           <entry key="JSON" value="6" />
           <entry key="Markdown" value="2" />
-          <entry key="PHP" value="955" />
+          <entry key="PHP" value="966" />
           <entry key="PLAIN_TEXT" value="87" />
           <entry key="XML" value="1" />
           <entry key="YAML" value="466" />
@@ -185,7 +157,7 @@
           <entry key="example" value="2" />
           <entry key="gitignore" value="1" />
           <entry key="md" value="1" />
-          <entry key="php" value="137" />
+          <entry key="php" value="142" />
           <entry key="travis" value="1" />
           <entry key="xml" value="1" />
           <entry key="yml" value="6" />
@@ -194,9 +166,9 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="9" />
-          <entry key="Blade" value="79" />
+          <entry key="Blade" value="81" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="58" />
+          <entry key="PHP" value="61" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1" />
           <entry key="YAML" value="6" />
@@ -207,7 +179,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/verify.blade.php">
+        <entry file="file://$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="176" column="50" lean-forward="true" selection-start-line="173" selection-start-column="8" selection-end-line="176" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="23" selection-start-column="23" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="23">
               <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
@@ -216,15 +206,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/tests/Feature/ServiceTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/your-details-relation.blade.php">
+        <entry file="file://$PROJECT_DIR$/tests/Feature/StartNowTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="284">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -232,8 +226,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="261">
+              <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -259,29 +253,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="75" column="61" selection-start-line="75" selection-start-column="61" selection-end-line="75" selection-end-column="61" />
-              <folding>
-                <element signature="e#40#83#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Requests/EssentialInformationSave.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="19" />
+            <state relative-caret-position="-44">
+              <caret line="58" column="56" lean-forward="true" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -355,7 +328,6 @@
         <option value="$PROJECT_DIR$/tests/Feature/ConfirmationTest.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.env.development" />
-        <option value="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" />
         <option value="$PROJECT_DIR$/tests/Feature/CheckYourAnswersTest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -389,8 +361,9 @@
         <option value="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/your-information.blade.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" />
+        <option value="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" />
         <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
@@ -608,41 +581,41 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.EssentialInformationTest.information_must_include_lastname">
-    <configuration name="ConfirmationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ConfirmationTest" file="$PROJECT_DIR$/tests/Feature/ConfirmationTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.YourDetailsTest">
+    <configuration name="ServiceDetailsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ServiceDetailsTest" file="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="DeathServiceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\DeathServiceTest" file="$PROJECT_DIR$/tests/Feature/DeathServiceTest.php" scope="Class" />
+    <configuration name="ServiceDetailsTest.can_see_home_guard_form_with_death" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ServiceDetailsTest" file="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" method="can_see_home_guard_form_with_death" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="EssentialInformationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\EssentialInformationTest" file="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" scope="Class" />
+    <configuration name="ServiceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ServiceTest" file="$PROJECT_DIR$/tests/Feature/ServiceTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="EssentialInformationTest.information_must_include_firstname" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\EssentialInformationTest" file="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" method="information_must_include_firstname" scope="Method" />
+    <configuration name="StartNowTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\StartNowTest" file="$PROJECT_DIR$/tests/Feature/StartNowTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="EssentialInformationTest.information_must_include_lastname" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\EssentialInformationTest" file="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" method="information_must_include_lastname" scope="Method" />
+    <configuration name="YourDetailsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\YourDetailsTest" file="$PROJECT_DIR$/tests/Feature/YourDetailsTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHPUnit.ConfirmationTest" />
-      <item itemvalue="PHPUnit.DeathServiceTest" />
-      <item itemvalue="PHPUnit.EssentialInformationTest" />
-      <item itemvalue="PHPUnit.EssentialInformationTest.information_must_include_lastname" />
-      <item itemvalue="PHPUnit.EssentialInformationTest.information_must_include_firstname" />
+      <item itemvalue="PHPUnit.ServiceDetailsTest" />
+      <item itemvalue="PHPUnit.ServiceDetailsTest.can_see_home_guard_form_with_death" />
+      <item itemvalue="PHPUnit.ServiceTest" />
+      <item itemvalue="PHPUnit.StartNowTest" />
+      <item itemvalue="PHPUnit.YourDetailsTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.EssentialInformationTest.information_must_include_lastname" />
-        <item itemvalue="PHPUnit.EssentialInformationTest" />
-        <item itemvalue="PHPUnit.EssentialInformationTest.information_must_include_firstname" />
-        <item itemvalue="PHPUnit.DeathServiceTest" />
-        <item itemvalue="PHPUnit.ConfirmationTest" />
+        <item itemvalue="PHPUnit.YourDetailsTest" />
+        <item itemvalue="PHPUnit.StartNowTest" />
+        <item itemvalue="PHPUnit.ServiceTest" />
+        <item itemvalue="PHPUnit.ServiceDetailsTest" />
+        <item itemvalue="PHPUnit.ServiceDetailsTest.can_see_home_guard_form_with_death" />
       </list>
     </recent_temporary>
   </component>
@@ -689,56 +662,56 @@
       <workItem from="1563894384266" duration="9364000" />
       <workItem from="1564034739424" duration="14296000" />
       <workItem from="1564345633940" duration="22299000" />
-      <workItem from="1564501197123" duration="1255000" />
+      <workItem from="1564501197123" duration="1584000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EssentialInformationTest_information_must_include_firstname - 2019.07.30 at 16h 53m 08s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_firstname" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="EssentialInformationTest_information_must_include_firstname - 2019.07.30 at 16h 53m 18s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_firstname" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="EssentialInformationTest_information_must_include_firstname - 2019.07.30 at 16h 53m 26s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_firstname" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="EssentialInformationTest - 2019.07.30 at 16h 54m 16s.xml">
+    <history-entry file="EssentialInformationTest - 2019.07.30 at 17h 05m 17s.xml">
       <configuration name="EssentialInformationTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="EssentialInformationTest_information_must_include_lastname - 2019.07.30 at 16h 54m 39s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_lastname" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="RelationshipTest - 2019.07.30 at 17h 05m 21s.xml">
+      <configuration name="RelationshipTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="EssentialInformationTest - 2019.07.30 at 16h 56m 35s.xml">
-      <configuration name="EssentialInformationTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="RelationTest - 2019.07.30 at 17h 05m 24s.xml">
+      <configuration name="RelationTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="EssentialInformationTest_information_must_include_lastname - 2019.07.30 at 16h 56m 52s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_lastname" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="RequestTest - 2019.07.30 at 17h 05m 27s.xml">
+      <configuration name="RequestTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="EssentialInformationTest_information_must_include_lastname - 2019.07.30 at 16h 57m 03s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_lastname" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="ServiceDetailsTest - 2019.07.30 at 17h 05m 32s.xml">
+      <configuration name="ServiceDetailsTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="EssentialInformationTest_information_must_include_lastname - 2019.07.30 at 16h 57m 35s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_lastname" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="ServiceDetailsTest_can_see_home_guard_form_with_death - 2019.07.30 at 17h 06m 06s.xml">
+      <configuration name="ServiceDetailsTest.can_see_home_guard_form_with_death" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="EssentialInformationTest_information_must_include_lastname - 2019.07.30 at 16h 58m 06s.xml">
-      <configuration name="EssentialInformationTest.information_must_include_lastname" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="ServiceDetailsTest - 2019.07.30 at 17h 06m 47s.xml">
+      <configuration name="ServiceDetailsTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="ServiceTest - 2019.07.30 at 17h 06m 53s.xml">
+      <configuration name="ServiceTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="StartNowTest - 2019.07.30 at 17h 06m 57s.xml">
+      <configuration name="StartNowTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="YourDetailsTest - 2019.07.30 at 17h 07m 02s.xml">
+      <configuration name="YourDetailsTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218481000" />
+    <option name="totallyTimeSpent" value="218810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="53" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2881563" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2881563" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32963374" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.47007617" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47007617" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934713" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -786,13 +759,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.env.development" />
-    <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/Feature/CheckYourAnswersTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -882,27 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-291">
-          <caret line="338" column="55" selection-start-line="338" selection-start-column="55" selection-end-line="338" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/ServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-843">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/StartNowTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1014,13 +959,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/their-details-navy.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1111,15 +1049,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
+        <state relative-caret-position="-44">
+          <caret line="58" column="56" lean-forward="true" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="176" column="50" lean-forward="true" selection-start-line="173" selection-start-column="8" selection-end-line="176" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/ServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/StartNowTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        <state relative-caret-position="261">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
         </state>
       </provider>
     </entry>
