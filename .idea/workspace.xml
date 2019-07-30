@@ -129,7 +129,7 @@
           <entry key="json" value="6" />
           <entry key="php" value="950" />
           <entry key="travis" value="48" />
-          <entry key="yml" value="249" />
+          <entry key="yml" value="262" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -139,7 +139,7 @@
           <entry key="JSON" value="6" />
           <entry key="PHP" value="770" />
           <entry key="PLAIN_TEXT" value="87" />
-          <entry key="YAML" value="249" />
+          <entry key="YAML" value="262" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -218,8 +218,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="230">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -649,7 +649,7 @@
       <workItem from="1563803047681" duration="6821000" />
       <workItem from="1563894384266" duration="9364000" />
       <workItem from="1564034739424" duration="14296000" />
-      <workItem from="1564345633940" duration="20318000" />
+      <workItem from="1564345633940" duration="20470000" />
     </task>
     <servers />
   </component>
@@ -686,7 +686,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215245000" />
+    <option name="totallyTimeSpent" value="215397000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="53" width="1680" height="1027" extended-state="0" />
@@ -1062,8 +1062,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        <state relative-caret-position="230">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
