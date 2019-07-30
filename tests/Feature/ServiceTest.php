@@ -25,7 +25,7 @@ class ServiceTest extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get('/');
+        $response = $this->get('/', [], [], ['HTTP_REFERER' => 'testing']);
 
         $response->assertStatus(200);
     }

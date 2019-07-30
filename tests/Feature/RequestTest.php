@@ -18,7 +18,7 @@ class RequestTest extends TestCase
      */
     public function a_user_can_start_a_request()
     {
-        $response = $this->get('/request');
+        $response = $this->get('/request', [], [], ['HTTP_REFERER' => 'testing']);
 
         $response->assertSeeText('Whose service record are you requesting');
         $response->assertSeeText('Save and continue');

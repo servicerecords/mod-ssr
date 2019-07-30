@@ -22,7 +22,7 @@ class ServiceDetailsTest extends TestCase
 	public function user_can_see_navy_details_no_death_form()
 	{
 		$this->withSession(['service' => 'Royal Navy / Royal Marines', 'death_in_service' => ['death' => 'No']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Date they joined the Royal Navy/Royal Marines');
 		$response->assertSeeText('Date they left');
@@ -34,7 +34,7 @@ class ServiceDetailsTest extends TestCase
 	public function user_can_see_navy_details_with_death_form()
 	{
 		$this->withSession(['service' => 'Royal Navy / Royal Marines', 'death_in_service' => ['death' => 'Yes']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Date they joined the Royal Navy/Royal Marines');
 		$response->assertSeeText('Date of death in service');
@@ -48,7 +48,7 @@ class ServiceDetailsTest extends TestCase
 	public function user_can_see_army_details_with_no_death_form()
 	{
 		$this->withSession(['service' => 'Army', 'death_in_service' => ['death' => 'No']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Year of discharge');
 	}
@@ -109,7 +109,7 @@ class ServiceDetailsTest extends TestCase
 	public function user_can_see_raf_details_no_death_form()
 	{
 		$this->withSession(['service' => 'Royal Air Force (RAF)', 'death_in_service' => ['death' => 'No']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Date they joined the RAF');
 		$response->assertSeeText('Date they left the RAF');
@@ -121,7 +121,7 @@ class ServiceDetailsTest extends TestCase
 	public function user_can_see_raf_details_with_death_form()
 	{
 		$this->withSession(['service' => 'Royal Air Force (RAF)', 'death_in_service' => ['death' => 'Yes']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Date they joined the RAF');
 		$response->assertSeeText('Date of casualty / aircraft loss');
@@ -158,7 +158,7 @@ class ServiceDetailsTest extends TestCase
 	public function can_see_home_guard_form_no_death()
 	{
 		$this->withSession(['service' => 'Home Guard', 'death_in_service' => ['death' => 'No']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Address on enlistment');
 		$response->assertSeeText('In which county did they serve?');
@@ -170,7 +170,7 @@ class ServiceDetailsTest extends TestCase
 	public function can_see_home_guard_form_with_death()
 	{
 		$this->withSession(['service' => 'Home Guard', 'death_in_service' => ['death' => 'Yes']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Address on enlistment');
 		$response->assertSeeText('In which county did they serve?');
@@ -214,7 +214,7 @@ class ServiceDetailsTest extends TestCase
 	public function user_can_see_unknown_data_form()
 	{
 		$this->withSession(['service' => 'Unknown', 'death_in_service' => ['death' => 'No']]);
-		$response = $this->get('/service-details');
+		$response = $this->get('/service-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Official Service Number');
 		$response->assertSeeText('Further Information');
@@ -307,7 +307,7 @@ class ServiceDetailsTest extends TestCase
 			'dob_year' => '',
 			'dob_accurate' => 'No'
 		];
-		$this->get('/essential-information');
+		$this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
 		$response = $this->post('/essential-information', $postParams);
 		$response->assertRedirect('/essential-information');
 		$response->assertSessionHasErrors(['dob_year']);
@@ -318,7 +318,7 @@ class ServiceDetailsTest extends TestCase
 	 * @test
 	 */
 	public function information_must_include_dob_accurate_flag(){
-		$this->get('/essential-information');
+		$this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
 		$postParams = [
 			'firstnames' => 'Joe',
 			'lastname' => 'Bloggs',
@@ -336,7 +336,7 @@ class ServiceDetailsTest extends TestCase
 	 * @test
 	 */
 	public function user_can_see_essential_information_form(){
-		$response = $this->get('/essential-information');
+		$response = $this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Details of the serviceman/woman');
 	}

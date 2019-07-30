@@ -98,7 +98,7 @@ class YourDetailsTest extends TestCase
 	 */
 	public function user_can_see_details_form()
 	{
-		$response = $this->get('/your-details');
+		$response = $this->get('/your-details', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Your details');
 	}
