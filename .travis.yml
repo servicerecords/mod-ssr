@@ -11,7 +11,9 @@ deploy:
     all_branches: true
 before_script:
   - cp .env.travis .env
-  - sed -ri 's/GOV_PAY_KEY_TOKEN/$GOV_PAY_API_KEY/NOTIFY_API_KEY/$GOV_NOTIFY_API_KEY/PRICE/$REQUEST_PRICE/' .env
+  - sed -ri 's/GOV_PAY_KEY_TOKEN/$GOV_PAY_API_KEY/' .env
+  - sed -ri 's/NOTIFY_API_KEY/$GOV_NOTIFY_API_KEY/' .env
+  - sed -ri 's/PRICE/$REQUEST_PRICE/' .env
   - composer self-update
   - composer install --no-interaction
   - composer update
