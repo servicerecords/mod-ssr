@@ -153,7 +153,7 @@
           <entry key="example" value="2" />
           <entry key="gitignore" value="1" />
           <entry key="md" value="1" />
-          <entry key="php" value="142" />
+          <entry key="php" value="144" />
           <entry key="travis" value="2" />
           <entry key="xml" value="1" />
           <entry key="yml" value="6" />
@@ -162,9 +162,9 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="10" />
-          <entry key="Blade" value="81" />
+          <entry key="Blade" value="82" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="61" />
+          <entry key="PHP" value="62" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1" />
           <entry key="YAML" value="6" />
@@ -201,11 +201,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env.travis">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
               <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Feature/ConfirmationTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/confirmation.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -233,24 +251,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="552">
               <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/your-details-relationship.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/your-information.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -579,13 +579,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.YourDetailsTest">
-    <configuration name="ServiceDetailsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ServiceDetailsTest" file="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.ConfirmationTest.user_can_see_confirmation_page">
+    <configuration name="ConfirmationTest.user_can_see_confirmation_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ConfirmationTest" file="$PROJECT_DIR$/tests/Feature/ConfirmationTest.php" method="user_can_see_confirmation_page" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="ServiceDetailsTest.can_see_home_guard_form_with_death" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ServiceDetailsTest" file="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" method="can_see_home_guard_form_with_death" scope="Method" />
+    <configuration name="ServiceDetailsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ServiceDetailsTest" file="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="ServiceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -602,18 +602,18 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.ServiceDetailsTest" />
-      <item itemvalue="PHPUnit.ServiceDetailsTest.can_see_home_guard_form_with_death" />
       <item itemvalue="PHPUnit.ServiceTest" />
       <item itemvalue="PHPUnit.StartNowTest" />
       <item itemvalue="PHPUnit.YourDetailsTest" />
+      <item itemvalue="PHPUnit.ConfirmationTest.user_can_see_confirmation_page" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.ConfirmationTest.user_can_see_confirmation_page" />
         <item itemvalue="PHPUnit.YourDetailsTest" />
         <item itemvalue="PHPUnit.StartNowTest" />
         <item itemvalue="PHPUnit.ServiceTest" />
         <item itemvalue="PHPUnit.ServiceDetailsTest" />
-        <item itemvalue="PHPUnit.ServiceDetailsTest.can_see_home_guard_form_with_death" />
       </list>
     </recent_temporary>
   </component>
@@ -660,14 +660,11 @@
       <workItem from="1563894384266" duration="9364000" />
       <workItem from="1564034739424" duration="14296000" />
       <workItem from="1564345633940" duration="22299000" />
-      <workItem from="1564501197123" duration="1735000" />
+      <workItem from="1564501197123" duration="2017000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EssentialInformationTest - 2019.07.30 at 17h 05m 17s.xml">
-      <configuration name="EssentialInformationTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="RelationshipTest - 2019.07.30 at 17h 05m 21s.xml">
       <configuration name="RelationshipTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
@@ -695,9 +692,12 @@
     <history-entry file="YourDetailsTest - 2019.07.30 at 17h 07m 02s.xml">
       <configuration name="YourDetailsTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="ConfirmationTest_user_can_see_confirmation_page - 2019.07.30 at 17h 15m 33s.xml">
+      <configuration name="ConfirmationTest.user_can_see_confirmation_page" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218961000" />
+    <option name="totallyTimeSpent" value="219243000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="53" width="1680" height="1027" extended-state="0" />
@@ -761,13 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="129" column="76" selection-start-line="129" selection-start-column="76" selection-end-line="129" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/ConfirmationTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="15" column="104" lean-forward="true" selection-start-line="15" selection-start-column="104" selection-end-line="15" selection-end-column="104" />
         </state>
       </provider>
     </entry>
@@ -881,13 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/confirmation.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -1091,6 +1077,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/ConfirmationTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/confirmation.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
         </state>
       </provider>
     </entry>
