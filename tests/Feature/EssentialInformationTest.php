@@ -36,7 +36,7 @@ class EssentialInformationTest extends TestCase
 			'dob_year' => '1987',
 			'dob_accurate' => 'No'
 		];
-		$this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
+		$this->get('/essential-information');
     	$response = $this->post('/essential-information', $postParams);
 		$response->assertRedirect('/essential-information');
 		$response->assertSessionHasErrors(['firstnames']);
@@ -47,18 +47,17 @@ class EssentialInformationTest extends TestCase
 	 * @test
 	 */
     public function information_must_include_lastname(){
-		$this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
+		//$this->get('/essential-information');
 		$postParams = [
 			'firstnames' => 'Joe',
 			'lastname' => '',
 			'dob_year' => '1987',
 			'dob_accurate' => 'No'
 		];
-		$this->get('/essential-information');
+		//$this->get('/essential-information', ['HTTP_REFERER' => 'testing']);
 		$response = $this->post('/essential-information', $postParams);
-		$response->assertRedirect('/essential-information');
-		$response->assertSessionHasErrors(['lastname']);
 		$this->followRedirects($response)->assertSeeText('Please enter a lastname');
+		$response->assertSessionHasErrors(['lastname']);
 	}
 
     /**
@@ -71,7 +70,7 @@ class EssentialInformationTest extends TestCase
 			'dob_year' => '',
 			'dob_accurate' => 'No'
 		];
-		$this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
+		$this->get('/essential-information', ['HTTP_REFERER' => 'testing']);
 		$response = $this->post('/essential-information', $postParams);
 		$response->assertRedirect('/essential-information');
 		$response->assertSessionHasErrors(['dob_year']);
@@ -82,7 +81,7 @@ class EssentialInformationTest extends TestCase
 	 * @test
 	 */
     public function information_must_include_dob_accurate_flag(){
-		$this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
+		$this->get('/essential-information', ['HTTP_REFERER' => 'testing']);
 		$postParams = [
 			'firstnames' => 'Joe',
 			'lastname' => 'Bloggs',
@@ -100,7 +99,7 @@ class EssentialInformationTest extends TestCase
 	 * @test
 	 */
     public function user_can_see_essential_information_form(){
-    	$response = $this->get('/essential-information', [], [], ['HTTP_REFERER' => 'testing']);
+    	$response = $this->get('/essential-information', ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
 		$response->assertSeeText('Details of the serviceman/woman');
 	}

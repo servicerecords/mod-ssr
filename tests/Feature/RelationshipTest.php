@@ -13,7 +13,7 @@ class RelationshipTest extends TestCase
      */
     public function user_can_see_relationship_form()
     {
-        $response = $this->get('/your-details/relationship', [], [], ['HTTP_REFERER' => 'testing']);
+        $response = $this->get('/your-details/relationship', ['HTTP_REFERER' => 'testing']);
 
         $response->assertStatus(200);
         $response->assertSeeText('How are you related?');

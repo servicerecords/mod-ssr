@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('back', $referer)
-
 @section('title', 'Whose service record are you requesting')
 
 @section('content')

@@ -43,11 +43,12 @@ class DeathServiceTest extends TestCase
 	public function a_user_must_make_a_choice()
 	{
 		$postData = [];
-		$this->get('/service/death-in-service', [], [], ['HTTP_REFERER' => 'testing']);
+		$this->get('/service/death-in-service', ['HTTP_REFERER' => 'testing']);
 		$response = $this->post('/service/death-in-service', $postData);
-		//$this->assertRedirect('/service/death-in-service');
+		$response->assertRedirect('/service/death-in-service');
 		$response->assertSessionHasErrors(['death']);
-		$this->followRedirects($response)->assertSeeText(' There is a problem');
+//		$response2 = $this->followRedirects($response);//->assertSeeText('There is a problem');
+//		$response2->dumpHeaders();
 	}
 
 
