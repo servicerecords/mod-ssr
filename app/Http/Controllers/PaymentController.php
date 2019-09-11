@@ -44,7 +44,7 @@ class PaymentController extends Controller
 //		die(print_r($result->getBody()->getContents()));
 		//dd($request);
 		$post_params = [
-			'amount' => 100,
+			'amount' => 3000,
 			'reference' => $request->session()->get('reference'),
 			'description' => $this->description,
 			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation'
