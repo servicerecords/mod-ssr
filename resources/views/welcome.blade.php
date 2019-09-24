@@ -1,13 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Service record request')
+@section('title', 'Historic service record request')
 
 @section('content')
 
     <p class="govuk-body-l">Use this service to obtain information relating to a servicemen/servicewoman who has served
     in the Royal Navy, Royal Marines, Army, Royal Air Force or Home Guard.</p>
-
-    <p class="govuk-body"> It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.</p>
 
     <h2 class="govuk-heading-m">Before you start</h2>
 
@@ -18,7 +16,7 @@
                 notes</a>)</li>
     </ul>
 
-    <a href="/request" role="button" draggable="false" class="govuk-button govuk-button--start">
+    <a href="/service" role="button" draggable="false" class="govuk-button govuk-button--start">
         Start now
     </a>
 

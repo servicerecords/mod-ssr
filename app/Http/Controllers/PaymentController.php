@@ -79,7 +79,9 @@ class PaymentController extends Controller
 		if ($err) {
 			echo "cURL Error #:" . $err;
 		} else {
+			//dd($response);
 			$response = json_decode($response, true);
+			//dd($response);
 			return redirect($response['_links']['next_url']['href']);
 		}
 	}

@@ -40,6 +40,7 @@ class ConfirmationController extends Controller
 	public function index(Request $request)
 	{
 		$response = $this->_sendSearchNotification($request);
+		dd($response);
 		if(is_object($response) && $response->getCode() !== 200) {
 			return view('process_error');
 		} else {
@@ -107,20 +108,20 @@ class ConfirmationController extends Controller
 					'dob_accurate' => $request->session()->get('essential_information.dob_accurate'),
 					'date_joined' => (null === $request->session()->get('essential_information.join_date') ? '??/??/??' : $request->session()->get('essential_information.join_date')),
 					'unit' => $request->session()->get('service'),
-					'service_number' => $request->session()->get('service_details.service_number'),
-					'death_in_service' => $request->session()->get('death_in_service.death'),
-					'date_of_death' => $request->session()->get('service_details.discharge_date'),
+					'service_number' => (null === $request->session()->get('service_details.service_number') ? '' : $request->session()->get('service_details.service_number')),
+					'death_in_service' => (null === $request->session()->get('death_in_service.death') ? '' : $request->session()->get('death_in_service.death')),
+					'date_of_death' => (null === $request->session()->get('service_details.discharge_date') ? '' : $request->session()->get('service_details.discharge_date')),
 					'further_information' => (null === $request->session()->get('essential_information.further_information') ? '' : $request->session()->get('essential_information.further_information')),
-					'request_full_name' => $request->session()->get('your_details.fullname'),
-					'request_address' => $request->session()->get('your_details.address_line_1'),
+					'request_full_name' => (null === $request->session()->get('your_details.fullname') ? '' : $request->session()->get('your_details.fullname')),
+					'request_address' => (null === $request->session()->get('your_details.address_line_1') ? '' : $request->session()->get('your_details.address_line_1')),
 					// add address line 2
-					'postcode' => $request->session()->get('your_details.address_postcode'),
-					'country' => $request->session()->get('your_details.address_county'),
-					'related' => $request->session()->get('your_details.relation.related'),
-					'relationship' => $request->session()->get('your_details.relationship.relationship'),
+					'postcode' => (null === $request->session()->get('your_details.address_postcode') ? '' : $request->session()->get('your_details.address_postcode')),
+					'country' => (null === $request->session()->get('your_details.address_county') ? '' : $request->session()->get('your_details.address_county')),
+					'related' => (null === $request->session()->get('your_details.relation.related') ? '' : $request->session()->get('your_details.relation.related')),
+					'relationship' => (null === $request->session()->get('your_details.relationship.relationship') ? '' : $request->session()->get('your_details.relationship.relationship')),
 					'next_of_kin' => ($request->session()->get('your_details.relationship.next_of_kin') !== 'Yes' ? 'No' : 'Yes'),
 					'payment_status' => (null !== $request->session()->get('payment_id') ? 'Paid' : '-'),
-					'verification' => $request->session()->get('verification.uploaded'),
+					'verification' => (null === $request->session()->get('verification.uploaded') ? '' : $request->session()->get('verification.uploaded')),
 					'link_to_verification' => $upload,
 					'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? implode(",", $request->session()->get('service_details.leave_army_reason')) : '-'),
 					'further_service' => (null !== ($request->session()->get('service_details.completion_ifo')) ? implode(",", $request->session()->get('service_details.completion_ifo')) : '-'),
