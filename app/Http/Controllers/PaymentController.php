@@ -49,7 +49,6 @@ class PaymentController extends Controller
 			'description' => $this->description,
 			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation'
 		];
-
 		//die(print_r(json_encode($post_params, JSON_UNESCAPED_SLASHES)));
 
 		$curl = curl_init();
@@ -67,7 +66,7 @@ class PaymentController extends Controller
 			CURLOPT_POSTFIELDS => json_encode($post_params, JSON_UNESCAPED_SLASHES),
 			CURLOPT_HTTPHEADER => array(
 				"Accept: application/json",
-				"Authorization: Bearer ea14ubq0m0sq5gsh1bi1o9qce5jt1rik59ej2m8gtk3ce045bef7f7fia9",
+				"Authorization: Bearer " . env('GOV_PAY_API_KEY'),
 				"Content-Type: application/json",
 			),
 		));

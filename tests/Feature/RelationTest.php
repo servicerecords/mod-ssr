@@ -14,7 +14,7 @@ class RelationTest extends TestCase
      */
     public function user_can_see_relation_choices()
     {
-        $response = $this->get('/your-details/relation');
+        $response = $this->get('/your-details/relation', ['HTTP_REFERER' => 'testing']);
 
         $response->assertStatus(200);
         $response->assertSeeText('Are you related to the Serviceman/woman?');

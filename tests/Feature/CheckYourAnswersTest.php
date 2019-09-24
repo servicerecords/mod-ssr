@@ -40,7 +40,7 @@ class CheckYourAnswersTest extends TestCase
 			   'payment_required' => true
 		   ],
 
-	   ])->get('/check-your-answers');
+	   ])->get('/check-your-answers', [], [], ['HTTP_REFERER' => 'testing']);
        $response->assertSeeTextInOrder([
        	'Royal Navy / Royal Marines',
 		   '123456',
@@ -91,7 +91,7 @@ class CheckYourAnswersTest extends TestCase
 				'payment_required' => false
 			],
 
-		])->get('/check-your-answers');
+		])->get('/check-your-answers', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertSeeText('Accept and send');
 		$response->assertStatus(200);
 	}
@@ -127,7 +127,7 @@ class CheckYourAnswersTest extends TestCase
 				'payment_required' => true
 			],
 
-		])->get('/check-your-answers');
+		])->get('/check-your-answers', [], [], ['HTTP_REFERER' => 'testing']);
 		$response->assertSeeText('A payment of £30 is required.');
 		$response->assertSeeText('Accept and pay');
 		$response->assertStatus(200);

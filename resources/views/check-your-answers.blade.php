@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('back', '')
-
 @section('title', 'Check your answers before sending your application')
 
 @section('content')

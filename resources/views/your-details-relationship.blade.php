@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('back', $referer)
-
 @section('title', 'Your details')
 
 @section('content')
