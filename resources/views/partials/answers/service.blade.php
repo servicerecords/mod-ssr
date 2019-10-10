@@ -215,89 +215,91 @@
                     </a>
                 </dd>
             </div>
-            @if(in_array('Territorial Army (TA)', Session::get('service_details')['completion_info']))
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Territorial Army Number
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ (isset(Session::get('service_details')['ta_army_number']) ? Session::get('service_details')['ta_army_number'] : '-') }}
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="">
-                            Change<span class="govuk-visually-hidden"> contact details</span>
-                        </a>
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Regt/Corps
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ (isset(Session::get('service_details')['army_regt_corps']) ? Session::get('service_details')['army_regt_corps'] : '-') }}
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="">
-                            Change<span class="govuk-visually-hidden"> contact details</span>
-                        </a>
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Dates
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ (isset(Session::get('service_details')['ta_army_dates']) ? Session::get('service_details')['ta_army_dates'] : '-') }}
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="">
-                            Change<span class="govuk-visually-hidden"> contact details</span>
-                        </a>
-                    </dd>
-                </div>
-            @endif
+            @if(isset(Session::get('service_details')['completion_info']))
+                @if(in_array('Territorial Army (TA)', Session::get('service_details')['completion_info']))
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Territorial Army Number
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ (isset(Session::get('service_details')['ta_army_number']) ? Session::get('service_details')['ta_army_number'] : '-') }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="">
+                                    Change<span class="govuk-visually-hidden"> contact details</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Regt/Corps
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ (isset(Session::get('service_details')['army_regt_corps']) ? Session::get('service_details')['army_regt_corps'] : '-') }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="">
+                                    Change<span class="govuk-visually-hidden"> contact details</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Dates
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ (isset(Session::get('service_details')['ta_army_dates']) ? Session::get('service_details')['ta_army_dates'] : '-') }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="">
+                                    Change<span class="govuk-visually-hidden"> contact details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    @endif
 
-            @if(in_array('Army Emergency Reserve (AER)', Session::get('service_details')['completion_info']))
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Army Emergency Reserve Number
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ (isset(Session::get('service_details')['aer_number']) ? Session::get('service_details')['aer_number'] : '-') }}
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="">
-                            Change<span class="govuk-visually-hidden"> contact details</span>
-                        </a>
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Regt/Corps
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ (isset(Session::get('service_details')['aer_regt_corps']) ? Session::get('service_details')['aer_regt_corps'] : '') }}
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="">
-                            Change<span class="govuk-visually-hidden"> contact details</span>
-                        </a>
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Dates
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ (isset(Session::get('service_details')['aer_dates']) ? Session::get('service_details')['aer_dates'] : '-' ) }}
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="">
-                            Change<span class="govuk-visually-hidden"> contact details</span>
-                        </a>
-                    </dd>
-                </div>
-            @endif
+                    @if(in_array('Army Emergency Reserve (AER)', Session::get('service_details')['completion_info']))
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Army Emergency Reserve Number
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ (isset(Session::get('service_details')['aer_number']) ? Session::get('service_details')['aer_number'] : '-') }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="">
+                                    Change<span class="govuk-visually-hidden"> contact details</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Regt/Corps
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ (isset(Session::get('service_details')['aer_regt_corps']) ? Session::get('service_details')['aer_regt_corps'] : '') }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="">
+                                    Change<span class="govuk-visually-hidden"> contact details</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Dates
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ (isset(Session::get('service_details')['aer_dates']) ? Session::get('service_details')['aer_dates'] : '-' ) }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="">
+                                    Change<span class="govuk-visually-hidden"> contact details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    @endif
+                @endif
         @endif
     @endif
 

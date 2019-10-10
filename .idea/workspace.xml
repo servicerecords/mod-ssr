@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,11 +119,11 @@
     <session id="-1132336402">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -131,7 +132,7 @@
           <entry key="env" value="119" />
           <entry key="gitignore" value="87" />
           <entry key="json" value="6" />
-          <entry key="php" value="1190" />
+          <entry key="php" value="1303" />
           <entry key="travis" value="21" />
           <entry key="yml" value="146" />
         </counts>
@@ -139,9 +140,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="158" />
-          <entry key="Blade" value="212" />
+          <entry key="Blade" value="289" />
           <entry key="JSON" value="6" />
-          <entry key="PHP" value="978" />
+          <entry key="PHP" value="1014" />
           <entry key="PLAIN_TEXT" value="87" />
           <entry key="YAML" value="146" />
         </counts>
@@ -151,7 +152,7 @@
           <entry key="development" value="1" />
           <entry key="env" value="2" />
           <entry key="gitignore" value="1" />
-          <entry key="php" value="81" />
+          <entry key="php" value="82" />
           <entry key="travis" value="1" />
           <entry key="yml" value="3" />
         </counts>
@@ -159,7 +160,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="4" />
-          <entry key="Blade" value="56" />
+          <entry key="Blade" value="57" />
           <entry key="PHP" value="25" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="YAML" value="3" />
@@ -172,7 +173,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2829">
+            <state relative-caret-position="200">
               <caret line="123" column="156" selection-start-line="123" selection-start-column="156" selection-end-line="123" selection-end-column="156" />
               <folding>
                 <element signature="e#40#93#0#PHP" expanded="true" />
@@ -181,11 +182,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/partials/answers/service.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+            <state relative-caret-position="219">
+              <caret line="301" column="22" selection-start-line="301" selection-start-column="22" selection-end-line="301" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -193,7 +194,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
+            <state relative-caret-position="1058">
               <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
             </state>
           </provider>
@@ -211,17 +212,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="438">
+              <caret line="30" column="75" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="75" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+            <state relative-caret-position="425">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
             </state>
           </provider>
         </entry>
@@ -247,8 +248,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1909">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="373">
+              <caret line="130" column="4" lean-forward="true" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
               <folding>
                 <element signature="e#40#83#0#PHP" expanded="true" />
               </folding>
@@ -269,9 +270,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>discharge_date</find>
-      <find>date</find>
-      <find>Year of</find>
       <find>checkbox</find>
       <find>completion</find>
       <find>leave_art</find>
@@ -286,7 +284,6 @@
       <find>Date joined</find>
       <find>check</find>
       <find>checkYour</find>
-      <find>serviceDetailsSave</find>
       <find>verify</find>
       <find>leave</find>
       <find>serviceDe</find>
@@ -299,6 +296,10 @@
       <find>their-details</find>
       <find>their</find>
       <find>GOV_PAY_RETURN_URL</find>
+      <find>completon</find>
+      <find>service</find>
+      <find>completion_info</find>
+      <find>serviceDetailsSave</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -327,7 +328,6 @@
         <option value="$PROJECT_DIR$/manifest.yml" />
         <option value="$PROJECT_DIR$/.bp-config/options.json" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" />
         <option value="$PROJECT_DIR$/tests/Feature/CheckYourAnswersTest.php" />
         <option value="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" />
         <option value="$PROJECT_DIR$/tests/Feature/YourDetailsTest.php" />
@@ -348,7 +348,6 @@
         <option value="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/your-information.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" />
         <option value="$PROJECT_DIR$/resources/views/deathInService.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/essentialInformation.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/their-details-raf.blade.php" />
@@ -361,6 +360,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" />
       </list>
     </option>
   </component>
@@ -488,7 +489,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -535,6 +535,21 @@
             <path>
               <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
               <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+              <item name="answers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mod-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mod-ssr" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -547,6 +562,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -659,7 +675,8 @@
       <workItem from="1564034739424" duration="14296000" />
       <workItem from="1564345633940" duration="13146000" />
       <workItem from="1569317272204" duration="5453000" />
-      <workItem from="1569489183403" duration="8000" />
+      <workItem from="1569489183403" duration="53000" />
+      <workItem from="1570718713438" duration="1394000" />
     </task>
     <servers />
   </component>
@@ -696,13 +713,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214755000" />
+    <option name="totallyTimeSpent" value="216194000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19488817" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1970181" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -992,27 +1009,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/answers/service.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7705">
-          <caret line="335" column="72" selection-start-line="335" selection-start-column="72" selection-end-line="335" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2829">
-          <caret line="123" column="156" selection-start-line="123" selection-start-column="156" selection-end-line="123" selection-end-column="156" />
-          <folding>
-            <element signature="e#40#93#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1023,17 +1023,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="50" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1051,12 +1051,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php">
+    <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1909">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        <state relative-caret-position="425">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="123" column="156" selection-start-line="123" selection-start-column="156" selection-end-line="123" selection-end-column="156" />
           <folding>
-            <element signature="e#40#83#0#PHP" expanded="true" />
+            <element signature="e#40#93#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1068,17 +1075,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+        <state relative-caret-position="438">
+          <caret line="30" column="75" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+        <state relative-caret-position="373">
+          <caret line="130" column="4" lean-forward="true" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
+          <folding>
+            <element signature="e#40#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/answers/service.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="301" column="22" selection-start-line="301" selection-start-column="22" selection-end-line="301" selection-end-column="22" />
         </state>
       </provider>
     </entry>
