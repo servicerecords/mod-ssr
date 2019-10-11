@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -131,7 +130,7 @@
           <entry key="env" value="119" />
           <entry key="gitignore" value="87" />
           <entry key="json" value="6" />
-          <entry key="php" value="1314" />
+          <entry key="php" value="1322" />
           <entry key="travis" value="21" />
           <entry key="yml" value="146" />
         </counts>
@@ -139,7 +138,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="158" />
-          <entry key="Blade" value="289" />
+          <entry key="Blade" value="297" />
           <entry key="JSON" value="6" />
           <entry key="PHP" value="1025" />
           <entry key="PLAIN_TEXT" value="87" />
@@ -186,8 +185,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/partials/answers/service.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+            <state relative-caret-position="331">
+              <caret line="136" column="44" selection-start-line="136" selection-start-column="44" selection-end-line="136" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -271,7 +270,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkbox</find>
       <find>completion</find>
       <find>leave_art</find>
       <find>citizen</find>
@@ -301,6 +299,7 @@
       <find>service</find>
       <find>completion_info</find>
       <find>serviceDetailsSave</find>
+      <find>service'</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -677,7 +676,7 @@
       <workItem from="1564345633940" duration="13146000" />
       <workItem from="1569317272204" duration="5453000" />
       <workItem from="1569489183403" duration="53000" />
-      <workItem from="1570718713438" duration="5563000" />
+      <workItem from="1570718713438" duration="5901000" />
     </task>
     <servers />
   </component>
@@ -714,13 +713,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220363000" />
+    <option name="totallyTimeSpent" value="220701000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1970181" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1970181" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -735,7 +734,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.28872496" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.28872496" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1101,8 +1100,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/answers/service.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+        <state relative-caret-position="331">
+          <caret line="136" column="44" selection-start-line="136" selection-start-column="44" selection-end-line="136" selection-end-column="44" />
         </state>
       </provider>
     </entry>

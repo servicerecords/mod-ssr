@@ -134,7 +134,7 @@
             Date joined
         </dt>
         <dd class="govuk-summary-list__value">
-            {{ Session::get('service')['join_date'] }}
+            {{ Session::get('service_details')['join_date'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/there-details-info-essential">
