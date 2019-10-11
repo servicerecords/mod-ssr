@@ -127,8 +127,6 @@ class ServiceRecordController extends Controller
 		$validated = $request->validated();
 
 		$request->session()->put('service_details', $request->all());
-
-		dd($request->session()->all());
 		//dd($request->session()->get('service_details'));
 		$request->session()->put('service_details.join_date', $this->_createDateString($request->session()->get('service_details.join_day'), $request->session()->get('service_details.join_month'), $request->session()->get('service_details.join_year')));
 		$request->session()->put('service_details.discharge_date', $this->_createDateString($request->session()->get('service_details.discharge_day'), $request->session()->get('service_details.discharge_month'), $request->session()->get('service_details.discharge_year')));
