@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <form action="/their-details-army" method="post" class="govuk-form" id="subject-hg" novalidate="novalidate">
+    <form action="/service-details" method="post" class="govuk-form" id="subject-hg" novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">

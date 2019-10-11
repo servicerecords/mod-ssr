@@ -309,7 +309,8 @@
                 Which county did they serve in
             </dt>
             <dd class="govuk-summary-list__value">
-                {{ Session::get('service_details')['country'] }}
+                {{ Session::get('service_details')['county'] }}
+                {{ (isset(Session::get('service_details')['county'])) ? Session::get('service_details')['county'] : '' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="">
@@ -322,7 +323,7 @@
                 Address at enlistment
             </dt>
             <dd class="govuk-summary-list__value">
-                {{ Session::get('service_details')['address_at_entlistment'] }}
+                {{ (isset(Session::get('service_details')['address_at_entlistment'])) ? Session::get('service_details')['address_at_entlistment'] : '' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="">
@@ -335,7 +336,7 @@
                 Address at discharge
             </dt>
             <dd class="govuk-summary-list__value">
-                {{ Session::get('service_details')['address_at_discharge'] }}
+                {{ (isset(Session::get('service_details')['address_at_discharge'])) ? Session::get('service_details')['address_at_discharge'] : '' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="">
@@ -348,7 +349,7 @@
                 Battalions/Companies
             </dt>
             <dd class="govuk-summary-list__value">
-                {{ Session::get('service_details')['battalions_companies'] }}
+                {{ (isset(Session::get('service_details')['battalions_companies'])) ? Session::get('service_details')['battalions_companies'] : '' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="">

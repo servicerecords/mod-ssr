@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form action="/their-details-army" method="post" class="govuk-form" id="subject-hg" novalidate="novalidate">
+    <form action="/service-details" method="post" class="govuk-form" id="subject-hg" novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">
@@ -97,7 +97,7 @@
                 <div class="govuk-form-group">
                     <div class="govuk-checkboxes" data-module="checkboxes">
                         <div class="govuk-checkboxes__item">
-                            <input {{ (old('leave_address') == "Yes" || $service_details['leave_address'] == "Yes") ? 'checked' : '' }} class="govuk-checkboxes__input" id="leave_address" name="leave_address" type="checkbox" value="Yes" aria-controls="conditional-leave-address-conditional" aria-expanded="false">
+                            <input {{ (isset($service_details['leave_address']) && (old('leave_address') == "Yes" || $service_details['leave_address'] == "Yes")) ? 'checked' : '' }} class="govuk-checkboxes__input" id="leave_address" name="leave_address" type="checkbox" value="Yes" aria-controls="conditional-leave-address-conditional" aria-expanded="false">
                             <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="leave-address-conditional">
                                 Different address on discharge
                             </label>
