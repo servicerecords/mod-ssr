@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/answers/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/answers/user.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +130,7 @@
           <entry key="env" value="119" />
           <entry key="gitignore" value="87" />
           <entry key="json" value="6" />
-          <entry key="php" value="1448" />
+          <entry key="php" value="1454" />
           <entry key="travis" value="21" />
           <entry key="yml" value="146" />
         </counts>
@@ -141,7 +140,7 @@
           <entry key=".env file" value="158" />
           <entry key="Blade" value="413" />
           <entry key="JSON" value="6" />
-          <entry key="PHP" value="1035" />
+          <entry key="PHP" value="1041" />
           <entry key="PLAIN_TEXT" value="87" />
           <entry key="YAML" value="146" />
         </counts>
@@ -154,7 +153,7 @@
           <entry key="php" value="86" />
           <entry key="scss" value="1" />
           <entry key="travis" value="1" />
-          <entry key="yml" value="3" />
+          <entry key="yml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -164,18 +163,18 @@
           <entry key="PHP" value="25" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SCSS" value="1" />
-          <entry key="YAML" value="3" />
+          <entry key="YAML" value="4" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="46" column="69" lean-forward="true" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
+            <state relative-caret-position="181">
+              <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
               <folding>
                 <element signature="e#40#93#0#PHP" expanded="true" />
               </folding>
@@ -219,11 +218,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/partials/answers/user.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="227">
               <caret line="68" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manifest.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -254,15 +262,6 @@
               <folding>
                 <element signature="e#40#83#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/check-your-answers.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="71" selection-start-line="15" selection-start-column="71" selection-end-line="15" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -357,12 +356,12 @@
         <option value="$PROJECT_DIR$/.env.travis" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php" />
         <option value="$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/answers/service.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/answers/user.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php" />
       </list>
     </option>
   </component>
@@ -480,9 +479,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="134" />
+    <option name="y" value="42" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
   </component>
@@ -678,7 +677,7 @@
       <workItem from="1564345633940" duration="13146000" />
       <workItem from="1569317272204" duration="5453000" />
       <workItem from="1569489183403" duration="53000" />
-      <workItem from="1570718713438" duration="8319000" />
+      <workItem from="1570718713438" duration="9979000" />
     </task>
     <servers />
   </component>
@@ -715,10 +714,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223119000" />
+    <option name="totallyTimeSpent" value="224779000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="23" width="1680" height="1027" extended-state="6" />
+    <frame x="134" y="42" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22588523" />
@@ -774,7 +773,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/Browser/StartTest.php" />
     <entry file="file://$PROJECT_DIR$/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4597" />
@@ -1051,16 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="46" column="69" lean-forward="true" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
-          <folding>
-            <element signature="e#40#93#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -1110,6 +1098,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="68" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConfirmationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
+          <folding>
+            <element signature="e#40#93#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
