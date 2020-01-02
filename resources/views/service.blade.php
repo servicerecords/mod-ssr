@@ -27,7 +27,7 @@
                     </div>
                     <div class="govuk-radios__item">
                         <input {{ (old('service') == 'Army' || $service == 'Army') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="army" name="service" value="Army">
-                        <label class="govuk-label govuk-radios__label govuk-label--s" for="army">Army (including Territorial &amp; Army Emergency Reserve</label>
+                        <label class="govuk-label govuk-radios__label govuk-label--s" for="army">Army (including Territorial &amp; Army Emergency Reserve)</label>
                     </div>
                     <div class="govuk-radios__item">
                         <input {{ (old('service') == 'Royal Air Force (RAF)' || $service == 'Royal Air Force (RAF)') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="raf" name="service" value="Royal Air Force (RAF)">
