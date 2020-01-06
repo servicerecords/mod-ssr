@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MOD-SSR-digital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MOD-SSR-digital.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/service.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,43 +14,6 @@
     <execution>
       <executable />
     </execution>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>record</find>
-      <find>service_details</find>
-      <find>verif</find>
-      <find>yourDe</find>
-      <find>date_left</find>
-      <find>payment</find>
-      <find>Date joined</find>
-      <find>check</find>
-      <find>checkYour</find>
-      <find>verify</find>
-      <find>leave</find>
-      <find>serviceDe</find>
-      <find>uploaded</find>
-      <find>compl</find>
-      <find>COmplet</find>
-      <find>join_date</find>
-      <find>join_</find>
-      <find>Date they joined the</find>
-      <find>their-details</find>
-      <find>their</find>
-      <find>GOV_PAY_RETURN_URL</find>
-      <find>completon</find>
-      <find>service</find>
-      <find>completion_info</find>
-      <find>service'</find>
-      <find>service')</find>
-      <find>leave_addre</find>
-      <find>country</find>
-      <find>serviceDetailsSave</find>
-      <find>Address at enlistment</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
