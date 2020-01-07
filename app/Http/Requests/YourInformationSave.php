@@ -26,7 +26,6 @@ class YourInformationSave extends FormRequest
         return [
             'fullname' => 'required',
 			'address_line_1' => 'required',
-			'address_county' => 'required',
 			'address_postcode' => 'required',
         ];
     }
@@ -36,7 +35,6 @@ class YourInformationSave extends FormRequest
 		return [
 			'fullname.required' => 'Enter your fullname',
 			'address_line_1.required' => 'Enter your house name/number and street address',
-			'address_county.required' => 'Enter the county of your address',
 			'address_postcode.required' => 'Enter the postcode of your address'
 		];
 	}

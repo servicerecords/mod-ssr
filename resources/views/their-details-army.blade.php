@@ -19,18 +19,18 @@
                 @include('partials.form-errors')
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="service_number">Official Service Number</label>
+                    <label class="govuk-label govuk-label--s" for="service_number">Official Service Number (optional)</label>
                     <input value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}" class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text" spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="discharge_date">Year of discharge</label>
+                    <label class="govuk-label govuk-label--s" for="discharge_date">Year of discharge (optional)</label>
                     <span id="army-dis-1-item-hint" class="govuk-hint">
                             Approximate if you are unsure
                         </span>
                     <input value="{{ isset($service_details['discharge_year'] ) ? $service_details['discharge_year'] : old('discharge_year') }}" class="govuk-input govuk-input--width-4" id="discharge_date" name="discharge_year" type="number" patter="[0-9]*" size="4">
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="regt_corps">Regt/Corps</label>
+                    <label class="govuk-label govuk-label--s" for="regt_corps">Regt/Corps (optional)</label>
                     <span id="army-dis-1-item-hint" class="govuk-hint">
                             At time of discharge
                         </span>
@@ -41,7 +41,7 @@
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h2 class="govuk-fieldset__heading">Why did they leave the Army?</h2>
+                    <h2 class="govuk-fieldset__heading">Why did they leave the Army? (optional)</h2>
                 </legend>
                 <div class="govuk-checkboxes" data-module="checkboxes">
                     <div class="govuk-checkboxes__item">
@@ -78,14 +78,15 @@
                             <input value="{{ isset($service_details['leave_army_reason_other'] ) ? $service_details['leave_army_reason_other'] : old('leave_army_reason_other') }}" class="govuk-input govuk-input--width-20" id="leave_army_reason_other" name="leave_army_reason_other" type="text" spellcheck="false">
                         </div>
                     </div>
-                </div></fieldset>
+                </div>
+            </fieldset>
         </div>
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                     <h2 class="govuk-fieldset__heading">Did they serve with either of the following after
                         completion
-                        of Regular Army Service?</h2>
+                        of Regular Army Service? (optional)</h2>
                 </legend>
             </fieldset>
             <div class="govuk-checkboxes" data-module="checkboxes">

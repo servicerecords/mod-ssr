@@ -15,11 +15,11 @@
                 @include('partials.form-errors')
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="service_number">National Registration Number</label>
+                    <label class="govuk-label govuk-label--s" for="service_number">National Registration Number (optional)</label>
                     <input value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}" class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text" spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="enlist_date">Date they enlisted in the Home Guard</label>
+                    <label class="govuk-label govuk-label--s" for="enlist_date">Date they enlisted in the Home Guard (optional)</label>
                     <span id="army-dis-1-item-hint" class="govuk-hint">
                       Provide as much as you know. Partial dates are okay.
                     </span>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="discharge_date">Date of death</label>
+                    <label class="govuk-label govuk-label--s" for="discharge_date">Date of death (optional)</label>
                     <span id="army-dis-1-item-hint" class="govuk-hint">
               Provide as much as you know. Partial dates are okay.
             </span>
@@ -83,13 +83,13 @@
                     </div>
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="county">In which county did they serve?</label>
+                    <label class="govuk-label govuk-label--s" for="county">In which county did they serve? (optional)</label>
                     <input value="{{ isset($service_details['county'] ) ? $service_details['county'] : old('county') }}" type="text" class="govuk-input" id="county" name="county">
                 </div>
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="address">
-                        Address on enlistment
+                        Address on enlistment (optional)
                     </label>
                     <textarea class="govuk-textarea" id="address" name="address" rows="5" autocomplete="street-address">{{ isset($service_details['address'] ) ? $service_details['address'] : old('address') }}</textarea>
                 </div>
@@ -105,7 +105,7 @@
                         <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-leave-address-conditional">
                             <div class="govuk-form-group">
                                 <label class="govuk-label" for="discharge_address">
-                                    Address on discharge
+                                    Address on discharge (optional)
                                 </label>
                                 <textarea class="govuk-textarea" id="discharge_address" name="discharge_address" rows="5">{{ isset($service_details['discharge_address'] ) ? $service_details['discharge_address'] : old('discharge_address') }}</textarea>
                             </div>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="battalions_companies">
-                        Numbers of any Battalions and Companies in which served
+                        Numbers of any Battalions and Companies in which served (optional)
                     </label>
                     <input value="{{ isset($service_details['battalions_companies'] ) ? $service_details['battalions_companies'] : old('battalions_companies') }}" type="text" class="govuk-input" id="battalions_companies" name="battalions_companies">
                 </div>

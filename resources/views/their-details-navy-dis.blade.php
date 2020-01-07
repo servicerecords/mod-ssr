@@ -15,11 +15,11 @@
                 @include('partials.form-errors')
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="service_number">Official Service Number</label>
+                    <label class="govuk-label govuk-label--s" for="service_number">Official Service Number (optional)</label>
                     <input value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}" class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text" spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="enlist_date">Date they joined the Royal Navy/Royal Marines</label>
+                    <label class="govuk-label govuk-label--s" for="enlist_date">Date they joined the Royal Navy/Royal Marines (optional)</label>
                     <span id="army-dis-1-item-hint" class="govuk-hint">
               Provide as much as you know. Partial dates are okay.
             </span>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="discharge_date">Date of death in service</label>
+                    <label class="govuk-label govuk-label--s" for="discharge_date">Date of death in service (optional)</label>
                     <span id="army-dis-1-item-hint" class="govuk-hint">
               Provide as much as you know. Partial dates are okay.
             </span>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="leave_army_reason_otherr">
-                        Further information
+                        Further information (optional)
                     </label>
                     <span id="nm-1-item-hint" class="govuk-hint">
               Please include any other information that may help identify the

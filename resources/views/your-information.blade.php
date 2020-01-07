@@ -46,7 +46,7 @@
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="address-county">
-                        County
+                        County  (optional)
                     </label>
                     @if($errors->first('address_county'))
                         <span id="address-county-error" class="govuk-error-message">Enter the county of your address</span>
