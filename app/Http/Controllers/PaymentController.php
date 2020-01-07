@@ -48,8 +48,10 @@ class PaymentController extends Controller
 			'reference' => $request->session()->get('reference'),
 			'description' => $this->description,
 			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation',
-            'email' => $request->session()->get('your_details.email'),
-            'prefilled_cardholder_details' => [
+            'email' => $request->session()->get('your_details.email')
+        ];
+		if($request->session()->get('your_details.use_billing') == 'Yes') {
+            $post_params['prefilled_cardholder_details'] = [
                 "cardholder_name" => '',
                 "billing_address" => [
                     'line1' => null !== $request->session()->get('your_details.address_line_1') ? $request->session()->get('your_details.address_line_1') : '',
@@ -58,8 +60,8 @@ class PaymentController extends Controller
                     'city' => null !== $request->session()->get('your_details.address_town') ? $request->session()->get('your_details.address_town') : '',
                     'country' => null !== $request->session()->get('your_details.country') ? $request->session()->get('your_details.country') : ''
                 ]
-            ]
-		];
+            ];
+		}
 		//die(print_r(json_encode($post_params, JSON_UNESCAPED_SLASHES)));
 
 		$curl = curl_init();

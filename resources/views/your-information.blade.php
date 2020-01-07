@@ -82,6 +82,29 @@
                     </select>
                 </div>
 
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+
+                        <legend class="govuk-fieldset__legend govuk-fieldset__heading">
+                            <h2 class="govuk-heading govuk-heading-m">
+                                Use these details for billing?
+                            </h2>
+                        </legend>
+
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input id="radio-inline-1" type="radio" name="use_billing" value="Yes" class="govuk-radios__input">
+                                <label for="radio-inline-1" class="govuk-label govuk-radios__label govuk-label--s">Yes</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input id="radio-inline-2" type="radio" name="use_billing" value="No" class="govuk-radios__input">
+                                <label for="radio-inline-2" class="govuk-label govuk-radios__label govuk-label--s">No</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
 
             </fieldset>
         </div>
