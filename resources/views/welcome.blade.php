@@ -12,7 +12,7 @@
     <ul class="govuk-list govuk-list--bullet">
         <li>A death certificate may be required in some cases (<a class="govuk-link" href="https://www.gov.uk/guidance/request-records-of-deceased-service-personnel">see
                 notes</a>)</li>
-        <li>An administrative fee may apply (<a class="govuk-link" href="https://www.gov.uk/guidance/request-records-of-deceased-service-personnel">see
+        <li>An administrative fee may apply (<a class="govuk-link" href="https://www.gov.uk/guidance/request-records-of-deceased-service-personnel#administration-fee">see
                 notes</a>)</li>
     </ul>
 
