@@ -14,7 +14,7 @@
                @include('partials.form-errors')
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="fullname">Your fullname</label>
+                    <label class="govuk-label govuk-label--s" for="fullname">Your full name</label>
                     @if($errors->has('fullname'))
                         <span id="fullname-error" class="govuk-error-message">{{$errors->first('fullname')}}</span>
                     @endif
