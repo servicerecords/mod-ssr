@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Historic service record request')
+@section('title', 'Request a historic service record')
 
 @section('content')
 
