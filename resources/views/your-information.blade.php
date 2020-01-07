@@ -21,6 +21,13 @@
                     <input value="{{ isset($your_details['fullname'] ) ? $your_details['fullname'] : old('fullname') }}" class="govuk-input {{"" !== $errors->first('fullname') ? 'govuk-input--error' : ''}}" id="fullname" name="fullname" type="text" spellcheck="false" aria-required="true" aria-describedby="{{null !== $errors->first('fullname') ? 'fullname-error' : ''}}">
                 </div>
                 <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="fullname">Your email address</label>
+                    @if($errors->has('email'))
+                        <span id="email-error" class="govuk-error-message">{{$errors->first('email')}}</span>
+                    @endif
+                    <input value="{{ isset($your_details['email'] ) ? $your_details['email'] : old('email') }}" class="govuk-input {{"" !== $errors->first('email') ? 'govuk-input--error' : ''}}" id="email" name="email" type="text" spellcheck="false" aria-required="true" aria-describedby="{{null !== $errors->first('email') ? 'email-error' : ''}}">
+                </div>
+                <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="address-line-1">
                         Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
                     </label>
