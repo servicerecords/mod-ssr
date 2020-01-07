@@ -27,6 +27,10 @@
                 </div>
 
                 <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s">Place of birth</label>
+                    <input value="{{ isset($essential_information['birth_place'] ) ? $essential_information['birth_place'] : old('birth_place') }}" class="govuk-input govuk-input--20" id="birth_place" name="birth_place" type="text" spellcheck="false">
+                </div>
+                <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s">Date of birth</label>
                     <span id="info-2-item-hint" class="govuk-hint">For example, 31 3 1910. Partial dates may be sufficient</span>
                     <div class="govuk-date-input" id="date-of-birth">

@@ -29,7 +29,8 @@ class EssentialInformationSave extends FormRequest
 			'dob_day' => 'digits_between:1,2|nullable',
 			'dob_month' => 'digits_between:1,2|nullable',
 			'dob_year' => 'digits:4|required',
-			'dob_accurate' => 'required'
+			'dob_accurate' => 'required',
+            'birth_place' => 'required'
         ];
     }
 
@@ -43,6 +44,7 @@ class EssentialInformationSave extends FormRequest
 		return [
 			'firstnames.required' => 'Please enter any firstnames',
 			'lastname.required' => 'Please enter a lastname',
+            'birth_place.required' => 'Please enter a place of birth',
 			'dob_month.digits_between' => 'The date of birth\'s month must be no more than 2 characters in length',
 			'dob_day.digits_between' => 'The date of birth\'s day must be no more than 2 characters in length',
 			'dob_month.max' => 'The date of birth\'s month must be no more than 2 characters in length',
