@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/countries', function()
+{
+    return Countries::getList('en', 'json');
+});
+
 Route::get('/', 'ServiceRecordController@index');
 Route::get('/request', 'ServiceRecordController@recordRequest');
 Route::get('/service', 'ServiceRecordController@serviceChoice');

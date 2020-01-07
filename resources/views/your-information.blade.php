@@ -70,6 +70,19 @@
                     @endif
                     <input value="{{ isset($your_details['address_postcode'] ) ? $your_details['address_postcode'] : old('address_postcode') }}" class="govuk-input govuk-input--width-10 {{"" !== $errors->first('address_postcode')}} ? 'govuk-input--error' : ''}}" id="address-postcode" name="address_postcode" type="text" aria-required="true" aria-describedby="{{null !== $errors->first('address_postcode') ? 'address-postcode-error' : ''}}">
                 </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="address-postcode">
+                        Country
+                    </label>
+                    <select name="country" class="govuk-select">
+                        @foreach($countries as $key => $value)
+                            <option value="{{$key}}">{{$value}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
             </fieldset>
         </div>
         <div class="govuk-form-group">

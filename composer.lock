@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f30b64de56994a6ab7e261464a9a840",
+    "content-hash": "2346e58ad95b7c9025109a08240a6f63",
     "packages": [
         {
             "name": "alphagov/notifications-php-client",
@@ -1098,6 +1098,59 @@
                 "storage"
             ],
             "time": "2019-12-08T21:46:50+00:00"
+        },
+        {
+            "name": "monarobase/country-list",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Monarobase/country-list.git",
+                "reference": "7d3bee9cd4712fd27ede285a01228fe1984dcf70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Monarobase/country-list/zipball/7d3bee9cd4712fd27ede285a01228fe1984dcf70",
+                "reference": "7d3bee9cd4712fd27ede285a01228fe1984dcf70",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "umpirsky/country-list": "2.0.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Monarobase\\CountryList\\CountryListServiceProvider"
+                    ],
+                    "aliases": {
+                        "Countries": "Monarobase\\CountryList\\CountryListFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monarobase\\CountryList\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Thuau",
+                    "email": "jonathan@monarobase.net",
+                    "homepage": "https://monarobase.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "List of all countries with names and ISO 3166-1 codes in all languages and data formats for Laravel 4/5",
+            "keywords": [
+                "countries",
+                "laravel"
+            ],
+            "time": "2018-02-20T07:38:50+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3502,6 +3555,48 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2019-10-24T08:53:34+00:00"
+        },
+        {
+            "name": "umpirsky/country-list",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/umpirsky/country-list.git",
+                "reference": "05fda51cd97b3294e8175ffed06104c44b3c71d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/umpirsky/country-list/zipball/05fda51cd97b3294e8175ffed06104c44b3c71d7",
+                "reference": "05fda51cd97b3294e8175ffed06104c44b3c71d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "slowprog/composer-copy-file": "^0.2",
+                "symfony/intl": "^4.2",
+                "umpirsky/list-generator": "^1.2"
+            },
+            "type": "library",
+            "extra": {
+                "copy-file": {
+                    "vendor/umpirsky/list-generator/Dockerfile": "./",
+                    "vendor/umpirsky/list-generator/docker-compose.yml": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saša Stamenković",
+                    "email": "umpirsky@gmail.com"
+                }
+            ],
+            "description": "List of all countries with names and ISO 3166-1 codes in all languages and data formats.",
+            "time": "2019-04-12T14:29:29+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

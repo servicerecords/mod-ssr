@@ -47,7 +47,18 @@ class PaymentController extends Controller
 			'amount' => 3000,
 			'reference' => $request->session()->get('reference'),
 			'description' => $this->description,
-			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation'
+			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation',
+            'email' => $request->session()->get('your_details.email'),
+            'prefilled_cardholder_details' => [
+                "cardholder_name" => '',
+                "billing_address" => [
+                    'line1' => null !== $request->session()->get('your_details.address_line_1') ? $request->session()->get('your_details.address_line_1') : '',
+                    'line2' => null !== $request->session()->get('your_details.address_line_2') ? $request->session()->get('your_details.address_line_2') : '',
+                    'postcode' => null !== $request->session()->get('your_details.address_postcode') ? $request->session()->get('your_details.address_postcode') : '',
+                    'city' => null !== $request->session()->get('your_details.address_town') ? $request->session()->get('your_details.address_town') : '',
+                    'country' => null !== $request->session()->get('your_details.country') ? $request->session()->get('your_details.country') : ''
+                ]
+            ]
 		];
 		//die(print_r(json_encode($post_params, JSON_UNESCAPED_SLASHES)));
 
@@ -71,6 +82,7 @@ class PaymentController extends Controller
 			),
 		));
 
+
 		$response = curl_exec($curl);
 		$err = curl_error($curl);
 
@@ -81,7 +93,6 @@ class PaymentController extends Controller
 		} else {
 			//dd($response);
 			$response = json_decode($response, true);
-			//dd($response);
 			return redirect($response['_links']['next_url']['href']);
 		}
 	}
