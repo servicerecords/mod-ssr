@@ -44,12 +44,8 @@
                 </span>
                         </summary>
                         <div class="govuk-details__text" id="details-content-bf5bacbe-5d67-4c1a-be8f-ad2466e12b24" aria-hidden="true">
-                            Where the consent of the immediate next of kin has been given
-                            for it's release to a third party, the 25 year threshold will
-                            not apply allowing the release of all the information available
-                            under the publication scheme at any time, subject to the payment
-                            of an administration fee and the provision of a death
-                            certificate (except where death was in service).
+                            Unless the serviceperson died in service or it is greater than 116 years since their date of
+                            birth you will need to provide a copy of their death certificate with your request.
                         </div>
                     </details>
                 </div>
