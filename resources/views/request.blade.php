@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Whose service record are you requesting')
+@section('title', 'Whose service record are you requesting?')
 
 @section('content')
 

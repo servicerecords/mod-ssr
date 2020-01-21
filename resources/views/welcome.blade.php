@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <p class="govuk-body-l">Use this service to obtain information relating to a servicemen/servicewoman who has served
+    <p class="govuk-body-l">Use this service to obtain information relating to a serviceman/servicewoman who has served
     in the Royal Navy, Royal Marines, Army, Royal Air Force or Home Guard.</p>
 
     <h2 class="govuk-heading-m">Before you start</h2>

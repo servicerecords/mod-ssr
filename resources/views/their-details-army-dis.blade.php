@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'Details of the serviveman/woman')
+@section('title', 'Details of the Serviceman/woman')
 
 @section('content')
 

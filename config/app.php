@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Monarobase\CountryList\CountryListServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -228,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Countries' => Monarobase\CountryList\CountryListFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

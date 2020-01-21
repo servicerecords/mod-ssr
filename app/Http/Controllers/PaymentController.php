@@ -24,25 +24,7 @@ class PaymentController extends Controller
 
     public function processPayment(Request $request)
 	{
-		//$validated = $request->validated();
-//		$client = new Client();
-//
-//		$result = $client->post('https://publicapi.payments.service.gov.uk/v1/payments', [
-//			'headers' => [
-//				'Accept' => 'application/json',
-//				'Content-Type' => 'application/json',
-//				'Authorization' => env('GOV_PAY_API_KEY')
-//			],
-//			'form_params' => [
-//				'amount' => 3000,
-//				'reference' => time(),
-//				'description' => $this->description,
-//				'return_url' => env('GOV_PAY_RETURN_URL')
-//			]
-//		]);
-//
-//		die(print_r($result->getBody()->getContents()));
-		//dd($request);
+
 		$post_params = [
 			'amount' => 3000,
 			'reference' => $request->session()->get('reference'),
@@ -50,6 +32,7 @@ class PaymentController extends Controller
 			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation',
             'email' => $request->session()->get('your_details.email')
         ];
+
 		if($request->session()->get('your_details.use_billing') == 'Yes') {
             $post_params['prefilled_cardholder_details'] = [
                 "cardholder_name" => '',
@@ -62,11 +45,8 @@ class PaymentController extends Controller
                 ]
             ];
 		}
-		//die(print_r(json_encode($post_params, JSON_UNESCAPED_SLASHES)));
 
 		$curl = curl_init();
-
-		//die(print_r($post_params));
 
 		curl_setopt_array($curl, array(
 			CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments",
@@ -93,7 +73,6 @@ class PaymentController extends Controller
 		if ($err) {
 			echo "cURL Error #:" . $err;
 		} else {
-			//dd($response);
 			$response = json_decode($response, true);
 			return redirect($response['_links']['next_url']['href']);
 		}
