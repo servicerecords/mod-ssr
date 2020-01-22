@@ -44,8 +44,8 @@
                 If you do not have a copy of the death certificate, please get one before starting this process.</p>
 
             <h3 class="govuk-heading-s">Charges</h3>
-            <p class="govuk-body">There is a £30 charge to request each record unless you are the spouse, civil partner or parent of the person whose record you are requesting.
-                You will need a debit or credit card to use this service.</p>
+            <p class="govuk-body">There is a £30 charge to request each record unless you are the spouse, civil partner or parent of the person whose record you are requesting.</p>
+            <div class="govuk-inset-text">You will need a debit or credit card to use this service.</div>
 
             <h3 class="govuk-heading-s">Power of Attorney</h3>
             <p class="govuk-body">If you hold POA for the immediate next of kin, please apply by post.</p>
