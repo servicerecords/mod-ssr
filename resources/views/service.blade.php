@@ -37,18 +37,9 @@
                         <input {{ (old('service') == 'Home Guard' || $service == 'Home Guard') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="home-guard" name="service" value="Home Guard">
                         <label class="govuk-label govuk-radios__label govuk-label--s" for="home-guard">Home Guard</label>
                     </div>
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" type="radio" id="other" name="service" value="Unknown">
-                        <label class="govuk-label govuk-radios__label govuk-label--s" for="other">Other</label>
-                        <span id="service-1-item-hint" class="govuk-hint govuk-radios__hint">
-                Without knowing the service, the service record request may not
-                be successful and will take longer for us to process. Please
-                provide any information that may help in the following forms.
-              </span>
-                    </div>
                 </div>
             </fieldset>
-            <div class="govuk-form-group">
+            <div class="govuk-form-group govuk-!-margin-top-5">
                 <details class="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-f1dc968c-6b6d-4b21-8489-9f2109e5f478" aria-expanded="false">
               <span class="govuk-details__summary-text">

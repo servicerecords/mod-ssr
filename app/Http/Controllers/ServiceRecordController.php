@@ -100,9 +100,6 @@ class ServiceRecordController extends Controller
 			case "Home Guard":
 				$template = "their-details-home-guard";
 			break;
-			case "Unknown":
-				$template = "their-details-unknown";
-			break;
 		}
 		if($request->session()->get('death_in_service.death') == 'Yes' && $request->session()->get('service') != 'Unknown')
 		{
