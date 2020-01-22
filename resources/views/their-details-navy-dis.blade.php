@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-@section('title', 'Details of the Serviceman/woman')
+@section('title', 'Details of the serviceman/woman')
 
 @section('content')
     <form action="/service-details" method="post" class="govuk-form" id="subject-nm" novalidate="novalidate">

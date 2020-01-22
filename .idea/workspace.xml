@@ -3,8 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/request.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/service.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-army-dis.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-army.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-army.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-home-guard-dis.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-home-guard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-navy-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-navy-dis.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-navy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-navy.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-raf-dis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-raf-dis.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-raf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-raf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/their-details-unknown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/their-details-unknown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/verify.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-details-relation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/your-details-relationship.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/RelationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/RelationTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,41 +259,9 @@
       <workItem from="1576601049763" duration="3000" />
       <workItem from="1577186794165" duration="101000" />
       <workItem from="1579086021969" duration="630000" />
-      <workItem from="1579615506742" duration="7048000" />
+      <workItem from="1579615506742" duration="7556000" />
     </task>
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="RequestTest - 2019.07.29 at 11h 10m 32s.xml">
-      <configuration name="RequestTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ServiceDetailsTest - 2019.07.29 at 11h 10m 39s.xml">
-      <configuration name="ServiceDetailsTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ServiceDetailsTest - 2019.07.29 at 11h 12m 19s.xml">
-      <configuration name="ServiceDetailsTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ServiceDetailsTest - 2019.07.29 at 11h 12m 46s.xml">
-      <configuration name="ServiceDetailsTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ServiceTest - 2019.07.29 at 11h 34m 31s.xml">
-      <configuration name="ServiceTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="StartNowTest - 2019.07.29 at 11h 34m 36s.xml">
-      <configuration name="StartNowTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="YourDetailsTest - 2019.07.29 at 11h 34m 40s.xml">
-      <configuration name="YourDetailsTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="YourDetailsTest - 2019.07.29 at 11h 35m 04s.xml">
-      <configuration name="YourDetailsTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ConfirmationTest - 2019.07.29 at 11h 39m 06s.xml">
-      <configuration name="ConfirmationTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ConfirmationTest_testExample - 2019.07.29 at 12h 17m 05s.xml">
-      <configuration name="ConfirmationTest.testExample" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -295,11 +276,11 @@
       <screen x="-1920" y="-281" width="1920" height="1057" />
     </state>
     <state x="-1171" y="171" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027/-1920.-281.1920.1057@-1920.-281.1920.1057" timestamp="1578407364467" />
-    <state x="506" y="179" width="667" height="714" key="find.popup" timestamp="1579683495108">
+    <state x="506" y="179" width="667" height="714" key="find.popup" timestamp="1579684187893">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027/-1920.-281.1920.1057@0.23.1680.1027" timestamp="1579679514606" />
-    <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1579683495108" />
+    <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1579684187893" />
     <state x="547" y="251" width="670" height="657" key="search.everywhere.popup" timestamp="1579679565139">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

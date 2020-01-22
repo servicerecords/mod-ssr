@@ -13,7 +13,7 @@
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                     <h2 class="govuk-fieldset__heading">
-                        Are you related to the Serviceman/woman?
+                        Are you related to the serviceman/woman?
                     </h2>
                 </legend>
 

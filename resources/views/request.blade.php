@@ -10,7 +10,7 @@
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" type="radio" id="reqtype" name="reqtype" value="Deceased" checked="checked">
                         <label class="govuk-label govuk-radios__label" for="reqtype">I'm requesting the records of a
-                            deceased Serviceman/woman or Member of the Home Guard.
+                            deceased serviceman/woman or Member of the Home Guard.
                             Available to family and non-family members. A death certificate is required if they did
                             not die in service.</label>
                     </div>
