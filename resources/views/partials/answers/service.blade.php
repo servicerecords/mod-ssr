@@ -82,19 +82,6 @@
             </a>
         </dd>
     </div>
-    <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-            Date of birth accurate
-        </dt>
-        <dd class="govuk-summary-list__value">
-            {{ Session::get('essential_information')['dob_accurate'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/essential-information">
-                Change<span class="govuk-visually-hidden"> date of birth</span>
-            </a>
-        </dd>
-    </div>
     @if(Session::get('service') == 'Royal Navy / Royal Marines')
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

@@ -44,9 +44,32 @@ class ConfirmationController extends Controller
 			return view('process_error');
 		} else {
 			$dbs_office = $request->session()->get('dbs_office');
+			$response = $this->_sendCustomerNotification($request);
 			return view('confirmation', ['dbs_team' => $dbs_office]);
 		}
 	}
+
+	private function _sendCustomerNotification($request) {
+
+	    $notifyClient = new \Alphagov\Notifications\Client([
+            'apiKey' => env('NOTIFY_API_KEY'),
+            'httpClient' => new \Http\Adapter\Guzzle6\Client
+        ]);
+
+        try {
+            $response = $notifyClient->sendEmail(
+                $request->session()->get('your_details.email'),
+                'cb31d5be-1f34-4546-bb1e-a784dcd2f390',
+                [
+                    'reference' => $request->session()->get('reference'),
+                ]);
+            return $response;
+        } catch(\Exception $e) {
+            return $e;
+        }
+
+
+    }
 
 	private function _sendSearchNotification($request)
 	{
@@ -104,7 +127,7 @@ class ConfirmationController extends Controller
 					'firstname' => $request->session()->get('essential_information.firstnames'),
 					'lastname' => $request->session()->get('essential_information.lastname'),
 					'dob' => $request->session()->get('essential_information.dob'),
-					'dob_accurate' => $request->session()->get('essential_information.dob_accurate'),
+					//'dob_accurate' => $request->session()->get('essential_information.dob_accurate'),
 					'date_joined' => (null === $request->session()->get('essential_information.join_date') ? '??/??/??' : $request->session()->get('essential_information.join_date')),
 					'unit' => $request->session()->get('service'),
 					'service_number' => (null === $request->session()->get('service_details.service_number') ? '' : $request->session()->get('service_details.service_number')),
