@@ -1,1 +1,1 @@
-require('govuk-frontend/all');
+require('govuk-frontend/all')

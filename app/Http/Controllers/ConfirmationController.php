@@ -70,7 +70,7 @@ class ConfirmationController extends Controller
 			case 'Royal Air Force (RAF)':
 				$emails = $this->air_email;
 				$request->session()->put('dbs_office', 'Airforce');
-				$template_shortcode = 'RAF';
+				$template_shortcode = 'RAFrr';
 				break;
 			case 'Unknown':
 				$emails = $this->unknown_email;
@@ -119,7 +119,7 @@ class ConfirmationController extends Controller
 					'related' => (null === $request->session()->get('your_details.relation.related') ? '' : $request->session()->get('your_details.relation.related')),
 					'relationship' => (null === $request->session()->get('your_details.relationship.relationship') ? '' : $request->session()->get('your_details.relationship.relationship')),
 					'next_of_kin' => ($request->session()->get('your_details.relationship.next_of_kin') !== 'Yes' ? 'No' : 'Yes'),
-					'payment_status' => (null !== $request->session()->get('payment_id') ? 'Paid' : '-'),
+					'payment_status' => (null !== $request->session()->get('payment_id') ? 'Paid' : 'No payment was required'),
 					'verification' => (null === $request->session()->get('verification.uploaded') ? '' : $request->session()->get('verification.uploaded')),
 					'link_to_verification' => $upload,
 					'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? implode(",", $request->session()->get('service_details.leave_army_reason')) : '-'),

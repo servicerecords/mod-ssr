@@ -2526,9 +2526,9 @@ __webpack_require__(/*! govuk-frontend/all */ "./node_modules/govuk-frontend/all
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/simon/Sites/MoD/MOD-SSR-digital/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/simon/Sites/MoD/MOD-SSR-digital/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/simon/Sites/MoD/MOD-SSR-digital/resources/sass/application-ie8.scss */"./resources/sass/application-ie8.scss");
+__webpack_require__(/*! /Users/simon/Sites/mod-ssr/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/simon/Sites/mod-ssr/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/simon/Sites/mod-ssr/resources/sass/application-ie8.scss */"./resources/sass/application-ie8.scss");
 
 
 /***/ })
