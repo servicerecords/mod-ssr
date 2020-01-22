@@ -8,9 +8,7 @@
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">
-                    <strong>The following details are mandatory</strong> for us to be
-                    able to complete a record search. Please complete them as accurately
-                    as possible.
+                    <strong>The following details are incredibly helpful to us.</strong> They can be left blank but please try and include all the information you can.
                 </legend>
 
                 @include('partials.form-errors')
@@ -27,7 +25,7 @@
                 </div>
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s">Place of birth</label>
+                    <label class="govuk-label govuk-label--s">Place of birth (optional)</label>
                     <input value="{{ isset($essential_information['birth_place'] ) ? $essential_information['birth_place'] : old('birth_place') }}" class="govuk-input govuk-input--20" id="birth_place" name="birth_place" type="text" spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
@@ -53,25 +51,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend">
-                            <strong>Is the date of birth entered above accurate?</strong>
-                            <span id="info-3-item-hint" class="govuk-hint govuk-!-margin-0">This is important particularly for common last names</span>
-                        </legend>
-                        <div class="govuk-radios govuk-radios--inline">
-                            <div class="govuk-radios__item">
-                                <input {{ (old('dob_accurate') == 'Yes' || $essential_information['dob_accurate'] == 'Yes') ? 'checked' : '' }} class="govuk-radios__input" id="dob_accurate-yes" name="dob_accurate" type="radio" value="Yes">
-                                <label class="govuk-label govuk-radios__label govuk-label--s" for="dob_accurate-yes">Yes</label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input {{ (old('dob_accurate') == 'No' || $essential_information['dob_accurate'] == 'No') ? 'checked' : '' }} class="govuk-radios__input" id="dob_accurate-no" name="dob_accurate" type="radio" value="No">
-                                <label class="govuk-label govuk-radios__label govuk-label--s" for="dob_accurate-no">No</label>
-                            </div>
-                        </div>
-                    </fieldset>
                 </div>
 
                 <div class="govuk-form-group">
