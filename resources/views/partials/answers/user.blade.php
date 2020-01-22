@@ -54,19 +54,6 @@
             </a>
         </dd>
     </div>
-    <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-            County
-        </dt>
-        <dd class="govuk-summary-list__value">
-            {{ Session::get('your_details')['address_county'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/your-details">
-                Change<span class="govuk-visually-hidden"> county</span>
-            </a>
-        </dd>
-    </div>
 </dl>
 
 @if(Session::get('verification')['method'] != '')
