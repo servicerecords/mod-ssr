@@ -52,16 +52,6 @@
                 </div>
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="address-county">
-                        County  (optional)
-                    </label>
-                    @if($errors->first('address_county'))
-                        <span id="address-county-error" class="govuk-error-message">Enter the county of your address</span>
-                    @endif
-                    <input value="{{ isset($your_details['address_county'] ) ? $your_details['address_county'] : old('address_county') }}" class="govuk-input govuk-!-width-two-thirds {{"" !== $errors->first('address_county') ? 'govuk-input--error' : ''}}" id="address-county" name="address_county" type="text" aria-required="true" aria-describedby="{{null !== $errors->first('address_line_1') ? 'address-county-error' : ''}}">
-                </div>
-
-                <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="address-postcode">
                         Postcode
                     </label>
@@ -77,7 +67,7 @@
                     </label>
                     <select name="country" class="govuk-select">
                         @foreach($countries as $key => $value)
-                            <option value="{{$key}}">{{$value}}</option>
+                            <option value="{{$key}}" {{ ($key === "GB") ? 'selected' : '' }}>{{$value}}</option>
                         @endforeach
                     </select>
                 </div>
