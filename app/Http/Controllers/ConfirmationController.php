@@ -93,7 +93,7 @@ class ConfirmationController extends Controller
 			case 'Royal Air Force (RAF)':
 				$emails = $this->air_email;
 				$request->session()->put('dbs_office', 'Airforce');
-				$template_shortcode = 'RAFrr';
+				$template_shortcode = 'RAF';
 				break;
 			case 'Unknown':
 				$emails = $this->unknown_email;
