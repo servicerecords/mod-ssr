@@ -102,14 +102,36 @@
                     </div>
                 </div>
                 <div class="govuk-form-group">
-                    <div class="govuk-checkboxes">
-                        <div class="govuk-checkboxes__item">
-                            <input {{ (old('next_of_kin') == "Yes" || (isset($your_details_relationship ['next_of_kin']) && $your_details_relationship['next_of_kin'] == "Yes")) ? 'checked' : '' }} class="govuk-checkboxes__input" id="next_of_kin" name="next_of_kin" type="checkbox" value="Yes">
-                            <label class="govuk-label govuk-checkboxes__label" for="leave-address-conditional">
-                                Confirm here if you are the immediate Next of Kin?
-                            </label>
+                    <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h1 class="govuk-fieldset__heading">
+                                Are you the immediate next of kin?
+                            </h1>
+                        </legend>
+                        <div class="govuk-radios govuk-radios--inline">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input"
+                                       id="next_of_kin"
+                                       name="next_of_kin"
+                                       type="radio" value="Yes"
+                                       {{ (old('next_of_kin') == "Yes" || (isset($your_details_relationship ['next_of_kin']) && $your_details_relationship['next_of_kin'] == "Yes")) ? 'checked' : '' }}>
+                                <label class="govuk-label govuk-radios__label" for="changed-name">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input"
+                                       id="next_of_kin_2"
+                                       name="next_of_kin"
+                                       type="radio"
+                                       value="No"
+                                        {{ (old('next_of_kin') == "No" || (isset($your_details_relationship ['next_of_kin']) && $your_details_relationship['next_of_kin'] == "Yes")) ? 'checked' : '' }}>
+                                <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                                    No
+                                </label>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </div>
                 <div class="govuk-form-group">
                     <details class="govuk-details" role="group">
