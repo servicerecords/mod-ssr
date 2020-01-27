@@ -28,6 +28,13 @@
                     <input value="{{ isset($your_details['email'] ) ? $your_details['email'] : old('email') }}" class="govuk-input {{"" !== $errors->first('email') ? 'govuk-input--error' : ''}}" id="email" name="email" type="text" spellcheck="false" aria-required="true" aria-describedby="{{null !== $errors->first('email') ? 'email-error' : ''}}">
                 </div>
                 <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="fullname">Your telephone number</label>
+                    @if($errors->has('telephone'))
+                        <span id="telephone-error" class="govuk-error-message">{{$errors->first('telephone')}}</span>
+                    @endif
+                    <input value="{{ isset($your_details['telephone'] ) ? $your_details['telephone'] : old('telephone') }}" class="govuk-input {{"" !== $errors->first('telephone') ? 'govuk-input--error' : ''}}" id="telephone" name="telephone" type="text" spellcheck="false" aria-required="true" aria-describedby="{{null !== $errors->first('telephone') ? 'telephone-error' : ''}}">
+                </div>
+                <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="address-line-1">
                         Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
                     </label>
