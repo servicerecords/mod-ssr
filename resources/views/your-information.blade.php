@@ -28,7 +28,7 @@
                     <input value="{{ isset($your_details['email'] ) ? $your_details['email'] : old('email') }}" class="govuk-input {{"" !== $errors->first('email') ? 'govuk-input--error' : ''}}" id="email" name="email" type="text" spellcheck="false" aria-required="true" aria-describedby="{{null !== $errors->first('email') ? 'email-error' : ''}}">
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="fullname">Your telephone number</label>
+                    <label class="govuk-label govuk-label--s" for="fullname">Your telephone number (optional)</label>
                     @if($errors->has('telephone'))
                         <span id="telephone-error" class="govuk-error-message">{{$errors->first('telephone')}}</span>
                     @endif
