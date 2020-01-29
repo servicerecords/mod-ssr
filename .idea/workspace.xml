@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FeedbackController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/feedback/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/confirmation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/confirmation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,11 +271,11 @@
     </state>
     <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027/-1920.-281.1920.1057@0.23.1680.1027" timestamp="1579679514606" />
     <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1579689248358" />
-    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup" timestamp="1580134136557">
+    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup" timestamp="1580290088823">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="-1295" y="-46" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027/-1920.-281.1920.1057@-1920.-281.1920.1057" timestamp="1578404738356" />
     <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027/-1920.-281.1920.1057@0.23.1680.1027" timestamp="1579679565139" />
-    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1580134136557" />
+    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1580290088823" />
   </component>
 </project>

@@ -40,6 +40,10 @@ Route::post('/your-details/relation', 'ServiceRecordController@yourDetailsRelati
 Route::post('/your-details/communication', 'ServiceRecordController@communicationSave');
 Route::post('/verify', 'ServiceRecordController@verifySave');
 
+Route::get('/feedback', 'FeedbackController@index');
+Route::get('/feedback/success', 'FeedbackController@success');
+Route::post('/feedback', 'FeedbackController@save');
+
 #Route::get('/pay', 'PaymentController@payment');
 Route::get('/pay', 'PaymentController@processPayment');
 
