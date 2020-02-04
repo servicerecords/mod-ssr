@@ -17,8 +17,14 @@ class FeedbackController extends Controller
         return view('feedback.index');
     }
 
+    public function success()
+    {
+        return view('feedback.success');
+    }
+
     public function save(FeedbackSave $request)
     {
+        //git commit -dd($request->all());
         $validated = $request->validated();
 
         $notifyClient = new \Alphagov\Notifications\Client([
@@ -32,13 +38,13 @@ class FeedbackController extends Controller
                 '0f3b68c3-4589-4466-a743-73f73e841187',
                 [
                     'service' => $request->input('service'),
-                    'feedback' => (null === $request->input('more_detail') ? $request->input('more_detail') : '-')
+                    'feedback' => ($request->has('more_detail') ? $request->get('more_detail') : '-')
                 ]);
-            return $response;
+            return redirect('/feedback/success');
         } catch(\Exception $e) {
             return $e;
         }
 
-        return redirect('/feedback/success');
+
     }
 }

@@ -45,6 +45,9 @@ class ConfirmationController extends Controller
 		} else {
 			$dbs_office = $request->session()->get('dbs_office');
 			$response = $this->_sendCustomerNotification($request);
+
+			$request->session()->flush();
+
 			return view('confirmation', ['dbs_team' => $dbs_office]);
 		}
 	}
