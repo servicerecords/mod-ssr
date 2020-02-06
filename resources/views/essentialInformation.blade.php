@@ -8,7 +8,7 @@
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">
-                    <strong>The following details are incredibly helpful to us.</strong> They can be left blank but please try and include all the information you can.
+                    <strong>The following details are helpful to us.</strong> They can be left blank but please try and include all the information you can.
                 </legend>
 
                 @include('partials.form-errors')
