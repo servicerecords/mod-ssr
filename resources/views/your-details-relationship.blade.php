@@ -115,7 +115,7 @@
                                        name="next_of_kin"
                                        type="radio" value="Yes"
                                        {{ (old('next_of_kin') == "Yes" || (isset($your_details_relationship ['next_of_kin']) && $your_details_relationship['next_of_kin'] == "Yes")) ? 'checked' : '' }}>
-                                <label class="govuk-label govuk-radios__label" for="changed-name">
+                                <label class="govuk-label govuk-radios__label" for="next_of_kin">
                                     Yes
                                 </label>
                             </div>
@@ -126,7 +126,7 @@
                                        type="radio"
                                        value="No"
                                         {{ (old('next_of_kin') == "No" || (isset($your_details_relationship ['next_of_kin']) && $your_details_relationship['next_of_kin'] == "Yes")) ? 'checked' : '' }}>
-                                <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                                <label class="govuk-label govuk-radios__label" for="next_of_kin_2">
                                     No
                                 </label>
                             </div>
