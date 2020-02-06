@@ -33,7 +33,7 @@
                                     <div class="govuk-checkboxes__item">
                                         <input {{ (old('spouse_at_time_of_death') == "Yes" || (isset($your_details_relationship['related']) && $your_details_relationship['spouse_at_time_of_death'] == "Yes")) ? 'checked' : '' }} class="govuk-checkboxes__input" id="spouse_at_time_of_death" name="spouse_at_time_of_death" type="checkbox" value="Yes">
                                         <label class="govuk-label govuk-checkboxes__label" for="spouse_at_time_of_death">
-                                            Confirm here if you were you their Spouse/Civil Partner at the time of
+                                            Confirm here if you were their spouse/civil partner at the time of
                                             death
                                         </label>
                                     </div>
