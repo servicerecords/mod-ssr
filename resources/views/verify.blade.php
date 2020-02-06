@@ -20,12 +20,6 @@
                 <div class="govuk-form-group">
                     <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                         <div class="govuk-radios__item">
-                            <input type="radio" class="govuk-radios__input" name="verify_method" value="post" id="post" tabindex="1">
-                            <label class="govuk-label govuk-radios__label govuk-label--s">I'll post a copy of a death certificate
-                                along with my
-                                request.</label>
-                        </div>
-                        <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="upload-certficate-conditional" name="verify_method" type="radio" value="upload" aria-controls="conditional-upload-certficate-conditional" aria-expanded="false" tabindex="2">
                             <label class="govuk-label govuk-radios__label govuk-label--s" for="upload-certficate-conditional">I'll
                                 upload a scan or photograph now</label>

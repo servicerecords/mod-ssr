@@ -40,8 +40,8 @@ class EssentialInformationSave extends FormRequest
     public function messages()
 	{
 		return [
-			'firstnames.required' => 'Please enter any firstnames',
-			'lastname.required' => 'Please enter a lastname',
+			'firstnames.required' => 'Please enter any first names',
+			'lastname.required' => 'Please enter a last name',
             //'birth_place.required' => 'Please enter a place of birth',
 			'dob_month.digits_between' => 'The date of birth\'s month must be no more than 2 characters in length',
 			'dob_day.digits_between' => 'The date of birth\'s day must be no more than 2 characters in length',
