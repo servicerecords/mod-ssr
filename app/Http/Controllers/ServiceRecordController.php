@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CommunicationRequest;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Http\Requests\DeathInServiceSave;
 use App\Http\Requests\EssentialInformationSave;
 use App\Http\Requests\RecordRequestSave;
@@ -127,7 +128,10 @@ class ServiceRecordController extends Controller
 		//dd($request->session()->get('service_details'));
 		$request->session()->put('service_details.join_date', $this->_createDateString($request->session()->get('service_details.join_day'), $request->session()->get('service_details.join_month'), $request->session()->get('service_details.join_year')));
 		$request->session()->put('service_details.discharge_date', $this->_createDateString($request->session()->get('service_details.discharge_day'), $request->session()->get('service_details.discharge_month'), $request->session()->get('service_details.discharge_year')));
-		if($request->session()->get('death_in_service.death') != 'Yes') {
+		if($request->session()->get('death_in_service.death') == 'unknown') {
+			return redirect('/verify');
+		}
+		if($request->session()->get('death_in_service.death') == 'No' && !$this->_agePastThreshold($request->session()->get('essential_information.dob'))) {
 			return redirect('/verify');
 		}
 		return redirect('/your-details');
@@ -274,5 +278,21 @@ class ServiceRecordController extends Controller
 		}
 
 		return $code . '-' . time() . '-' . date('d-m-Y');
+	}
+
+	private function _agePastThreshold($dob) {
+
+		if(strpos($dob, '?')) {
+			return false;
+		}
+
+		$age = Carbon::parse($dob)->age;
+
+		if($age >= 116) {
+			return true;
+		}
+
+
+
 	}
 }

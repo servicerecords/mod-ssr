@@ -14,20 +14,9 @@ class DeathServiceTest extends TestCase
 		//$this->startSession();
 		parent::setUp();
 	}
+	
     /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-    /**
-	 * @test
+     * @test
 	 */
     public function a_user_can_see_the_death_in_service_form()
 	{
@@ -47,8 +36,6 @@ class DeathServiceTest extends TestCase
 		$response = $this->post('/service/death-in-service', $postData);
 		$response->assertRedirect('/service/death-in-service');
 		$response->assertSessionHasErrors(['death']);
-//		$response2 = $this->followRedirects($response);//->assertSeeText('There is a problem');
-//		$response2->dumpHeaders();
 	}
 
 
@@ -60,7 +47,7 @@ class DeathServiceTest extends TestCase
 		$postData = [
 			'death' => 'Yes'
 		];
-		//$this->get('/service/death-in-service');
+
 		$response = $this->post('/service/death-in-service', $postData);
 		$response->assertStatus(302);
 		$response->assertRedirect('/essential-information');

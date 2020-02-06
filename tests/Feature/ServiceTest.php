@@ -18,18 +18,6 @@ class ServiceTest extends TestCase
 		parent::setUp();
 	}
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
 	/**
 	 * @test
 	 */
@@ -57,6 +45,33 @@ class ServiceTest extends TestCase
 		$response->assertStatus(302);
 		$response->assertRedirect('/service/death-in-service');
 		$response->assertSessionHas('service', $postData['service']);
+
+        $postData = [
+            'service' => 'Royal Navy / Royal Marines'
+        ];
+
+        $response = $this->post('/service', $postData);
+        $response->assertStatus(302);
+        $response->assertRedirect('/service/death-in-service');
+        $response->assertSessionHas('service', $postData['service']);
+
+        $postData = [
+            'service' => 'Royal Air Force (RAF)'
+        ];
+
+        $response = $this->post('/service', $postData);
+        $response->assertStatus(302);
+        $response->assertRedirect('/service/death-in-service');
+        $response->assertSessionHas('service', $postData['service']);
+
+        $postData = [
+            'service' => 'Army'
+        ];
+
+        $response = $this->post('/service', $postData);
+        $response->assertStatus(302);
+        $response->assertRedirect('/service/death-in-service');
+        $response->assertSessionHas('service', $postData['service']);
 	}
 
     /**
