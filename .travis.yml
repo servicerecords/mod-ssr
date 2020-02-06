@@ -10,10 +10,6 @@ deploy:
   on:
     repo: servicerecords/mod-ssr
 before_script:
-  - sed -ri 's/GOV_PAY_KEY_TOKEN/$GOV_PAY_API_KEY/' .env
-  - sed -ri 's/GOV_NOTIFY_API_KEY/$GOV_NOTIFY_API_KEY/' .env
-  - sed -ri 's/REQUEST_PRICE_VALUE/$REQUEST_PRICE/' .env
-  - sed -ri 's/APP_ENVIROMENT/$SPACE/' .env
   - composer self-update
   - composer install --no-interaction
   - composer update
