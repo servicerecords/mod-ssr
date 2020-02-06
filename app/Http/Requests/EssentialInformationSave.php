@@ -47,7 +47,7 @@ class EssentialInformationSave extends FormRequest
 			'dob_day.digits_between' => 'The date of birth\'s day must be no more than 2 characters in length',
 			'dob_month.max' => 'The date of birth\'s month must be no more than 2 characters in length',
 			'dob_year.digits' => 'The date of birth\'s year must be 4 characters in length',
-			//'dob_year.required' => 'Please enter a year of birth, even if it is an estimate',
+			'dob_year.required' => 'Please enter a year of birth, even if it is an estimate',
 			//'dob_accurate.required' => 'Please specify whether the date of birth is accurate'
 		];
 	}
