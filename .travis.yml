@@ -8,9 +8,8 @@ deploy:
   organization: mod-request-a-historic-service-record
   space: SPACE
   on:
-    all_branches: true
+    repo: servicerecords/mod-ssr
 before_script:
-  - cp .env.travis .env
   - sed -ri 's/GOV_PAY_KEY_TOKEN/$GOV_PAY_API_KEY/' .env
   - sed -ri 's/GOV_NOTIFY_API_KEY/$GOV_NOTIFY_API_KEY/' .env
   - sed -ri 's/REQUEST_PRICE_VALUE/$REQUEST_PRICE/' .env
