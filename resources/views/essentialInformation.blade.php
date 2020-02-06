@@ -30,7 +30,7 @@
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s">Date of birth</label>
-                    <span id="info-2-item-hint" class="govuk-hint">For example, 31 3 1910. Partial dates may be sufficient</span>
+                    <span id="info-2-item-hint" class="govuk-hint">For example, 31 3 1910. A year of birth is required.</span>
                     <div class="govuk-date-input" id="date-of-birth">
                         <div class="govuk-date-input__item">
                             <div class="govuk-form-group">
