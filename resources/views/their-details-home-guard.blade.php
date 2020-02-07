@@ -98,7 +98,7 @@
                 <div class="govuk-form-group">
                     <div class="govuk-checkboxes" data-module="checkboxes">
                         <div class="govuk-checkboxes__item">
-                            <input {{ (old('leave_address') == "Yes" || $service_details['leave_address'] == "Yes") ? 'checked' : '' }} class="govuk-checkboxes__input" id="leave_address" name="leave_address" type="checkbox" value="Yes" aria-controls="conditional-leave-address-conditional" aria-expanded="false">
+                            <input {{ (old('leave_address') == "Yes" || (isset($service_details['leave_address']) && $service_details['leave_address'] == "Yes")) ? 'checked' : '' }} class="govuk-checkboxes__input" id="leave_address" name="leave_address" type="checkbox" value="Yes" aria-controls="conditional-leave-address-conditional" aria-expanded="false">
                             <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="leave-address-conditional">
                                 Different address on discharge
                             </label>
