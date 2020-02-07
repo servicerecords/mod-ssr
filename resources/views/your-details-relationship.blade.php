@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                    <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                             <h1 class="govuk-fieldset__heading">
                                 Are you the immediate next of kin?
@@ -133,6 +133,38 @@
                         </div>
                     </fieldset>
                 </div>
+                <!-- <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h1 class="govuk-fieldset__heading">
+                                Confirm here if you hold Power Of Attorney over the immediate Next of Kin
+                            </h1>
+                        </legend>
+                        <div class="govuk-radios govuk-radios--inline">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input"
+                                       id="poa"
+                                       name="poa"
+                                       type="radio" value="Yes"
+                                       {{ (old('poa') == "Yes" || (isset($your_details_relationship ['poa']) && $your_details_relationship['poa'] == "Yes")) ? 'checked' : '' }}>
+                                <label class="govuk-label govuk-radios__label" for="poa">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input"
+                                       id="poa2"
+                                       name="poa"
+                                       type="radio"
+                                       value="No"
+                                        {{ (old('poa') == "No" || (isset($your_details_relationship ['poa']) && $your_details_relationship['poa'] == "Yes")) ? 'checked' : '' }}>
+                                <label class="govuk-label govuk-radios__label" for="poa2">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div> -->
                 <div class="govuk-form-group">
                     <details class="govuk-details" role="group">
                         <summary class="govuk-details__summary" role="button" aria-controls="details-content-e0c053e5-5ef7-40ff-be62-f8146fe9ff57" aria-expanded="false">

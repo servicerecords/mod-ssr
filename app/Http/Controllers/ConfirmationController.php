@@ -44,11 +44,12 @@ class ConfirmationController extends Controller
 			return view('process_error');
 		} else {
 			$dbs_office = $request->session()->get('dbs_office');
+			$reference = $request->session()->get('reference');
 			$response = $this->_sendCustomerNotification($request);
 
 			$request->session()->flush();
 
-			return view('confirmation', ['dbs_team' => $dbs_office]);
+			return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
 		}
 	}
 

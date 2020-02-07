@@ -8,7 +8,7 @@
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">
-                    We require these as any matching service records will be posted to you.
+                    We require these details to contact you and post any matching service record/s to you
                 </legend>
 
                @include('partials.form-errors')
