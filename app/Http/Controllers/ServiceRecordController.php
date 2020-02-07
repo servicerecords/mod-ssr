@@ -280,9 +280,9 @@ class ServiceRecordController extends Controller
 		return $code . '-' . time() . '-' . date('d-m-Y');
 	}
 
-	private function _agePastThreshold($dob) {
-
-		if(strpos($dob, '?')) {
+	private function _agePastThreshold($dob)
+	{
+		if(strpos($dob, "?") !== false) {
 			return false;
 		}
 
@@ -291,8 +291,5 @@ class ServiceRecordController extends Controller
 		if($age >= 116) {
 			return true;
 		}
-
-
-
 	}
 }
