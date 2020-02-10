@@ -8,12 +8,12 @@ branches:
 deploy:
   - provider: script
       skip_cleanup: true
-      script: env CF_SPACE=development CF_APP_NAME=test-app CF_MANIFEST=manifest-staging.yml ci/deploy_to_cf.sh
+      script: env CF_SPACE=development CF_APP_NAME=test-app CF_MANIFEST=manifest-development.yml ci/deploy_to_cf.sh
       on:
         repo: servicerecords/mod-ssr
   - provider: script
       skip_cleanup: true
-      script: env CF_SPACE=production CF_APP_NAME=test-app CF_MANIFEST=manifest-live.yml ci/deploy_to_cf.sh
+      script: env CF_SPACE=production CF_APP_NAME=test-app CF_MANIFEST=manifest-production.yml ci/deploy_to_cf.sh
       on:
         repo: servicerecords/mod-ssr
         tags: true

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/manifest-production.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manifest-development.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +133,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -139,6 +142,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/resources/js" />
       <recent name="$PROJECT_DIR$/public" />
@@ -249,7 +253,7 @@
       <workItem from="1579615506742" duration="8770000" />
       <workItem from="1580470999338" duration="1338000" />
       <workItem from="1580725719674" duration="13140000" />
-      <workItem from="1581368271039" duration="8062000" />
+      <workItem from="1581368271039" duration="8413000" />
     </task>
     <servers />
   </component>
@@ -328,11 +332,11 @@
     <state x="-1342" y="-120" width="763" height="735" key="find.popup/0.23.1680.1027/-1920.-281.1920.1057@-1920.-281.1920.1057" timestamp="1580471158153" />
     <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027/-1920.-281.1920.1057@0.23.1680.1027" timestamp="1579679514606" />
     <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1580328102103" />
-    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup" timestamp="1581371959072">
+    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup" timestamp="1581378862518">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="-1295" y="-46" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027/-1920.-281.1920.1057@-1920.-281.1920.1057" timestamp="1578404738356" />
     <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027/-1920.-281.1920.1057@0.23.1680.1027" timestamp="1579679565139" />
-    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1581371959072" />
+    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1581378862518" />
   </component>
 </project>
