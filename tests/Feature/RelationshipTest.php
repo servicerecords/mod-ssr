@@ -49,7 +49,8 @@ class RelationshipTest extends TestCase
 	public function user_can_submit_and_store_a_relationship()
 	{
 		$stub = [
-			'relationship' => 'Mother/Father'
+			'relationship' => 'Mother/Father',
+            'next_of_kin' => 'Yes'
 		];
 
 		$response = $this->post('/your-details/relationship', $stub);

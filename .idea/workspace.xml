@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/check-your-answers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/check-your-answers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/CheckYourAnswersTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/CheckYourAnswersTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/RelationshipTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/RelationshipTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/StartNowTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/StartNowTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,41 +145,41 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.RelationshipTest.user_can_submit_and_store_a_relationship">
-    <configuration name="RelationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\RelationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RelationTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.CheckYourAnswersTest">
+    <configuration name="CheckYourAnswersTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\CheckYourAnswersTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/CheckYourAnswersTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DeathServiceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\DeathServiceTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/DeathServiceTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="EssentialInformationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\EssentialInformationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/EssentialInformationTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RelationshipTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RelationshipTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RelationshipTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="RelationshipTest.user_can_submit_and_store_a_relationship" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\RelationshipTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RelationshipTest.php" method="user_can_submit_and_store_a_relationship" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="RelationshipTest.user_must_submit_a_relationship" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\RelationshipTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RelationshipTest.php" method="user_must_submit_a_relationship" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="RequestTest.a_user_save_their_request_choice" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\RequestTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RequestTest.php" method="a_user_save_their_request_choice" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ServiceDetailsTest.information_must_include_lastname" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ServiceDetailsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ServiceDetailsTest.php" method="information_must_include_lastname" scope="Method" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="PHPUnit.ServiceDetailsTest.information_must_include_lastname" />
-      <item itemvalue="PHPUnit.RequestTest.a_user_save_their_request_choice" />
-      <item itemvalue="PHPUnit.RelationTest" />
-      <item itemvalue="PHPUnit.RelationshipTest.user_must_submit_a_relationship" />
       <item itemvalue="PHPUnit.RelationshipTest.user_can_submit_and_store_a_relationship" />
+      <item itemvalue="PHPUnit.RelationshipTest" />
+      <item itemvalue="PHPUnit.EssentialInformationTest" />
+      <item itemvalue="PHPUnit.DeathServiceTest" />
+      <item itemvalue="PHPUnit.CheckYourAnswersTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.CheckYourAnswersTest" />
+        <item itemvalue="PHPUnit.DeathServiceTest" />
+        <item itemvalue="PHPUnit.EssentialInformationTest" />
+        <item itemvalue="PHPUnit.RelationshipTest" />
         <item itemvalue="PHPUnit.RelationshipTest.user_can_submit_and_store_a_relationship" />
-        <item itemvalue="PHPUnit.RelationshipTest.user_must_submit_a_relationship" />
-        <item itemvalue="PHPUnit.RelationTest" />
-        <item itemvalue="PHPUnit.RequestTest.a_user_save_their_request_choice" />
-        <item itemvalue="PHPUnit.ServiceDetailsTest.information_must_include_lastname" />
       </list>
     </recent_temporary>
   </component>
@@ -255,7 +249,7 @@
       <workItem from="1579615506742" duration="8770000" />
       <workItem from="1580470999338" duration="1338000" />
       <workItem from="1580725719674" duration="13140000" />
-      <workItem from="1581368271039" duration="3901000" />
+      <workItem from="1581368271039" duration="4645000" />
     </task>
     <servers />
   </component>
@@ -283,22 +277,22 @@
     </state>
     <state x="498" y="147" key="#ServiceTest.a_user_can_make_a_service_selection/0.23.1680.1027@0.23.1680.1027" timestamp="1580932570055" />
     <state x="498" y="164" key="#ServiceTest/0.23.1680.1027@0.23.1680.1027" timestamp="1580914751868" />
-    <state width="1638" height="411" key="GridCell.Tab.0.bottom" timestamp="1581373716458">
+    <state width="1638" height="411" key="GridCell.Tab.0.bottom" timestamp="1581373755588">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="411" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1581373716458" />
-    <state width="1638" height="411" key="GridCell.Tab.0.center" timestamp="1581373716457">
+    <state width="1638" height="411" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1581373755588" />
+    <state width="1638" height="411" key="GridCell.Tab.0.center" timestamp="1581373755587">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="411" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1581373716457" />
-    <state width="1638" height="411" key="GridCell.Tab.0.left" timestamp="1581373716457">
+    <state width="1638" height="411" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1581373755587" />
+    <state width="1638" height="411" key="GridCell.Tab.0.left" timestamp="1581373755587">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="411" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1581373716457" />
-    <state width="1638" height="411" key="GridCell.Tab.0.right" timestamp="1581373716458">
+    <state width="1638" height="411" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1581373755587" />
+    <state width="1638" height="411" key="GridCell.Tab.0.right" timestamp="1581373755588">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="411" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1581373716458" />
+    <state width="1638" height="411" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1581373755588" />
     <state x="349" y="175" key="SettingsEditor" timestamp="1580932620292">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
