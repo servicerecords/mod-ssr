@@ -1,16 +1,37 @@
 language: php
 php:
   - '7.3.12'
+branches:
+  only:
+    - master
+    - /live-deploy*/
 deploy:
-  provider: cloudfoundry
-  api: https://api.cloud.service.gov.uk
-  username: simon@87development.co.uk
-  password: Briarlyn.20
-    #  secure: OiR6e0EbN4w9umDZAjjSd/0lszaPf+F50AVp1qgJCMStJ/gXHYryb158bf6qjqJqkDxS3hyiu4Kyz0DykMkWuR+Q8nQEqou9odVF/mB+IGCT2fjHQmEVIgWkI2U8tPKj67xZ+2zmVCgJgoIKfrYfSNNaGwQF3+zsJKBL4AgVveVOjclSzlNdxJTaLMw6MbDrNcCiE7q78dezKl01cnGUClzP77jPCF6cN0Fw1OPtgqh3ILphML7JY09/plC18aJomZi6pDNfNkP3uHUep3efnPWyXDDL4Y9Khokno63MXWiHLEWokop/FHwT2Q+wBFSFK1pP0JG19FrlGF3RszdLOqN+vQ4MjJCOpeeQv5mRsteqc9Uo+MmQ3vAbrARrAiKkn2xE9jziM7qLcxspLMEGjmu1PuO/NuisYJPEuA6WpMJWl8UqvhLht8XKVDOzrPWYxzrpgLXkrtWK3B3LS0xFP97Rij/5uLPnOPrx7IGRLuhLOJCOsrGVUNmm6rSIh4jcFBfg0SJ7ztG6VKEmVIQiG5tLEyVbWRN5puB+5WpFxxoAl0SL07pb51QtEM189s5Ia283pgYTvVT4PSNscGE0a23/u+OPhzM4aeEQKw93hHYVX2gFcwX3QuMWqybOVa2GsKNy91yX0U0u7SgPRyO/nx8teY7tLgtiaOLlidAQNEc=
-  organization: mod-request-a-historic-service-record
-  space: SPACE
-  on:
-    repo: servicerecords/mod-ssr
+  - provider: script
+      skip_cleanup: true
+      script: env CF_SPACE=development CF_APP_NAME=test-app CF_MANIFEST=manifest-staging.yml ci/deploy_to_cf.sh
+      on:
+        repo: servicerecords/mod-ssr
+  - provider: script
+      skip_cleanup: true
+      script: env CF_SPACE=production CF_APP_NAME=test-app CF_MANIFEST=manifest-live.yml ci/deploy_to_cf.sh
+      on:
+        repo: servicerecords/mod-ssr
+        tags: true
+#  provider: cloudfoundry
+#  api: https://api.cloud.service.gov.uk
+#  username: simon@87development.co.uk
+#  password: Briarlyn.20
+#    #  secure: OiR6e0EbN4w9umDZAjjSd/0lszaPf+F50AVp1qgJCMStJ/gXHYryb158bf6qjqJqkDxS3hyiu4Kyz0DykMkWuR+Q8nQEqou9odVF/mB+IGCT2fjHQmEVIgWkI2U8tPKj67xZ+2zmVCgJgoIKfrYfSNNaGwQF3+zsJKBL4AgVveVOjclSzlNdxJTaLMw6MbDrNcCiE7q78dezKl01cnGUClzP77jPCF6cN0Fw1OPtgqh3ILphML7JY09/plC18aJomZi6pDNfNkP3uHUep3efnPWyXDDL4Y9Khokno63MXWiHLEWokop/FHwT2Q+wBFSFK1pP0JG19FrlGF3RszdLOqN+vQ4MjJCOpeeQv5mRsteqc9Uo+MmQ3vAbrARrAiKkn2xE9jziM7qLcxspLMEGjmu1PuO/NuisYJPEuA6WpMJWl8UqvhLht8XKVDOzrPWYxzrpgLXkrtWK3B3LS0xFP97Rij/5uLPnOPrx7IGRLuhLOJCOsrGVUNmm6rSIh4jcFBfg0SJ7ztG6VKEmVIQiG5tLEyVbWRN5puB+5WpFxxoAl0SL07pb51QtEM189s5Ia283pgYTvVT4PSNscGE0a23/u+OPhzM4aeEQKw93hHYVX2gFcwX3QuMWqybOVa2GsKNy91yX0U0u7SgPRyO/nx8teY7tLgtiaOLlidAQNEc=
+#  organization: mod-request-a-historic-service-record
+#  space: SPACE
+#  on:
+#    repo: servicerecords/mod-ssr
+env:
+  global:
+    - CF_API=https://api.cloud.service.gov.uk
+    - CF_ORGANIZATION=mod-request-a-historic-service-record
+    - CF_USERNAME=simon@87development.co.uk
+    - secure: OiR6e0EbN4w9umDZAjjSd/0lszaPf+F50AVp1qgJCMStJ/gXHYryb158bf6qjqJqkDxS3hyiu4Kyz0DykMkWuR+Q8nQEqou9odVF/mB+IGCT2fjHQmEVIgWkI2U8tPKj67xZ+2zmVCgJgoIKfrYfSNNaGwQF3+zsJKBL4AgVveVOjclSzlNdxJTaLMw6MbDrNcCiE7q78dezKl01cnGUClzP77jPCF6cN0Fw1OPtgqh3ILphML7JY09/plC18aJomZi6pDNfNkP3uHUep3efnPWyXDDL4Y9Khokno63MXWiHLEWokop/FHwT2Q+wBFSFK1pP0JG19FrlGF3RszdLOqN+vQ4MjJCOpeeQv5mRsteqc9Uo+MmQ3vAbrARrAiKkn2xE9jziM7qLcxspLMEGjmu1PuO/NuisYJPEuA6WpMJWl8UqvhLht8XKVDOzrPWYxzrpgLXkrtWK3B3LS0xFP97Rij/5uLPnOPrx7IGRLuhLOJCOsrGVUNmm6rSIh4jcFBfg0SJ7ztG6VKEmVIQiG5tLEyVbWRN5puB+5WpFxxoAl0SL07pb51QtEM189s5Ia283pgYTvVT4PSNscGE0a23/u+OPhzM4aeEQKw93hHYVX2gFcwX3QuMWqybOVa2GsKNy91yX0U0u7SgPRyO/nx8teY7tLgtiaOLlidAQNEc=
 before_script:
   - cp .env.travis .env
   - composer self-update
