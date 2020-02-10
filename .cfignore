@@ -1,0 +1,12 @@
+.env
+.editorconfig
+.env.development
+.env.production
+.env.testing
+.styleci.yml
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.idea/*
