@@ -30,8 +30,9 @@ class YourDetailsTest extends TestCase
 			'address_line_1' => '1 Road Name',
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
-			'address_county' => 'County',
-			'address_postcode' => 'Postcode'
+            'email' => 'email@domain.com',
+			'address_postcode' => 'Postcode',
+            'use_billing' => 'Yes'
 		];
 
     	$response = $this->post('your-details', $stub);
@@ -48,30 +49,13 @@ class YourDetailsTest extends TestCase
 			'address_line_1' => '',
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
-			'address_county' => 'County',
-			'address_postcode' => 'Postcode'
+            'email' => 'email@domain.com',
+			'address_postcode' => 'Postcode',
+            'use_billing' => 'Yes'
 		];
 
 		$response = $this->post('/your-details', $stub);
 		$response->assertSessionHasErrors(['address_line_1']);
-		$response->assertStatus(302);
-	}
-
-	/**
-	 * @test
-	 */
-    public function user_must_submit_county() {
-		$stub = [
-			'fullname' => 'John Doe',
-			'address_line_1' => 'Address Line 1',
-			'address_line_2' => '',
-			'address_town' => 'Town/City',
-			'address_county' => '',
-			'address_postcode' => 'Postcode'
-		];
-
-		$response = $this->post('/your-details', $stub);
-		$response->assertSessionHasErrors(['address_county']);
 		$response->assertStatus(302);
 	}
 
@@ -85,7 +69,9 @@ class YourDetailsTest extends TestCase
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
 			'address_county' => 'County',
-			'address_postcode' => ''
+			'address_postcode' => '',
+            'email' => 'email@domain.com',
+            'use_billing' => 'Yes'
 		];
 
 		$response = $this->post('/your-details', $stub);
@@ -112,8 +98,9 @@ class YourDetailsTest extends TestCase
 			'address_line_1' => 'Address Line 1',
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
-			'address_county' => 'County',
-			'address_postcode' => 'Postcode'
+            'email' => 'email@domain.com',
+			'address_postcode' => 'Postcode',
+            'use_billing' => 'Yes'
 		];
 
 		$response = $this->post('/your-details', $stub);

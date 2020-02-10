@@ -6,15 +6,18 @@ use phpDocumentor\Reflection\Types\Compound;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class CheckYourAnswersTest extends TestCase
 {
+
     /**
      * @test
      */
     public function user_session_being_fedback()
     {
        $response = $this->withSession([
+           '_token' => 'test',
        		'service' => 'Royal Navy / Royal Marines',
 		    'service_details' => [
 		    	'service_number' => '123456',
@@ -62,6 +65,7 @@ class CheckYourAnswersTest extends TestCase
     public function a_next_of_kin_should_not_have_to_make_a_payment()
 	{
 		$response = $this->withSession([
+            '_token' => 'test',
 			'service' => 'Royal Navy / Royal Marines',
 			'service_details' => [
 				'service_number' => '123456',

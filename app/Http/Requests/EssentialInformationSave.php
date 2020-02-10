@@ -28,7 +28,7 @@ class EssentialInformationSave extends FormRequest
 			'lastname' => 'required',
 			'dob_day' => 'digits_between:1,2|nullable',
 			'dob_month' => 'digits_between:1,2|nullable',
-			'dob_year' => 'digits:4|nullable',
+			'dob_year' => 'digits:4|required',
         ];
     }
 

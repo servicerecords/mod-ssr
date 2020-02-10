@@ -9,7 +9,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class RequestTest extends TestCase
 {
-	use WithoutMiddleware;
     /**
      * A basic feature test example.
      *

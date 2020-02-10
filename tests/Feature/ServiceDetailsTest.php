@@ -239,7 +239,6 @@ class ServiceDetailsTest extends TestCase
 			'firstnames' => '',
 			'lastname' => 'Bloggs',
 			'dob_year' => '1987',
-			'dob_accurate' => 'No'
 		];
 		$this->get('/essential-information');
 		$response = $this->post('/essential-information', $postParams);
@@ -257,7 +256,6 @@ class ServiceDetailsTest extends TestCase
 			'firstnames' => 'Joe',
 			'lastname' => '',
 			'dob_year' => '1987',
-			'dob_accurate' => 'No'
 		];
 		$this->get('/essential-information');
 		$response = $this->post('/essential-information', $postParams);
@@ -274,7 +272,6 @@ class ServiceDetailsTest extends TestCase
 			'firstnames' => 'Joe',
 			'lastname' => 'Bloggs',
 			'dob_year' => '',
-			'dob_accurate' => 'No'
 		];
 		$this->get('/essential-information');
 		$response = $this->post('/essential-information', $postParams);
@@ -283,23 +280,6 @@ class ServiceDetailsTest extends TestCase
 		$this->followRedirects($response)->assertSeeText("The date of birth&#039;s year must be 4 characters in length");
 	}
 
-	/**
-	 * @test
-	 */
-	public function information_must_include_dob_accurate_flag(){
-		$this->get('/essential-information');
-		$postParams = [
-			'firstnames' => 'Joe',
-			'lastname' => 'Bloggs',
-			'dob_year' => '1987',
-			'dob_accurate' => ''
-		];
-		$this->get('/essential-information');
-		$response = $this->post('/essential-information', $postParams);
-		$response->assertRedirect('/essential-information');
-		$response->assertSessionHasErrors(['dob_accurate']);
-		$this->followRedirects($response)->assertSeeText('Please specify whether the date of birth is accurate');
-	}
 
 	/**
 	 * @test
@@ -318,7 +298,6 @@ class ServiceDetailsTest extends TestCase
 			'firstnames' => 'Joe',
 			'lastname' => 'Bloggs',
 			'dob_year' => '1987',
-			'dob_accurate' => 'Yes',
 			'dob' => '??/??/1987'
 		];
 
