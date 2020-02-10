@@ -28,7 +28,7 @@ class StartNowTest extends TestCase
     public function user_can_start_application()
 	 {
 	 	$response = $this->get('/');
-	 	$response->assertSeeText('Service record request');
+	 	$response->assertSeeText('Request an historic service record');
 	 	$response->assertSeeText('Start now');
 	 }
 }

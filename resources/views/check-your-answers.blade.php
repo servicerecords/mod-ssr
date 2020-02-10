@@ -8,7 +8,7 @@
     <h2 class="govuk-heading-m">Now send your service record request</h2>
     @if(Session::get('your_details')['payment_required'])
         <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct. A payment of £30 is required.
-            By selecting accept &amp;amp; pay below, you will be taken to the .Gov.Pay pages to complete the payment process.</p>
+            By selecting accept &amp; pay below, you will be taken to the .Gov.Pay pages to complete the payment process.</p>
         <a class="govuk-button" href="/pay">Accept and pay</a>
     @else
         <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the

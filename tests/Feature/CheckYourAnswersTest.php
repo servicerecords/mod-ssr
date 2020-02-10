@@ -28,34 +28,30 @@ class CheckYourAnswersTest extends TestCase
 		   		'firstnames' => 'John',
 			    'lastname' => 'Doe',
 			   'dob' => '01/01/1900',
-			   'dob_accurate' => 'Yes'
 		   ],
 		   'your_details' => [
 		   	   'fullname' => 'Joe Bloggs',
 			   'address_line_1' => '1 The Avenue',
 			   'address_line_2' => '',
 			   'address_town' => 'City',
-			   'address_county' => 'County',
 			   'address_postcode' => 'Postcode',
 			   'payment_required' => true
 		   ],
 
-	   ])->get('/check-your-answers', [], [], ['HTTP_REFERER' => 'testing']);
+	   ])->get('/check-your-answers');
        $response->assertSeeTextInOrder([
-       	'Royal Navy / Royal Marines',
+           'Royal Navy / Royal Marines',
 		   '123456',
-		   'Yes',
+           'Yes',
 		   'John',
 		   'Doe',
 		   '01/01/1900',
-		   'Yes',
-		   '',
+           '',
 		   '01/01/1930',
 		   'Joe Bloggs',
 		   '1 The Avenue',
 		   'City',
 		   'Postcode',
-		   'County'
 	   ]);
        $response->assertStatus(200);
     }
@@ -79,19 +75,17 @@ class CheckYourAnswersTest extends TestCase
 				'firstnames' => 'John',
 				'lastname' => 'Doe',
 				'dob' => '01/01/1900',
-				'dob_accurate' => 'Yes'
 			],
 			'your_details' => [
 				'fullname' => 'Joe Bloggs',
 				'address_line_1' => '1 The Avenue',
 				'address_line_2' => '',
 				'address_town' => 'City',
-				'address_county' => 'County',
 				'address_postcode' => 'Postcode',
 				'payment_required' => false
 			],
 
-		])->get('/check-your-answers', [], [], ['HTTP_REFERER' => 'testing']);
+		])->get('/check-your-answers');
 		$response->assertSeeText('Accept and send');
 		$response->assertStatus(200);
 	}
@@ -114,21 +108,20 @@ class CheckYourAnswersTest extends TestCase
 			'essential_information' => [
 				'firstnames' => 'John',
 				'lastname' => 'Doe',
-				'dob' => '01/01/1900',
-				'dob_accurate' => 'Yes'
+				'dob' => '01/01/1900'
 			],
 			'your_details' => [
 				'fullname' => 'Joe Bloggs',
 				'address_line_1' => '1 The Avenue',
 				'address_line_2' => '',
 				'address_town' => 'City',
-				'address_county' => 'County',
 				'address_postcode' => 'Postcode',
 				'payment_required' => true
 			],
 
-		])->get('/check-your-answers', [], [], ['HTTP_REFERER' => 'testing']);
-		$response->assertSeeText('A payment of £30 is required.');
+		])->get('/check-your-answers');
+		$response->assertSeeText('By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct. A payment of £30 is required.
+            By selecting accept &amp; pay below, you will be taken to the .Gov.Pay pages to complete the payment process.');
 		$response->assertSeeText('Accept and pay');
 		$response->assertStatus(200);
 	}

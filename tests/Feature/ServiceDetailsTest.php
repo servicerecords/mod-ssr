@@ -207,37 +207,6 @@ class ServiceDetailsTest extends TestCase
 	}
 	//HOME GUARD ENDS
 
-	//UNKNOWN STARTS
-	/**
-	 * @test
-	 */
-	public function user_can_see_unknown_data_form()
-	{
-		$this->withSession(['service' => 'Unknown', 'death_in_service' => ['death' => 'No']]);
-		$response = $this->get('/service-details');
-		$response->assertStatus(200);
-		$response->assertSeeText('Official Service Number');
-		$response->assertSeeText('Further Information');
-	}
-
-	/**
-	 * @test
-	 */
-	public function can_save_unknown_details()
-	{
-		$stub = [
-			'service_number' =>'123456',
-			'further_info' => 'Some more information about the application',
-			'join_date' => '??/??/??',
-			'discharge_date' => '??/??/??'
-		];
-
-		$response = $this->post('/service-details', $stub);
-		$response->assertStatus(302);
-		$response->assertSessionHas('service_details', $stub);
-	}
-	//UNKNOWN ENDS
-
 	/**
 	 * @test
 	 */
@@ -276,7 +245,7 @@ class ServiceDetailsTest extends TestCase
 		$response = $this->post('/essential-information', $postParams);
 		$response->assertRedirect('/essential-information');
 		$response->assertSessionHasErrors(['firstnames']);
-		$this->followRedirects($response)->assertSeeText('Please enter any firstnames');
+		$this->followRedirects($response)->assertSeeText('Please enter any first names');
 	}
 
 	/**
@@ -294,7 +263,7 @@ class ServiceDetailsTest extends TestCase
 		$response = $this->post('/essential-information', $postParams);
 		$response->assertRedirect('/essential-information');
 		$response->assertSessionHasErrors(['lastname']);
-		$this->followRedirects($response)->assertSeeText('Please enter a lastname');
+		$this->followRedirects($response)->assertSeeText('Please enter a last name');
 	}
 
 	/**
