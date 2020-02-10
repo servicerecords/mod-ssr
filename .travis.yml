@@ -1,29 +1,29 @@
 language: php
 php:
-- 7.3.12
+  - '7.3.12'
 deploy:
   provider: cloudfoundry
   api: https://api.cloud.service.gov.uk
   username: simon@87development.co.uk
+  password: Briarlyn.20
+    #  secure: OiR6e0EbN4w9umDZAjjSd/0lszaPf+F50AVp1qgJCMStJ/gXHYryb158bf6qjqJqkDxS3hyiu4Kyz0DykMkWuR+Q8nQEqou9odVF/mB+IGCT2fjHQmEVIgWkI2U8tPKj67xZ+2zmVCgJgoIKfrYfSNNaGwQF3+zsJKBL4AgVveVOjclSzlNdxJTaLMw6MbDrNcCiE7q78dezKl01cnGUClzP77jPCF6cN0Fw1OPtgqh3ILphML7JY09/plC18aJomZi6pDNfNkP3uHUep3efnPWyXDDL4Y9Khokno63MXWiHLEWokop/FHwT2Q+wBFSFK1pP0JG19FrlGF3RszdLOqN+vQ4MjJCOpeeQv5mRsteqc9Uo+MmQ3vAbrARrAiKkn2xE9jziM7qLcxspLMEGjmu1PuO/NuisYJPEuA6WpMJWl8UqvhLht8XKVDOzrPWYxzrpgLXkrtWK3B3LS0xFP97Rij/5uLPnOPrx7IGRLuhLOJCOsrGVUNmm6rSIh4jcFBfg0SJ7ztG6VKEmVIQiG5tLEyVbWRN5puB+5WpFxxoAl0SL07pb51QtEM189s5Ia283pgYTvVT4PSNscGE0a23/u+OPhzM4aeEQKw93hHYVX2gFcwX3QuMWqybOVa2GsKNy91yX0U0u7SgPRyO/nx8teY7tLgtiaOLlidAQNEc=
   organization: mod-request-a-historic-service-record
   space: SPACE
   on:
     repo: servicerecords/mod-ssr
-  password:
-    secure: FqN0AAdca4plmsbDPJCHTZocrxA+gsjLdutvFi1I/+I+afGYmNXJBy9IigtoalN6DrMuY5pInkZ4cbE00J6Zbisc3r/HTyzzJre0hOroJYf4nxu8pZKlYxae2MQwuQQyQm18JGH/CSniHcXT2/5gXum2m4pRSxXK2u2tseQvY4104uuW4LOfbBlYk8e8jMZ8ghNLBXBW76kYdXMqytBZwTV7reVD4eplOlwftmL40utOWW0ca7k4ki7hCXAzZDX9NpmwFz3GcgBvXVSVoUU7apkr5iWl1oxPxzGL91gHXL+Qmz7QBJZEuCZut8X+Y31wYCUA1e5AdqdsmSB2oUGnwmcU6MDoO1vaZsNJZl0vc67EJB+HfaXxG/7TYVfmcsUpn9u48RJqMyHszogR2UbycCbmI3ivZKWnhCN630nk2JyU+6vuT3q0rZELUYYxua2YDvZdkUZ4ugT0uqjWghTxtCsKtiNceqJ7suUiWYsUWAwit+a+d1fUZrXr3w9Oil6HGaoOo00rpRagGUvAaWGEMT8a1ADBlUB41cLonIgCyL1IDL9t4V7BrrqK2UZy7RAiKM5hwi2FORsof/HXc2irBEsgE1QChngi8dy8H6fHIRkTFUQZXqNlO9oMNpZ50UZ2Lx8APMkrAshujkl7N5whcHvaI9chcEL1udbim1W6dgI=
 before_script:
-- cp .env.travis .env
-- composer self-update
-- composer install --no-interaction
-- composer update
-- composer dump-autoload
-- php artisan config:cache
-- npm update
+  - cp .env.travis .env
+  - composer self-update
+  - composer install --no-interaction
+  - composer update
+  - composer dump-autoload
+  - php artisan config:cache
+  - npm update
 script:
-- php vendor/bin/phpunit --configuration phpunit.xml
+  - php vendor/bin/phpunit --configuration phpunit.xml
 notifications:
   email:
     recipients:
-    - simon@87development.co.uk
+      - simon@87development.co.uk
     on_success: always
     on_failure: always
