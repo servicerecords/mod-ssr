@@ -10,6 +10,7 @@ deploy:
   on:
     repo: servicerecords/mod-ssr
 before_script:
+  - cp .env.travis .env
   - composer self-update
   - composer install --no-interaction
   - composer update

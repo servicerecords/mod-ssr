@@ -3,28 +3,3 @@ applications:
 - name: srrdigital-dev
   memory: 256M
   buildpack: https://github.com/cloudfoundry/php-buildpack.git#v4.3.78
-  env:
-    APP_NAME: Request an historic service record
-    APP_ENV:  development
-    APP_DEBUG: true
-    APP_URL: https://srrdigital-dev.cloudapps.digital
-    APP_PHASE: beta
-    APP_KEY: base64:j78nUZ12V5AQ6oaG3gzJPiBjZuAXfCOapH2D7GbSqTc=
-
-    LOG_CHANNEL: stack
-
-    GOV_PAY_API_KEY: anipbs8dhnffjmv1gcb45vmp5pnfjf0q8odr7j7ajuh12cfau1o2j3jsau
-    GOV_PAY_RETURN_URL: http://127.0.0.1:8000
-
-    NOTIFY_API_KEY: live-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-86184257-3f77-48c8-a770-4bbfd4ccd959
-    NOTIFY_TEMPLATE_ID: 7ec9d967-a86b-4c61-b0fa-58c16d014158
-
-    LAND_EMAIL: ainley87simon+land@gmail.com
-    AIR_EMAIL: ainley87simon+air@gmail.com
-    SEA_EMAIL: ainley87simon+sea@gmail.com
-    ACCOUNTS_EMAIL: ainley87simon+accounts@gmail.com
-    UNKNOWN_EMAIL: ainley87simon+uknown@gmail.com
-
-    REQUEST_PRICE: 3000
-
-    FEEDBACK_EMAIL: simon@87development.co.uk
