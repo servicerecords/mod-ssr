@@ -1,6 +1,6 @@
 language: php
 php:
-  '7.3.12'
+  - '7.3.12'
 deploy:
   provider: cloudfoundry
   api: https://api.cloud.service.gov.uk
