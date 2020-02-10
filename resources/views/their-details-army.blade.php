@@ -187,6 +187,19 @@
             </fieldset>
         </div>
         <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="leave_army_reason_otherr">
+                        Further information (optional)
+                    </label>
+                    <span id="nm-1-item-hint" class="govuk-hint">
+              Please include any other information that may help identify the
+              service record. e.g. Ranks, Grades, Regiments, National Insurance
+              Number etc
+            </span>
+                    <textarea class="govuk-textarea" id="further_info" name="further_info" rows="5">
+                        {{ isset($service_details['further_info'] ) ? $service_details['further_info'] : old('further_info') }}
+                    </textarea>
+                </div>
+        <div class="govuk-form-group">
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
             <button type="submit" class="govuk-button">Save and continue</button>
         </div>

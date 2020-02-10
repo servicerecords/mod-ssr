@@ -6,7 +6,7 @@
             Service record request complete
         </h1>
         <div class="govuk-panel__body">
-            Your reference number<br><strong>{{ Session::get('reference') }}</strong>
+            Your reference number<br><strong>{{ $reference }}</strong>
         </div>
     </div>
 

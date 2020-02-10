@@ -49,7 +49,7 @@ class ConfirmationController extends Controller
 
 			$request->session()->flush();
 
-			return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
+			return view('confirmation', ['dbs_team' => $dbs_office, ':::wqreference' => $reference]);
 		}
 	}
 

@@ -285,8 +285,9 @@ class ServiceRecordController extends Controller
 		if(strpos($dob, "?") !== false) {
 			return false;
 		}
-
-		$age = Carbon::parse($dob)->age;
+		
+		$validDate = Carbon::createFromFormat('d/m/Y', $dob);
+		$age = Carbon::parse($validDate)->age;
 
 		if($age >= 116) {
 			return true;
