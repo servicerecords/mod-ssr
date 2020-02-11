@@ -2,7 +2,6 @@ language: php
 php:
 - 7.3.12
 deploy:
-  matrix:
   - provider: cloudfoundry
     api: https://api.cloud.service.gov.uk
     username: simon@87development.co.uk
