@@ -251,7 +251,7 @@
       <workItem from="1579615506742" duration="8770000" />
       <workItem from="1580470999338" duration="1338000" />
       <workItem from="1580725719674" duration="13140000" />
-      <workItem from="1581368271039" duration="9518000" />
+      <workItem from="1581368271039" duration="9857000" />
     </task>
     <servers />
   </component>
@@ -279,6 +279,10 @@
     </state>
     <state x="498" y="147" key="#ServiceTest.a_user_can_make_a_service_selection/0.23.1680.1027@0.23.1680.1027" timestamp="1580932570055" />
     <state x="498" y="164" key="#ServiceTest/0.23.1680.1027@0.23.1680.1027" timestamp="1580914751868" />
+    <state x="434" y="139" key="CommitChangelistDialog2" timestamp="1581409564407">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="434" y="139" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1581409564407" />
     <state width="1638" height="411" key="GridCell.Tab.0.bottom" timestamp="1581376286832">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
