@@ -12,3 +12,5 @@ yarn-error.log
 .idea/*
 /storage/
 /storage/*
+bootstrap/cache
+bootstrap/cache/*
