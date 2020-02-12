@@ -20,11 +20,11 @@ class ConfirmationController extends Controller
 
 	public function __construct()
 	{
-		$this->land_email = env('LAND_EMAIL');
-		$this->sea_email = env('SEA_EMAIL');
-		$this->air_email = env('AIR_EMAIL');
-		$this->accounts_email = env('ACCOUNTS_EMAIL');
-		$this->unknown_email = env('UNKNOWN_EMAIL');
+		$this->land_email = env('LAND_EMAIL', 'ainley87simon+land@gmail.com');
+		$this->sea_email = env('SEA_EMAIL', 'ainley87simon+sea@gmail.com');
+		$this->air_email = env('AIR_EMAIL', 'ainley87simon+air@gmail.com');
+		$this->accounts_email = env('ACCOUNTS_EMAIL', 'ainley87simon+accounts@gmail.com');
+		$this->unknown_email = env('UNKNOWN_EMAIL', 'ainley87simon+land@gmail.com');
 		$this->templates = [
 			'ARM_DIS' => '5f3a549b-9019-4c7f-8995-fb47ae4905bd',
 			'ARM' => 'c811ac5c-cd6f-4702-8db5-ff105e364277',
@@ -49,14 +49,14 @@ class ConfirmationController extends Controller
 
 			$request->session()->flush();
 
-			return view('confirmation', ['dbs_team' => $dbs_office, ':::wqreference' => $reference]);
+			return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
 		}
 	}
 
 	private function _sendCustomerNotification($request) {
 
-	    $notifyClient = new \Alphagov\Notifications\Client([
-            'apiKey' => env('NOTIFY_API_KEY'),
+	    $notifyClient = new Notify([
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
             'httpClient' => new \Http\Adapter\Guzzle6\Client
         ]);
 
@@ -87,7 +87,7 @@ class ConfirmationController extends Controller
 			case 'Army':
 				$emails = $this->land_email;
 				$request->session()->put('dbs_office', 'Army');
-				$template_shortcode = 'RAF';
+				$template_shortcode = 'ARM';
 				break;
 			case 'Home Guard':
 				$emails = $this->land_email;
@@ -106,8 +106,8 @@ class ConfirmationController extends Controller
 				break;
 		}
 
-		$notifyClient = new \Alphagov\Notifications\Client([
-			'apiKey' => env('NOTIFY_API_KEY'),
+		$notifyClient = new Notify([
+			'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
 			'httpClient' => new \Http\Adapter\Guzzle6\Client
 		]);
 

@@ -185,12 +185,12 @@ class ServiceRecordController extends Controller
 	{
 		$validated = $request->validated();
 		$free = ['Spouse/Civil Partner', 'Mother/Father'];
-		$request->session()->put('your_details', $request->all());
-//		if(in_array($request->session()->get('your_details.relationship.relationship'), $free)) {
-//			$request->session()->put('your_details.payment_required', false);
-//		} else {
-//			$request->session()->put('your_details.payment_required', true);
-//		}
+		$request->session()->put('your_details.relationship', $request->all());
+		if(in_array($request->session()->get('your_details.relationship.relationship'), $free)) {
+			$request->session()->put('your_details.payment_required', false);
+		} else {
+			$request->session()->put('your_details.payment_required', true);
+		}
 		return redirect('/check-your-answers');
 	}
 

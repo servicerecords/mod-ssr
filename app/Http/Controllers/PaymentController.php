@@ -26,10 +26,10 @@ class PaymentController extends Controller
 	{
 
 		$post_params = [
-			'amount' => env('REQUEST_PRICE'),
+			'amount' => env('REQUEST_PRICE', 3000),
 			'reference' => $request->session()->get('reference'),
 			'description' => $this->description,
-			'return_url' => env('GOV_PAY_RETURN_URL') . '/confirmation',
+			'return_url' => env('GOV_PAY_RETURN_URL', 'https://domain.com') . '/confirmation',
             'email' => $request->session()->get('your_details.email')
         ];
 
@@ -59,7 +59,7 @@ class PaymentController extends Controller
 			CURLOPT_POSTFIELDS => json_encode($post_params, JSON_UNESCAPED_SLASHES),
 			CURLOPT_HTTPHEADER => array(
 				"Accept: application/json",
-				"Authorization: Bearer " . env('GOV_PAY_API_KEY'),
+				"Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
 				"Content-Type: application/json",
 			),
 		));
