@@ -15,4 +15,4 @@ yarn-error.log
 bootstrap/cache/
 bootstrap/cache/*
 vendor/
-app/storage/framework/*
+storage/framework/*
