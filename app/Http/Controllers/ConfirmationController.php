@@ -55,7 +55,12 @@ class ConfirmationController extends Controller
 
 	private function _sendCustomerNotification($request) {
 
-	    $notifyClient = new Notify([
+//	    $notifyClient = new Notify([
+//            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
+//            'httpClient' => new \Http\Adapter\Guzzle6\Client
+//        ]);
+
+        $notifyClient = new \Alphagov\Notifications\Client([
             'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
             'httpClient' => new \Http\Adapter\Guzzle6\Client
         ]);
@@ -106,17 +111,17 @@ class ConfirmationController extends Controller
 				break;
 		}
 
-		$notifyClient = new Notify([
-			'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
-			'httpClient' => new \Http\Adapter\Guzzle6\Client
-		]);
+        $notifyClient = new \Alphagov\Notifications\Client([
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
+            'httpClient' => new \Http\Adapter\Guzzle6\Client
+        ]);
 
 		if($request->session()->get('death_in_service.death') == 'Yes') {
 			$template_shortcode = $template_shortcode . '_DIS';
 		}
 
 		if(null !== $request->session()->get('verification.death_certificate')){
-			$file_data = file_get_contents(base_path() . '/storage/app/' . $request->session()->get('verification.death_certificate'));
+			$file_data = file_get_contents($request->session()->get('verification.death_certificate'));
 			$upload = $notifyClient->prepareUpload($file_data);
 		} else {
 			$upload = '';

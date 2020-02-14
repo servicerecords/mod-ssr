@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommunicationRequest;
+use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Requests\DeathInServiceSave;
@@ -217,17 +218,26 @@ class ServiceRecordController extends Controller
 
 	public function verifySave(Request $request)
 	{
-		if($request->input('verify_method') == 'post') {
-			$verification = [
-				'uploaded' => 'No',
-				'method' => $request->input('verify_method')
-			];
-			$request->session()->put('verification', $verification);
-			return redirect('/your-details');
-		}
+//		if($request->input('verify_method') == 'post') {
+//			$verification = [
+//				'uploaded' => 'No',
+//				'method' => $request->input('verify_method')
+//			];
+//			$request->session()->put('verification', $verification);
+//			return redirect('/your-details');
+//		}
+
 		$path = $request->file('certificate')->store('verification');
-		$verification = [
-			'death_certificate' => $path,
+		$file = \Storage::disk('local')->path($path);
+		$pdf = new Fpdf();
+		$pdf->AddPage();
+		$pdf->Image($file,0,0,-300);
+		$newPath = \Storage::disk('local')->path('verification/'.$file->hashName().'.pdf');
+		$pdf->Output('F', $newPath);
+
+
+        $verification = [
+			'death_certificate' => $newPath,
 			'uploaded' => 'Yes',
 			'method' => $request->input('verify_method')
 		];

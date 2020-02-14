@@ -25,7 +25,7 @@
                                 upload a scan or photograph now</label>
                         </div>
                         <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-upload-certficate-conditional">
-                            <input name="certificate" type="file" accept="application/pdf" class="govuk-body">
+                            <input name="certificate" type="file" accept="application/pdf,image/jpg,image/jpeg,image/png" class="govuk-body">
                         </div>
                     </div>
                 </div>
