@@ -24,9 +24,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "card-validator": "^6.1.0",
         "change-case": "^3.1.0",
-        "credit-card-type": "^8.2.0",
         "govuk-frontend": "^2.13.0",
         "mailcheck": "^1.1.1",
         "mixin-deep": "^2.0.1",
