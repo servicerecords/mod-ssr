@@ -6260,11 +6260,21 @@
   border-top: 1px solid #bfc1c3;
 }
 
-#global-cookie-message {
-  background-color: #f3f2f1;
+.gem-c-cookie-banner__button-accept {
+  display: none;
 }
 
-.gem-c-cookie-banner__confirmation {
+.js-enabled .gem-c-cookie-banner__button-accept {
+  display: inline-block;
+}
+
+.gem-c-cookie-banner#global-cookie-message {
+  background-color: #f3f2f1;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.gem-c-cookie-banner .gem-c-cookie-banner__confirmation {
   display: none;
 }
 

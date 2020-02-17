@@ -228,13 +228,15 @@ class ServiceRecordController extends Controller
 //		}
 
 		$path = $request->file('certificate')->store('verification');
-		$file = \Storage::disk('local')->path($path);
-		$pdf = new Fpdf();
-		$pdf->AddPage();
-		$pdf->Image($file,0,0,-300);
-		$newPath = \Storage::disk('local')->path('verification/'.$file->hashName().'.pdf');
-		$pdf->Output('F', $newPath);
+		$newPath = \Storage::disk('local')->path($path);
 
+		if($request->file('certificate')->getMimeType() === "image") {
+            $pdf = new Fpdf();
+            $pdf->AddPage();
+            $pdf->Image($newPath, 0, 0, -300);
+            $newPath = \Storage::disk('local')->path('verification/' . $newPath->hashName() . '.pdf');
+            $pdf->Output('F', $newPath);
+        }
 
         $verification = [
 			'death_certificate' => $newPath,
