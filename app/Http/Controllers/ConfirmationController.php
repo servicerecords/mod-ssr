@@ -39,18 +39,28 @@ class ConfirmationController extends Controller
 
 	public function index(Request $request)
 	{
-		$response = $this->_sendSearchNotification($request);
-		if(is_object($response) && $response->getCode() !== 200) {
-			return view('process_error');
-		} else {
-			$dbs_office = $request->session()->get('dbs_office');
-			$reference = $request->session()->get('reference');
-			$response = $this->_sendCustomerNotification($request);
+	    if(null === $request->get('uuid')) {
+	        $success = true;
+        } else {
+            $success = $this->_checkPayment($request);
+        }
 
-			$request->session()->flush();
+	    if($success === true) {
+            $response = $this->_sendSearchNotification($request);
+            if (is_object($response) && $response->getCode() !== 200) {
+                return view('process_error');
+            } else {
+                $dbs_office = $request->session()->get('dbs_office');
+                $reference = $request->session()->get('reference');
+                $response = $this->_sendCustomerNotification($request);
 
-			return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
-		}
+                //$request->session()->flush();
+
+                return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
+            }
+        } else {
+            return view('process_error', ['message' => $success['message']]);
+        }
 	}
 
 	private function _sendCustomerNotification($request) {
@@ -165,4 +175,44 @@ class ConfirmationController extends Controller
 			return $e;
 		}
 	}
+
+	private function _checkPayment($request) {
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments/" . $request->session()->get($request->get('uuid')),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_HTTPHEADER => array(
+                "Accept: application/json",
+                "Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
+                "Content-Type: application/json",
+            ),
+        ));
+
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return $err;
+        } else {
+            $response = json_decode($response, true);
+            //dd($response);
+            if($response['state']['status'] == "success") {
+                return true;
+            } else {
+                return [
+                    'message' => $response['state']['message']
+                ];
+            }
+        }
+
+
+    }
 }

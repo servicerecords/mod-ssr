@@ -24,12 +24,13 @@ class PaymentController extends Controller
 
     public function processPayment(Request $request)
 	{
+        $unique_id = uniqid();
 
 		$post_params = [
 			'amount' => env('REQUEST_PRICE', 3000),
 			'reference' => $request->session()->get('reference'),
 			'description' => $this->description,
-			'return_url' => env('GOV_PAY_RETURN_URL', 'https://domain.com') . '/confirmation',
+			'return_url' => env('GOV_PAY_RETURN_URL', 'https://domain.com') . '/confirmation?uuid=' . $unique_id,
             'email' => $request->session()->get('your_details.email')
         ];
 
@@ -74,6 +75,7 @@ class PaymentController extends Controller
 			echo "cURL Error #:" . $err;
 		} else {
 			$response = json_decode($response, true);
+			$request->session()->put($unique_id, $response['payment_id']);
 			return redirect($response['_links']['next_url']['href']);
 		}
 	}
