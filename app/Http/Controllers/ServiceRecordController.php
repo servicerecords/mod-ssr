@@ -227,7 +227,7 @@ class ServiceRecordController extends Controller
 //			return redirect('/your-details');
 //		}
 
-		$path = $request->file('certificate')->store('verification');
+		$path = $request->file('certificate')->move('verification');
 		$newPath = \Storage::disk('local')->path($path);
 
 		if($request->file('certificate')->getMimeType() === "image") {
