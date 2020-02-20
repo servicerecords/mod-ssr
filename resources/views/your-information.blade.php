@@ -73,6 +73,19 @@
                 </div>
 
                 <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="telephone">
+                        Telephone Number
+                    </label>
+                    <span id="telephone-number-hint" class="govuk-hint">
+                        For international numbers include the country code, this field is optional for UK addresses.
+                    </span>
+                    @if($errors->first('telephone'))
+                        <span id="telephone-error" class="govuk-error-message">Enter your telephone number</span>
+                    @endif
+                    <input value="{{ isset($your_details['telephone'] ) ? $your_details['telephone'] : old('telephone') }}" class="govuk-input govuk-input--width-10 {{"" !== $errors->first('telephone')}} ? 'govuk-input--error' : ''}}" id="telephone" name="telephone" type="text" aria-required="true" aria-describedby="{{null !== $errors->first('telephone') ? 'telephone-error' : ''}}">
+                </div>
+
+                <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
 
                         <legend class="govuk-fieldset__legend govuk-fieldset__heading">
