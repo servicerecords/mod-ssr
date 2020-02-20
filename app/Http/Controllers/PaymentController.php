@@ -27,7 +27,7 @@ class PaymentController extends Controller
         $unique_id = uniqid();
 
 		$post_params = [
-			'amount' => env('REQUEST_PRICE', 3000),
+			'amount' => 3000,
 			'reference' => $request->session()->get('reference'),
 			'description' => $this->description,
 			'return_url' => env('GOV_PAY_RETURN_URL', 'https://domain.com') . '/confirmation?uuid=' . $unique_id,
