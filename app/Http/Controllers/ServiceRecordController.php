@@ -14,6 +14,7 @@ use App\Http\Requests\ServiceDetailsSave;
 use App\Http\Requests\YourInformationSave;
 use App\Http\Requests\RelationRequest;
 use App\Http\Requests\RelationshipRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceRecordController extends Controller
 {
@@ -218,23 +219,14 @@ class ServiceRecordController extends Controller
 
 	public function verifySave(Request $request)
 	{
-//		if($request->input('verify_method') == 'post') {
-//			$verification = [
-//				'uploaded' => 'No',
-//				'method' => $request->input('verify_method')
-//			];
-//			$request->session()->put('verification', $verification);
-//			return redirect('/your-details');
-//		}
-
-		$path = $request->file('certificate')->move('verification');
+        $path = Storage::disk('local')->put('verification', $request->file('certificate'));
+		//$path = $request->file('certificate')->putFileAs('verification');
 		$newPath = \Storage::disk('local')->path($path);
-
-		if($request->file('certificate')->getMimeType() === "image") {
+        if(strpos($request->file('certificate')->getMimeType(), "image") !== false) {
             $pdf = new Fpdf();
             $pdf->AddPage();
             $pdf->Image($newPath, 0, 0, -300);
-            $newPath = \Storage::disk('local')->path('verification/' . $newPath->hashName() . '.pdf');
+            $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
             $pdf->Output('F', $newPath);
         }
 
