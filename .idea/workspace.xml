@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e26f1dd3-7ee2-4fc3-8573-16101ecfb717" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceRecordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,11 +339,11 @@
     <state x="-1342" y="-120" width="763" height="735" key="find.popup/0.23.1680.1027/-1920.-281.1920.1057@-1920.-281.1920.1057" timestamp="1580471158153" />
     <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027/-1920.-281.1920.1057@0.23.1680.1027" timestamp="1579679514606" />
     <state x="506" y="179" width="667" height="714" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1581413876360" />
-    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup" timestamp="1582236692410">
+    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup" timestamp="1582239143530">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="-1295" y="-46" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027/-1920.-281.1920.1057@-1920.-281.1920.1057" timestamp="1578404738356" />
     <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027/-1920.-281.1920.1057@0.23.1680.1027" timestamp="1579679565139" />
-    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1582236692410" />
+    <state x="547" y="251" width="670" height="657" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1582239143530" />
   </component>
 </project>
