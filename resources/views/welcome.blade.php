@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <p class="govuk-body-l">Use this service to obtain information relating to a serviceman/servicewoman who has served
+    <p class="govuk-body-l">Use this service to obtain information relating to a serviceman/woman who has served
     in the Royal Navy, Royal Marines, Army, Royal Air Force or Home Guard.</p>
 
     <a href="/service" role="button" draggable="false" class="govuk-button govuk-button--start">
@@ -39,7 +39,7 @@
             <div class="govuk-inset-text">You will need a debit or credit card to use this service.</div>
 
             <h3 class="govuk-heading-s">Power of Attorney</h3>
-            <p class="govuk-body">If you hold POA for the immediate next of kin, please apply by post.</p>
+            <p class="govuk-body">If you hold POA for the immediate next of kin, please see other ways to apply.</p>
 
         </section>
         <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="other-ways" role="tabpanel" aria-labelledby="tab_other-ways">
