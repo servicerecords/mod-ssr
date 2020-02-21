@@ -100,7 +100,8 @@ class YourDetailsTest extends TestCase
 			'address_town' => 'Town/City',
             'email' => 'email@domain.com',
 			'address_postcode' => 'Postcode',
-            'use_billing' => 'Yes'
+            'use_billing' => 'Yes',
+            'country' => 'GB'
 		];
 
 		$response = $this->post('/your-details', $stub);
