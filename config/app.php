@@ -177,7 +177,6 @@ return [
 
         Monarobase\CountryList\CountryListServiceProvider::class,
 
-        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
