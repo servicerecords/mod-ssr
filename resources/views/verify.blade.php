@@ -7,7 +7,7 @@
 
     <form action="/verify" method="post" class="govuk-form" enctype="multipart/form-data">
         <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
+            <fieldset class="govuk-fieldset" aria-describedby="upload-certficate-conditional-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__heading">
                     <h2 class="govuk-heading govuk-heading-m">
                         Death certificate required
@@ -17,17 +17,31 @@
                         death certificate to complete your service record request.
                     </p>
                 </legend>
+                @include('partials.form-errors')
                 <div class="govuk-form-group">
-                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="upload-certficate-conditional" name="verify_method" type="radio" value="upload" aria-controls="conditional-upload-certficate-conditional" aria-expanded="false" tabindex="2">
-                            <label class="govuk-label govuk-radios__label govuk-label--s" for="upload-certficate-conditional">I'll
-                                upload a scan or photograph now</label>
-                        </div>
-                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-upload-certficate-conditional">
-                            <input name="certificate" type="file" accept="application/pdf,image/jpg,image/jpeg,image/png" class="govuk-body">
-                        </div>
-                    </div>
+                        <label class="govuk-label govuk-label--s">
+                            Upload your death certificate
+                        </label>
+                    <span id="upload-certficate-conditional-hint" class="govuk-hint">
+                        We accept, jpg, png &amp; pdf file formats. The file being uploaded must be under 2mb (megabytes) in size.
+                    </span>
+                    @if($errors->has('certificate'))
+                        <span id="certificate-error" class="govuk-error-message">{{$errors->first('certificate')}}</span>
+                    @endif
+                    <input name="certificate" type="file" accept="application/pdf,image/jpg,image/jpeg,image/png" class="govuk-body {{($errors->has('certificate') ? 'govuk-input--error' : '')}}">
+                    {{--                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">--}}
+{{--                        <div class="govuk-radios__item">--}}
+{{--                            <input class="govuk-radios__input" id="upload-certficate-conditional" name="verify_method" type="radio" value="upload" aria-controls="conditional-upload-certficate-conditional" aria-expanded="false" tabindex="2" checked="checked">--}}
+{{--                            <label class="govuk-label govuk-radios__label govuk-label--s" for="upload-certficate-conditional">I'll--}}
+{{--                                upload a scan or photograph now</label>--}}
+{{--                            <span id="upload-certficate-conditional-hint" class="govuk-hint">--}}
+{{--                                We accept, jpg, png &amp; pdf file formats. The file being uploaded must be under 2mb (megabytes) in size.--}}
+{{--                            </span>--}}
+{{--                        </div>--}}
+{{--                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-upload-certficate-conditional">--}}
+{{--                            <input name="certificate" type="file" accept="application/pdf,image/jpg,image/jpeg,image/png" class="govuk-body">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
 
                 <div class="govuk-form-group">

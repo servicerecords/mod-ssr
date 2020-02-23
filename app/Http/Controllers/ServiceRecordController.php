@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommunicationRequest;
+use App\Http\Requests\VerifyRequestSave;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -217,8 +218,11 @@ class ServiceRecordController extends Controller
 		return view('verify');
 	}
 
-	public function verifySave(Request $request)
+	public function verifySave(VerifyRequestSave $request)
 	{
+
+	    $validation = $request->validated();
+
         $path = Storage::disk('local')->put('verification', $request->file('certificate'));
 		//$path = $request->file('certificate')->putFileAs('verification');
 		$newPath = \Storage::disk('local')->path($path);
