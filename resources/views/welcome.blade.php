@@ -28,8 +28,7 @@
             </li>
         </ul>
         <section class="govuk-tabs__panel" id="information" role="tabpanel" aria-labelledby="tab_information">
-            <h2 class="govuk-heading-l">More information</h2>
-            <h3 class="govuk-heading-s">Death Certificates</h3>
+            <h2 class="govuk-heading-s">Death Certificates</h2>
             <p class="govuk-body">If the person whose record you are applying for was born less than 116 years ago, you will need to provide a copy of their death certificate.
                 If the person was killed in service a death certificate is not required regardless of date of birth.
                 If you do not have a copy of the death certificate, please get one before starting this process.</p>

@@ -12,7 +12,7 @@ deploy:
     space: development
     on:
       repo: servicerecords/mod-ssr
-      branch: master
+      branch: development
   - provider: cloudfoundry
     api: https://api.cloud.service.gov.uk
     username: simon@87development.co.uk
@@ -23,7 +23,7 @@ deploy:
     manifest: manifest-production.yml
     on:
       repo: servicerecords/mod-ssr
-      branch: production
+      branch: master
 before_script:
 - cp .env.travis .env
 - composer self-update

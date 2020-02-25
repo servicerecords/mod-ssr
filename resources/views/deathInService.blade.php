@@ -7,7 +7,7 @@
 
     <form action="/service/death-in-service" method="post" class="govuk-form" id="service_dis" novalidate="novalidate">
         <p class="govuk-body">
-            It's important that we know this, as we may neeed to ask you for a death
+            It's important that we know this, as we may need to ask you for a death
             certificate.
         </p>
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
