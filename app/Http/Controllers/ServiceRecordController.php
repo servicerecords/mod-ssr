@@ -88,8 +88,7 @@ class ServiceRecordController extends Controller
 
 	public function serviceDetails(Request $request)
 	{
-		//die(print_r($request->session()));
-		//$referer = $request->server('HTTP_REFERER');
+
 		switch($request->session()->get('service'))
 		{
 			case "Royal Navy / Royal Marines":

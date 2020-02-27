@@ -18,7 +18,8 @@
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "monarobase/country-list": "^2.1",
-        "php-http/guzzle6-adapter": "^2.0"
+        "php-http/guzzle6-adapter": "^2.0",
+        "sentry/sentry-laravel": "1.7.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
