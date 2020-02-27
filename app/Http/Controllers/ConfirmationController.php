@@ -39,8 +39,10 @@ class ConfirmationController extends Controller
 
 	public function index(Request $request)
 	{
+        $request->session()->set('payment_id', $request->get('uuid'));
 	    if(null === $request->get('uuid')) {
 	        $success = true;
+
         } else {
             $success = $this->_checkPayment($request);
         }
@@ -54,7 +56,7 @@ class ConfirmationController extends Controller
                 $reference = $request->session()->get('reference');
                 $response = $this->_sendCustomerNotification($request);
 
-                //$request->session()->flush();
+                $request->session()->flush();
 
                 return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
             }

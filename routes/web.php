@@ -49,9 +49,3 @@ Route::get('/pay', 'PaymentController@processPayment');
 
 Route::get('/confirmation', 'ConfirmationController@index');
 
-
-
-// SENTRY TEST
-Route::get('/debug-sentry', function () {
-    throw new Exception('My first Sentry error!');
-});
