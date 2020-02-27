@@ -18,6 +18,6 @@
     </p>
 
     <p class="govuk-body">
-        <a href="/feeback" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+        <a href="/feedback" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
     </p>
 @endsection
