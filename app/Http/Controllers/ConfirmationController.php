@@ -59,12 +59,17 @@ class ConfirmationController extends Controller
                 return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
             }
         } else {
-            return view('process_error', ['message' => $success['message']]);
+	        if(!isset($success['message'])) {
+	            $message = "";
+            } else {
+	            $message = $success['message'];
+            }
+            return view('process_error', ['message' => $message]);
         }
 	}
 
 	private function _sendCustomerNotification($request) {
-
+        \Log::debug('...START _sendCustomerNotification...');
 //	    $notifyClient = new Notify([
 //            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
 //            'httpClient' => new \Http\Adapter\Guzzle6\Client
@@ -82,8 +87,11 @@ class ConfirmationController extends Controller
                 [
                     'reference' => $request->session()->get('reference'),
                 ]);
+            \Log::debug('...SUCCESS _sendCustomerNotification...');
             return $response;
         } catch(\Exception $e) {
+            \Log::debug('.ERROR _sendCustomerNotification');
+            \Log::debug($e);
             return $e;
         }
 
@@ -92,6 +100,7 @@ class ConfirmationController extends Controller
 
 	private function _sendSearchNotification($request)
 	{
+        \Log::debug('...STARTING _sendSearchNotification...');
 		//die(print_r($service));
 		switch($request->session()->get('service')) {
 			case 'Royal Navy / Royal Marines':
@@ -170,14 +179,18 @@ class ConfirmationController extends Controller
 				],
 				$request->session()->get('reference')
 			);
+			\Log::debug('...END _sendSearchNotification...');
 			return $response;
 		} catch (NotifyException $e){
+            \Log::debug('ERROR _sendSearchNotification....');
+            \Log::debug($e);
+            return $response;
 			return $e;
 		}
 	}
 
 	private function _checkPayment($request) {
-
+        \Log::debug('...START _checkPayment...');
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments/" . $request->session()->get($request->get('uuid')),
@@ -204,9 +217,12 @@ class ConfirmationController extends Controller
         } else {
             $response = json_decode($response, true);
             //dd($response);
-            if($response['state']['status'] == "success") {
+            if(isset($response['state']) && $response['state']['status'] == "success") {
+                \Log::debug('SUCCESS - _checkPayment');
                 return true;
             } else {
+                \Log::debug('ERROR - _checkPayment');
+                \Log::debug($response);
                 return [
                     'message' => $response['state']['message']
                 ];
