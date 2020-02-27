@@ -1,6 +1,6 @@
 language: php
 php:
-- 7.3.12
+  - 7.3.12
 deploy:
   - provider: cloudfoundry
     api: https://api.cloud.service.gov.uk
@@ -48,6 +48,6 @@ script:
 notifications:
   email:
     recipients:
-    - simon@87development.co.uk
+      - simon@87development.co.uk
     on_success: always
     on_failure: always
