@@ -223,6 +223,7 @@ class ServiceRecordController extends Controller
 	    $validation = $request->validated();
 
         $path = Storage::disk('local')->put('verification', $request->file('certificate'));
+        //dd($path);
 		//$path = $request->file('certificate')->putFileAs('verification');
 		$newPath = \Storage::disk('local')->path($path);
         if(strpos($request->file('certificate')->getMimeType(), "image") !== false) {

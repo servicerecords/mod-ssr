@@ -8,7 +8,7 @@
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">
-                    The following details are required for us to complete a record search. 
+                    The following details are required for us to complete a record search.
                 </legend>
 
                 @include('partials.form-errors')
@@ -56,7 +56,7 @@
                 <div class="govuk-form-group">
                     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                     <button type="submit" class="govuk-button">
-                        Save and continue
+                        Continue
                     </button>
                 </div>
             </fieldset>

@@ -38,7 +38,7 @@
         <div class="govuk-form-group">
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
             <button type="submit" class="govuk-button">
-                Save and continue
+                Continue
             </button>
         </div>
     </form>
