@@ -52,7 +52,7 @@
         </dd>
         <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/essential-information">
-                Change<span class="govuk-visually-hidden"> firstnames</span>
+                Change<span class="govuk-visually-hidden"> first names</span>
             </a>
         </dd>
     </div>
@@ -65,7 +65,7 @@
         </dd>
         <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/essential-information">
-                Change<span class="govuk-visually-hidden"> lastname</span>
+                Change<span class="govuk-visually-hidden"> last name</span>
             </a>
         </dd>
     </div>
