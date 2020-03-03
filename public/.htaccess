@@ -5,6 +5,8 @@
 
     RewriteEngine On
 
+     RewriteRule ^(.*)$ public/$1
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -19,3 +21,10 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<IfModule mod_headers.c>
+	Header always append X-Frame-Options SAMEORIGIN
+	Header set X-XSS-Protection "1; mode=block"
+	Header set X-Content-Type-Options nosniff
+</IfModule>
+

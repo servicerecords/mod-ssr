@@ -39,7 +39,7 @@ class ConfirmationController extends Controller
 
 	public function index(Request $request)
 	{
-        $request->session()->set('payment_id', $request->get('uuid'));
+        $request->session()->put('payment_id', $request->get('uuid'));
 	    if(null === $request->get('uuid')) {
 	        $success = true;
 

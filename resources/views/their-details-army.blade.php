@@ -200,7 +200,7 @@
                     </textarea>
                 </div>
         <div class="govuk-form-group">
-            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
+            @csrf
             <button type="submit" class="govuk-button">Continue</button>
         </div>
     </form>
