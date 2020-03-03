@@ -5,7 +5,7 @@
 
     RewriteEngine On
 
-     RewriteRule ^(.*)$ public/$1
+     #RewriteRule ^(.*)$ public/$1
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -27,4 +27,7 @@
 	Header set X-XSS-Protection "1; mode=block"
 	Header set X-Content-Type-Options nosniff
 </IfModule>
+
+AddType text/css .css
+AddType application/javascript .js
 

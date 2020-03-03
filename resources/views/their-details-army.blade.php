@@ -43,42 +43,48 @@
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                     <h2 class="govuk-fieldset__heading">Why did they leave the Army? (optional)</h2>
                 </legend>
-                <div class="govuk-checkboxes" data-module="checkboxes">
-                    <div class="govuk-checkboxes__item">
-                        <input {{ (old('leave_army_reason') == 'Normal demobilisation after 1939/1945 War' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Normal demobilisation after 1939/1945 War')) ? 'checked' : '' }} class="govuk-checkboxes__input" type="checkbox" id="leave_army_reason-1" name="leave_army_reason[]" value="Normal demobilisation after 1939/1945 War">
-                        <label class="govuk-label govuk-checkboxes__label" for="leave_army_reason-1">Normal
+
+
+                <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                    <div class="govuk-radios__item">
+                        <input {{ (old('leave_army_reason') == 'Normal demobilisation after 1939/1945 War' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Normal demobilisation after 1939/1945 War')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-1" name="leave_army_reason" value="Normal demobilisation after 1939/1945 War">
+                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-1">Normal
                             demobilisation after 1939/1945 War</label>
                     </div>
-                    <div class="govuk-checkboxes__item">
-                        <input {{ (old('leave_army_reason') == "Completion of 'peace-time' Regular engagement" || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == "Completion of 'peace-time Regular engagement")) ? 'checked' : '' }} class="govuk-checkboxes__input" type="checkbox" id="leave_army_reason-2" name="leave_army_reason[]" value="Completion of 'peace-time' Regular engagement">
-                        <label class="govuk-label govuk-checkboxes__label" for="leave_army_reason-2">Completion of
+                    <div class="govuk-radios__item">
+                        <input {{ (old('leave_army_reason') == "Completion of 'peace-time' Regular engagement" || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == "Completion of 'peace-time Regular engagement")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-2" name="leave_army_reason" value="Completion of 'peace-time' Regular engagement">
+                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-2">Completion of
                             'peace-time' Regular engagement</label>
                     </div>
-                    <div class="govuk-checkboxes__item">
-                        <input {{ (old('leave_army_reason') == 'Medical discharge' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Medical discharge')) ? 'checked' : '' }} class="govuk-checkboxes__input" type="checkbox" id="leave_army_reason-3" name="leave_army_reason[]" value="Medical discharge">
-                        <label class="govuk-label govuk-checkboxes__label" for="leave_army_reason-3">Medical
+                    <div class="govuk-radios__item">
+                        <input {{ (old('leave_army_reason') == 'Medical discharge' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Medical discharge')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-3" name="leave_army_reason" value="Medical discharge">
+                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-3">Medical
                             discharge</label>
                     </div>
-                    <div class="govuk-checkboxes__item">
-                        <input {{ (old('leave_army_reason') == 'End of whole-time National Service' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'End of whole-time National Service')) ? 'checked' : '' }} class="govuk-checkboxes__input" type="checkbox" id="leave_army_reason-4" name="leave_army_reason[]" value="End of whole-time National Service">
-                        <label class="govuk-label govuk-checkboxes__label" for="leave_army_reason-4">End
+                    <div class="govuk-radios__item">
+                        <input {{ (old('leave_army_reason') == 'End of whole-time National Service' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'End of whole-time National Service')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-4" name="leave_army_reason" value="End of whole-time National Service">
+                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-4">End
                             of
                             whole-time National Service</label>
                     </div>
-                    <div class="govuk-checkboxes__item">
-                        <input {{ (old('leave_army_reason') == 'Royal Navy / Royal Marines' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Royal Navy / Royal Marines')) ? 'checked' : '' }} class="govuk-checkboxes__input" id="leave-conditional-1" name="leave_army_reason" type="checkbox" value="email" aria-controls="conditional-leave-conditional-1" aria-expanded="false">
-                        <label class="govuk-label govuk-checkboxes__label" for="leave-conditional-1">
+                    <div class="govuk-radios__item">
+                        <input {{ (old('leave_army_reason') == 'Other' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Other')) ? 'checked' : '' }} class="govuk-radios__input" id="leave-conditional-1" name="leave_army_reason" type="radio" value="other" aria-controls="conditional-leave-conditional-1" aria-expanded="false">
+                        <label class="govuk-label govuk-radios__label" for="leave-conditional-1">
                             Other
-                        </label> </div>
-                    <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-leave-conditional-1">
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-leave-conditional-1">
                         <div class="govuk-form-group">
-                            <label class="govuk-label" for="leave_army_reason_otherr">
+                            <label class="govuk-label" for="leave_army_reason_other">
                                 Please specify
                             </label>
                             <input value="{{ isset($service_details['leave_army_reason_other'] ) ? $service_details['leave_army_reason_other'] : old('leave_army_reason_other') }}" class="govuk-input govuk-input--width-20" id="leave_army_reason_other" name="leave_army_reason_other" type="text" spellcheck="false">
                         </div>
                     </div>
                 </div>
+
+
+
             </fieldset>
         </div>
         <div class="govuk-form-group">
@@ -89,6 +95,7 @@
                         of Regular Army Service? (optional)</h2>
                 </legend>
             </fieldset>
+
             <div class="govuk-checkboxes" data-module="checkboxes">
                 <div class="govuk-checkboxes__item">
                     <input {{ (old('completion_info') == 'Territorial Army (TA)' || (isset($service_details['completion_info']) && $service_details['completion_info'] == 'Territorial Army (TA)')) ? 'checked' : '' }} class="govuk-checkboxes__input" type="checkbox" id="ta_info-conditional" name="completion_info[]" value="Territorial Army (TA)" aria-controls="conditional-ta_info-conditional" aria-expanded="false">
@@ -117,6 +124,8 @@
                         <input {{ (old('completion_info') == 'Territorial Army (TA)' || (isset($service_details['completion_info']) && $service_details['completion_info'] == 'Territorial Army (TA)')) ? 'checked' : '' }} class="govuk-input govuk-input--width-20" id="ta_army_dates" name="ta_army_dates" type="text" spellcheck="false">
                     </div>
                 </div>
+
+
                 <div class="govuk-checkboxes__item">
                     <input {{ (old('completion_info') == 'Army Emergency Reserve
                             (AER)' || (isset($service_details['completion_info']) && $service_details['completion_info'] == 'Army Emergency Reserve
@@ -169,9 +178,7 @@
                             <label class="govuk-label" for="disability_reason">
                                 Please give details
                             </label>
-                            <textarea class="govuk-textarea" id="" name="disability_reason" type="text" rows="5">
-                                {{ isset($service_details['disability_reason'] ) ? $service_details['disability_reason'] : old('disability_reason') }}
-                            </textarea>
+                            <textarea class="govuk-textarea" id="" name="disability_reason" type="text" rows="5">{{ isset($service_details['disability_reason'] ) ? $service_details['disability_reason'] : old('disability_reason') }}</textarea>
                         </div>
                     </div>
                     <div class="govuk-radios__item">
@@ -195,10 +202,8 @@
               service record. e.g. Ranks, Grades, Regiments, National Insurance
               Number etc
             </span>
-                    <textarea class="govuk-textarea" id="further_info" name="further_info" rows="5">
-                        {{ isset($service_details['further_info'] ) ? $service_details['further_info'] : old('further_info') }}
-                    </textarea>
-                </div>
+            <textarea class="govuk-textarea" id="further_info" name="further_info" rows="5">{{ isset($service_details['further_info'] ) ? trim($service_details['further_info']) : trim(old('further_info')) }}</textarea>
+        </div>
         <div class="govuk-form-group">
             @csrf
             <button type="submit" class="govuk-button">Continue</button>

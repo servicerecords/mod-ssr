@@ -91,9 +91,7 @@
               service record. e.g. Ranks, Grades, Regiments, National Insurance
               Number etc
             </span>
-                    <textarea class="govuk-textarea" id="discharge_address" name="discharge_address" rows="5">
-                        {{ isset($service_details['discharge_address'] ) ? $service_details['discharge_address'] : old('discharge_address') }}
-                    </textarea>
+                    <textarea class="govuk-textarea" id="discharge_address" name="discharge_address" rows="5">{{ isset($service_details['discharge_address'] ) ? $service_details['discharge_address'] : old('discharge_address') }}</textarea>
                 </div>
             </fieldset>
         </div>
