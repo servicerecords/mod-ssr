@@ -213,7 +213,7 @@
                             </dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/service-details">
-                                    Change<
+                                    Change
                                 </a>
                             </dd>
                         </div>
