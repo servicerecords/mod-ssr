@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Str;
 
+$vcapServices = json_decode(getenv('VCAP_SERVICES'), true);
+$mysqlCreds = $vcapServices['mysql'][0]['credentials'];
+
 return [
 
     /*
@@ -45,12 +48,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'url' => env('DATABASE_URL', $mysqlCreds['uri']),
+            'host' => env('DB_HOST', $mysqlCreds['host']),
+            'port' => env('DB_PORT', $mysqlCreds['port']),
+            'database' => env('DB_DATABASE', $mysqlCreds['name']),
+            'username' => env('DB_USERNAME', $mysqlCreds['username']),
+            'password' => env('DB_PASSWORD', $mysqlCreds['password']),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

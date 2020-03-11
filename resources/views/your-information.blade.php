@@ -65,7 +65,7 @@
                     <label class="govuk-label govuk-label--s" for="address-postcode">
                         Country
                     </label>
-                    <select name="country" class="govuk-select">
+                    <select name="country" class="govuk-select" id="location-autocomplete" autocomplete="off">
                         @foreach($countries as $key => $value)
                             <option value="{{$key}}" {{ ($key === "GB") ? 'selected' : '' }}>{{$value}}</option>
                         @endforeach

@@ -4,6 +4,8 @@
 
 // used by the cookie banner component
 
+import autocomplete from 'govuk-country-and-territory-autocomplete/dist/location-autocomplete.min';
+
 (function (root) {
     'use strict'
     window.GOVUK = window.GOVUK || {}

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client as GuzzleClient;
 use Alphagov\Notifications\Client as Notify;
 use Illuminate\Support\Facades\Storage;
+use App\Payment;
 
 class ConfirmationController extends Controller
 {
@@ -39,8 +40,9 @@ class ConfirmationController extends Controller
 
     public function index(Request $request)
     {
+        //$payment = Payment::where('uuid', $request->query('uuid'))->first();
         if(null === $request->get('uuid')) {
-            $success = true;
+            $success = false;
         } else {
             $success = $this->_checkPayment($request);
         }
@@ -54,7 +56,9 @@ class ConfirmationController extends Controller
                 $reference = $request->session()->get('reference');
                 $response = $this->_sendCustomerNotification($request);
 
-                //$request->session()->flush();
+                //$payment->delete();
+
+                $request->session()->flush();
 
                 return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
             }
@@ -178,9 +182,11 @@ class ConfirmationController extends Controller
 
     private function _checkPayment($request) {
 
+        //dd($payment->payment_id);
+
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments/" . $request->session()->get($request->get('uuid')),
+            CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments/".$request->session()->get($request->query('uuid')),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -195,6 +201,8 @@ class ConfirmationController extends Controller
 
 
         $response = curl_exec($curl);
+
+
         $err = curl_error($curl);
 
         curl_close($curl);
@@ -203,7 +211,11 @@ class ConfirmationController extends Controller
             return $err;
         } else {
             $response = json_decode($response, true);
-            //dd($response);
+            //dd(env('APP_URL').'/confirmation?uuid='.$request->query('uuid'));
+//            $key = array_search(env('APP_URL').'/confirmation?uuid='.$request->query('uuid'), array_column($response['results'], 'return_url'));
+//            if($key !== false) {
+//                $response = $response['results'][$key];
+//            }
             if($response['state']['status'] == "success") {
                 return true;
             } else {

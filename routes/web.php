@@ -54,6 +54,8 @@ Route::get('/feedback', 'FeedbackController@index');
 Route::get('/feedback/success', 'FeedbackController@success');
 Route::post('/feedback', 'FeedbackController@save');
 
+Route::get('/help/accessibility-statement', 'HelpController@accessibility');
+
 #Route::get('/pay', 'PaymentController@payment');
 Route::get('/pay', 'PaymentController@processPayment');
 

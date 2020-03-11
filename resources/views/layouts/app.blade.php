@@ -19,6 +19,7 @@
 
     <!--[if lte IE 8]><link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
     <!--[if gt IE 8]><!--><link href="/css/app.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+    <link rel="stylesheet" href="/assets/location-autocomplete.min.css" />
 
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 </head>
@@ -86,22 +87,16 @@
                 <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
 
 
-                    {{--<h2 class="govuk-visually-hidden">Support links</h2>--}}
-                    {{--<ul class="govuk-footer__inline-list">--}}
+                    <h2 class="govuk-visually-hidden">Support links</h2>
+                    <ul class="govuk-footer__inline-list">
 
-                        {{--<li class="govuk-footer__inline-list-item">--}}
-                            {{--<a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">--}}
-                                {{--GOV.UK Prototype Kit v8.11.0--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="/help/accessibility-statement">
+                                Accessibilty statement
+                            </a>
+                        </li>
 
-                        {{--<li class="govuk-footer__inline-list-item">--}}
-                            {{--<a class="govuk-footer__link" href="/prototype-admin/clear-data">--}}
-                                {{--Clear data--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-
-                    {{--</ul>--}}
+                    </ul>
 
 
 
@@ -122,9 +117,16 @@
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <script src="/js/all.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/govuk-country-and-territory-autocomplete/dist/location-autocomplete.min.js"></script>
     <script>
         window.GOVUKFrontend.initAll();
         window.GOVUKFrontend.CookieBanner.init();
+    </script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById('location-autocomplete'),
+            url: '/assets/location-autocomplete-graph.json'
+        })
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107006918-2"></script>
@@ -132,7 +134,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-26179049-1');
     </script>
 </body>

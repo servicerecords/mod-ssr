@@ -142,6 +142,10 @@ class ServiceRecordController extends Controller
 	public function yourDetails(Request $request)
 	{
 		$your_details = $request->session()->get('your_details');
+		//dd(base_path());
+//        $string = file_get_contents(base_path().'/node_modules/govuk-country-and-territory-autocomplete/dist/location-autocomplete-canonical-list.json');
+//        $json_file = json_decode($string, true);
+        //dd($json_file);
 		$countries = \Countries::getList('en', 'json');
 		//$referer = $request->server('HTTP_REFERER');
 		return view('your-information', ['your_details' => $your_details, 'countries' => json_decode($countries, true)]);
