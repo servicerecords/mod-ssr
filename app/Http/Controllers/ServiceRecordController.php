@@ -19,17 +19,30 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceRecordController extends Controller
 {
+    /**
+     * Show the users our welsome page.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
 	{
 		return view('welcome');
 	}
 
+    /**
+     * Show the user the first question page of our application.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 	public function recordRequest(Request $request)
 	{
 		//$referrer = $request->server('HTTP_REFERER');
 		return view('request');
 	}
 
+    /**
+     * @param RecordRequestSave $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
 	public function recordRequestSave(RecordRequestSave $request)
 	{
 		//We can just redirect for now as we don't need to save anything
