@@ -13,7 +13,7 @@
                         Death certificate required
                     </h2>
                     <p>
-                        As the serviceman/woman did not die in service, we will require a
+                        As the serviceperson did not die in service, we will require a
                         death certificate to complete your service record request.
                     </p>
                 </legend>

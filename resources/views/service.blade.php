@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 
-@section('title', 'Details of the serviceman/woman')
+@section('title', 'Details of the serviceperson')
 
 @section('content')
     <form action="/service" method="post" class="govuk-form" id="service" novalidate="novalidate">
         <p class="govuk-body">
-            Please provide details about the serviceman/woman or member of the Home
+            Please provide details about the serviceperson or member of the Home
             Guard whose records you are requesting.
         </p>
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">

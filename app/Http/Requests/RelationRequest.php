@@ -31,7 +31,7 @@ class RelationRequest extends FormRequest
     public function messages()
 	{
 		return [
-			'related.required' => 'Tell us if you are related to the serviceman/woman'
+			'related.required' => 'Tell us if you are related to the serviceperson'
 		];
 	}
 }

@@ -61,7 +61,7 @@
                                     <div class="govuk-checkboxes__item">
                                         <input {{ (old('parent') == "Yes" || (isset($your_details_relationship['parent']) && $your_details_relationship['parent'] == "Yes")) ? 'checked' : '' }} class="govuk-checkboxes__input" id="no_living_spouse" name="parent" type="checkbox" value="Yes">
                                         <label class="govuk-label govuk-checkboxes__label" for="no_living_spouse">
-                                            Confirm here if the serviceman/woman did NOT have a living Spouse/Civil
+                                            Confirm here if the serviceperson did NOT have a living Spouse/Civil
                                             Partner at the time of death
                                         </label>
                                     </div>
