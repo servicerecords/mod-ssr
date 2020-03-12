@@ -1,6 +1,7 @@
 $govuk-assets-path: 'assets/';
 
-@import "node_modules/govuk-frontend/all";
+@import "~govuk-frontend/all";
+@import "~govuk-country-and-territory-autocomplete/dist/location-autocomplete.min.css";
 
 .pay-\!-border-top {
     border-top: 1px solid #bfc1c3;

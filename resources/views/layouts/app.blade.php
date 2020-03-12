@@ -122,9 +122,16 @@
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <script src="/js/all.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/location-autocomplete.min.js"></script>
     <script>
         window.GOVUKFrontend.initAll();
         window.GOVUKFrontend.CookieBanner.init();
+    </script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById('location-autocomplete'),
+            url: '/assets/location-autocomplete-graph.json'
+        })
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107006918-2"></script>
