@@ -18,6 +18,12 @@ class ConfirmationController extends Controller
     protected $unknown_email;
     protected $templates;
 
+    /**
+     * ConfirmationController constructor.
+     * Some setup up here, we get the DBS office email addresses or default them to a sandobox email
+     * We create an array of key value pairs or template types and their IDs, these IDs can be found within the Notify dashboard.
+     * @todo change the default email from the developers.
+     */
     public function __construct()
     {
         $this->land_email = env('LAND_EMAIL', 'ainley87simon+land@gmail.com');
@@ -37,6 +43,13 @@ class ConfirmationController extends Controller
         ];
     }
 
+    /**
+     * Determine if the payment was sucessful or not and show the correct view based on that value.
+     * We use a parameter in the URL called uuid to get the payment ID from the session which is stored again this UUID.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         if(null === $request->get('uuid')) {
@@ -45,16 +58,22 @@ class ConfirmationController extends Controller
             $success = $this->_checkPayment($request);
         }
 
+        //THe payment was sucessful so we can go through the notification process.
         if($success === true) {
             $response = $this->_sendSearchNotification($request);
             if (is_object($response) && $response->getCode() !== 200) {
+                //Something has gone wrong with notify throw an error
+                //@todo if a notification doesn't get sent but we have taken payment what can we do here, refund them?
+
                 return view('process_error');
             } else {
+                //Everthing is OK send the customer notification.
                 $dbs_office = $request->session()->get('dbs_office');
                 $reference = $request->session()->get('reference');
                 $response = $this->_sendCustomerNotification($request);
+                //@todo what if an email doesn't get sent here, we don't even do a check here?
 
-                //$request->session()->flush();
+                $request->session()->flush(); //Flush the session, we are don't want to store data when we don't want too.
 
                 return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
             }
@@ -63,15 +82,17 @@ class ConfirmationController extends Controller
         }
     }
 
+    /**
+     * SEnd the customer notification, we use the customer notification template, and pass the reference in as the only
+     * data.
+     *
+     * @param $request
+     * @return array|\Exception
+     */
     private function _sendCustomerNotification($request) {
 
-//	    $notifyClient = new Notify([
-//            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
-//            'httpClient' => new \Http\Adapter\Guzzle6\Client
-//        ]);
-
         $notifyClient = new \Alphagov\Notifications\Client([
-            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'), //If no env var revert to using sandbox api keys.
             'httpClient' => new \Http\Adapter\Guzzle6\Client
         ]);
 
@@ -90,6 +111,11 @@ class ConfirmationController extends Controller
 
     }
 
+    /**
+     * Send the notification to the DBS office, we pass in most of the session data, this gets replaced on Notify's side
+     * @param $request
+     * @return NotifyException|array|\Exception
+     */
     private function _sendSearchNotification($request)
     {
         //die(print_r($service));
@@ -176,6 +202,16 @@ class ConfirmationController extends Controller
         }
     }
 
+    /**
+     * We need to check the payment has been successful or not, we first make a request to GOVPay via cURL GET request,
+     * using the value of the session uuid value as a URL parameter.
+     * Based on the response we can determine if the payment was succesful or not, if the response contains['state']['status']
+     * and that is = to success we can move the customer on and return true, if not we return false and will show the user
+     * the error message.
+     *terr
+     * @param $request
+     * @return array|bool|string
+     */
     private function _checkPayment($request) {
 
         $curl = curl_init();
