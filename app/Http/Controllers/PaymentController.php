@@ -27,7 +27,7 @@ class PaymentController extends Controller
         $unique_id = uniqid();
 
         $post_params = [
-            'amount' => env('REQUEST_PRICE', 3000),
+            'amount' => 3000,
             'reference' => $request->session()->get('reference'),
             'description' => $this->description,
             'return_url' => env('GOV_PAY_RETURN_URL', 'https://mod-ssr.co.uk') . '/confirmation?uuid=' . $unique_id,
@@ -75,6 +75,7 @@ class PaymentController extends Controller
             echo "cURL Error #:" . $err;
         } else {
             $response = json_decode($response, true);
+            die(print_r($response));
             $request->session()->put($unique_id, $response['payment_id']);
             return redirect($response['_links']['next_url']['href']);
         }
