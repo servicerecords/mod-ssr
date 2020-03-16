@@ -130,4 +130,3 @@ notifications:
       - simon@87development.co.uk
     on_success: always
     on_failure: always
-cv
