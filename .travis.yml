@@ -122,10 +122,11 @@ before_script:
   - npm update
   - cd storage/app && mkdir verification
 script:
-  - php vendor/bin/phpunit --configuration phpunit.xml
+  - vendor/bin/phpunit --configuration phpunit.xml
 notifications:
   email:
     recipients:
       - simon@87development.co.uk
     on_success: always
     on_failure: always
+cv
