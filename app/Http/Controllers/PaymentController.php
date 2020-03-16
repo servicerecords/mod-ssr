@@ -75,7 +75,6 @@ class PaymentController extends Controller
             echo "cURL Error #:" . $err;
         } else {
             $response = json_decode($response, true);
-            die(print_r($response));
             $request->session()->put($unique_id, $response['payment_id']);
             return redirect($response['_links']['next_url']['href']);
         }
