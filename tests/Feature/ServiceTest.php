@@ -28,7 +28,7 @@ class ServiceTest extends TestCase
 
 		$response->assertStatus(200);
 		$response->assertSeeText('Details of the serviceperson');
-		$response->assertSeeText('Save and continue');
+		$response->assertSeeText('Continue');
 	}
 
 	/**
