@@ -218,7 +218,7 @@ class ConfirmationController extends Controller
             return $err;
         } else {
             $response = json_decode($response, true);
-            //dd($response);
+            dd($response);
             if($response['state']['status'] == "success") {
                 return true;
             } else {
