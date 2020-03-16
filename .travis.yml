@@ -122,7 +122,7 @@ before_script:
   - npm update
   - cd storage/app && mkdir verification
 script:
-#- php vendor/bin/phpunit --configuration phpunit.xml
+  - php vendor/bin/phpunit --configuration phpunit.xml
 notifications:
   email:
     recipients:
