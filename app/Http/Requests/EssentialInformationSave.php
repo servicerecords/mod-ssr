@@ -29,6 +29,7 @@ class EssentialInformationSave extends FormRequest
 			'dob_day' => 'digits_between:1,2|nullable',
 			'dob_month' => 'digits_between:1,2|nullable',
 			'dob_year' => 'digits:4|required',
+            //need to validate the date of birth if all 3 have values.
         ];
     }
 
