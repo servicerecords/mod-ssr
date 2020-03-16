@@ -121,6 +121,7 @@ before_script:
   - php artisan config:cache
   - npm update
   - cd storage/app && mkdir verification
+  - cd ../..
 script:
   - vendor/bin/phpunit --configuration phpunit.xml
 notifications:
