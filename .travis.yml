@@ -12,7 +12,9 @@ deploy:
     space: development
     on:
       repo: servicerecords/mod-ssr
-      branch: development
+      branches:    # ← new!
+        only:      # ← new!
+          - development # ← new!
   - provider: cloudfoundry
     api: https://api.cloud.service.gov.uk
     username: simon@87development.co.uk
