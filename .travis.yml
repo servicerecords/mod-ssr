@@ -123,7 +123,7 @@ before_script:
   - cd storage/app && mkdir verification
   - cd ../..
 script:
-  - vendor/bin/phpunit --configuration phpunit.xml
+  - php vendor/bin/phpunit --configuration phpunit.xml
 notifications:
   email:
     recipients:
