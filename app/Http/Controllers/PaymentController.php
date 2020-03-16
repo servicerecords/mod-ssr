@@ -17,23 +17,27 @@ class PaymentController extends Controller
         $this->cost = env('REQUEST_PRICE');
     }
 
-    public function payment(Request $request)
-    {
-        return view('payment', ['paying' => true]);
-    }
-
+    /**
+     * Process the payment and send it to Gov Pay.
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function processPayment(Request $request)
     {
         $unique_id = uniqid();
 
+        // The params that will be posted to gov pay.
         $post_params = [
-            'amount' => 3000,
-            'reference' => $request->session()->get('reference'),
-            'description' => $this->description,
-            'return_url' => env('GOV_PAY_RETURN_URL', 'https://mod-ssr.co.uk') . '/confirmation?uuid=' . $unique_id,
-            'email' => $request->session()->get('your_details.email')
+            'amount' => 3000, //£30.00
+            'reference' => $request->session()->get('reference'), //This is reference that is first created when the user chooses the service.
+            'description' => $this->description, //description of the payment.
+            'return_url' => env('GOV_PAY_RETURN_URL', 'https://mod-ssr.co.uk') . '/confirmation?uuid=' . $unique_id, //The URL the user gets returned to when payment has taken place, whetehr successfully or unsucessfully.
+            //If not return is specified we default the local development domain.
+            'email' => $request->session()->get('your_details.email') //The users email address, used to for GovPay to send a payment notification.
         ];
 
+        //If the user selected that they wish to use their address from the their information page for their billing details
+        //Then we pull that out of the session and send it with the post data from above.
         if($request->session()->get('your_details.use_billing') == 'Yes') {
             $post_params['prefilled_cardholder_details'] = [
                 "cardholder_name" => '',
@@ -47,6 +51,8 @@ class PaymentController extends Controller
             ];
         }
 
+        //Set up the cURL request
+        //@todo: Look at moving this to Guzzle to make it cleaner and less lines.
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -60,7 +66,7 @@ class PaymentController extends Controller
             CURLOPT_POSTFIELDS => json_encode($post_params, JSON_UNESCAPED_SLASHES),
             CURLOPT_HTTPHEADER => array(
                 "Accept: application/json",
-                "Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
+                "Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'), //This comes from the gov pay dashboard, if there isn't and API key in the ENV vars we default to sandbox.
                 "Content-Type: application/json",
             ),
         ));
@@ -74,6 +80,7 @@ class PaymentController extends Controller
         if ($err) {
             echo "cURL Error #:" . $err;
         } else {
+            //Everything looks to have worked ok, we can move them forward to the confirmation page, this is specified in the return URL.
             $response = json_decode($response, true);
             $request->session()->put($unique_id, $response['payment_id']);
             return redirect($response['_links']['next_url']['href']);

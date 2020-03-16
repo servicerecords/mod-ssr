@@ -37,6 +37,13 @@ class ConfirmationController extends Controller
         ];
     }
 
+    /**
+     * Determine if the payment was sucessful or not and show the correct view based on that value.
+     * We use a parameter in the URL called uuid to get the payment ID from the session which is stored again this UUID.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         if(null === $request->get('uuid')) {
@@ -50,11 +57,12 @@ class ConfirmationController extends Controller
             if (is_object($response) && $response->getCode() !== 200) {
                 return view('process_error');
             } else {
+                //Everthing is OK send the customer notification.
                 $dbs_office = $request->session()->get('dbs_office');
                 $reference = $request->session()->get('reference');
                 $response = $this->_sendCustomerNotification($request);
-
-                //$request->session()->flush();
+                //@todo what if an email doesn't get sent here, we don't even do a check here?
+                $request->session()->flush(); //Flush the session, we are don't want to store data when we don't want too.
 
                 return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
             }
@@ -63,12 +71,14 @@ class ConfirmationController extends Controller
         }
     }
 
+    /**
+     * SEnd the customer notification, we use the customer notification template, and pass the reference in as the only
+     * data.
+     *
+     * @param $request
+     * @return array|\Exception
+     */
     private function _sendCustomerNotification($request) {
-
-//	    $notifyClient = new Notify([
-//            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
-//            'httpClient' => new \Http\Adapter\Guzzle6\Client
-//        ]);
 
         $notifyClient = new \Alphagov\Notifications\Client([
             'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
@@ -90,6 +100,11 @@ class ConfirmationController extends Controller
 
     }
 
+    /**
+     * Send the notification to the DBS office, we pass in most of the session data, this gets replaced on Notify's side
+     * @param $request
+     * @return NotifyException|array|\Exception
+     */
     private function _sendSearchNotification($request)
     {
         //die(print_r($service));
