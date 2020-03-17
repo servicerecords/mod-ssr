@@ -82,7 +82,6 @@ class PaymentController extends Controller
         } else {
             //Everything looks to have worked ok, we can move them forward to the confirmation page, this is specified in the return URL.
             $response = json_decode($response, true);
-            dd($response);
             $request->session()->put($unique_id, $response['payment_id']);
             return redirect($response['_links']['next_url']['href']);
         }
