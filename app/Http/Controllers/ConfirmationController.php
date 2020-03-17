@@ -221,9 +221,14 @@ class ConfirmationController extends Controller
             if($response['state']['status'] == "success") {
                 return true;
             } else {
-                return [
-                    'message' => $response['state']['message']
-                ];
+                if(isset($response['state']) && isset($response['state']['message'])) {
+                    return [
+                        'message' => $response['state']['message']
+                    ];
+                } else {
+                    return ['message' => 'There was a problem processing your payment, please try or contact xxxxxxxxx'];
+                }
+
             }
         }
 
