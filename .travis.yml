@@ -52,6 +52,7 @@ before_script:
   - composer install --no-interaction
   - composer update
   - composer dump-autoload
+  - php artisan key:generate
   - php artisan config:cache
   - npm update
   - cd storage/app && mkdir verification
