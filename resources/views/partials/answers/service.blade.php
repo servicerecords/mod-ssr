@@ -174,24 +174,7 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                     @if(isset(Session::get('service_details')['leave_army_reason']))
-                        @foreach(Session::get('service_details')['leave_army_reason'] as $reason)
-                            <p class="govuk-body">{{ $reason }}</p>
-                        @endforeach
-                    @endif
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
-                        Change
-                    </a>
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Futher service after army
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    @if(isset(Session::get('service_details')['completion_info']))
-                        <p class="govuk-body">{{Session::get('service_details')['completion_info']}}</p>
+                        <p class="govuk-body">{{ Session::get('service_details')['leave_army_reason'] }}</p>
                     @endif
                 </dd>
                 <dd class="govuk-summary-list__actions">
