@@ -1,4 +1,4 @@
-<h2 class="govuk-heading-m">serviceperson</h2>
+<h2 class="govuk-heading-m">Serviceperson</h2>
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -185,21 +185,21 @@
                     </a>
                 </dd>
             </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Futher service after army
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    @if(isset(Session::get('service_details')['completion_info']))
-                        <p class="govuk-body">{{Session::get('service_details')['completion_info']}}</p>
-                    @endif
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
-                        Change
-                    </a>
-                </dd>
-            </div>
+{{--            <div class="govuk-summary-list__row">--}}
+{{--                <dt class="govuk-summary-list__key">--}}
+{{--                    Futher service after army--}}
+{{--                </dt>--}}
+{{--                <dd class="govuk-summary-list__value">--}}
+{{--                    @if(isset(Session::get('service_details')['completion_info']))--}}
+{{--                        <p class="govuk-body">{{Session::get('service_details')['completion_info']}}</p>--}}
+{{--                    @endif--}}
+{{--                </dd>--}}
+{{--                <dd class="govuk-summary-list__actions">--}}
+{{--                    <a class="govuk-link" href="/service-details">--}}
+{{--                        Change--}}
+{{--                    </a>--}}
+{{--                </dd>--}}
+{{--            </div>--}}
             @if(isset(Session::get('service_details')['completion_info']))
                 @if(in_array('Territorial Army (TA)', Session::get('service_details')['completion_info']))
                         <div class="govuk-summary-list__row">

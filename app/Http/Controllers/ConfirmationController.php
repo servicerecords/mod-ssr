@@ -46,6 +46,7 @@ class ConfirmationController extends Controller
      */
     public function index(Request $request)
     {
+        sleep(2);
         if(null === $request->get('uuid')) {
             $success = true;
         } else {

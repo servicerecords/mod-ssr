@@ -26,11 +26,13 @@ class EssentialInformationSave extends FormRequest
         return [
             'firstnames' => 'required',
 			'lastname' => 'required',
-			'dob_day' => 'digits_between:1,2|nullable',
-			'dob_month' => 'digits_between:1,2|nullable',
-			'dob_year' => 'digits:4|required',
-            //need to validate the date of birth if all 3 have values.
+			'dob_day' => 'digits_between:1,2|nullable|between:1,31',
+			'dob_month' => 'digits_between:1,2|nullable|between:1,12',
+			'dob_year' => 'digits:4|required|integer|max:'.date('Y'),
         ];
+
+
+
     }
 
     /**
@@ -49,7 +51,8 @@ class EssentialInformationSave extends FormRequest
 			'dob_month.max' => 'The date of birth\'s month must be no more than 2 characters in length',
 			'dob_year.digits' => 'The date of birth\'s year must be 4 characters in length',
 			'dob_year.required' => 'Please enter a year of birth, even if it is an estimate',
-			//'dob_accurate.required' => 'Please specify whether the date of birth is accurate'
+			'dob_year.max' => 'Please enter a dob (even if partial) that is in the past'
+            //'dob_accurate.required' => 'Please specify whether the date of birth is accurate'
 		];
 	}
 }
