@@ -53,6 +53,7 @@
             </div>
             <div class="govuk-form-group">
                 @csrf
+                <input type="hidden" name="return_uri" value="{{ $return_uri }}" />
                 <button type="submit" class="govuk-button" name="details_service">
                     Continue
                 </button>
