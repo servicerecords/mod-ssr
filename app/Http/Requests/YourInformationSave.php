@@ -19,9 +19,9 @@ class YourInformationSave extends FormRequest
                     if(empty($matches)) {
                         return false;
                     }
-                } else {
-                    return true;
                 }
+
+                return true;
             },
             'Please enter a valid UK postcode'
         );

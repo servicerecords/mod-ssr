@@ -55,7 +55,6 @@ class ConfirmationController extends Controller
 
         if($success === true) {
             $response = $this->_sendSearchNotification($request);
-            dd($response);
             if (is_object($response) && $response->getCode() !== 200) {
                 return view('process_error');
             } else {
