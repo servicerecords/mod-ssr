@@ -46,6 +46,7 @@ class ConfirmationController extends Controller
      */
     public function index(Request $request)
     {
+        sleep(3);
         if(null === $request->get('uuid')) {
             $success = true;
         } else {
@@ -176,6 +177,8 @@ class ConfirmationController extends Controller
                     'related' => (null === $request->session()->get('your_details.relation.related') ? '' : $request->session()->get('your_details.relation.related')),
                     'relationship' => (null === $request->session()->get('your_details.relationship.relationship') ? '' : $request->session()->get('your_details.relationship.relationship')),
                     'next_of_kin' => ($request->session()->get('your_details.relationship.next_of_kin') !== 'Yes' ? 'No' : 'Yes'),
+                    'email' => (null === $request->session()->get('your_details.email') ? '' : $request->session()->get('your_details.email')),
+                    'telephone' => (null === $request->session()->get('your_details.telephone') ? '' : $request->session()->get('your_details.telephone')),
                     'payment_status' => (null !== $request->session()->get('payment_id') ? 'Paid' : 'No payment was required'),
                     'verification' => (null === $request->session()->get('verification.uploaded') ? '' : $request->session()->get('verification.uploaded')),
                     'link_to_verification' => $upload,
@@ -221,7 +224,7 @@ class ConfirmationController extends Controller
             if($response['state']['status'] == "success") {
                 return true;
             } else {
-                if(isset($response['state']) && isset($response['state']['message'])) {
+                if(isset($response['state']) && !isset($response['state']['message'])) {
                     return [
                         'message' => 'There was an error with your payment please contact xxx xxxxxx and use your reference ' . $request->session()->get('reference')
                     ];
