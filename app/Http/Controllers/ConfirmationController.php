@@ -55,6 +55,7 @@ class ConfirmationController extends Controller
 
         if($success === true) {
             $response = $this->_sendSearchNotification($request);
+            dd($response);
             if (is_object($response) && $response->getCode() !== 200) {
                 return view('process_error');
             } else {
@@ -163,7 +164,7 @@ class ConfirmationController extends Controller
                     'lastname' => $request->session()->get('essential_information.lastname'),
                     'dob' => $request->session()->get('essential_information.dob'),
                     //'dob_accurate' => $request->session()->get('essential_information.dob_accurate'),
-                    'date_joined' => (null === $request->session()->get('essential_information.join_date') ? '??/??/??' : $request->session()->get('essential_information.join_date')),
+                    'date_joined' => (null === $request->session()->get('service_details.join_date') ? '??/??/??' : $request->session()->get('service_details.join_date')),
                     'unit' => $request->session()->get('service'),
                     'service_number' => (null === $request->session()->get('service_details.service_number') ? '' : $request->session()->get('service_details.service_number')),
                     'death_in_service' => (null === $request->session()->get('death_in_service.death') ? '' : $request->session()->get('death_in_service.death')),
@@ -171,6 +172,10 @@ class ConfirmationController extends Controller
                     'further_information' => (null === $request->session()->get('essential_information.further_information') ? '' : $request->session()->get('essential_information.further_information')),
                     'request_full_name' => (null === $request->session()->get('your_details.fullname') ? '' : $request->session()->get('your_details.fullname')),
                     'request_address' => (null === $request->session()->get('your_details.address_line_1') ? '' : $request->session()->get('your_details.address_line_1')),
+                    'battalions_companies' => (null == $request->session()->get('service_details.battalions_companies') ? '' : $request->session()->get('service_details.battalions_companies')),
+                    'county' => (null == $request->session()->get('service_details.county') ? '' : $request->session()->get('service_details.county')),
+                    'address' => (null == $request->session()->get('service_details.address') ? '' : $request->session()->get('service_details.address')),
+                    'discharge_address' => (null == $request->session()->get('service_details.discharge_address') ? '' : $request->session()->get('service_details.discharge_address')),
                     // add address line 2
                     'postcode' => (null === $request->session()->get('your_details.address_postcode') ? '' : $request->session()->get('your_details.address_postcode')),
                     'country' => (null === $request->session()->get('your_details.address_county') ? '' : $request->session()->get('your_details.address_county')),
@@ -179,7 +184,7 @@ class ConfirmationController extends Controller
                     'next_of_kin' => ($request->session()->get('your_details.relationship.next_of_kin') !== 'Yes' ? 'No' : 'Yes'),
                     'email' => (null === $request->session()->get('your_details.email') ? '' : $request->session()->get('your_details.email')),
                     'telephone' => (null === $request->session()->get('your_details.telephone') ? '' : $request->session()->get('your_details.telephone')),
-                    'payment_status' => (null !== $request->session()->get('payment_id') ? 'Paid' : 'No payment was required'),
+                    'payment_status' => (null !== $request->session()->get($request->get('uuid')) ? 'Paid' : 'No payment was required'),
                     'verification' => (null === $request->session()->get('verification.uploaded') ? '' : $request->session()->get('verification.uploaded')),
                     'link_to_verification' => $upload,
                     'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? implode(",", $request->session()->get('service_details.leave_army_reason')) : '-'),
