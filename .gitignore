@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/verification
+/storage/app
 /storage/*.key
 /vendor
 .env
@@ -16,5 +18,3 @@ npm-debug.log
 yarn-error.log
 .idea/*
 .idea/workspace.xml
-
-q

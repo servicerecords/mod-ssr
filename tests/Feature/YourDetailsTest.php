@@ -31,7 +31,7 @@ class YourDetailsTest extends TestCase
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
             'email' => 'email@domain.com',
-			'address_postcode' => 'Postcode',
+			'address_postcode' => 'SW1A 2ET',
             'use_billing' => 'Yes'
 		];
 
@@ -50,7 +50,7 @@ class YourDetailsTest extends TestCase
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
             'email' => 'email@domain.com',
-			'address_postcode' => 'Postcode',
+			'address_postcode' => 'SW1A 2ET',
             'use_billing' => 'Yes'
 		];
 
@@ -99,7 +99,7 @@ class YourDetailsTest extends TestCase
 			'address_line_2' => '',
 			'address_town' => 'Town/City',
             'email' => 'email@domain.com',
-			'address_postcode' => 'Postcode',
+			'address_postcode' => 'SW1A 2ET',
             'use_billing' => 'Yes',
             'country' => 'GB'
 		];

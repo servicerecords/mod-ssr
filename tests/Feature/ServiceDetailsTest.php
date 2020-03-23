@@ -287,7 +287,7 @@ class ServiceDetailsTest extends TestCase
 	public function user_can_see_essential_information_form(){
 		$response = $this->get('/essential-information');
 		$response->assertStatus(200);
-		$response->assertSeeText('Details of the serviceman/woman');
+		$response->assertSeeText('Details of the serviceperson');
 	}
 
 	/**

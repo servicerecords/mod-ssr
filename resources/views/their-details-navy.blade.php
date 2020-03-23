@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Details of the serviceman/woman')
+@section('title', 'Details of the serviceperson')
 
 @section('content')
 
@@ -92,15 +92,13 @@
               service record. e.g. Ranks, Grades, Regiments, National Insurance
               Number etc
             </span>
-                    <textarea class="govuk-textarea" id="further_info" name="further_info" rows="5">
-                        {{ isset($service_details['further_info'] ) ? $service_details['further_info'] : old('further_info') }}
-                    </textarea>
+                    <textarea class="govuk-textarea" id="further_info" name="further_info" rows="5">{{ isset($service_details['further_info'] ) ? $service_details['further_info'] : old('further_info') }}</textarea>
                 </div>
             </fieldset>
         </div>
         <div class="govuk-form-group">
-            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
-            <button type="submit" class="govuk-button">Save and continue</button>
+            @csrf
+            <button type="submit" class="govuk-button">Continue</button>
         </div>
     </form>
 

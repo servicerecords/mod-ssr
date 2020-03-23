@@ -2,10 +2,31 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Factory as ValidationFactory;
 use Illuminate\Foundation\Http\FormRequest;
 
 class YourInformationSave extends FormRequest
 {
+    public function __construct(ValidationFactory $validationFactory)
+    {
+
+        $validationFactory->extend(
+            'uk_postcode',
+            function ($attribute, $value, $parameters) {
+                $re = '/^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/m';
+                if(request()->input('country') == "GB") {
+                    preg_match($re, $value, $matches, PREG_OFFSET_CAPTURE);
+                    if(empty($matches)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            },
+            'Please enter a valid UK postcode'
+        );
+
+    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,7 +48,7 @@ class YourInformationSave extends FormRequest
             'fullname' => 'required',
             'email' => 'required|email',
 			'address_line_1' => 'required',
-			'address_postcode' => 'required',
+			'address_postcode' => 'required|uk_postcode',
             'use_billing' => 'required',
             'telephone' => 'required_unless:country,GB'
         ];

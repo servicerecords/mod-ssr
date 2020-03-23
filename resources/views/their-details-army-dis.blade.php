@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'Details of the serviceman/woman')
+@section('title', 'Details of the serviceperson')
 
 @section('content')
 
@@ -35,8 +35,8 @@
                     <input value="{{ isset($service_details['regt_corps'] ) ? $service_details['regt_corps'] : old('regt_corps') }}" class="govuk-input govuk-input--width-10" id="regt_corps" name="regt_corps" type="text" spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
-                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
-                    <button type="submit" class="govuk-button">Save and continue</button>
+                    @csrf
+                    <button type="submit" class="govuk-button">Continue</button>
                 </div>
             </fieldset>
         </div>

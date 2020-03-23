@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-@section('title', 'Details of the serviceman/woman')
+@section('title', 'Details of the serviceperson')
 
 @section('content')
 
@@ -122,8 +122,8 @@
             </fieldset>
         </div>
         <div class="govuk-form-group">
-            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
-            <button type="submit" class="govuk-button">Save and continue</button>
+            @csrf
+            <button type="submit" class="govuk-button">Continue</button>
         </div>
     </form>
 

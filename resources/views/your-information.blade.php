@@ -65,7 +65,7 @@
                     <label class="govuk-label govuk-label--s" for="address-postcode">
                         Country
                     </label>
-                    <select name="country" class="govuk-select">
+                    <select name="country" class="govuk-select" id="location-autocomplete" autocomplete="off">
                         @foreach($countries as $key => $value)
                             <option value="{{$key}}" {{ ($key === "GB") ? 'selected' : '' }}>{{$value}}</option>
                         @endforeach
@@ -112,8 +112,8 @@
             </fieldset>
         </div>
         <div class="govuk-form-group">
-            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-            <button type="submit" class="govuk-button">Save and continue</button>
+            @csrf
+            <button type="submit" class="govuk-button">Continue</button>
         </div>
     </form>
 

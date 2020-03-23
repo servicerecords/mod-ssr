@@ -12,16 +12,33 @@ use Illuminate\Support\Facades\Storage;
 class FeedbackController extends Controller
 {
 
+    /**
+     * Show the feedback form.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('feedback.index');
     }
 
+    /**
+     * Show the feedback success view.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function success()
     {
         return view('feedback.success');
     }
 
+
+    /**
+     * If the POST data validates send it to notify this works in very much the same was as the notification elsewhere
+     * in the code, we sent our api key and template ID to notify along with an array of Data we want to replace in our
+     * template.
+     *
+     * @param FeedbackSave $request
+     * @return \Exception|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function save(FeedbackSave $request)
     {
         //git commit -dd($request->all());

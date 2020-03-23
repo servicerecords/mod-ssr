@@ -1,4 +1,4 @@
-<h2 class="govuk-heading-m">Serviceman/woman</h2>
+<h2 class="govuk-heading-m">serviceperson</h2>
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -52,7 +52,7 @@
         </dd>
         <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/essential-information">
-                Change<span class="govuk-visually-hidden"> firstnames</span>
+                Change<span class="govuk-visually-hidden"> first names</span>
             </a>
         </dd>
     </div>
@@ -65,7 +65,7 @@
         </dd>
         <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/essential-information">
-                Change<span class="govuk-visually-hidden"> lastname</span>
+                Change<span class="govuk-visually-hidden"> last name</span>
             </a>
         </dd>
     </div>
@@ -175,7 +175,7 @@
                 <dd class="govuk-summary-list__value">
                     @if(isset(Session::get('service_details')['leave_army_reason']))
                         @foreach(Session::get('service_details')['leave_army_reason'] as $reason)
-                            <p class="govuk-body">{{$reason}}</p>
+                            <p class="govuk-body">{{ $reason }}</p>
                         @endforeach
                     @endif
                 </dd>
@@ -191,9 +191,7 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                     @if(isset(Session::get('service_details')['completion_info']))
-                        @foreach(Session::get('service_details')['completion_info'] as $info)
-                            <p class="govuk-body">{{$info}}</p>
-                        @endforeach
+                        <p class="govuk-body">{{Session::get('service_details')['completion_info']}}</p>
                     @endif
                 </dd>
                 <dd class="govuk-summary-list__actions">
@@ -213,7 +211,7 @@
                             </dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/service-details">
-                                    Change<
+                                    Change
                                 </a>
                             </dd>
                         </div>

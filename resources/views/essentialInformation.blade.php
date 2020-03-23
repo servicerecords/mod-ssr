@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Details of the serviceman/woman')
+@section('title', 'Details of the serviceperson')
 
 @section('content')
 
@@ -8,7 +8,7 @@
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend">
-                    The following details are required for us to complete a record search. 
+                    The following details are required for us to complete a record search.
                 </legend>
 
                 @include('partials.form-errors')
@@ -54,9 +54,9 @@
                 </div>
 
                 <div class="govuk-form-group">
-                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                    @csrf
                     <button type="submit" class="govuk-button">
-                        Save and continue
+                        Continue
                     </button>
                 </div>
             </fieldset>

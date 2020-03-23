@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RelationRequest extends FormRequest
+class VerifyRequestSave extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,16 @@ class RelationRequest extends FormRequest
     public function rules()
     {
         return [
-            'related' => 'required'
+            'certificate' => 'required|file|max:2000|mimes:jpeg,png,pdf'
         ];
     }
 
     public function messages()
-	{
-		return [
-			'related.required' => 'Tell us if you are related to the serviceperson'
-		];
-	}
+    {
+        return [
+            'certificate.required' => 'Please upload a death certificate',
+            'certificate.mimes' => 'Please upload a valid file type',
+            'certificate.max' => 'Please upload a file that is less than 2MB in size'
+        ];
+    }
 }

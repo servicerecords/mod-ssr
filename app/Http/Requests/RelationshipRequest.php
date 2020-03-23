@@ -33,8 +33,8 @@ class RelationshipRequest extends FormRequest
     public function messages()
 	{
 		return [
-			'relationship.required' => 'Please specify what you relationship is with the serviceman/woman',
-			'relationship_other.required_if' => 'Please specify your relationship with the serviceman/woman',
+			'relationship.required' => 'Please specify what you relationship is with the serviceperson',
+			'relationship_other.required_if' => 'Please specify your relationship with the serviceperson',
             'next_of_kin.required' => 'Please specify if you are the immediate next of kin'
 		];
 	}

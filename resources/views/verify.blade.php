@@ -13,7 +13,7 @@
                         Death certificate required
                     </h2>
                     <p>
-                        As the serviceman/woman did not die in service, we will require a
+                        As the serviceperson did not die in service, we will require a
                         death certificate to complete your service record request.
                     </p>
                 </legend>
@@ -59,9 +59,10 @@
                 </div>
 
                 <div class="govuk-form-group">
-                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                    @csrf
+
                     <button type="submit" class="govuk-button">
-                        Save and continue
+                        Continue
                     </button>
                 </div>
             </fieldset>

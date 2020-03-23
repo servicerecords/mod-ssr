@@ -11,6 +11,16 @@
 |
 */
 
+Route::get('cookie-test', function() {
+
+   return redirect('test-redirect')->withCookie($cookie);
+});
+
+Route::get('test-redirect', function(Request $request) {
+    $cookie = \Cookie::get('cookie');
+    dd($cookie);
+});
+
 Route::get('/countries', function()
 {
     return Countries::getList('en', 'json');
@@ -48,3 +58,4 @@ Route::post('/feedback', 'FeedbackController@save');
 Route::get('/pay', 'PaymentController@processPayment');
 
 Route::get('/confirmation', 'ConfirmationController@index');
+

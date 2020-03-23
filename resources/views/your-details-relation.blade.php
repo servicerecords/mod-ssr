@@ -13,7 +13,7 @@
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                     <h2 class="govuk-fieldset__heading">
-                        Are you related to the serviceman/woman?
+                        Are you related to the serviceperson?
                     </h2>
                 </legend>
 
@@ -33,8 +33,8 @@
             </fieldset>
         </div>
         <div class="govuk-form-group">
-            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-            <button type="submit" class="govuk-button">Save and continue</button>
+            @csrf
+            <button type="submit" class="govuk-button">Continue</button>
         </div>
     </form>
 
