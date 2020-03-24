@@ -154,6 +154,7 @@ class ServiceRecordController extends Controller
      */
 	public function serviceDetails(Request $request)
 	{
+	    dd($request->session());
 		switch($request->session()->get('service'))
 		{
 			case "Royal Navy / Royal Marines":
