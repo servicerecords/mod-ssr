@@ -47,13 +47,10 @@ deploy:
       repo: servicerecords/mod-ssr
       branch: master
 before_script:
-  - cd app
   - cp .env.travis .env
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
   - npm update
-  - cd storage/app && mkdir verification
-  - cd ../..
 script:
   - php vendor/bin/phpunit --configuration phpunit.xml
 notifications:
