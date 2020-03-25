@@ -12,7 +12,7 @@ deploy:
     manifest: manifest-qa.yml
     on:
       repo: servicerecords/mod-ssr
-      branch: development
+      branch: qa
   - provider: cloudfoundry
     api: https://api.cloud.service.gov.uk
     username: simon@87development.co.uk
