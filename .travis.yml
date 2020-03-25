@@ -49,14 +49,8 @@ deploy:
 before_script:
   - cp .env.travis .env
   - composer self-update
-  - composer install --no-interaction
-  - composer update
-  - composer dump-autoload
-  - php artisan key:generate
-  - php artisan config:cache
+  - composer install --prefer-source --no-interaction --dev
   - npm update
-  - cd storage/app && mkdir verification
-  - cd ../..
 script:
   - php vendor/bin/phpunit --configuration phpunit.xml
 notifications:
