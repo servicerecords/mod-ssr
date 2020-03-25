@@ -47,12 +47,12 @@ deploy:
       repo: servicerecords/mod-ssr
       branch: master
 before_script:
-  - cp .env.travis .env
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
   - npm update
 script:
   - php vendor/bin/phpunit --configuration phpunit.xml
+  - cp .env.travis .env
 notifications:
   email:
     recipients:
