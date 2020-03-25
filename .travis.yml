@@ -51,8 +51,8 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
   - npm update
 script:
-  - php vendor/bin/phpunit --configuration phpunit.xml
   - cp .env.travis .env
+  - php vendor/bin/phpunit --configuration phpunit.xml
 notifications:
   email:
     recipients:
