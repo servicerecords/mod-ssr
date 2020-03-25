@@ -17,7 +17,7 @@ class ConfirmationController extends Controller
     protected $accounts_email;
     protected $unknown_email;
     protected $templates;
-
+    //
     public function __construct()
     {
         $this->land_email = env('LAND_EMAIL', 'ainley87simon+land@gmail.com');
