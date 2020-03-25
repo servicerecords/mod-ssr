@@ -55,7 +55,6 @@ before_script:
   - npm update
   - cd storage/app && mkdir verification
   - cd ../..
-  - php artisan env:set APP_ENV development
 script:
   - php vendor/bin/phpunit --configuration phpunit.xml
 notifications:
