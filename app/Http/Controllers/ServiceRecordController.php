@@ -7,7 +7,6 @@ use App\Http\Requests\VerifyRequestSave;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Intervention\Image\Facades\Image as Image;
 use App\Http\Requests\DeathInServiceSave;
 use App\Http\Requests\EssentialInformationSave;
 use App\Http\Requests\RecordRequestSave;
@@ -348,9 +347,8 @@ class ServiceRecordController extends Controller
      * @param VerifyRequestSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function verifySave(VerifyRequestSave $request)
+	public function verifySave(Request $request)
 	{
-
         $validation = $request->validated();
 
         $path = Storage::disk('local')->put('verification', $request->file('certificate'));
@@ -370,7 +368,9 @@ class ServiceRecordController extends Controller
             'uploaded' => 'Yes',
             'method' => $request->input('verify_method')
         ];
+
         $request->session()->put('verification', $verification);
+
         return redirect('/your-details');
 	}
 

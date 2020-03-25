@@ -17,20 +17,6 @@ class DocumentationTest extends TestCase
         parent::setUp();
     }
 
-    /**
-     * @test
-     */
-    public function testVerificationUpload()
-    {
-        Storage::fake('local');
-
-        $file = UploadedFile::fake()->image('avatar.jpg');
-
-        $response = $this->post('/verify', ['certificate' => $file]);
-
-        // Assert the file was stored...
-        Storage::disk('local')->assertExists('verification/' . $file->hashName());
-    }
 
 
 }
