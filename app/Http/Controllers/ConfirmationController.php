@@ -82,7 +82,7 @@ class ConfirmationController extends Controller
     private function _sendCustomerNotification($request) {
 
         $notifyClient = new \Alphagov\Notifications\Client([
-            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75'),
             'httpClient' => new \Http\Adapter\Guzzle6\Client
         ]);
 
