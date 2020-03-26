@@ -385,7 +385,7 @@ class ServiceRecordController extends Controller
             if (-1 == $image_quality) {
                 throw ValidationException::withMessages(['certificate' => 'Sorry we could not compress your file.']);
             } else {
-                $image_resize = Image::make($resized_file)
+                $image_resize = Image::make(storage_path($resized_file))
                     ->resize(595, 824)
                     ->save($resized_file);
                 $pdf = new Fpdf();
