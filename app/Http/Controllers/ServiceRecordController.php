@@ -354,8 +354,10 @@ class ServiceRecordController extends Controller
         //$validation = $request->validated();
 
         if(strpos($request->file('certificate')->getMimeType(), "image") !== false) {
-            $original_file = Storage::disk('local')->put('verification', $request->file('certificate'));
             $resized_file = storage_path('app/verification/') . $request->session()->get('reference') . '-resized.jpg';
+            /*
+            $original_file = Storage::disk('local')->put('verification', $request->file('certificate'));
+
             $max_file_size = '2000000'; // maximum file size, in bytes
 
             //Convert image to jpg if it is not a jpeg.
@@ -366,27 +368,26 @@ class ServiceRecordController extends Controller
             } else {
                 $original_image = imagecreatefromjpeg($request->file('certificate'));
             }
-
+            */
 
             //$original_image->resize(595, 824);
 
-            $image_quality = 100;
+            //$image_quality = 100;
 
-            do {
-                $temp_stream = fopen('php://temp', 'w+');
-                $saved = imagejpeg($original_image, $temp_stream, $image_quality--);
-                rewind($temp_stream);
-                $fstat = fstat($temp_stream);
-                fclose($temp_stream);
-
-                $file_size = $fstat['size'];
-            } while (($file_size > $max_file_size) && ($image_quality >= 0));
-
-            if (-1 == $image_quality) {
-                throw ValidationException::withMessages(['certificate' => 'Sorry we could not compress your file.']);
-            } else {
-                dd(storage_path($resized_file));
-                $image_resize = Image::make(storage_path($resized_file))
+//            do {
+//                $temp_stream = fopen('php://temp', 'w+');
+//                $saved = imagejpeg($original_image, $temp_stream, $image_quality--);
+//                rewind($temp_stream);
+//                $fstat = fstat($temp_stream);
+//                fclose($temp_stream);
+//
+//                $file_size = $fstat['size'];
+//            } while (($file_size > $max_file_size) && ($image_quality >= 0));
+//
+//            if (-1 == $image_quality) {
+//                throw ValidationException::withMessages(['certificate' => 'Sorry we could not compress your file.']);
+//            } else {
+                $image_resize = Image::make($request->file('certificate')->getRealPath())
                     ->resize(595, 824)
                     ->save($resized_file);
                 $pdf = new Fpdf();
@@ -402,7 +403,7 @@ class ServiceRecordController extends Controller
                 ];
                 $request->session()->put('verification', $verification);
                 return redirect('/your-details');
-            }
+            //}
         }
 	}
 
