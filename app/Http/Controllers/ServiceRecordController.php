@@ -354,7 +354,7 @@ class ServiceRecordController extends Controller
         //$validation = $request->validated();
 
         if(strpos($request->file('certificate')->getMimeType(), "image") !== false) {
-            Storage::makeDirectory('app/verfication');
+            Storage::makeDirectory('verfication');
             $resized_file = storage_path('app/verification/') . $request->session()->get('reference') . '-resized.jpg';
             /*
             $original_file = Storage::disk('local')->put('verification', $request->file('certificate'));
