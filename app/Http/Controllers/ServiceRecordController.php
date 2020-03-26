@@ -16,6 +16,8 @@ use App\Http\Requests\YourInformationSave;
 use App\Http\Requests\RelationRequest;
 use App\Http\Requests\RelationshipRequest;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as Image;
+use Illuminate\Validation\ValidationException;
 
 class ServiceRecordController extends Controller
 {
@@ -347,31 +349,60 @@ class ServiceRecordController extends Controller
      * @param VerifyRequestSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function verifySave(VerifyRequestSave $request)
+	public function verifySave(Request $request)
 	{
-        $validation = $request->validated();
+        //$validation = $request->validated();
 
-        $path = Storage::disk('local')->put('verification', $request->file('certificate'));
-        //dd($path);
-        //$path = $request->file('certificate')->putFileAs('verification');
-        $newPath = \Storage::disk('local')->path($path);
         if(strpos($request->file('certificate')->getMimeType(), "image") !== false) {
-            $pdf = new Fpdf();
-            $pdf->AddPage();
-            $pdf->Image($newPath, 0, 0, -300);
-            $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
-            $pdf->Output('F', $newPath);
+            $original_file = Storage::disk('local')->put('verification', $request->file('certificate'));
+            $resized_file = storage_path('app/verification/') . $request->session()->get('reference') . '-resized.jpg';
+            $max_file_size = '2000000'; // maximum file size, in bytes
+
+            //Convert image to jpg if it is not a jpeg.
+            if ($request->file('certificate')->getMimeType() === "image/png") {
+                $original_image = imagecreatefrompng($request->file('certificate'));
+            } elseif ($request->file('certificate')->getMimeType() === "image/gif") {
+                $original_image = imagecreatefromgif($request->file('certificate'));
+            } else {
+                $original_image = imagecreatefromjpeg($request->file('certificate'));
+            }
+
+
+            //$original_image->resize(595, 824);
+
+            $image_quality = 100;
+
+            do {
+                $temp_stream = fopen('php://temp', 'w+');
+                $saved = imagejpeg($original_image, $temp_stream, $image_quality--);
+                rewind($temp_stream);
+                $fstat = fstat($temp_stream);
+                fclose($temp_stream);
+
+                $file_size = $fstat['size'];
+            } while (($file_size > $max_file_size) && ($image_quality >= 0));
+
+            if (-1 == $image_quality) {
+                throw ValidationException::withMessages(['certificate' => 'Sorry we could not compress your file.']);
+            } else {
+                $image_resize = Image::make($resized_file)
+                    ->resize(595, 824)
+                    ->save($resized_file);
+                $pdf = new Fpdf();
+                $pdf->AddPage('P', 'a4');
+                $pdf->Image($resized_file, 0, 0);
+                $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
+                $pdf->Output('F', $newPath);
+
+                $verification = [
+                    'death_certificate' => $newPath,
+                    'uploaded' => 'Yes',
+                    'method' => $request->input('verify_method')
+                ];
+                $request->session()->put('verification', $verification);
+                return redirect('/your-details');
+            }
         }
-
-        $verification = [
-            'death_certificate' => $newPath,
-            'uploaded' => 'Yes',
-            'method' => $request->input('verify_method')
-        ];
-
-        $request->session()->put('verification', $verification);
-
-        return redirect('/your-details');
 	}
 
     /**
