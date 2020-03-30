@@ -23,7 +23,7 @@
                             Upload your death certificate
                         </label>
                     <span id="upload-certficate-conditional-hint" class="govuk-hint">
-                        We accept, jpg, png &amp; pdf file formats. The file being uploaded must be under 2mb (megabytes) in size.
+                        We accept, jpg &amp; pngfile formats.
                     </span>
                     @if($errors->has('certificate'))
                         <span id="certificate-error" class="govuk-error-message">{{$errors->first('certificate')}}</span>
