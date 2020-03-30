@@ -50,13 +50,15 @@ class FeedbackController extends Controller
         ]);
 
         try {
+            $params = [
+                'service' => $request->input('service'),
+                'feedback' => ($request->has('more_detail') ? $request->input('more_detail') : '-')
+            ];
+            dd($params);
             $response = $notifyClient->sendEmail(
                 env('FEEDBACK_EMAIL'),
                 '0f3b68c3-4589-4466-a743-73f73e841187',
-                [
-                    'service' => $request->input('service'),
-                    'feedback' => ($request->has('more_detail') ? $request->input('more_detail') : '-')
-                ]);
+                $params);
             return redirect('/feedback/success');
         } catch(\Exception $e) {
             return $e;
