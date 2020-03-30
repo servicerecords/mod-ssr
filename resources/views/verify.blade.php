@@ -28,7 +28,7 @@
                     @if($errors->has('certificate'))
                         <span id="certificate-error" class="govuk-error-message">{{$errors->first('certificate')}}</span>
                     @endif
-                    <input name="certificate" type="file" accept="application/pdf,image/jpg,image/jpeg,image/png" class="govuk-body {{($errors->has('certificate') ? 'govuk-input--error' : '')}}">
+                    <input name="certificate" type="file" accept="image/jpg,image/jpeg,image/png" class="govuk-body {{($errors->has('certificate') ? 'govuk-input--error' : '')}}">
                     {{--                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">--}}
 {{--                        <div class="govuk-radios__item">--}}
 {{--                            <input class="govuk-radios__input" id="upload-certficate-conditional" name="verify_method" type="radio" value="upload" aria-controls="conditional-upload-certficate-conditional" aria-expanded="false" tabindex="2" checked="checked">--}}
