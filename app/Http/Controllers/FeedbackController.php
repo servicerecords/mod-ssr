@@ -54,7 +54,6 @@ class FeedbackController extends Controller
                 'service' => $request->input('service'),
                 'feedback' => (null !== $request->input('more_detail') ? $request->input('more_detail') : '-')
             ];
-            dd($params);
             $response = $notifyClient->sendEmail(
                 env('FEEDBACK_EMAIL'),
                 '0f3b68c3-4589-4466-a743-73f73e841187',
