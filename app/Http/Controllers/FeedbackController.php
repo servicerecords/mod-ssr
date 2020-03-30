@@ -55,7 +55,7 @@ class FeedbackController extends Controller
                 '0f3b68c3-4589-4466-a743-73f73e841187',
                 [
                     'service' => $request->input('service'),
-                    'feedback' => ($request->has('more_detail') ? $request->get('more_detail') : '-')
+                    'feedback' => (null !== $request->input('more_detail') ? $request->input('more_detail') : '-')
                 ]);
             return redirect('/feedback/success');
         } catch(\Exception $e) {
