@@ -52,7 +52,7 @@ class FeedbackController extends Controller
         try {
             $params = [
                 'service' => $request->input('service'),
-                'feedback' => ($request->has('more_detail') ? $request->input('more_detail') : '-')
+                'feedback' => (null !== $request->input('more_detail') ? $request->input('more_detail') : '-')
             ];
             dd($params);
             $response = $notifyClient->sendEmail(
