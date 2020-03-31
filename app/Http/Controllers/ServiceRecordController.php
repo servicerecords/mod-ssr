@@ -206,9 +206,6 @@ class ServiceRecordController extends Controller
 		//dd($request->session()->get('service_details'));
 		$request->session()->put('service_details.join_date', $this->_createDateString($request->session()->get('service_details.join_day'), $request->session()->get('service_details.join_month'), $request->session()->get('service_details.join_year')));
 		$request->session()->put('service_details.discharge_date', $this->_createDateString($request->session()->get('service_details.discharge_day'), $request->session()->get('service_details.discharge_month'), $request->session()->get('service_details.discharge_year')));
-		if($request->session()->get('death_in_service.death') == 'unknown') {
-			return redirect('/verify');
-		}
 		if($request->session()->get('death_in_service.death') == 'No' && !$this->_agePastThreshold($request->session()->get('essential_information.dob'))) {
 			return redirect('/verify');
 		}

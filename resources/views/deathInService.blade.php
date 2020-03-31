@@ -28,10 +28,6 @@
                         <input {{ (old('death_in_service') == 'No' || $death_in_service['death'] == 'No') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="no" name="death" value="No">
                         <label class="govuk-label govuk-radios__label govuk-label--s" for="no">No</label>
                     </div>
-                    <div class="govuk-radios__item">
-                        <input {{ (old('death_in_service') == 'Unkown' || $death_in_service['death'] == 'unkown') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="unkown" name="death" value="Unknown">
-                        <label class="govuk-label govuk-radios__label govuk-label--s" for="unkown">I don't know</label>
-                    </div>
                 </div>
             </fieldset>
         </div>
