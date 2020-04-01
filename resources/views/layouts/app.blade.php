@@ -130,7 +130,8 @@
     <script type="text/javascript">
         openregisterLocationPicker({
             selectElement: document.getElementById('location-autocomplete'),
-            url: '/assets/location-autocomplete-graph.json'
+            url: '/assets/location-autocomplete-graph.json',
+            autoselect: false
         })
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
