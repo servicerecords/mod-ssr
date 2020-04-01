@@ -75,9 +75,7 @@ class ServiceRecordController extends Controller
 	public function serviceChoiceSave(ServiceChoiceSave $request)
 	{
 		$validated = $request->validated();
-		if(null === $request->session()->get('reference')) {
-			$request->session()->put('reference', $this->_createReference($request->input('service')));
-		}
+		$request->session()->put('reference', $this->_createReference($request->input('service')));
 
 		$request->session()->put('service', $request->input('service'));
 		//dd($request->session()->get('service'));
