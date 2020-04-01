@@ -3,9 +3,37 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Factory as ValidationFactory;
+use Carbon\Carbon;
 
 class EssentialInformationSave extends FormRequest
 {
+
+    public function __construct(ValidationFactory $validationFactory)
+    {
+
+        $validationFactory->extend(
+            'validate_dob',
+            function ($attribute, $value, $parameters) {
+                if((null !== request()->input('dob_day') && null !== request()->input('dob_month')) && null !== request()->input('dob_year')) {
+                    //dd(request()->input('dob_day'), request()->input('dob_month'), request()->input('dob_year'));
+                    $input  = request()->input('dob_day') . '/' . request()->input('dob_month') . '/' . request()->input('dob_year');
+
+                    try{
+                        Carbon::parse($input)->isPast();
+                    } catch(\Exception $e) {
+                        //$message = "Message1";
+                        return false;
+                    }
+                } else {
+                    return true;
+                }
+            },
+            (isset($message) ? $message : '')
+        );
+
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,11 +56,8 @@ class EssentialInformationSave extends FormRequest
 			'lastname' => 'required',
 			'dob_day' => 'digits_between:1,31|nullable',
 			'dob_month' => 'digits_between:1,12|nullable',
-			'dob_year' => 'digits:4|required|integer|max:'.date('Y'),
+			'dob_year' => 'digits:4|required|integer|validate_dob|max:'.date('Y'),
         ];
-
-
-
     }
 
     /**
@@ -53,8 +78,21 @@ class EssentialInformationSave extends FormRequest
 			'dob_month.max' => 'The date of birth\'s month must be no more than 2 characters in length',
 			'dob_year.digits' => 'The date of birth\'s year must be 4 characters in length',
 			'dob_year.required' => 'Please enter a year of birth, even if it is an estimate',
-			'dob_year.max' => 'Please enter a dob (even if partial) that is in the past'
-            //'dob_accurate.required' => 'Please specify whether the date of birth is accurate'
+			'dob_year.max' => 'Please enter a dob (even if partial) that is in the past',
+            'dob_year.validate_dob' => 'Please enter a valid date of birth'
 		];
 	}
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            request()->session()->put('essential_information', request()->all());
+        });
+    }
 }

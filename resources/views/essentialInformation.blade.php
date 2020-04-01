@@ -13,7 +13,7 @@
 
                 @include('partials.form-errors')
 
-                <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
+                <div class="govuk-form-group {{ count($errors) > 0 ? 'govuk-form-group--error' :'' }}">
                     <label class="govuk-label govuk-label--s">First name(s)</label>
                     <span id="info-1-item-hint" class="govuk-hint">Include all middle names</span>
                     <input value="{{ isset($essential_information['firstnames'] ) ? $essential_information['firstnames'] : old('firstnames') }}" class="govuk-input govuk-input--20" id="firstname" name="firstnames" type="text" spellcheck="false">
@@ -31,23 +31,26 @@
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s">Date of birth</label>
                     <span id="info-2-item-hint" class="govuk-hint">For example, 31 3 1910. A year of birth is required.</span>
+                    @if($errors->first('dob_year'))
+                        <span id="service-error" class="govuk-error-message">{{$errors->first('dob_year')}}</span>
+                    @endif
                     <div class="govuk-date-input" id="date-of-birth">
                         <div class="govuk-date-input__item">
                             <div class="govuk-form-group">
                                 <label class="govuk-label govuk-date-input__label" for="dob-day">Day</label>
-                                <input value="{{ isset($essential_information['dob_day'] ) ? $essential_information['dob_day'] : old('dob_day') }}" class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob_day" type="number" pattern="[0-9]*">
+                                <input value="{{ isset($essential_information['dob_day'] ) ? $essential_information['dob_day'] : old('dob_day') }}" class="govuk-input govuk-date-input__input govuk-input--width-2 {{($errors->has('dob_day') || $errors->has('dob_year') ? 'govuk-input--error' : '')}}" id="dob-day" name="dob_day" type="number">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
                             <div class="govuk-form-group">
                                 <label class="govuk-label govuk-date-input__label" for="dob-month">Month</label>
-                                <input value="{{ isset($essential_information['dob_month'] ) ? $essential_information['dob_month'] : old('dob_month') }}" class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob_month" type="number" pattern="[0-9]*">
+                                <input value="{{ isset($essential_information['dob_month'] ) ? $essential_information['dob_month'] : old('dob_month') }}" class="govuk-input govuk-date-input__input govuk-input--width-2 {{($errors->has('dob_month') || $errors->has('dob_year') ? 'govuk-input--error' : '')}}" id="dob-month" name="dob_month" type="number">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
                             <div class="govuk-form-group">
                                 <label class="govuk-label govuk-date-input__label" for="dob-year">Year</label>
-                                <input value="{{ isset($essential_information['dob_year'] ) ? $essential_information['dob_year'] : old('dob_year') }}" class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob_year" type="number" pattern="[0-9]*">
+                                <input value="{{ isset($essential_information['dob_year'] ) ? $essential_information['dob_year'] : old('dob_year') }}" class="govuk-input govuk-date-input__input govuk-input--width-4 {{($errors->has('dob_day') || $errors->has('dob_year') ? 'govuk-input--error' : '')}}" id="dob-year" name="dob_year" type="number">
                             </div>
                         </div>
                     </div>

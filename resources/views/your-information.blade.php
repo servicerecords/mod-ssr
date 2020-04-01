@@ -67,7 +67,7 @@
                     </label>
                     <select name="country" class="govuk-select" id="location-autocomplete" autocomplete="off">
                         @foreach($countries as $key => $value)
-                            <option value="{{$key}}" {{ ($key === "GB") ? 'selected' : '' }}>{{$value}}</option>
+                            <option value="{{$key}}" {{ ($key === $your_details['country']) ? 'selected' : '' }}>{{$value}}</option>
                         @endforeach
                     </select>
                 </div>

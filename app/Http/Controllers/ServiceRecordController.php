@@ -138,7 +138,9 @@ class ServiceRecordController extends Controller
      */
 	public function essentialInformationSave(EssentialInformationSave $request)
 	{
-		$validated = $request->validated();
+        $request->session()->put('essential_information', $request->all());
+
+		//$validated = $request->validated();
 
 		$request->session()->put('essential_information', $request->all());
 		$request->session()->put('essential_information.dob', $this->_createDateString($request->session()->get('essential_information.dob_day'), $request->session()->get('essential_information.dob_month'), $request->session()->get('essential_information.dob_year')));
@@ -222,6 +224,9 @@ class ServiceRecordController extends Controller
 	public function yourDetails(Request $request)
 	{
 		$your_details = $request->session()->get('your_details');
+		if(null === $your_details['country']) {
+            $your_details['country'] = "GB";
+        }
 		$countries = \Countries::getList('en', 'json');
 		//$referer = $request->server('HTTP_REFERER');
 		return view('your-information', ['your_details' => $your_details, 'countries' => json_decode($countries, true)]);
