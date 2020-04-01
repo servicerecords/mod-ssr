@@ -56,7 +56,7 @@
                         Postcode
                     </label>
                     @if($errors->first('address_postcode'))
-                        <span id="address-postcode-error" class="govuk-error-message">Enter your postcode or zipcode for your address</span>
+                        <span id="service-error" class="govuk-error-message">{{$errors->first('address_postcode')}}</span>
                     @endif
                     <input value="{{ isset($your_details['address_postcode'] ) ? $your_details['address_postcode'] : old('address_postcode') }}" class="govuk-input govuk-input--width-10 {{"" !== $errors->first('address_postcode')}} ? 'govuk-input--error' : ''}}" id="address-postcode" name="address_postcode" type="text" aria-required="true" aria-describedby="{{null !== $errors->first('address_postcode') ? 'address-postcode-error' : ''}}">
                 </div>
