@@ -48,6 +48,9 @@
                     <label class="govuk-label govuk-label--s" for="address-town">
                         Town or city
                     </label>
+                    @if($errors->first('address_town'))
+                        <span id="service-error" class="govuk-error-message">{{$errors->first('address_town')}}</span>
+                    @endif
                     <input value="{{ isset($your_details['address_town'] ) ? $your_details['address_town'] : old('address_town') }}" class="govuk-input govuk-!-width-two-thirds" id="address_town" name="address_town" type="text">
                 </div>
 

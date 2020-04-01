@@ -49,6 +49,7 @@ class YourInformationSave extends FormRequest
             'email' => 'required|email',
 			'address_line_1' => 'required',
 			'address_postcode' => 'required|uk_postcode',
+            'address_town' => 'required',
             'use_billing' => 'required',
             'telephone' => 'required_unless:country,GB'
         ];
@@ -62,8 +63,16 @@ class YourInformationSave extends FormRequest
             'email.email' => 'Please make sure you have entered a valid email address',
 			'address_line_1.required' => 'Enter your house name/number and street address',
 			'address_postcode.required' => 'Enter the postcode of your address',
+            'address_town.required' => 'Enter a town or city for your address',
             'use_billing.required' => 'Please select whether to use this information for billing',
             'telephone.required_unless' => 'Please enter your telephone number, including country code'
 		];
 	}
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            request()->session()->put('your_details', request()->all());
+        });
+    }
 }

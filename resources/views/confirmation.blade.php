@@ -15,7 +15,7 @@
 
     <p class="govuk-body">We have sent you a confirmation email.</p>
     <p class="govuk-body">
-        We've sent your request to the {{ $dbs_team }} Branch.
+        We've sent your request to the {{ $dbs_team }}.
     </p>
 
     <p class="govuk-body">
