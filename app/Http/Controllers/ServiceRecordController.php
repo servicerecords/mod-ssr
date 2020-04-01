@@ -224,9 +224,6 @@ class ServiceRecordController extends Controller
 	public function yourDetails(Request $request)
 	{
 		$your_details = $request->session()->get('your_details');
-		if(null === $your_details['country']) {
-            $your_details['country'] = "GB";
-        }
 		$countries = \Countries::getList('en', 'json');
 		//$referer = $request->server('HTTP_REFERER');
 		return view('your-information', ['your_details' => $your_details, 'countries' => json_decode($countries, true)]);
