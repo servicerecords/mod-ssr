@@ -21,6 +21,7 @@ class EssentialInformationSave extends FormRequest
 
                     try{
                         Carbon::parse($input)->isPast();
+                        return true;
                     } catch(\Exception $e) {
                         //$message = "Message1";
                         return false;
