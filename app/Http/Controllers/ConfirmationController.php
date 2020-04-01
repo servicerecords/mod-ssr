@@ -186,7 +186,7 @@ class ConfirmationController extends Controller
                     'payment_status' => (null !== $request->session()->get($request->get('uuid')) ? 'Paid' : 'No payment was required'),
                     'verification' => (null === $request->session()->get('verification.uploaded') ? '' : $request->session()->get('verification.uploaded')),
                     'link_to_verification' => $upload,
-                    'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? implode(",", $request->session()->get('service_details.leave_army_reason')) : '-'),
+                    'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? $request->session()->get('service_details.leave_army_reason') : '-'),
                     'further_service' => (null !== ($request->session()->get('service_details.completion_ifo')) ? implode(",", $request->session()->get('service_details.completion_ifo')) : '-'),
                     'leave_army_reason_other' => (null !== ($request->session()->get('service_details.leave_army_reason_other')) ? $request->session()->get('service_details.leave_army_reason_other') : '-')
                 ],
