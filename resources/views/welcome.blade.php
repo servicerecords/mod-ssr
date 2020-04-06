@@ -4,8 +4,7 @@
 
 @section('content')
 
-    <p class="govuk-body-l">Use this service to obtain information relating to a serviceperson who has served
-    in the Royal Navy, Royal Marines, Army, Royal Air Force or Home Guard.</p>
+    <p class="govuk-body-l">Use this service to get information on a serviceperson who served in the armed forces.</p>
 
     <a href="/service" role="button" draggable="false" class="govuk-button govuk-button--start">
         Start now
@@ -29,12 +28,19 @@
         </ul>
         <section class="govuk-tabs__panel" id="information" role="tabpanel" aria-labelledby="tab_information">
             <h2 class="govuk-heading-s">Death Certificates</h2>
-            <p class="govuk-body">If the person whose record you are applying for was born less than 116 years ago, you will need to provide a copy of their death certificate.
-                If the person was killed in service a death certificate is not required regardless of date of birth.
-                If you do not have a copy of the death certificate, please get one before starting this process.</p>
+            <p class="govuk-body">Get a copy of the death certificate before you start unless:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>the subject died in service</li>
+                <li>was born more than 116 years ago</li>
+            </ul>
 
             <h3 class="govuk-heading-s">Charges</h3>
-            <p class="govuk-body">There is a £30 charge to request each record unless you are the spouse, civil partner or parent of the person whose record you are requesting.</p>
+            <p class="govuk-body">£30 charge for each record unless the subject is your:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>spouse</li>
+                <li>civil partner</li>
+                <li>child</li>
+            </ul>
             <div class="govuk-inset-text">You will need a debit or credit card to use this service.</div>
 
             <h3 class="govuk-heading-s">Power of Attorney</h3>

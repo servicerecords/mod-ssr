@@ -50,6 +50,7 @@ class YourInformationSave extends FormRequest
 			'address_line_1' => 'required',
 			'address_postcode' => 'required|uk_postcode',
             'address_town' => 'required',
+            'country' => 'required',
             'use_billing' => 'required',
             'telephone' => 'required_unless:country,GB'
         ];
@@ -64,6 +65,7 @@ class YourInformationSave extends FormRequest
 			'address_line_1.required' => 'Enter your house name/number and street address',
 			'address_postcode.required' => 'Enter the postcode of your address',
             'address_town.required' => 'Enter a town or city for your address',
+            'country.required' => 'Enter a country for your address',
             'use_billing.required' => 'Please select whether to use this information for billing',
             'telephone.required_unless' => 'Please enter your telephone number, including country code'
 		];

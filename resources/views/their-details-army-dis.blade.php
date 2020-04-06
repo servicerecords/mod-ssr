@@ -9,10 +9,6 @@
     <form action="/service-details" method="post" class="govuk-form" id="subject-army" novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend">
-                    Please provide any further details if you know them, as this will help
-                    us complete and speed up your request.
-                </legend>
 
                 @include('partials.form-errors')
 

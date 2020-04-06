@@ -7,9 +7,6 @@
     <form action="/your-details" method="post" class="govuk-form" id="requestor-info" novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend">
-                    We require these details to contact you and post any matching service record/s to you
-                </legend>
 
                @include('partials.form-errors')
 
@@ -51,7 +48,7 @@
                     @if($errors->first('address_town'))
                         <span id="service-error" class="govuk-error-message">{{$errors->first('address_town')}}</span>
                     @endif
-                    <input value="{{ isset($your_details['address_town'] ) ? $your_details['address_town'] : old('address_town') }}" class="govuk-input govuk-!-width-two-thirds" id="address_town" name="address_town" type="text">
+                    <input value="{{ isset($your_details['address_town'] ) ? $your_details['address_town'] : old('address_town') }}" class="govuk-input govuk-!-width-two-thirds {{"" !== $errors->first('address_town')}} ? 'govuk-input--error' : ''}}" id="address_town" name="address_town" type="text">
                 </div>
 
                 <div class="govuk-form-group">
@@ -68,7 +65,11 @@
                     <label class="govuk-label govuk-label--s" for="address-postcode">
                         Country
                     </label>
-                    <select name="country" class="govuk-select" id="location-autocomplete" autocomplete="off">
+                    @if($errors->first('country'))
+                        <span id="service-error" class="govuk-error-message">{{$errors->first('country')}}</span>
+                    @endif
+
+                    <select name="country" class="govuk-select  {{"" !== $errors->first('country') ? 'govuk-input--error' : ''}}" id="location-autocomplete" autocomplete="off">
                         <option value=""></option>
                         @foreach($countries as $key => $value)
                             <option value="{{$key}}" {{ ($key === $your_details['country']) ? 'selected' : '' }}>{{$value}}</option>
@@ -81,7 +82,7 @@
                         Telephone Number
                     </label>
                     <span id="telephone-number-hint" class="govuk-hint">
-                        For international numbers include the country code, this field is optional for UK addresses.
+                        For international numbers include the country code.
                     </span>
                     @if($errors->first('telephone'))
                         <span id="telephone-error" class="govuk-error-message">Enter your telephone number</span>

@@ -8,13 +8,6 @@
     <form action="/service-details" method="post" class="govuk-form" id="subject-army" novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend">
-                    Please provide any further details if you know them, as this will help us complete and speed up
-                    your
-                    request.
-                </legend>
-
-
 
                 @include('partials.form-errors')
 
@@ -49,12 +42,11 @@
                     <div class="govuk-radios__item">
                         <input {{ (old('leave_army_reason') == 'Normal demobilisation after 1939/1945 War' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Normal demobilisation after 1939/1945 War')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-1" name="leave_army_reason" value="Normal demobilisation after 1939/1945 War">
                         <label class="govuk-label govuk-radios__label" for="leave_army_reason-1">Normal
-                            demobilisation after 1939/1945 War</label>
+                            demobilisation after WW2</label>
                     </div>
                     <div class="govuk-radios__item">
                         <input {{ (old('leave_army_reason') == "Completion of 'peace-time' Regular engagement" || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == "Completion of 'peace-time Regular engagement")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-2" name="leave_army_reason" value="Completion of 'peace-time' Regular engagement">
-                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-2">Completion of
-                            'peace-time' Regular engagement</label>
+                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-2">Completion of regular engagement</label>
                     </div>
                     <div class="govuk-radios__item">
                         <input {{ (old('leave_army_reason') == 'Medical discharge' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Medical discharge')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-3" name="leave_army_reason" value="Medical discharge">
@@ -90,9 +82,7 @@
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h2 class="govuk-fieldset__heading">Did they serve with either of the following after
-                        completion
-                        of Regular Army Service? (optional)</h2>
+                    <h2 class="govuk-fieldset__heading">Did they serve with either of the following (optional)</h2>
                 </legend>
             </fieldset>
 
@@ -163,10 +153,9 @@
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h2 class="govuk-fieldset__heading">Has a Disability Pension ever been applied for?</h2>
+                    <h2 class="govuk-fieldset__heading">Has a Disability Pension been applied for? (optional)</h2>
                     <span id="army-1-item-hint" class="govuk-hint">
-                            Resulting from wounds, injury or illness resulting from Army Service
-                        </span>
+                            Resulting from wounds, injury or illness.</span>
                 </legend>
                 <div class="govuk-radios" data-module="radios">
                     <div class="govuk-radios__item">
@@ -198,10 +187,9 @@
                         Further information (optional)
                     </label>
                     <span id="nm-1-item-hint" class="govuk-hint">
-              Please include any other information that may help identify the
-              service record. e.g. Ranks, Grades, Regiments, National Insurance
-              Number etc
-            </span>
+                      For example Ranks, Grades, Regiments, National Insurance
+                      number.
+                    </span>
             <textarea class="govuk-textarea" id="further_info" name="further_info" rows="5">{{ isset($service_details['further_info'] ) ? trim($service_details['further_info']) : trim(old('further_info')) }}</textarea>
         </div>
         <div class="govuk-form-group">

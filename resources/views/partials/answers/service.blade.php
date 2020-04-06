@@ -45,7 +45,7 @@
     </div>
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-            Firstnames
+            First names
         </dt>
         <dd class="govuk-summary-list__value">
             {{ Session::get('essential_information')['firstnames'] }}
@@ -58,7 +58,7 @@
     </div>
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-            Lastname
+            Last name
         </dt>
         <dd class="govuk-summary-list__value">
             {{ Session::get('essential_information')['lastname'] }}

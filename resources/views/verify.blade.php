@@ -1,21 +1,17 @@
 @extends('layouts.app')
 
 
-@section('title', 'Sending Documentation')
+@section('title', 'Sending documentation')
 
 @section('content')
 
     <form action="/verify" method="post" class="govuk-form" enctype="multipart/form-data">
-        <div class="govuk-form-group">
+        <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset" aria-describedby="upload-certficate-conditional-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__heading">
                     <h2 class="govuk-heading govuk-heading-m">
                         Death certificate required
                     </h2>
-                    <p>
-                        As the serviceperson did not die in service, we will require a
-                        death certificate to complete your service record request.
-                    </p>
                 </legend>
                 @include('partials.form-errors')
                 <div class="govuk-form-group">
@@ -23,7 +19,7 @@
                             Upload your death certificate
                         </label>
                     <span id="upload-certficate-conditional-hint" class="govuk-hint">
-                        We accept, jpg &amp; pngfile formats.
+                        We accept, jpg &amp;amp; png file formats.
                     </span>
                     @if($errors->has('certificate'))
                         <span id="certificate-error" class="govuk-error-message">{{$errors->first('certificate')}}</span>
@@ -44,21 +40,7 @@
 {{--                    </div>--}}
                 </div>
 
-                <div class="govuk-form-group">
-                    <details class="govuk-details" role="group">
-                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-bf5bacbe-5d67-4c1a-be8f-ad2466e12b24" aria-expanded="false">
-                <span class="govuk-details__summary-text">
-                  Why we need a death certificate
-                </span>
-                        </summary>
-                        <div class="govuk-details__text" id="details-content-bf5bacbe-5d67-4c1a-be8f-ad2466e12b24" aria-hidden="true">
-                            Unless the serviceperson died in service or it is greater than 116 years since their date of
-                            birth you will need to provide a copy of their death certificate with your request.
-                        </div>
-                    </details>
-                </div>
-
-                <div class="govuk-form-group">
+                <div class="govuk-form-group govuk-!-margin-5">
                     @csrf
 
                     <button type="submit" class="govuk-button">
