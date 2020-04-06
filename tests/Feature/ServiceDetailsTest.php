@@ -24,7 +24,7 @@ class ServiceDetailsTest extends TestCase
 		$this->withSession(['service' => 'Royal Navy / Royal Marines', 'death_in_service' => ['death' => 'No']]);
 		$response = $this->get('/service-details');
 		$response->assertStatus(200);
-		$response->assertSeeText('Date they joined the Royal Navy/Royal Marines');
+		$response->assertSeeText('Date they joined');
 		$response->assertSeeText('Date they left');
 	}
 
@@ -36,7 +36,7 @@ class ServiceDetailsTest extends TestCase
 		$this->withSession(['service' => 'Royal Navy / Royal Marines', 'death_in_service' => ['death' => 'Yes']]);
 		$response = $this->get('/service-details');
 		$response->assertStatus(200);
-		$response->assertSeeText('Date they joined the Royal Navy/Royal Marines');
+		$response->assertSeeText('Date they joined');
 		$response->assertSeeText('Date of death in service');
 	}
 	//NAVY ENDS
@@ -111,8 +111,8 @@ class ServiceDetailsTest extends TestCase
 		$this->withSession(['service' => 'Royal Air Force (RAF)', 'death_in_service' => ['death' => 'No']]);
 		$response = $this->get('/service-details');
 		$response->assertStatus(200);
-		$response->assertSeeText('Date they joined the RAF');
-		$response->assertSeeText('Date they left the RAF');
+		$response->assertSeeText('Date they joined');
+		$response->assertSeeText('Date they left');
 	}
 
 	/**
@@ -123,7 +123,7 @@ class ServiceDetailsTest extends TestCase
 		$this->withSession(['service' => 'Royal Air Force (RAF)', 'death_in_service' => ['death' => 'Yes']]);
 		$response = $this->get('/service-details');
 		$response->assertStatus(200);
-		$response->assertSeeText('Date they joined the RAF');
+		$response->assertSeeText('Date they joined');
 		$response->assertSeeText('Date of casualty / aircraft loss');
 	}
 
@@ -160,8 +160,8 @@ class ServiceDetailsTest extends TestCase
 		$this->withSession(['service' => 'Home Guard', 'death_in_service' => ['death' => 'No']]);
 		$response = $this->get('/service-details');
 		$response->assertStatus(200);
-		$response->assertSeeText('Address on enlistment');
-		$response->assertSeeText('In which county did they serve?');
+		$response->assertSeeText('Address when they joined');
+		$response->assertSeeText('Which county did they serve in?');
 	}
 
 	/**
@@ -172,8 +172,8 @@ class ServiceDetailsTest extends TestCase
 		$this->withSession(['service' => 'Home Guard', 'death_in_service' => ['death' => 'Yes']]);
 		$response = $this->get('/service-details');
 		$response->assertStatus(200);
-		$response->assertSeeText('Address on enlistment');
-		$response->assertSeeText('In which county did they serve?');
+		$response->assertSeeText('Address when they joined');
+		$response->assertSeeText('Which county did they serve in?');
 		$response->assertSeeText('Date of death');
 	}
 

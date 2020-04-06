@@ -124,8 +124,7 @@ class CheckYourAnswersTest extends TestCase
 			],
 
 		])->get('/check-your-answers');
-		$response->assertSeeText('By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct. A payment of £30 is required.
-            By selecting accept &amp; pay below, you will be taken to the GOV.UK Pay pages to complete the payment process.');
+		$response->assertSeeText('By submitting your are confirming that the details are correct.');
 		$response->assertSeeText('Accept and pay');
 		$response->assertStatus(200);
 	}

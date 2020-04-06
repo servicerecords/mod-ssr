@@ -22,7 +22,7 @@ class DeathServiceTest extends TestCase
 	{
 		$response = $this->get('/service/death-in-service', ['HTTP_REFERER' => 'testing']);
 		$response->assertStatus(200);
-		$response->assertSeeText('Death in service');
+		$response->assertSeeText('Did they die in service?');
 		$response->assertSeeText('Continue');
 	}
 
