@@ -15,15 +15,23 @@ class EssentialInformationSave extends FormRequest
         $validationFactory->extend(
             'validate_dob',
             function ($attribute, $value, $parameters) {
+                //dd(request()->input('dob_day'), request()->input('dob_month'), request()->input('dob_year'));
                 if((null !== request()->input('dob_day') && null !== request()->input('dob_month')) && null !== request()->input('dob_year')) {
                     //dd(request()->input('dob_day'), request()->input('dob_month'), request()->input('dob_year'));
                     $input  = request()->input('dob_day') . '/' . request()->input('dob_month') . '/' . request()->input('dob_year');
 
                     try{
-                        Carbon::parse($input)->isPast();
+                        $d = \DateTime::createFromFormat('d/m/Y', $input);
+                        // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
+                        $date = $d && $d->format('d/m/Y') === $input;
+
+                        if($date === false) {
+                            return false;
+                        }
+                        Carbon::parse($d)->isPast();
                         return true;
                     } catch(\Exception $e) {
-                        //$message = "Message1";
+                        dd(request()->input('dob_day'), request()->input('dob_month'), request()->input('dob_year'), $e);
                         return false;
                     }
                 } else {
