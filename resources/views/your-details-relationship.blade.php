@@ -21,8 +21,8 @@
                         <span id="service-error" class="govuk-error-message">{{$errors->first('relationship')}}</span>
                     @endif
                     <div class="govuk-radios__item">
-                        <input {{ (old('relationship') == "Son/Daughter" || (isset($your_details_relationship['relationship']) && $your_details_relationship['relationship'] == "Son/Daughter")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="relationship-2" name="relationship" value="Son/Daughter">
-                        <label class="govuk-label govuk-radios__label" for="relationship-2">I am not related</label>
+                        <input {{ (old('relationship') == "I am not related" || (isset($your_details_relationship['relationship']) && $your_details_relationship['relationship'] == "I am not related")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="relationship-0" name="relationship" value="I am not related">
+                        <label class="govuk-label govuk-radios__label" for="relationship-0">I am not related</label>
                     </div>
                     <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                         <div class="govuk-radios__item">

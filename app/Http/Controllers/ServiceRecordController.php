@@ -314,6 +314,9 @@ class ServiceRecordController extends Controller
 		} else {
 			$request->session()->put('your_details.payment_required', true);
 		}
+		if($request->input('relationship') == "I am not related") {
+		    return redirect('/check-your-answers');
+        }
 		return redirect('/your-details/next-of-kin');
 	}
 

@@ -1,6 +1,6 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
-@section('title', 'Are you the immediate next of kin?');
+@section('title', 'Are you the immediate next of kin?')
 
 @section('content')
 

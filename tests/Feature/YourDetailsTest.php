@@ -107,7 +107,7 @@ class YourDetailsTest extends TestCase
 		$response = $this->post('/your-details', $stub);
 		$response->assertSessionHas(['your_details']);
 		$response->assertStatus(302);
-		$response->assertRedirect('/your-details/relation');
+		$response->assertRedirect('/your-details/relationship');
 	}
 
 }

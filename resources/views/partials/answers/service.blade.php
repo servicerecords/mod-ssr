@@ -1,4 +1,4 @@
-<h2 class="govuk-heading-m">serviceperson</h2>
+<h2 class="govuk-heading-m">Serviceperson</h2>
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">

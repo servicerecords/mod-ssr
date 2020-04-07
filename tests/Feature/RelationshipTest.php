@@ -25,7 +25,7 @@ class RelationshipTest extends TestCase
         $response = $this->get('/your-details/relationship');
 
         $response->assertStatus(200);
-        $response->assertSeeText('How are you related?');
+        $response->assertSeeText('How are you related to the serviceperson?');
     }
 
     /**
