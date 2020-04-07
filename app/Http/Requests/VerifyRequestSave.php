@@ -24,7 +24,7 @@ class VerifyRequestSave extends FormRequest
     public function rules()
     {
         return [
-            'certificate' => 'required|file|max:2000|mimes:jpeg,png,pdf'
+            'certificate' => 'required|file|mimes:jpeg,png'
         ];
     }
 
@@ -32,8 +32,7 @@ class VerifyRequestSave extends FormRequest
     {
         return [
             'certificate.required' => 'Please upload a death certificate',
-            'certificate.mimes' => 'Please upload a valid file type',
-            'certificate.max' => 'Please upload a file that is less than 2MB in size'
+            'certificate.mimes' => 'Please upload a valid file type'
         ];
     }
 }

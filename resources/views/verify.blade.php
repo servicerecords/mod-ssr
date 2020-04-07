@@ -19,7 +19,7 @@
                             Upload your death certificate
                         </label>
                     <span id="upload-certficate-conditional-hint" class="govuk-hint">
-                        We accept, jpg &amp;amp; png file formats.
+                        We accept, jpg and png file formats.
                     </span>
                     @if($errors->has('certificate'))
                         <span id="certificate-error" class="govuk-error-message">{{$errors->first('certificate')}}</span>

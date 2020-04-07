@@ -364,7 +364,7 @@ class ServiceRecordController extends Controller
      * @param VerifyRequestSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function verifySave(Request $request)
+	public function verifySave(VerifyRequestSave $request)
 	{
         //$validation = $request->validated();
 
