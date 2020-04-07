@@ -5,7 +5,7 @@
 @section('content')
     @include('partials.answers.service')
     @include('partials.answers.user')
-    <h2 class="govuk-heading-m">submit your requestt</h2>
+    <h2 class="govuk-heading-m">submit your request</h2>
     @if(Session::get('your_details')['payment_required'])
         <ul class="govuk-list govuk-list--bullet">
             <li>By submitting your are confirming that the details are correct.</li>

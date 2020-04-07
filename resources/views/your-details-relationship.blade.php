@@ -11,7 +11,7 @@
 
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h2 class="govuk-fieldset__heading">How are you related?</h2>
+                    <h2 class="govuk-fieldset__heading">How are you related to the serviceperson?</h2>
                 </legend>
 
 
@@ -20,6 +20,10 @@
                     @if($errors->first('related'))
                         <span id="service-error" class="govuk-error-message">{{$errors->first('relationship')}}</span>
                     @endif
+                    <div class="govuk-radios__item">
+                        <input {{ (old('relationship') == "Son/Daughter" || (isset($your_details_relationship['relationship']) && $your_details_relationship['relationship'] == "Son/Daughter")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="relationship-2" name="relationship" value="Son/Daughter">
+                        <label class="govuk-label govuk-radios__label" for="relationship-2">I am not related</label>
+                    </div>
                     <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                         <div class="govuk-radios__item">
                             <input {{ (old('relationship') == "Spouse/Civil Partner" || (isset($your_details_relationship['relationship']) && $your_details_relationship['relationship'] == "Spouse/Civil Partner")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="relationship-1" name="relationship" value="Spouse/Civil Partner" aria-controls="conditional-relationship-1-conditional" aria-expanded="false">
@@ -76,7 +80,7 @@
                         <div class="govuk-radios__item">
                             <input {{ (old('relationship') == "Neice/Nephew" || (isset($your_details_relationship['relationship']) && $your_details_relationship['relationship'] == "Neice/Nephew")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="relationship-6" name="relationship" value="Neice/Nephew">
                             <label class="govuk-label govuk-radios__label" for="relationship-6">I am their
-                                neice/nephew</label>
+                                niece/nephew</label>
                         </div>
                         <div class="govuk-radios__item">
                             <input {{ (old('relationship') == "Grandparent" || (isset($your_details_relationship['relationship']) && $your_details_relationship['relationship'] == "Grandparent")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="relationship-7" name="relationship" value="Grandparent">
@@ -100,39 +104,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                            <h1 class="govuk-fieldset__heading">
-                                Are you the immediate next of kin?
-                            </h1>
-                        </legend>
-                        <div class="govuk-radios govuk-radios--inline">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input"
-                                       id="next_of_kin"
-                                       name="next_of_kin"
-                                       type="radio" value="Yes"
-                                       {{ (old('next_of_kin') == "Yes" || (isset($your_details_relationship ['next_of_kin']) && $your_details_relationship['next_of_kin'] == "Yes")) ? 'checked' : '' }}>
-                                <label class="govuk-label govuk-radios__label" for="next_of_kin">
-                                    Yes
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input"
-                                       id="next_of_kin_2"
-                                       name="next_of_kin"
-                                       type="radio"
-                                       value="No"
-                                        {{ (old('next_of_kin') == "No" || (isset($your_details_relationship ['next_of_kin']) && $your_details_relationship['next_of_kin'] == "Yes")) ? 'checked' : '' }}>
-                                <label class="govuk-label govuk-radios__label" for="next_of_kin_2">
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
                 <!-- <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -165,6 +136,7 @@
                         </div>
                     </fieldset>
                 </div> -->
+                </div>
                 <div class="govuk-form-group">
                     <details class="govuk-details" role="group">
                         <summary class="govuk-details__summary" role="button" aria-controls="details-content-e0c053e5-5ef7-40ff-be62-f8146fe9ff57" aria-expanded="false">

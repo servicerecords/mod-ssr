@@ -15,6 +15,7 @@ use App\Http\Requests\ServiceDetailsSave;
 use App\Http\Requests\YourInformationSave;
 use App\Http\Requests\RelationRequest;
 use App\Http\Requests\RelationshipRequest;
+use App\Http\Requests\NextOfKinRequest;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as Image;
 use Illuminate\Validation\ValidationException;
@@ -254,6 +255,13 @@ class ServiceRecordController extends Controller
 		return view('your-details-relation', ['your_details_relation' => $your_details_relation]);
 	}
 
+	public function nextOfKin(Request $request) {
+	    $next_of_kin = $request->session()->get('your_details');
+
+
+	    return view('your-details-next-of-kin', ['next_of_kin' => $next_of_kin]);
+    }
+
     /**
      * Save the users details, these details will be sent to notify and if the user needs to make a payment we can use
      * the address should we need too.
@@ -266,7 +274,7 @@ class ServiceRecordController extends Controller
 		$validated = $request->validated();
 
 		$request->session()->put('your_details', $request->all());
-		return redirect('/your-details/relation');
+		return redirect('/your-details/relationship');
 	}
 
     /**
@@ -306,8 +314,15 @@ class ServiceRecordController extends Controller
 		} else {
 			$request->session()->put('your_details.payment_required', true);
 		}
-		return redirect('/check-your-answers');
+		return redirect('/your-details/next-of-kin');
 	}
+
+	public function nextOfKinSave(NextOfKinRequest $request)
+    {
+        //$validated = $request->validated();
+        $request->session()->put('your_details.next_of_kin', $request->input('next_of_kin'));
+        return redirect('/check-your-answers');
+    }
 
     /*
     public function yourDetailsCommunication(Request $request)

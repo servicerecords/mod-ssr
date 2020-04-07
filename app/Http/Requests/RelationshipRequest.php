@@ -26,7 +26,6 @@ class RelationshipRequest extends FormRequest
         return [
             'relationship' => 'required',
 			'relationship_other' => 'required_if:relationship,Other',
-            'next_of_kin' => 'required'
         ];
     }
 
@@ -34,8 +33,7 @@ class RelationshipRequest extends FormRequest
 	{
 		return [
 			'relationship.required' => 'Please specify what you relationship is with the serviceperson',
-			'relationship_other.required_if' => 'Please specify your relationship with the serviceperson',
-            'next_of_kin.required' => 'Please specify if you are the immediate next of kin'
+			'relationship_other.required_if' => 'Please specify your relationship with the serviceperson'
 		];
 	}
 }

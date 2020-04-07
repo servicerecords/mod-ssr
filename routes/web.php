@@ -35,6 +35,7 @@ Route::get('/service-details', 'ServiceRecordController@serviceDetails');
 Route::get('/your-details', 'ServiceRecordController@yourDetails');
 Route::get('your-details/relationship', 'ServiceRecordController@relationship');
 Route::get('your-details/relation', 'ServiceRecordController@relation');
+Route::get('your-details/next-of-kin', 'ServiceRecordController@nextOfKin');
 Route::get('your-details/communication', 'ServiceRecordController@communication');
 Route::get('/check-your-answers', 'ServiceRecordController@checkYourAnswers');
 Route::get('/verify', 'ServiceRecordController@verify');
@@ -47,6 +48,7 @@ Route::post('/service-details', 'ServiceRecordController@serviceDetailsSave');
 Route::post('/your-details', 'ServiceRecordController@yourDetailsSave');
 Route::post('/your-details/relationship', 'ServiceRecordController@yourDetailsRelationshipSave');
 Route::post('/your-details/relation', 'ServiceRecordController@yourDetailsRelationSave');
+Route::post('/your-details/next-of-kin', 'ServiceRecordController@nextOfKinSave');
 Route::post('/your-details/communication', 'ServiceRecordController@communicationSave');
 Route::post('/verify', 'ServiceRecordController@verifySave');
 
