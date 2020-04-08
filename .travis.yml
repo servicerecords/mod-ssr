@@ -53,6 +53,7 @@ before_script:
 script:
   - cp .env.travis .env
   - php vendor/bin/phpunit --configuration phpunit.xml
+  - artisan dusk
 notifications:
   email:
     recipients:
