@@ -61,6 +61,6 @@ script:
 notifications:
   email:
     recipients:
-      - simon@87development.co.uk
+      - Amanda.Moran637@mod.gov.uk
     on_success: always
     on_failure: always

@@ -18,13 +18,12 @@ class EssentialInformationSave extends FormRequest
                 //dd(request()->input('dob_day'), request()->input('dob_month'), request()->input('dob_year'));
                 if((null !== request()->input('dob_day') && null !== request()->input('dob_month')) && null !== request()->input('dob_year')) {
                     //dd(request()->input('dob_day'), request()->input('dob_month'), request()->input('dob_year'));
-                    $input  = request()->input('dob_day') . '/' . request()->input('dob_month') . '/' . request()->input('dob_year');
+                    $input  = request()->input('dob_day') . '/' . sprintf("%02d", request()->input('dob_month')) . '/' . request()->input('dob_year');
 
                     try{
                         $d = \DateTime::createFromFormat('d/m/Y', $input);
                         // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
                         $date = $d && $d->format('d/m/Y') === $input;
-
                         if($date === false) {
                             return false;
                         }
