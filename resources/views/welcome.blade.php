@@ -41,6 +41,10 @@
                 <li>civil partner</li>
                 <li>child</li>
             </ul>
+
+            <h3 class="govuk-heading-s"> Sending of Records</h3>
+            <p class="govuk-body">Records will be sent to you by post.</p>
+
             <div class="govuk-inset-text">You will need a debit or credit card to use this service.</div>
 
             <h3 class="govuk-heading-s">Power of Attorney</h3>

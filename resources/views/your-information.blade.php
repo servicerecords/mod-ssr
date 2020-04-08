@@ -29,7 +29,7 @@
                         Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
                     </label>
                     @if($errors->has('address_line_1'))
-                        <span id="address-line-1-error" class="govuk-error-message">Enter your house name/number and street address</span>
+                        <span id="address-line-1-error" class="govuk-error-message">Building number or name and street</span>
                     @endif
                     <input value="{{ isset($your_details['address_line_1'] ) ? $your_details['address_line_1'] : old('address_line_1') }}" class="govuk-input {{"" !== $errors->first('address_line_1') ? 'govuk-input--error' : ''}}" id="address-line-1" name="address_line_1" type="text" aria-required="true" aria-describedby="{{null !== $errors->first('address_line_1') ? 'address-line-1-error' : ''}}">
                 </div>
@@ -63,7 +63,7 @@
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="address-postcode">
-                        Country
+                        Country or territory
                     </label>
                     @if($errors->first('country'))
                         <span id="service-error" class="govuk-error-message">{{$errors->first('country')}}</span>

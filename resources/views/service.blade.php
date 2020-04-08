@@ -10,7 +10,7 @@
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                     <h2 class="govuk-fieldset__heading">
-                        In which service did they last serve in?
+                        Which service did they last serve in?
                     </h2>
                 </legend>
                 @if($errors->first('service'))

@@ -53,8 +53,7 @@ before_script:
 script:
   - cp .env.travis .env
   - php vendor/bin/phpunit --configuration phpunit.xml
-  - php artisan dusk:install
-  - php artisan dusk
+  - php vendor/bin/phpunit tests/Feature/SmokeTestCases.php --configuration phpunit.xml
 notifications:
   email:
     recipients:

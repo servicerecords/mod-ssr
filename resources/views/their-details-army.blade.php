@@ -12,7 +12,7 @@
                 @include('partials.form-errors')
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="service_number">Official Service Number (optional)</label>
+                    <label class="govuk-label govuk-label--s" for="service_number">Official Service number (optional)</label>
                     <input value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}" class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text" spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
@@ -40,7 +40,7 @@
 
                 <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                     <div class="govuk-radios__item">
-                        <input {{ (old('leave_army_reason') == 'Normal demobilisation after 1939/1945 War' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Normal demobilisation after 1939/1945 War')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-1" name="leave_army_reason" value="Normal demobilisation after 1939/1945 War">
+                        <input {{ (old('leave_army_reason') == 'Demobilisation after WW2' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Demobilisation after WW2')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-1" name="leave_army_reason" value="Demobilisation after WW2">
                         <label class="govuk-label govuk-radios__label" for="leave_army_reason-1">Normal
                             demobilisation after WW2</label>
                     </div>
@@ -54,10 +54,8 @@
                             discharge</label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input {{ (old('leave_army_reason') == 'End of whole-time National Service' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'End of whole-time National Service')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-4" name="leave_army_reason" value="End of whole-time National Service">
-                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-4">End
-                            of
-                            whole-time National Service</label>
+                        <input {{ (old('leave_army_reason') == 'End of National Service' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'End of National Service')) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="leave_army_reason-4" name="leave_army_reason" value="End of National Service">
+                        <label class="govuk-label govuk-radios__label" for="leave_army_reason-4">End of National Service</label>
                     </div>
                     <div class="govuk-radios__item">
                         <input {{ (old('leave_army_reason') == 'Other' || (isset($service_details['leave_army_reason']) && $service_details['leave_army_reason'] == 'Other')) ? 'checked' : '' }} class="govuk-radios__input" id="leave-conditional-1" name="leave_army_reason" type="radio" value="other" aria-controls="conditional-leave-conditional-1" aria-expanded="false">
@@ -154,8 +152,6 @@
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                     <h2 class="govuk-fieldset__heading">Has a Disability Pension been applied for? (optional)</h2>
-                    <span id="army-1-item-hint" class="govuk-hint">
-                            Resulting from wounds, injury or illness.</span>
                 </legend>
                 <div class="govuk-radios" data-module="radios">
                     <div class="govuk-radios__item">

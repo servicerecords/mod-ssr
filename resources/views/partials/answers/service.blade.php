@@ -1,6 +1,7 @@
 <h2 class="govuk-heading-m">Serviceperson</h2>
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
+    <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
             Service
         </dt>
@@ -16,9 +17,9 @@
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
             @if(Session::get('service') == 'Home Guard')
-                National Registration Number
+                National Registration number
             @else
-                Official Service Number
+                Official Service number
             @endif
         </dt>
         <dd class="govuk-summary-list__value">
@@ -202,7 +203,7 @@
                 @if(in_array('Territorial Army (TA)', Session::get('service_details')['completion_info']))
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">
-                                Territorial Army Number
+                                Territorial Army number
                             </dt>
                             <dd class="govuk-summary-list__value">
                                 {{ (isset(Session::get('service_details')['ta_army_number']) ? Session::get('service_details')['ta_army_number'] : '-') }}
@@ -244,7 +245,7 @@
                     @if(in_array('Army Emergency Reserve (AER)', Session::get('service_details')['completion_info']))
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">
-                                Army Emergency Reserve Number
+                                Army Emergency Reserve number
                             </dt>
                             <dd class="govuk-summary-list__value">
                                 {{ (isset(Session::get('service_details')['aer_number']) ? Session::get('service_details')['aer_number'] : '-') }}
@@ -303,23 +304,10 @@
         </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-                Address at enlistment
+                Address when they joined
             </dt>
             <dd class="govuk-summary-list__value">
                 {{ (isset(Session::get('service_details')['address_at_entlistment'])) ? Session::get('service_details')['address_at_entlistment'] : '' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/service-details">
-                    Change
-                </a>
-            </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Address at discharge
-            </dt>
-            <dd class="govuk-summary-list__value">
-                {{ (isset(Session::get('service_details')['address_at_discharge'])) ? Session::get('service_details')['address_at_discharge'] : '' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/service-details">

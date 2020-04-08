@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="discharge_date">Date of discharge (optional)</label>
+                    <label class="govuk-label govuk-label--s" for="discharge_date">Date they left (optional)</label>
                     <span id="army-dis-1-item-hint" class="govuk-hint">
                         Partial dates are okay.
                     </span>
