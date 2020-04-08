@@ -124,7 +124,7 @@ class CheckYourAnswersTest extends TestCase
 			],
 
 		])->get('/check-your-answers');
-		$response->assertSeeText('By submitting your are confirming that the details are correct.');
+		$response->assertSeeText('Submit your request');
 		$response->assertSeeText('Accept and pay');
 		$response->assertStatus(200);
 	}
