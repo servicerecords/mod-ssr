@@ -52,7 +52,10 @@ before_script:
   - npm update
 script:
   - cp .env.travis .env
-  -  cp -R node_modules/govuk-frontend/assets/images ./public
+  - mkdir public/images/
+  - mkdir public/images/vendor
+  - mkdir public/images/vendor/govuk-frontend
+  - cp -R public/images/vendor/govuk-frontend/images/ public/images/vendor/govuk-frontend/
   - php vendor/bin/phpunit --configuration phpunit.xml
   - php vendor/bin/phpunit tests/Feature/SmokeTestCases.php --configuration phpunit.xml
 notifications:
