@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->environment('local', 'testing', 'test', 'live-test', 'production')) {
+        if ($this->app->environment('local', 'testing', 'test', 'live-test', 'production', 'development')) {
             $this->app->register(DuskServiceProvider::class);
         }
     }
