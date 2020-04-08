@@ -53,7 +53,7 @@ before_script:
 script:
   - cp .env.travis .env
   - php vendor/bin/phpunit --configuration phpunit.xml
-  - php artisn dusk:install
+  - php artisan dusk:install
   - php artisan dusk
 notifications:
   email:
