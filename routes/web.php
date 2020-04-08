@@ -40,6 +40,10 @@ Route::get('your-details/communication', 'ServiceRecordController@communication'
 Route::get('/check-your-answers', 'ServiceRecordController@checkYourAnswers');
 Route::get('/verify', 'ServiceRecordController@verify');
 
+Route::get('/help/cookies', 'HelpController@cookies');
+Route::get('/help/privacy', 'HelpController@privacy');
+Route::get('/help/accessibility', 'HelpController@accessibility');
+
 Route::post('/request', 'ServiceRecordController@recordRequestSave');
 Route::post('/service', 'ServiceRecordController@serviceChoiceSave');
 Route::post('/service/death-in-service', 'ServiceRecordController@deathInServiceSave');
