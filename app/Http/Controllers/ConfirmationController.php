@@ -20,11 +20,11 @@ class ConfirmationController extends Controller
     //
     public function __construct()
     {
-        $this->land_email = env('LAND_EMAIL', 'Amanda.Moran637@mod.gov.uk');
-        $this->sea_email = env('SEA_EMAIL', 'Amanda.Moran637@mod.gov.uk');
-        $this->air_email = env('AIR_EMAIL', 'Amanda.Moran637@mod.gov.uk');
-        $this->accounts_email = env('ACCOUNTS_EMAIL', 'Amanda.Moran637@mod.gov.uk');
-        $this->unknown_email = env('UNKNOWN_EMAIL', 'Amanda.Moran637@mod.gov.uk');
+        $this->land_email = env('LAND_EMAIL', 'amanda.moran637@mod.uk');
+        $this->sea_email = env('SEA_EMAIL', 'amanda.moran637@mod.uk');
+        $this->air_email = env('AIR_EMAIL', 'amanda.moran637@mod.uk');
+        $this->accounts_email = env('ACCOUNTS_EMAIL', 'amanda.moran637@mod.uk');
+        $this->unknown_email = env('UNKNOWN_EMAIL', 'amanda.moran637@mod.uk');
         $this->templates = [
             'ARM_DIS' => '5f3a549b-9019-4c7f-8995-fb47ae4905bd',
             'ARM' => 'c811ac5c-cd6f-4702-8db5-ff105e364277',
