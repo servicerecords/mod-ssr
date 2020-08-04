@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "change-case": "^3.1.0",
+        "govuk-country-and-territory-autocomplete": "^1.0.1",
         "govuk-frontend": "^2.13.0",
         "mailcheck": "^1.1.1",
         "mixin-deep": "^2.0.1",
