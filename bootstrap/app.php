@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->register(Laravel\Dusk\DuskServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
