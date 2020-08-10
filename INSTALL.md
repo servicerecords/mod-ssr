@@ -12,6 +12,8 @@ Create you own development environment variable file by copying the existing exa
 $ cp .env.example .env
 ```
 
+Open this file and add to it the basic development requirements
+
 Generate a unique application key
 
 ```
