@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 //('govuk-frontend/all')
 // used by the cookie banner component
@@ -125,19 +125,18 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     '_gat': 'usage',
     'JS-Detection': 'usage',
     'TLSversion': 'usage'
-    /*
-      Cookie methods
-      ==============
-      Usage:
-        Setting a cookie:
-        GOVUK.cookie('hobnob', 'tasty', { days: 30 });
-        Reading a cookie:
-        GOVUK.cookie('hobnob');
-        Deleting a cookie:
-        GOVUK.cookie('hobnob', null);
-    */
-
   };
+  /*
+    Cookie methods
+    ==============
+    Usage:
+      Setting a cookie:
+      GOVUK.cookie('hobnob', 'tasty', { days: 30 });
+      Reading a cookie:
+      GOVUK.cookie('hobnob');
+      Deleting a cookie:
+      GOVUK.cookie('hobnob', null);
+  */
 
   window.GOVUK.cookie = function (name, value, options) {
     if (typeof value !== 'undefined') {
@@ -429,9 +428,9 @@ window.GOVUKFrontend.CookieBanner = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/simon/Sites/mod-ssr/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/simon/Sites/mod-ssr/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/simon/Sites/mod-ssr/resources/sass/application-ie8.scss */"./resources/sass/application-ie8.scss");
+__webpack_require__(/*! D:\Projects\Clients\MoD\mod-ssr\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\Projects\Clients\MoD\mod-ssr\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\Projects\Clients\MoD\mod-ssr\resources\sass\application-ie8.scss */"./resources/sass/application-ie8.scss");
 
 
 /***/ })
