@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommunicationRequest;
-use App\Http\Requests\VerifyRequestSave;
-use Codedge\Fpdf\Fpdf\Fpdf;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Http\Requests\DeathInServiceSave;
 use App\Http\Requests\EssentialInformationSave;
-use App\Http\Requests\RecordRequestSave;
-use App\Http\Requests\ServiceChoiceSave;
-use App\Http\Requests\ServiceDetailsSave;
-use App\Http\Requests\YourInformationSave;
+use App\Http\Requests\NextOfKinRequest;
 use App\Http\Requests\RelationRequest;
 use App\Http\Requests\RelationshipRequest;
-use App\Http\Requests\NextOfKinRequest;
+use App\Http\Requests\ServiceChoiceSave;
+use App\Http\Requests\ServiceDetailsSave;
+use App\Http\Requests\VerifyRequestSave;
+use App\Http\Requests\YourInformationSave;
+use Carbon\Carbon;
+use Codedge\Fpdf\Fpdf\Fpdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as Image;
-use Illuminate\Validation\ValidationException;
 
 class ServiceRecordController extends Controller
 {
@@ -27,30 +24,20 @@ class ServiceRecordController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
-	{
-		return view('welcome');
-	}
+    {
+        return view('welcome');
+    }
 
     /**
-     * Show the user the first question page of our application.
+     * Bootstrap service to clear down all cookies and hanging chads
+     *
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function recordRequest(Request $request)
-	{
-		//$referrer = $request->server('HTTP_REFERER');
-		return view('request');
-	}
-
-    /**
-     * @param RecordRequestSave $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-	public function recordRequestSave(RecordRequestSave $request)
-	{
-		//We can just redirect for now as we don't need to save anything
-		return redirect('/service');
-	}
+    public function bootstrap(Request $request) {
+        $request->session()->flush();
+        return redirect('/service');
+    }
 
     /**
      * Allow the user to make a service
@@ -58,12 +45,11 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function serviceChoice(Request $request)
-	{
-		$service = $request->session()->get('service');
-		//$referer = $request->server('HTTP_REFERER');
-		return view('service', ['service' => $service]);
-	}
+    public function serviceChoice(Request $request)
+    {
+        $service = $request->session()->get('service');
+        return view('service', ['service' => $service]);
+    }
 
     /**
      * Save the service choice the user has made, we validate the POST data here to make sure a valid service has
@@ -73,15 +59,13 @@ class ServiceRecordController extends Controller
      * @param ServiceChoiceSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function serviceChoiceSave(ServiceChoiceSave $request)
-	{
-		$validated = $request->validated();
-		$request->session()->put('reference', $this->_createReference($request->input('service')));
+    public function serviceChoiceSave(ServiceChoiceSave $request)
+    {
+        $request->session()->put('reference', $this->_createReference($request->input('service')));
 
-		$request->session()->put('service', $request->input('service'));
-		//dd($request->session()->get('service'));
-		return redirect('/service/death-in-service');
-	}
+        $request->session()->put('service', $request->input('service'));
+        return redirect('/service/death-in-service');
+    }
 
     /**
      * Serve the death in service page, $death_in_service will be null if the user has not previously made a choice,
@@ -90,12 +74,11 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function deathInService(Request $request)
-	{
-		$death_in_service = $request->session()->get('death_in_service');
-		//$referer = $request->server('HTTP_REFERER');
-		return view('deathInService', ['death_in_service' => $death_in_service]);
-	}
+    public function deathInService(Request $request)
+    {
+        $death_in_service = $request->session()->get('death_in_service');
+        return view('deathInService', ['death_in_service' => $death_in_service]);
+    }
 
     /**
      * Validate the choice, the user must make a choice an empty POST is not valid.
@@ -104,13 +87,11 @@ class ServiceRecordController extends Controller
      * @param DeathInServiceSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function deathInServiceSave(DeathInServiceSave $request)
-	{
-		$validated = $request->validated();
-
-		$request->session()->put('death_in_service', $request->all());
-		return redirect('/essential-information');
-	}
+    public function deathInServiceSave(DeathInServiceSave $request)
+    {
+        $request->session()->put('death_in_service', $request->all());
+        return redirect('/essential-information');
+    }
 
     /**
      * Serve the user the essential information page.
@@ -120,12 +101,11 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function essentialInformation(Request $request)
-	{
-		$essential_information = $request->session()->get('essential_information');
-		//$referer = $request->server('HTTP_REFERER');
-		return view('essentialInformation', ['essential_information' => $essential_information]);
-	}
+    public function essentialInformation(Request $request)
+    {
+        $essential_information = $request->session()->get('essential_information');
+        return view('essentialInformation', ['essential_information' => $essential_information]);
+    }
 
     /**
      * Save the data (if valid) to the session, if its not valid return the user to the form and show the validation
@@ -135,16 +115,19 @@ class ServiceRecordController extends Controller
      * @param EssentialInformationSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function essentialInformationSave(EssentialInformationSave $request)
-	{
+    public function essentialInformationSave(EssentialInformationSave $request)
+    {
         $request->session()->put('essential_information', $request->all());
-
-		//$validated = $request->validated();
-
-		$request->session()->put('essential_information', $request->all());
-		$request->session()->put('essential_information.dob', $this->_createDateString($request->session()->get('essential_information.dob_day'), $request->session()->get('essential_information.dob_month'), $request->session()->get('essential_information.dob_year')));
-		return redirect('/service-details');
-	}
+        $request->session()->put('essential_information', $request->all());
+        $request->session()->put('essential_information.dob',
+            $this->_createDateString(
+                $request->session()->get('essential_information.dob_day'),
+                $request->session()->get('essential_information.dob_month'),
+                $request->session()->get('essential_information.dob_year')
+            )
+        );
+        return redirect('/service-details');
+    }
 
     /**
      * Allow the user fill in the service details, we build the template based on the service they chose earlier in the
@@ -154,40 +137,34 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function serviceDetails(Request $request)
-	{
-		switch($request->session()->get('service'))
-		{
-			case "Royal Navy / Royal Marines":
-				$template = "their-details-navy";
-			break;
-			case "Army":
-				$template = "their-details-army";
-			break;
-			case "Royal Air Force (RAF)":
-				$template = "their-details-raf";
-			break;
-			case "Home Guard":
-				$template = "their-details-home-guard";
-			break;
-		}
-		if($request->session()->get('death_in_service.death') == 'Yes' && $request->session()->get('service') != 'Unknown')
-		{
-			$service_details = $request->session()->get('service_details');
+    public function serviceDetails(Request $request)
+    {
+        switch ($request->session()->get('service')) {
+            case "Royal Navy / Royal Marines":
+                $template = "their-details-navy";
+                break;
+            case "Army":
+                $template = "their-details-army";
+                break;
+            case "Royal Air Force (RAF)":
+                $template = "their-details-raf";
+                break;
+            case "Home Guard":
+                $template = "their-details-home-guard";
+                break;
+        }
+        if ($request->session()->get('death_in_service.death') == 'Yes' && $request->session()->get('service') != 'Unknown') {
+            $service_details = $request->session()->get('service_details');
 
-			return view($template.'-dis', ['service_details' => $service_details]);
-		}
-		elseif($request->session()->get('death_in_service.death') == 'No')
-		{
-			$service_details = $request->session()->get('service_details');
-			return view($template, ['service_details' => $service_details]);
-		}
-		else
-		{
-			$service_details = $request->session()->get('service_details');
-			return view($template, ['service_details' => $service_details]);
-		}
-	}
+            return view($template . '-dis', ['service_details' => $service_details]);
+        } elseif ($request->session()->get('death_in_service.death') == 'No') {
+            $service_details = $request->session()->get('service_details');
+            return view($template, ['service_details' => $service_details]);
+        } else {
+            $service_details = $request->session()->get('service_details');
+            return view($template, ['service_details' => $service_details]);
+        }
+    }
 
     /**
      * Save the service details again we need to parse some dates here so will use the _createDateString function, if the
@@ -199,19 +176,26 @@ class ServiceRecordController extends Controller
      * @param ServiceDetailsSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function serviceDetailsSave(ServiceDetailsSave $request)
-	{
-		$validated = $request->validated();
-
-		$request->session()->put('service_details', $request->all());
-		//dd($request->session()->get('service_details'));
-		$request->session()->put('service_details.join_date', $this->_createDateString($request->session()->get('service_details.join_day'), $request->session()->get('service_details.join_month'), $request->session()->get('service_details.join_year')));
-		$request->session()->put('service_details.discharge_date', $this->_createDateString($request->session()->get('service_details.discharge_day'), $request->session()->get('service_details.discharge_month'), $request->session()->get('service_details.discharge_year')));
-		if($request->session()->get('death_in_service.death') == 'No' && !$this->_agePastThreshold($request->session()->get('essential_information.dob'))) {
-			return redirect('/verify');
-		}
-		return redirect('/your-details');
-	}
+    public function serviceDetailsSave(ServiceDetailsSave $request)
+    {
+        $request->session()->put('service_details', $request->all());
+        $request->session()->put('service_details.join_date',
+            $this->_createDateString($request->session()->get('service_details.join_day'),
+                $request->session()->get('service_details.join_month'),
+                $request->session()->get('service_details.join_year')
+            )
+        );
+        $request->session()->put('service_details.discharge_date',
+            $this->_createDateString($request->session()->get('service_details.discharge_day'),
+                $request->session()->get('service_details.discharge_month'),
+                $request->session()->get('service_details.discharge_year')
+            )
+        );
+        if ($request->session()->get('death_in_service.death') == 'No' && !$this->_agePastThreshold($request->session()->get('essential_information.dob'))) {
+            return redirect('/verify');
+        }
+        return redirect('/your-details');
+    }
 
     /**
      * Show the user the form for their details.
@@ -220,13 +204,12 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function yourDetails(Request $request)
-	{
-		$your_details = $request->session()->get('your_details');
-		$countries = \Countries::getList('en', 'json');
-		//$referer = $request->server('HTTP_REFERER');
-		return view('your-information', ['your_details' => $your_details, 'countries' => json_decode($countries, true)]);
-	}
+    public function yourDetails(Request $request)
+    {
+        $your_details = $request->session()->get('your_details');
+        $countries = \Countries::getList('en', 'json');
+        return view('your-information', ['your_details' => $your_details, 'countries' => json_decode($countries, true)]);
+    }
 
     /**
      * Show the use the form so they can choose their relationship with the service person, this choice will
@@ -235,12 +218,12 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function relationship(Request $request)
-	{
-		$your_details_relationship = $request->session()->get('your_details.relationship');
-		//$referer = $request->server('HTTP_REFERER');
-		return view('your-details-relationship', ['your_details_relationship' => $your_details_relationship]);
-	}
+    public function relationship(Request $request)
+    {
+        $your_details_relationship = $request->session()->get('your_details.relationship');
+        //$referer = $request->server('HTTP_REFERER');
+        return view('your-details-relationship', ['your_details_relationship' => $your_details_relationship]);
+    }
 
     /**
      * The user will see this page if they have chosen that they are related to the serviceperson.
@@ -248,18 +231,16 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function relation(Request $request)
-	{
-		$your_details_relation = $request->session()->get('your_details.relation');
-		//$referer = $request->server('HTTP_REFERER');
-		return view('your-details-relation', ['your_details_relation' => $your_details_relation]);
-	}
+    public function relation(Request $request)
+    {
+        $your_details_relation = $request->session()->get('your_details.relation');
+        return view('your-details-relation', ['your_details_relation' => $your_details_relation]);
+    }
 
-	public function nextOfKin(Request $request) {
-	    $next_of_kin = $request->session()->get('your_details');
-
-
-	    return view('your-details-next-of-kin', ['next_of_kin' => $next_of_kin]);
+    public function nextOfKin(Request $request)
+    {
+        $next_of_kin = $request->session()->get('your_details');
+        return view('your-details-next-of-kin', ['next_of_kin' => $next_of_kin]);
     }
 
     /**
@@ -269,13 +250,13 @@ class ServiceRecordController extends Controller
      * @param YourInformationSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function yourDetailsSave(YourInformationSave $request)
-	{
-		$validated = $request->validated();
+    public function yourDetailsSave(YourInformationSave $request)
+    {
+        $validated = $request->validated();
 
-		$request->session()->put('your_details', $request->all());
-		return redirect('/your-details/relationship');
-	}
+        $request->session()->put('your_details', $request->all());
+        return redirect('/your-details/relationship');
+    }
 
     /**
      * We are processing the relation here, if they user is not related we can send them straight to the cehck your
@@ -284,19 +265,19 @@ class ServiceRecordController extends Controller
      * @param RelationRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function yourDetailsRelationSave(RelationRequest $request)
-	{
-		$validated = $request->validated();
+    public function yourDetailsRelationSave(RelationRequest $request)
+    {
+        $validated = $request->validated();
 
-		$request->session()->put('your_details.relation', $request->all());
-		if($request->input('related') == 'No') {
-			$request->session()->put('your_details.payment_required', true);
-			return redirect('/check-your-answers');
-		} else {
-			return redirect('/your-details/relationship');
-		}
+        $request->session()->put('your_details.relation', $request->all());
+        if ($request->input('related') == 'No') {
+            $request->session()->put('your_details.payment_required', true);
+            return redirect('/check-your-answers');
+        } else {
+            return redirect('/your-details/relationship');
+        }
 
-	}
+    }
 
     /**
      * Save the relationship of the user to the serviceperson, here we also work out if a payment is required or not.
@@ -304,23 +285,23 @@ class ServiceRecordController extends Controller
      * @param RelationshipRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function yourDetailsRelationshipSave(RelationshipRequest $request)
-	{
-		$validated = $request->validated();
-		$free = ['Spouse/Civil Partner', 'Mother/Father'];
-		$request->session()->put('your_details.relationship', $request->all());
-		if(in_array($request->session()->get('your_details.relationship.relationship'), $free)) {
-			$request->session()->put('your_details.payment_required', false);
-		} else {
-			$request->session()->put('your_details.payment_required', true);
-		}
-		if($request->input('relationship') == "I am not related") {
-		    return redirect('/check-your-answers');
+    public function yourDetailsRelationshipSave(RelationshipRequest $request)
+    {
+        $validated = $request->validated();
+        $free = ['Spouse/Civil Partner', 'Mother/Father'];
+        $request->session()->put('your_details.relationship', $request->all());
+        if (in_array($request->session()->get('your_details.relationship.relationship'), $free)) {
+            $request->session()->put('your_details.payment_required', false);
+        } else {
+            $request->session()->put('your_details.payment_required', true);
         }
-		return redirect('/your-details/next-of-kin');
-	}
+        if ($request->input('relationship') == "I am not related") {
+            return redirect('/check-your-answers');
+        }
+        return redirect('/your-details/next-of-kin');
+    }
 
-	public function nextOfKinSave(NextOfKinRequest $request)
+    public function nextOfKinSave(NextOfKinRequest $request)
     {
         //$validated = $request->validated();
         $request->session()->put('your_details.next_of_kin', $request->input('next_of_kin'));
@@ -348,11 +329,11 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function verify(Request $request)
-	{
-		//$referer = $request->server('HTTP_REFERER');
-		return view('verify');
-	}
+    public function verify(Request $request)
+    {
+        //$referer = $request->server('HTTP_REFERER');
+        return view('verify');
+    }
 
     /**
      * Process the upload, we accept images and PDFS, if an image is upload we basically create a PDF and insert the
@@ -364,11 +345,11 @@ class ServiceRecordController extends Controller
      * @param VerifyRequestSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function verifySave(VerifyRequestSave $request)
-	{
+    public function verifySave(VerifyRequestSave $request)
+    {
         //$validation = $request->validated();
 
-        if(strpos($request->file('certificate')->getMimeType(), "image") !== false) {
+        if (strpos($request->file('certificate')->getMimeType(), "image") !== false) {
             Storage::makeDirectory('verification');
             $resized_file = storage_path('app/verification/') . time() . '-resized.jpg';
             /*
@@ -401,28 +382,28 @@ class ServiceRecordController extends Controller
 //
 //
 //            } else {
-                $image_resize = Image::make($request->file('certificate')->getRealPath())->encode('jpg', 25)
-                    ->resize(595, 824)
-                    ->save($resized_file);
+            $image_resize = Image::make($request->file('certificate')->getRealPath())->encode('jpg', 25)
+                ->resize(595, 824)
+                ->save($resized_file);
 
-                     $pdf = new Fpdf();
-                     $pdf->AddPage('P', 'a4');
-                     $pdf->Image($resized_file, 0, 0);
-                     $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
-                     $pdf->Output('F', $newPath);
+            $pdf = new Fpdf();
+            $pdf->AddPage('P', 'a4');
+            $pdf->Image($resized_file, 0, 0);
+            $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
+            $pdf->Output('F', $newPath);
 
-                     $verification = [
-                         'death_certificate' => $newPath,
-                         'uploaded' => 'Yes',
-                         'method' => $request->input('verify_method')
-                     ];
-                     $request->session()->put('verification', $verification);
-                     return redirect('/your-details');
-                 }
+            $verification = [
+                'death_certificate' => $newPath,
+                'uploaded' => 'Yes',
+                'method' => $request->input('verify_method')
+            ];
+            $request->session()->put('verification', $verification);
+            return redirect('/your-details');
+        }
 
-            //}
+        //}
 
-	}
+    }
 
     /**
      * Serve the user with the check your answers page.
@@ -433,37 +414,37 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function checkYourAnswers(Request $request)
-	{
-		$data = $request->session();
-		//$referer = $request->server('HTTP_REFERER');
-		return view('check-your-answers', ['data' =>  $data]);
-	}
+    public function checkYourAnswers(Request $request)
+    {
+        $data = $request->session();
+        //$referer = $request->server('HTTP_REFERER');
+        return view('check-your-answers', ['data' => $data]);
+    }
 
     /**
      * Create a date string from the partial day, month and year inputs we use.
-     *
-     * @todo Use something better than ?? for missing data.
      *
      * @param string $day
      * @param string $month
      * @param string $year
      * @return string
+     * @todo Use something better than ?? for missing data.
+     *
      */
-	private function _createDateString($day, $month, $year)
-	{
-		if(!isset($day) || $day == "") {
-			$day = "??";
-		}
-		if(!isset($month) || $month == "") {
-			$month = "??";
-		}
-		if(!isset($year) || $year == "") {
-			$year = "??";
-		}
+    private function _createDateString($day, $month, $year)
+    {
+        if (!isset($day) || $day == "") {
+            $day = "??";
+        }
+        if (!isset($month) || $month == "") {
+            $month = "??";
+        }
+        if (!isset($year) || $year == "") {
+            $year = "??";
+        }
 
-		return $day . "/" . $month . "/" . $year;
-	}
+        return $day . "/" . $month . "/" . $year;
+    }
 
     /**
      * Create a random reference number for each request, we use the force abbreviation, a time stand then the date, the
@@ -472,27 +453,26 @@ class ServiceRecordController extends Controller
      * @param string $force
      * @return string
      */
-	private function _createReference($force)
-	{
-		switch($force)
-		{
-			case 'Royal Navy / Royal Marines':
-				$code = "SEA";
-				break;
-			case 'Army':
-			case 'Home Guard':
-				$code = "LAN";
-				break;
-			case 'Royal Air Force (RAF)':
-				$code = "AIR";
-				break;
-			case 'Unknown':
-				$code = "UNK";
-				break;
-		}
+    private function _createReference($force)
+    {
+        switch ($force) {
+            case 'Royal Navy / Royal Marines':
+                $code = "SEA";
+                break;
+            case 'Army':
+            case 'Home Guard':
+                $code = "LAN";
+                break;
+            case 'Royal Air Force (RAF)':
+                $code = "AIR";
+                break;
+            case 'Unknown':
+                $code = "UNK";
+                break;
+        }
 
-		return $code . '-' . time() . '-' . date('d-m-Y');
-	}
+        return $code . '-' . time() . '-' . date('d-m-Y');
+    }
 
     /**
      * Return a bool, as to whether or not the user needs to supply a death certificate. We take the DOB, make sure that
@@ -502,17 +482,17 @@ class ServiceRecordController extends Controller
      * @param string $dob
      * @return bool
      */
-	private function _agePastThreshold($dob)
-	{
-		if(strpos($dob, "?") !== false) {
-			return false;
-		}
+    private function _agePastThreshold($dob)
+    {
+        if (strpos($dob, "?") !== false) {
+            return false;
+        }
 
-		$validDate = Carbon::createFromFormat('d/m/Y', $dob);
-		$age = Carbon::parse($validDate)->age;
+        $validDate = Carbon::createFromFormat('d/m/Y', $dob);
+        $age = Carbon::parse($validDate)->age;
 
-		if($age >= 116) {
-			return true;
-		}
-	}
+        if ($age >= 116) {
+            return true;
+        }
+    }
 }
