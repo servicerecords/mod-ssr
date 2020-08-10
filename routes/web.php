@@ -27,7 +27,7 @@ Route::get('/countries', function()
 });
 
 Route::get('/', 'ServiceRecordController@index');
-Route::get('/request', 'ServiceRecordController@recordRequest');
+Route::get('/bootstrap', 'ServiceRecordController@bootstrap');
 Route::get('/service', 'ServiceRecordController@serviceChoice');
 Route::get('/service/death-in-service', 'ServiceRecordController@deathInService');
 Route::get('/essential-information', 'ServiceRecordController@essentialInformation');
@@ -44,7 +44,6 @@ Route::get('/help/cookies', 'HelpController@cookies');
 Route::get('/help/privacy', 'HelpController@privacy');
 Route::get('/help/accessibility', 'HelpController@accessibility');
 
-Route::post('/request', 'ServiceRecordController@recordRequestSave');
 Route::post('/service', 'ServiceRecordController@serviceChoiceSave');
 Route::post('/service/death-in-service', 'ServiceRecordController@deathInServiceSave');
 Route::post('/essential-information', 'ServiceRecordController@essentialInformationSave');
