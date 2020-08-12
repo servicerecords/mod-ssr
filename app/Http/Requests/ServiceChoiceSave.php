@@ -29,14 +29,14 @@ class ServiceChoiceSave extends FormRequest
     }
 
     /**
-	 * Get the error messages for the defined validation rules
-	 *
-	 * @return array
-	 */
+     * Get the error messages for the defined validation rules
+     *
+     * @return array
+     */
     public function messages()
-	{
-		return [
-			'service.required' => 'Please select a service'
-		];
-	}
+    {
+        return [
+            'service.required' => 'Please select a service'
+        ];
+    }
 }

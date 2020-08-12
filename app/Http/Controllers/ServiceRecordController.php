@@ -34,7 +34,8 @@ class ServiceRecordController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function bootstrap(Request $request) {
+    public function bootstrap(Request $request)
+    {
         $request->session()->flush();
         return redirect('/service');
     }
@@ -68,6 +69,34 @@ class ServiceRecordController extends Controller
     }
 
     /**
+     * Create a random reference number for each request, we use the force abbreviation, a time stand then the date, the
+     * timestamp should make it unique, something like this will get created, SEA-1234567890-2020-03-12
+     *
+     * @param string $force
+     * @return string
+     */
+    private function _createReference($force)
+    {
+        switch ($force) {
+            case 'Royal Navy / Royal Marines':
+                $code = "SEA";
+                break;
+            case 'Army':
+            case 'Home Guard':
+                $code = "LAN";
+                break;
+            case 'Royal Air Force (RAF)':
+                $code = "AIR";
+                break;
+            case 'Unknown':
+                $code = "UNK";
+                break;
+        }
+
+        return $code . '-' . time() . '-' . date('d-m-Y');
+    }
+
+    /**
      * Serve the death in service page, $death_in_service will be null if the user has not previously made a choice,
      * the aforementioned var is used to set the value of the radio if the user is coming back to the page.
      *
@@ -76,7 +105,7 @@ class ServiceRecordController extends Controller
      */
     public function deathInService(Request $request)
     {
-        $death_in_service = $request->session()->get('death_in_service');
+        $death_in_service = $request->session()->get('death_in_service') ?? ['death' => ''];
         return view('deathInService', ['death_in_service' => $death_in_service]);
     }
 
@@ -127,6 +156,31 @@ class ServiceRecordController extends Controller
             )
         );
         return redirect('/service-details');
+    }
+
+    /**
+     * Create a date string from the partial day, month and year inputs we use.
+     *
+     * @param string $day
+     * @param string $month
+     * @param string $year
+     * @return string
+     * @todo Use something better than ?? for missing data.
+     *
+     */
+    private function _createDateString($day, $month, $year)
+    {
+        if (!isset($day) || $day == "") {
+            $day = "??";
+        }
+        if (!isset($month) || $month == "") {
+            $month = "??";
+        }
+        if (!isset($year) || $year == "") {
+            $year = "??";
+        }
+
+        return $day . "/" . $month . "/" . $year;
     }
 
     /**
@@ -198,6 +252,28 @@ class ServiceRecordController extends Controller
     }
 
     /**
+     * Return a bool, as to whether or not the user needs to supply a death certificate. We take the DOB, make sure that
+     * it is a valid date that does not contain ??. Parse the DOB in to a date format using Carbon, compare that to
+     * todays date, if the difference is more than 116 years we return true and the user will not need to do an upload.]
+     *
+     * @param string $dob
+     * @return bool
+     */
+    private function _agePastThreshold($dob)
+    {
+        if (strpos($dob, "?") !== false) {
+            return false;
+        }
+
+        $validDate = Carbon::createFromFormat('d/m/Y', $dob);
+        $age = Carbon::parse($validDate)->age;
+
+        if ($age >= 116) {
+            return true;
+        }
+    }
+
+    /**
      * Show the user the form for their details.
      * We load in a JSON list of countries, it not used unless the users browsers needs a fully accessible solution
      *
@@ -258,6 +334,21 @@ class ServiceRecordController extends Controller
         return redirect('/your-details/relationship');
     }
 
+    /*
+    public function yourDetailsCommunication(Request $request)
+    {
+        $communication = $request->session()->get('your_details.communication');
+        //$referer = $request->server('HTTP_REFERER');
+        return view('your-details-communication', ['communication' => $communication]);
+    }
+    public function youDetailsCommunicationSave(CommunicationRequest $request)
+    {
+        $validation = $request->validated();
+        $request->session()->put('your_details.communication', $request->all());
+        return redirect('/check-your-answers');
+    }
+    */
+
     /**
      * We are processing the relation here, if they user is not related we can send them straight to the cehck your
      * answers page, if they are related we need some more information.
@@ -308,21 +399,6 @@ class ServiceRecordController extends Controller
         return redirect('/check-your-answers');
     }
 
-    /*
-    public function yourDetailsCommunication(Request $request)
-    {
-        $communication = $request->session()->get('your_details.communication');
-        //$referer = $request->server('HTTP_REFERER');
-        return view('your-details-communication', ['communication' => $communication]);
-    }
-    public function youDetailsCommunicationSave(CommunicationRequest $request)
-    {
-        $validation = $request->validated();
-        $request->session()->put('your_details.communication', $request->all());
-        return redirect('/check-your-answers');
-    }
-    */
-
     /**
      * Serve the user with the vertification page, this is where proof of death. i.e. The death certificate is uploaded.
      *
@@ -331,6 +407,8 @@ class ServiceRecordController extends Controller
      */
     public function verify(Request $request)
     {
+        phpinfo();
+        die();
         //$referer = $request->server('HTTP_REFERER');
         return view('verify');
     }
@@ -419,80 +497,5 @@ class ServiceRecordController extends Controller
         $data = $request->session();
         //$referer = $request->server('HTTP_REFERER');
         return view('check-your-answers', ['data' => $data]);
-    }
-
-    /**
-     * Create a date string from the partial day, month and year inputs we use.
-     *
-     * @param string $day
-     * @param string $month
-     * @param string $year
-     * @return string
-     * @todo Use something better than ?? for missing data.
-     *
-     */
-    private function _createDateString($day, $month, $year)
-    {
-        if (!isset($day) || $day == "") {
-            $day = "??";
-        }
-        if (!isset($month) || $month == "") {
-            $month = "??";
-        }
-        if (!isset($year) || $year == "") {
-            $year = "??";
-        }
-
-        return $day . "/" . $month . "/" . $year;
-    }
-
-    /**
-     * Create a random reference number for each request, we use the force abbreviation, a time stand then the date, the
-     * timestamp should make it unique, something like this will get created, SEA-1234567890-2020-03-12
-     *
-     * @param string $force
-     * @return string
-     */
-    private function _createReference($force)
-    {
-        switch ($force) {
-            case 'Royal Navy / Royal Marines':
-                $code = "SEA";
-                break;
-            case 'Army':
-            case 'Home Guard':
-                $code = "LAN";
-                break;
-            case 'Royal Air Force (RAF)':
-                $code = "AIR";
-                break;
-            case 'Unknown':
-                $code = "UNK";
-                break;
-        }
-
-        return $code . '-' . time() . '-' . date('d-m-Y');
-    }
-
-    /**
-     * Return a bool, as to whether or not the user needs to supply a death certificate. We take the DOB, make sure that
-     * it is a valid date that does not contain ??. Parse the DOB in to a date format using Carbon, compare that to
-     * todays date, if the difference is more than 116 years we return true and the user will not need to do an upload.]
-     *
-     * @param string $dob
-     * @return bool
-     */
-    private function _agePastThreshold($dob)
-    {
-        if (strpos($dob, "?") !== false) {
-            return false;
-        }
-
-        $validDate = Carbon::createFromFormat('d/m/Y', $dob);
-        $age = Carbon::parse($validDate)->age;
-
-        if ($age >= 116) {
-            return true;
-        }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Factory as ValidationFactory;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Factory as ValidationFactory;
 
 class YourInformationSave extends FormRequest
 {
@@ -14,9 +14,9 @@ class YourInformationSave extends FormRequest
             'uk_postcode',
             function ($attribute, $value, $parameters) {
                 $re = '/^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/m';
-                if(request()->input('country') == "GB") {
+                if (request()->input('country') == "GB") {
                     preg_match($re, $value, $matches, PREG_OFFSET_CAPTURE);
-                    if(empty($matches)) {
+                    if (empty($matches)) {
                         return false;
                     }
                 }
@@ -27,6 +27,7 @@ class YourInformationSave extends FormRequest
         );
 
     }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -47,8 +48,8 @@ class YourInformationSave extends FormRequest
         return [
             'fullname' => 'required',
             'email' => 'required|email',
-			'address_line_1' => 'required',
-			'address_postcode' => 'required|uk_postcode',
+            'address_line_1' => 'required',
+            'address_postcode' => 'required|uk_postcode',
             'address_town' => 'required',
             'country' => 'required',
             'use_billing' => 'required',
@@ -57,19 +58,19 @@ class YourInformationSave extends FormRequest
     }
 
     public function messages()
-	{
-		return [
-			'fullname.required' => 'Enter your fullname',
+    {
+        return [
+            'fullname.required' => 'Enter your fullname',
             'email.required' => 'Enter your email address',
             'email.email' => 'Please make sure you have entered a valid email address',
-			'address_line_1.required' => 'Enter your house name/number and street address',
-			'address_postcode.required' => 'Enter the postcode of your address',
+            'address_line_1.required' => 'Enter your house name/number and street address',
+            'address_postcode.required' => 'Enter the postcode of your address',
             'address_town.required' => 'Enter a town or city for your address',
             'country.required' => 'Enter a country for your address',
             'use_billing.required' => 'Please select whether to use this information for billing',
             'telephone.required_unless' => 'Please enter your telephone number, including country code'
-		];
-	}
+        ];
+    }
 
     public function withValidator($validator)
     {

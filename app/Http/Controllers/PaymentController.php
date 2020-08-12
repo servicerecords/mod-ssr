@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PaymentRequest;
-use GuzzleHttp\Client;
 
 class PaymentController extends Controller
 {
@@ -38,7 +36,7 @@ class PaymentController extends Controller
 
         //If the user selected that they wish to use their address from the their information page for their billing details
         //Then we pull that out of the session and send it with the post data from above.
-        if($request->session()->get('your_details.use_billing') == 'Yes') {
+        if ($request->session()->get('your_details.use_billing') == 'Yes') {
             $post_params['prefilled_cardholder_details'] = [
                 "cardholder_name" => '',
                 "billing_address" => [

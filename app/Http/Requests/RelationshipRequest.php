@@ -25,15 +25,15 @@ class RelationshipRequest extends FormRequest
     {
         return [
             'relationship' => 'required',
-			'relationship_other' => 'required_if:relationship,Other',
+            'relationship_other' => 'required_if:relationship,Other',
         ];
     }
 
     public function messages()
-	{
-		return [
-			'relationship.required' => 'Please specify what you relationship is with the serviceperson',
-			'relationship_other.required_if' => 'Please specify your relationship with the serviceperson'
-		];
-	}
+    {
+        return [
+            'relationship.required' => 'Please specify what you relationship is with the serviceperson',
+            'relationship_other.required_if' => 'Please specify your relationship with the serviceperson'
+        ];
+    }
 }

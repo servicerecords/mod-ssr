@@ -11,18 +11,17 @@
 |
 */
 
-Route::get('cookie-test', function() {
+Route::get('cookie-test', function () {
 
-   return redirect('test-redirect')->withCookie($cookie);
+    return redirect('test-redirect')->withCookie($cookie);
 });
 
-Route::get('test-redirect', function(Request $request) {
+Route::get('test-redirect', function (Request $request) {
     $cookie = \Cookie::get('cookie');
     dd($cookie);
 });
 
-Route::get('/countries', function()
-{
+Route::get('/countries', function () {
     return Countries::getList('en', 'json');
 });
 

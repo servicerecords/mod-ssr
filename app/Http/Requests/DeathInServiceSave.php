@@ -29,14 +29,14 @@ class DeathInServiceSave extends FormRequest
     }
 
     /**
-	 * Get the validation messages that apply to the request
-	 *
-	 * @return array
-	 */
+     * Get the validation messages that apply to the request
+     *
+     * @return array
+     */
     public function messages()
-	{
-		return [
-			'death.required' => 'Please state if they died in service'
-		];
-	}
+    {
+        return [
+            'death.required' => 'Please state if they died in service'
+        ];
+    }
 }

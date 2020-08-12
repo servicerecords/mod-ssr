@@ -28,7 +28,8 @@ class NextOfKinRequest extends FormRequest
         ];
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
             'next_of_kin.required' => 'Please tell us if you are the next of kin'
         ];

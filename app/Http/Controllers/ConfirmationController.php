@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Alphagov\Notifications\Exception\NotifyException;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client as GuzzleClient;
-use Alphagov\Notifications\Client as Notify;
-use Illuminate\Support\Facades\Storage;
 
 class ConfirmationController extends Controller
 {
@@ -17,6 +14,7 @@ class ConfirmationController extends Controller
     protected $accounts_email;
     protected $unknown_email;
     protected $templates;
+
     //
     public function __construct()
     {
@@ -47,13 +45,13 @@ class ConfirmationController extends Controller
     public function index(Request $request)
     {
         sleep(3);
-        if(null === $request->get('uuid')) {
+        if (null === $request->get('uuid')) {
             $success = true;
         } else {
             $success = $this->_checkPayment($request);
         }
 
-        if($success === true) {
+        if ($success === true) {
             $response = $this->_sendSearchNotification($request);
             if (is_object($response) && $response->getCode() !== 200) {
                 return view('process_error');
@@ -72,30 +70,47 @@ class ConfirmationController extends Controller
         }
     }
 
-    /**
-     * SEnd the customer notification, we use the customer notification template, and pass the reference in as the only
-     * data.
-     *
-     * @param $request
-     * @return array|\Exception
-     */
-    private function _sendCustomerNotification($request) {
+    private function _checkPayment($request)
+    {
 
-        $notifyClient = new \Alphagov\Notifications\Client([
-            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75'),
-            'httpClient' => new \Http\Adapter\Guzzle6\Client
-        ]);
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments/" . $request->session()->get($request->get('uuid')),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_HTTPHEADER => array(
+                "Accept: application/json",
+                "Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
+                "Content-Type: application/json",
+            ),
+        ));
 
-        try {
-            $response = $notifyClient->sendEmail(
-                $request->session()->get('your_details.email'),
-                'cb31d5be-1f34-4546-bb1e-a784dcd2f390',
-                [
-                    'reference' => $request->session()->get('reference'),
-                ]);
-            return $response;
-        } catch(\Exception $e) {
-            return $e;
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return $err;
+        } else {
+            $response = json_decode($response, true);
+            if ($response['state']['status'] == "success") {
+                return true;
+            } else {
+                if (isset($response['state']) && !isset($response['state']['message'])) {
+                    return [
+                        'message' => 'There was an error with your payment please contact xxx xxxxxx and use your reference ' . $request->session()->get('reference')
+                    ];
+                } else {
+                    return [
+                        'message' => $response['state']['message']
+                    ];
+                }
+            }
         }
 
 
@@ -109,7 +124,7 @@ class ConfirmationController extends Controller
     private function _sendSearchNotification($request)
     {
         //die(print_r($service));
-        switch($request->session()->get('service')) {
+        switch ($request->session()->get('service')) {
             case 'Royal Navy / Royal Marines':
                 $emails = $this->sea_email;
                 $request->session()->put('dbs_office', 'Navy');
@@ -142,11 +157,11 @@ class ConfirmationController extends Controller
             'httpClient' => new \Http\Adapter\Guzzle6\Client
         ]);
 
-        if($request->session()->get('death_in_service.death') == 'Yes') {
+        if ($request->session()->get('death_in_service.death') == 'Yes') {
             $template_shortcode = $template_shortcode . '_DIS';
         }
 
-        if(null !== $request->session()->get('verification.death_certificate')){
+        if (null !== $request->session()->get('verification.death_certificate')) {
             $file_data = file_get_contents($request->session()->get('verification.death_certificate'));
             $upload = $notifyClient->prepareUpload($file_data);
         } else {
@@ -193,51 +208,36 @@ class ConfirmationController extends Controller
                 $request->session()->get('reference')
             );
             return $response;
-        } catch (NotifyException $e){
+        } catch (NotifyException $e) {
             return $e;
         }
     }
 
-    private function _checkPayment($request) {
+    /**
+     * SEnd the customer notification, we use the customer notification template, and pass the reference in as the only
+     * data.
+     *
+     * @param $request
+     * @return array|\Exception
+     */
+    private function _sendCustomerNotification($request)
+    {
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments/" . $request->session()->get($request->get('uuid')),
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_HTTPHEADER => array(
-                "Accept: application/json",
-                "Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
-                "Content-Type: application/json",
-            ),
-        ));
+        $notifyClient = new \Alphagov\Notifications\Client([
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75'),
+            'httpClient' => new \Http\Adapter\Guzzle6\Client
+        ]);
 
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            return $err;
-        } else {
-            $response = json_decode($response, true);
-            if($response['state']['status'] == "success") {
-                return true;
-            } else {
-                if(isset($response['state']) && !isset($response['state']['message'])) {
-                    return [
-                        'message' => 'There was an error with your payment please contact xxx xxxxxx and use your reference ' . $request->session()->get('reference')
-                    ];
-                } else {
-                    return [
-                        'message' => $response['state']['message']
-                    ];
-                }
-            }
+        try {
+            $response = $notifyClient->sendEmail(
+                $request->session()->get('your_details.email'),
+                'cb31d5be-1f34-4546-bb1e-a784dcd2f390',
+                [
+                    'reference' => $request->session()->get('reference'),
+                ]);
+            return $response;
+        } catch (\Exception $e) {
+            return $e;
         }
 
 

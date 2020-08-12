@@ -11,9 +11,9 @@ return [
     |
     */
 
-    'orientation'       => 'P',
-    'unit'              => 'mm',
-    'size'              => 'A4',
+    'orientation' => 'P',
+    'unit' => 'mm',
+    'size' => 'A4',
 
     /*
     |--------------------------------------------------------------------------
@@ -24,6 +24,6 @@ return [
     | a special header needs to be attached to each download response.
     |
     */
-    'useVaporHeaders'  => env('FPDF_VAPOR_HEADERS', false),
+    'useVaporHeaders' => env('FPDF_VAPOR_HEADERS', false),
 
 ];

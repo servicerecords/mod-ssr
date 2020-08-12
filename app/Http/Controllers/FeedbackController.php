@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\FeedbackSave;
-use Alphagov\Notifications\Exception\NotifyException;
-use GuzzleHttp\Client as GuzzleClient;
-use Alphagov\Notifications\Client as Notify;
-use Illuminate\Support\Facades\Storage;
 
 class FeedbackController extends Controller
 {
@@ -59,7 +54,7 @@ class FeedbackController extends Controller
                 '0f3b68c3-4589-4466-a743-73f73e841187',
                 $params);
             return redirect('/feedback/success');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $e;
         }
 
