@@ -4,7 +4,8 @@
 
 @section('content')
 
-    <form action="/your-details/relation" method="post" class="govuk-form" id="requester-relationship" novalidate="novalidate">
+    <form action="/your-details/relation" method="post" class="govuk-form" id="requester-relationship"
+          novalidate="novalidate">
 
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
 
@@ -22,11 +23,15 @@
                         <span id="service-error" class="govuk-error-message">{{$errors->first('related')}}</span>
                     @endif
                     <div class="govuk-radios__item">
-                        <input {{ (old('related') == "Yes" || (isset($your_details_relation['related']) && $your_details_relation['related'] == "Yes")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="related" name="related" value="Yes">
+                        <input
+                            {{ (old('related') == "Yes" || (isset($your_details_relation['related']) && $your_details_relation['related'] == "Yes")) ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="related" name="related" value="Yes">
                         <label class="govuk-label govuk-radios__label" for="related">Yes</label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input {{ (old('related') == "No" || (isset($your_details_relation['related']) && $your_details_relation['related'] == "No")) ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="related" name="related" value="No">
+                        <input
+                            {{ (old('related') == "No" || (isset($your_details_relation['related']) && $your_details_relation['related'] == "No")) ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="related" name="related" value="No">
                         <label class="govuk-label govuk-radios__label" for="related">No</label>
                     </div>
                 </div>

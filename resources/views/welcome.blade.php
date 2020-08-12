@@ -6,7 +6,7 @@
 
     <p class="govuk-body-l">Use this service to get information on a serviceperson who served in the armed forces.</p>
 
-    <a href="/service" role="button" draggable="false" class="govuk-button govuk-button--start">
+    <a href="/bootstrap" role="button" draggable="false" class="govuk-button govuk-button--start">
         Start now
     </a>
 
@@ -16,12 +16,14 @@
         </h2>
         <ul class="govuk-tabs__list" role="tablist">
             <li class="govuk-tabs__list-item govuk-tabs__list-item--selected" role="presentation">
-                <a class="govuk-tabs__tab" href="#information" id="tab_information" role="tab" aria-controls="information" aria-selected="true" tabindex="0">
+                <a class="govuk-tabs__tab" href="#information" id="tab_information" role="tab"
+                   aria-controls="information" aria-selected="true" tabindex="0">
                     More information
                 </a>
             </li>
             <li class="govuk-tabs__list-item" role="presentation">
-                <a class="govuk-tabs__tab" href="#other-ways" id="tab_other-ways" role="tab" aria-controls="other-ways" aria-selected="false" tabindex="-1">
+                <a class="govuk-tabs__tab" href="#other-ways" id="tab_other-ways" role="tab" aria-controls="other-ways"
+                   aria-selected="false" tabindex="-1">
                     Other ways to apply
                 </a>
             </li>
@@ -51,18 +53,21 @@
             <p class="govuk-body">If you hold POA for the immediate next of kin, please see other ways to apply.</p>
 
         </section>
-        <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="other-ways" role="tabpanel" aria-labelledby="tab_other-ways">
+        <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="other-ways" role="tabpanel"
+                 aria-labelledby="tab_other-ways">
             <h2 class="govuk-heading-l">Other way to apply</h2>
 
-            <p class="govuk-body">You can also <a href="https://www.gov.uk/guidance/request-records-of-deceased-service-personnel#how-to-apply" class="govuk-link">request records by post</a>.</p>
+            <p class="govuk-body">You can also <a
+                    href="https://www.gov.uk/guidance/request-records-of-deceased-service-personnel#how-to-apply"
+                    class="govuk-link">request records by post</a>.</p>
 
 
         </section>
     </div>
 
 
-{{--    <h2 class="govuk-heading-m">Other Information</h2>--}}
+    {{--    <h2 class="govuk-heading-m">Other Information</h2>--}}
 
-{{--    <p class="govuk-body">You can also <a href="https://www.gov.uk/guidance/request-records-of-deceased-service-personnel#how-to-apply" class="govuk-link">request records by post</a>.</p>--}}
+    {{--    <p class="govuk-body">You can also <a href="https://www.gov.uk/guidance/request-records-of-deceased-service-personnel#how-to-apply" class="govuk-link">request records by post</a>.</p>--}}
 
 @endsection

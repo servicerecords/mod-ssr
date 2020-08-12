@@ -13,7 +13,7 @@
                 <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                         <h1 class="govuk-fieldset__heading">
-                           Overall how do you feel about the service you received today?
+                            Overall how do you feel about the service you received today?
                         </h1>
                     </legend>
                     <div class="govuk-radios">
@@ -41,7 +41,8 @@
                                    name="service"
                                    type="radio"
                                    value="Neither satisfied or dissatisfied"/>
-                            <label class="govuk-label govuk-radios__label" for="service_3">Neither satisfied or dissatisfied</label>
+                            <label class="govuk-label govuk-radios__label" for="service_3">Neither satisfied or
+                                dissatisfied</label>
                         </div>
 
                         <div class="govuk-radios__item">
@@ -68,13 +69,14 @@
                 <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                         <h1 class="govuk-fieldset__heading">
-                           How could we improve this service?
+                            How could we improve this service?
                         </h1>
                     </legend>
                     <span id="more-detail-hint" class="govuk-hint">
                         Do not include personal or financial information, like your National Insurance number or credit card details. (Limit is 1200 characters)
                     </span>
-                    <textarea class="govuk-textarea" id="more_detail" name="more_detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                    <textarea class="govuk-textarea" id="more_detail" name="more_detail" rows="5"
+                              aria-describedby="more-detail-hint"></textarea>
                 </fieldset>
             </div>
             <div class="govuk-form-group">

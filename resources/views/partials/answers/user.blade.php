@@ -87,5 +87,5 @@
                 </dd>
             </div>
         @endif
-        </dl>
+    </dl>
 @endif

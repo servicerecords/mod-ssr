@@ -14,11 +14,15 @@
                 @endif
                 <div class="govuk-radios">
                     <div class="govuk-radios__item">
-                        <input {{ (old('death_in_service') == 'Yes' || $death_in_service['death'] == 'Yes') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="yes" name="death" value="Yes">
+                        <input
+                            {{ (old('death_in_service') == 'Yes' || $death_in_service['death'] == 'Yes') ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="yes" name="death" value="Yes">
                         <label class="govuk-label govuk-radios__label" for="yes">Yes</label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input {{ (old('death_in_service') == 'No' || $death_in_service['death'] == 'No') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="no" name="death" value="No">
+                        <input
+                            {{ (old('death_in_service') == 'No' || $death_in_service['death'] == 'No') ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="no" name="death" value="No">
                         <label class="govuk-label govuk-radios__label" for="no">No</label>
                     </div>
                 </div>

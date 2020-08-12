@@ -18,19 +18,28 @@
                 @endif
                 <div class="govuk-radios">
                     <div class="govuk-radios__item">
-                        <input {{ (old('service') == 'Royal Navy / Royal Marines' || $service== 'Royal Navy / Royal Marines') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="navy" name="service" value="Royal Navy / Royal Marines">
+                        <input
+                            {{ (old('service') == 'Royal Navy / Royal Marines' || $service== 'Royal Navy / Royal Marines') ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="navy" name="service" value="Royal Navy / Royal Marines">
                         <label class="govuk-label govuk-radios__label" for="navy">Royal Navy or Royal Marines</label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input {{ (old('service') == 'Army' || $service == 'Army') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="army" name="service" value="Army">
-                        <label class="govuk-label govuk-radios__label" for="army">Army (including Territorial &amp; Army Emergency Reserve)</label>
+                        <input
+                            {{ (old('service') == 'Army' || $service == 'Army') ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="army" name="service" value="Army">
+                        <label class="govuk-label govuk-radios__label" for="army">Army (including Territorial &amp; Army
+                            Emergency Reserve)</label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input {{ (old('service') == 'Royal Air Force (RAF)' || $service == 'Royal Air Force (RAF)') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="raf" name="service" value="Royal Air Force (RAF)">
+                        <input
+                            {{ (old('service') == 'Royal Air Force (RAF)' || $service == 'Royal Air Force (RAF)') ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="raf" name="service" value="Royal Air Force (RAF)">
                         <label class="govuk-label govuk-radios__label" for="raf">Royal Air Force (RAF)</label>
                     </div>
                     <div class="govuk-radios__item">
-                        <input {{ (old('service') == 'Home Guard' || $service == 'Home Guard') ? 'checked' : '' }} class="govuk-radios__input" type="radio" id="home-guard" name="service" value="Home Guard">
+                        <input
+                            {{ (old('service') == 'Home Guard' || $service == 'Home Guard') ? 'checked' : '' }} class="govuk-radios__input"
+                            type="radio" id="home-guard" name="service" value="Home Guard">
                         <label class="govuk-label govuk-radios__label" for="home-guard">Home Guard</label>
                     </div>
                 </div>

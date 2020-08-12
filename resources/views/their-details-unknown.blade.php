@@ -18,7 +18,9 @@
                 </legend>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="service_number">Official Service Number</label>
-                    <input value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}" class="govuk-input govuk-input--width-20" type="text" name="service_number" id="service_number">
+                    <input
+                        value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}"
+                        class="govuk-input govuk-input--width-20" type="text" name="service_number" id="service_number">
                 </div>
 
 
@@ -29,7 +31,8 @@
               service record e.g. Ranks, Grades, Regiments, Nation Insurance
               Number etc.
             </span>
-                    <textarea class="govuk-textarea" id="more_detail" name="further_information" rows="5" aria-describedby="useful-item-hint">{{ isset($service_details['further_information'] ) ? $service_details['further_information'] : old('further_information') }}</textarea>
+                    <textarea class="govuk-textarea" id="more_detail" name="further_information" rows="5"
+                              aria-describedby="useful-item-hint">{{ isset($service_details['further_information'] ) ? $service_details['further_information'] : old('further_information') }}</textarea>
                 </div>
 
                 <div class="govuk-form-group">
