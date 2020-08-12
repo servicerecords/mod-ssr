@@ -9,32 +9,30 @@ const amexCvcTip = form.querySelector('.amex-cvc');
 const genericCvcTip = form.querySelector('.generic-cvc');
 
 const showCardType = (event) => {
-	if(event.target.value.length < 1) {
-		acceptedCards.classList.add('field-empty');
-	}
-	var validCard = valid.number(event.target.value);
-	console.log(validCard);
-	if(validCard.card !== null) {
-		//console.log(validCard.card.type);
-		cards.forEach(function (card) {
-			//console.log(card.classList.contains(validCard.type));
-			if (card.classList.contains(validCard.card.type)) {
-				acceptedCards.classList.remove('field-empty');
-				card.classList.add('selected')
-			} else {
-				card.classList.remove('selected');
-			}
-		});
+    if (event.target.value.length < 1) {
+        acceptedCards.classList.add('field-empty');
+    }
+    var validCard = valid.number(event.target.value);
+    console.log(validCard);
+    if (validCard.card !== null) {
+        //console.log(validCard.card.type);
+        cards.forEach(function (card) {
+            //console.log(card.classList.contains(validCard.type));
+            if (card.classList.contains(validCard.card.type)) {
+                acceptedCards.classList.remove('field-empty');
+                card.classList.add('selected')
+            } else {
+                card.classList.remove('selected');
+            }
+        });
 
-		if(validCard.card.type === 'american-express')
-		{
+        if (validCard.card.type === 'american-express') {
 
-		}
-	}
+        }
+    }
 }
 
 cardInput.addEventListener('keyup', showCardType, false);
-
 
 
 // exports.listenInputKeyUp = () => {
