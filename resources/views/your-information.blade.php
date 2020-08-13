@@ -78,7 +78,7 @@
                     <input
                         value="{{ isset($your_details['address_postcode'] ) ? $your_details['address_postcode'] : old('address_postcode') }}"
                         class="govuk-input govuk-input--width-10 {{"" !== $errors->first('address_postcode')}} ? 'govuk-input--error' : ''}}"
-                        id="address-postcode" name="address_postcode" type="text" aria-required="true"
+                        id="address-postcode" name="address_postcode" type="text" aria-required="true" autocomplete="new-password"
                         aria-describedby="{{null !== $errors->first('address_postcode') ? 'address-postcode-error' : ''}}">
                 </div>
 
@@ -92,11 +92,13 @@
 
                     <select name="country"
                             class="govuk-select  {{"" !== $errors->first('country') ? 'govuk-input--error' : ''}}"
-                            id="location-autocomplete" autocomplete="off">
+                            id="location-autocomplete" autocomplete="new-password">
                         <option value=""></option>
-                        @foreach($countries as $key => $value)
+                        @foreach($countries as $value)
                             <option
-                                value="{{$key}}" {{ ($key === $your_details['country']) ? 'selected' : '' }}>{{$value}}</option>
+                                value="{{$value[1]}}" {{ ($value[1] === $your_details['country']) ? 'selected' : '' }}>
+                                {{$value[0]}}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -114,7 +116,7 @@
                     <input
                         value="{{ isset($your_details['telephone'] ) ? $your_details['telephone'] : old('telephone') }}"
                         class="govuk-input govuk-input--width-10 {{"" !== $errors->first('telephone')}} ? 'govuk-input--error' : ''}}"
-                        id="telephone" name="telephone" type="text" aria-required="true"
+                        id="telephone" name="telephone" type="text" aria-required="true" autocomplete="new-password"
                         aria-describedby="{{null !== $errors->first('telephone') ? 'telephone-error' : ''}}">
                 </div>
 
@@ -155,3 +157,19 @@
     </form>
 
 @endsection
+
+
+@push('mod-scripts')
+
+    <script type="text/javascript" src="/js/location-autocomplete.js"></script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById('location-autocomplete'),
+            additionalSynonyms: [
+                { name: 'blighty', code: 'country:GB' },
+            ],
+            url: '/assets/location-autocomplete-graph.json'
+        })
+    </script>
+
+@endpush

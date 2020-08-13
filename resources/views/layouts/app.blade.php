@@ -21,6 +21,7 @@
     <link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css"/><![endif]-->
     <!--[if gt IE 8]><!-->
     <link href="/css/app.css" media="all" rel="stylesheet" type="text/css"/><!--<![endif]-->
+    @stack('mod-css')
 
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 </head>
@@ -164,31 +165,24 @@
 <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 <script src="/js/all.js"></script>
 <script src="/js/app.js"></script>
-<script src="/js/location-autocomplete.min.js"></script>
 <script>
     window.GOVUKFrontend.initAll();
     window.GOVUKFrontend.CookieBanner.init();
 </script>
-<script type="text/javascript">
-    openregisterLocationPicker({
-        selectElement: document.getElementById('location-autocomplete'),
-        url: '/assets/location-autocomplete-graph.json',
-        autoselect: false
-    })
-</script>
+@stack('mod-scripts')
 <!-- Global site tag (gtag.js) - Google Analytics -->
 {{--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107006918-2"></script>--}}
-<script>
-    window.dataLayer = window.dataLayer || [];
+{{--<script>--}}
+// window.dataLayer = window.dataLayer || [];
 
-    // function gtag() {
-    //     dataLayer.push(arguments);
-    // }
-    //
-    // gtag('js', new Date());
-    //
-    // gtag('config', 'UA-26179049-1');
-</script>
+// function gtag() {
+// dataLayer.push(arguments);
+// }
+//
+// gtag('js', new Date());
+//
+// gtag('config', 'UA-26179049-1');
+{{--</script>--}}
 </body>
 
 </html>

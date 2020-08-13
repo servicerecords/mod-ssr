@@ -1,4 +1,4 @@
-## Installation
+cp ## Installation
 
 ```
 $ git clone https://github.com/servicerecords/mod-ssr.git .

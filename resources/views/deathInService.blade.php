@@ -37,3 +37,16 @@
     </form>
 
 @endsection
+
+
+@push('scripts')
+
+<script type="text/javascript" src="/assets/location-autocomplete.min.js"></script>
+<script type="text/javascript">
+    openregisterLocationPicker({
+        selectElement: document.getElementById('location-autocomplete'),
+        url: '/assets/location-autocomplete-graph.json'
+    })
+</script>
+
+@endpush

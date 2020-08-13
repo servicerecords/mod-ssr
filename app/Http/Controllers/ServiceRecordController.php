@@ -283,8 +283,18 @@ class ServiceRecordController extends Controller
     public function yourDetails(Request $request)
     {
         $your_details = $request->session()->get('your_details');
-        $countries = \Countries::getList('en', 'json');
-        return view('your-information', ['your_details' => $your_details, 'countries' => json_decode($countries, true)]);
+        // Not quite.. bad cheetah!
+
+        $country_path = public_path('assets/location-autocomplete-canonical-list.json');
+
+        if (file_exists($country_path)) {
+            $countries = json_decode(file_get_contents($country_path));
+        }
+
+        return view('your-information', [
+            'your_details' => $your_details,
+            'countries' => $countries
+        ]);
     }
 
     /**
