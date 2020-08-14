@@ -57,6 +57,8 @@ script:
 notifications:
   email:
     recipients:
-      - Amanda.Moran637@mod.gov.uk
+#      - Amanda.Moran637@mod.gov.uk
+      - Julian.Saunders330@mod.gov.uk
+      - Liam.Cusack582@mod.gov.uk
     on_success: always
     on_failure: always
