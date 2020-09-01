@@ -417,8 +417,6 @@ class ServiceRecordController extends Controller
      */
     public function verify(Request $request)
     {
-        phpinfo();
-        die();
         //$referer = $request->server('HTTP_REFERER');
         return view('verify');
     }
@@ -437,42 +435,32 @@ class ServiceRecordController extends Controller
     {
         //$validation = $request->validated();
 
-        if (strpos($request->file('certificate')->getMimeType(), "image") !== false) {
+        // if (strpos($request->file('certificate')->getMimeType(), "image") !== false) {
             Storage::makeDirectory('verification');
+            Storage::makeDirectory('upload');
+
+            $file = $request->file('certificate');
+
+
             $resized_file = storage_path('app/verification/') . time() . '-resized.jpg';
-            /*
-            $original_file = Storage::disk('local')->put('verification', $request->file('certificate'));
-            */
+            $uploaded_file = storage_path('app/upload/') . time() . '-uploaded.' . $file->clientExtension();
+            $file->move(storage_path('app/upload'), $uploaded_file);
+
             $max_file_size = '2000000'; // maximum file size, in bytes
-
-            //Convert image to jpg if it is not a jpeg.
-//            if ($request->file('certificate')->getMimeType() === "image/png") {
-//                $original_image = imagecreatefrompng($request->file('certificate'));
-//            } elseif ($request->file('certificate')->getMimeType() === "image/gif") {
-//                $original_image = imagecreatefromgif($request->file('certificate'));
-//            } else {
-//                $original_image = imagecreatefromjpeg($request->file('certificate'));
-//            }
-
-            //$original_image->resize(595, 824);
-
             $image_quality = 100;
 
-//            do {
-//                $temp_stream = fopen('php://temp', 'w+');
-//                $saved = imagejpeg($original_image, $temp_stream, $image_quality--);
-//                rewind($temp_stream);
-//                $fstat = fstat($temp_stream);
-//                fclose($temp_stream);
-//
-//                $file_size = $fstat['size'];
-//            } while (($file_size > $max_file_size) && ($image_quality >= 0));
-//
-//
-//            } else {
-            $image_resize = Image::make($request->file('certificate')->getRealPath())->encode('jpg', 25)
-                ->resize(595, 824)
-                ->save($resized_file);
+//            die($uploaded_file);
+
+            $image_source = new \Imagick($uploaded_file);
+
+            do {
+//                $image = Image::make($request->file('certificate')->getRealPath())
+                $image = Image::make($image_source)
+                    ->resize(595, 824)
+                    ->greyscale()
+                    ->encode('jpg', $image_quality--)
+                    ->save($resized_file);
+            } while ($image->filesize() > $max_file_size && $image_quality > 10);
 
             $pdf = new Fpdf();
             $pdf->AddPage('P', 'a4');
@@ -487,9 +475,7 @@ class ServiceRecordController extends Controller
             ];
             $request->session()->put('verification', $verification);
             return redirect('/your-details');
-        }
-
-        //}
+       // }
 
     }
 
@@ -508,4 +494,5 @@ class ServiceRecordController extends Controller
         //$referer = $request->server('HTTP_REFERER');
         return view('check-your-answers', ['data' => $data]);
     }
+
 }

@@ -1,0 +1,5 @@
+---
+truncatesources: true
+cleancache: true
+packages:
+  - poppler-utils

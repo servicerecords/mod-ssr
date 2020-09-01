@@ -12,7 +12,7 @@ yarn-error.log
 .idea/*
 bootstrap/cache/
 bootstrap/cache/*
-vendor/
+/vendor/
 storage/framework/sessions/*
 storage/framework/cache/*
 storage/framework/views/*
