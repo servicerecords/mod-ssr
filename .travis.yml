@@ -10,8 +10,8 @@ jobs:
         - echo "0ae48dd0d44990907af91c87c10201670a6f8d42" | docker login https://docker.pkg.github.com -u "toby@codesure.co.uk" --password-stdin
         - docker build -t travis-ci-build-stage .
         - docker images
-        - docker tag travidocks-ci-build-stage docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
-        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
+        - docker tag travis-ci-build-stage docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
+        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0.0.1
 
 #deploy:
 #  - provider: cloudfoundry
