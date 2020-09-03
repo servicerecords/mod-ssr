@@ -9,8 +9,8 @@ jobs:
         - echo "$GITHUB_SECRET" | docker login https://docker.pkg.github.com -u "$GITHUB_USER" --password-stdin
         - docker build -t travis-ci-build-stage .
         - docker images
-        - docker tag travis-ci-build-stage:latest docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0.{$TRAVIS_BUILD}.3
-        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0.{$TRAVIS_BUILD}.3
+        - docker tag travis-ci-build-stage:latest docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0."$TRAVIS_BUILD".3
+        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0."$TRAVIS_BUILD".3
 
 #deploy:
 #  - provider: cloudfoundry
@@ -106,7 +106,7 @@ jobs:
 notifications:
   email:
     recipients:
-      - amanda.moran637@mod.gov.uk
+#      - amanda.moran637@mod.gov.uk
 #      - Julian.Saunders330@mod.gov.uk
       - liam.cusack582@mod.gov.uk
       - toby@codesure.co.uk
