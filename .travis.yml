@@ -7,11 +7,11 @@ jobs:
     - stage: building docker image
       script:
 #        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - echo "cab5b130913d6e52e08055ca235e2e70904a2caf" | docker login https://docker.pkg.github.com -u "toby@codesure.co.uk" --password-stdin
+        - echo "$GITHUB_SECRET" | docker login https://docker.pkg.github.com -u "toby@codesure.co.uk" --password-stdin
         - docker build -t travis-ci-build-stage .
         - docker images
-        - docker tag travis-ci-build-stage:latest docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0.0.1
-        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0.0.1
+        - docker tag travis-ci-build-stage:latest docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0.0.2
+        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0.0.2
 
 #deploy:
 #  - provider: cloudfoundry
