@@ -11,7 +11,7 @@ jobs:
         - docker build -t travis-ci-build-stage .
         - docker images
         - docker tag travis-ci-build-stage docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
-        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
+#        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
 
 
 
@@ -75,7 +75,7 @@ notifications:
     recipients:
 #      - Amanda.Moran637@mod.gov.uk
 #      - Julian.Saunders330@mod.gov.uk
-      - Liam.Cusack582@mod.gov.uk
+      - liam.cusack582@mod.gov.uk
       - toby@codesure.co.uk
     on_success: always
     on_failure: always
