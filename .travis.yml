@@ -13,6 +13,40 @@ jobs:
         - docker tag travis-ci-build-stage docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
 #        - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-ssr:0.0.1
 
+#deploy:
+#  - provider: cloudfoundry
+#    api: https://api.cloud.service.gov.uk
+#    username: simon@87development.co.uk
+#    password:
+#      secure: sph0VDhVj5oQupQP7O8JOCyA/VaavARMEE3gb4RETEUmgO1Qm85PeLko+Qzfl5EXpypyAT1ekqN9h5g1BBrZwsKYP4TsWAB0oT30d3r+2eHfiO/KvhffffFJbh+s0LSTj5H8BkuobhDBV71hP3IfwRtkC6BqrkKRewQilmzfSaVwmolCqTwqciiXLh+96X57fE+OxHmnUe9Tl/FDzJmQ2IKbQQMTVumFb35XyRwKK7UI6j2QKs0ZCmrcbERy8qeggRXWCk1qQo1TIq1DJlWNsZiZXyvCTlRYCUh/1Z3TDKkVyd8jJ4dfHJfoY4mLjPALzAFO2cPVjlmzpBV83KpNy1LK3e6rrVJxxyimJ0kmalAEY5AcyxUFljFXlHtMhUuslz6sr6z1tKeHhkOYyY3nbcg5At18fMTc5QOFmeIWvGbkAY6fxw2TJeHbNMm7QWeAxz3xiC2rRwDbYiIE9NGkh63scWmXPZ522QPTDRDOox1uuzSAWUAB1km58TMOJViTxKE1eMtfxwojq8P1+nRwYCymufB7wdmoOiq3jdMU3WV5FDaRKSgeNxG1sawve5NYct5zZLRMfrzTF/Sn2IQZZ/JmwShlLfLm1QLY3zICbcLwIq2tEC5y4u41+kp+l830ja4Y7UPd88Q04OZW2Im+aNB1M/l9kkd+4KYdeH9fCo4=
+#    organization: mod-request-a-historic-service-record
+#    space: qa
+#    manifest: manifest-qa.yml
+#    on:
+#      repo: servicerecords/mod-ssr
+#      branch: qa
+#  - provider: cloudfoundry
+#    api: https://api.cloud.service.gov.uk
+#    username: simon@87development.co.uk
+#    password:
+#      secure: sph0VDhVj5oQupQP7O8JOCyA/VaavARMEE3gb4RETEUmgO1Qm85PeLko+Qzfl5EXpypyAT1ekqN9h5g1BBrZwsKYP4TsWAB0oT30d3r+2eHfiO/KvhffffFJbh+s0LSTj5H8BkuobhDBV71hP3IfwRtkC6BqrkKRewQilmzfSaVwmolCqTwqciiXLh+96X57fE+OxHmnUe9Tl/FDzJmQ2IKbQQMTVumFb35XyRwKK7UI6j2QKs0ZCmrcbERy8qeggRXWCk1qQo1TIq1DJlWNsZiZXyvCTlRYCUh/1Z3TDKkVyd8jJ4dfHJfoY4mLjPALzAFO2cPVjlmzpBV83KpNy1LK3e6rrVJxxyimJ0kmalAEY5AcyxUFljFXlHtMhUuslz6sr6z1tKeHhkOYyY3nbcg5At18fMTc5QOFmeIWvGbkAY6fxw2TJeHbNMm7QWeAxz3xiC2rRwDbYiIE9NGkh63scWmXPZ522QPTDRDOox1uuzSAWUAB1km58TMOJViTxKE1eMtfxwojq8P1+nRwYCymufB7wdmoOiq3jdMU3WV5FDaRKSgeNxG1sawve5NYct5zZLRMfrzTF/Sn2IQZZ/JmwShlLfLm1QLY3zICbcLwIq2tEC5y4u41+kp+l830ja4Y7UPd88Q04OZW2Im+aNB1M/l9kkd+4KYdeH9fCo4=
+#    organization: mod-request-a-historic-service-record
+#    space: development
+#    manifest: manifest-development.yml
+#    on:
+#      repo: servicerecords/mod-ssr
+#      branch: development
+#  - provider: cloudfoundry
+#    api: https://api.cloud.service.gov.uk
+#    username: simon@87development.co.uk
+#    password:
+#      secure: sph0VDhVj5oQupQP7O8JOCyA/VaavARMEE3gb4RETEUmgO1Qm85PeLko+Qzfl5EXpypyAT1ekqN9h5g1BBrZwsKYP4TsWAB0oT30d3r+2eHfiO/KvhffffFJbh+s0LSTj5H8BkuobhDBV71hP3IfwRtkC6BqrkKRewQilmzfSaVwmolCqTwqciiXLh+96X57fE+OxHmnUe9Tl/FDzJmQ2IKbQQMTVumFb35XyRwKK7UI6j2QKs0ZCmrcbERy8qeggRXWCk1qQo1TIq1DJlWNsZiZXyvCTlRYCUh/1Z3TDKkVyd8jJ4dfHJfoY4mLjPALzAFO2cPVjlmzpBV83KpNy1LK3e6rrVJxxyimJ0kmalAEY5AcyxUFljFXlHtMhUuslz6sr6z1tKeHhkOYyY3nbcg5At18fMTc5QOFmeIWvGbkAY6fxw2TJeHbNMm7QWeAxz3xiC2rRwDbYiIE9NGkh63scWmXPZ522QPTDRDOox1uuzSAWUAB1km58TMOJViTxKE1eMtfxwojq8P1+nRwYCymufB7wdmoOiq3jdMU3WV5FDaRKSgeNxG1sawve5NYct5zZLRMfrzTF/Sn2IQZZ/JmwShlLfLm1QLY3zICbcLwIq2tEC5y4u41+kp+l830ja4Y7UPd88Q04OZW2Im+aNB1M/l9kkd+4KYdeH9fCo4=
+#    organization: mod-request-a-historic-service-record
+#    space: live-test
+#    manifest: manifest-live-test.yml
+#    on:
+#      repo: servicerecords/mod-ssr
+#      branch: live-test
 
 
 #php:
