@@ -6,7 +6,7 @@ ENV TZ=Europe/London
 WORKDIR /app
 
 # Install all requirements
-RUN apt update --fix-missing
+RUN apt -y update --fix-missing
 RUN apt -y upgrade
 RUN apt -y install build-essential wget nginx php-fpm \
                    php-bcmath php-bz2 php-calendar \
@@ -35,7 +35,7 @@ RUN rm ./google-chrome-stable_current_amd64.deb
 
 # Bit of a clean up
 RUN apt -y remove build-essential wget nodejs npm
-RUN apt autoremove
+RUN apt -y autoremove
 RUN rm -rf /var/lib/apt/lists/*
 
 # Set basic permissions
