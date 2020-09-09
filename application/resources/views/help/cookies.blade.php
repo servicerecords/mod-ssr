@@ -14,6 +14,11 @@
         <li>temporarily store information you enter to support your application</li>
     </ul>
 
+    <p class="govuk-body">
+        After your application is completed, or if you choose to leave the application process before completion,
+        close the browser session to delete any data you have entered
+    </p>
+
     <h2 class="govuk-heading-m">Cookie settings</h2>
     <p class="govuk-body">We use 3 types of cookie:</p>
     <ul class="govuk-list govuk-list--number">

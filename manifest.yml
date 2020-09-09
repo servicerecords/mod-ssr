@@ -1,8 +1,0 @@
----
-applications:
-  - name: srrdigital-dev
-    memory: 256M
-    buildpacks:
-      - https://github.com/cloudfoundry/php-buildpack.git#v4.3.78
-
-

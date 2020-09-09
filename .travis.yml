@@ -1,22 +1,26 @@
-#language: php
 services:
-- docker
+  - docker
 jobs:
   include:
-  - stage: building docker image
-    script:
-    - echo "$GITHUB_SECRET" | docker login https://docker.pkg.github.com -u "$GITHUB_USER"
-      --password-stdin
-    - docker build -t travis-ci-build-stage .
-    - docker images
-    - docker tag travis-ci-build-stage:latest docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0."$TRAVIS_BUILD_NUMBER".3
-    - docker push docker.pkg.github.com/servicerecords/mod-ssr/mod-srr:0."$TRAVIS_BUILD_NUMBER".3
+    - stage: building docker image
+      script:
+        - echo "$GITHUB_SECRET" | docker login https://docker.pkg.github.com -u "$GITHUB_USER" --password-stdin
+        - docker build -t build-image .
+        - docker images
+        - docker tag build-image:latest codesuretoby/srr:mod-sandbox-"$TRAVIS_BUILD_NUMBER".3
+        - docker push codesuretoby/srr:mod-sandbox-"$TRAVIS_BUILD_NUMBER"
+        - docker tag build-image:latest codesuretoby/srr:mod-qa-"$TRAVIS_BUILD_NUMBER".3
+        - docker push codesuretoby/srr:mod-qa-"$TRAVIS_BUILD_NUMBER"
+        - docker tag build-image:latest codesuretoby/srr:mod-production-"$TRAVIS_BUILD_NUMBER".3
+        - docker push codesuretoby/srr:mod-production-"$TRAVIS_BUILD_NUMBER"
+
+        - CF_DOCKER_PASSWORD="$CF_PASWORD" cf push Green -n docker_app-green -k 2G --docker-image codesuretoby/srr:mod-sandbox-"$TRAVIS_BUILD_NUMBER" --docker-username "$CF_USERNAME"
 notifications:
   email:
     recipients:
-    - amanda.moran637@mod.gov.uk
-    - liam.cusack582@mod.gov.uk
-    - toby@codesure.co.uk
+      - amanda.moran637@mod.gov.uk
+      - liam.cusack582@mod.gov.uk
+      - toby@codesure.co.uk
     on_success: always
     on_failure: always
 #deploy:

@@ -13,8 +13,10 @@ use App\Http\Requests\VerifyRequestSave;
 use App\Http\Requests\YourInformationSave;
 use Carbon\Carbon;
 use Codedge\Fpdf\Fpdf\Fpdf;
+use Imagick;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Exception\ImageException;
 use Intervention\Image\Facades\Image as Image;
 
 class ServiceRecordController extends Controller
@@ -426,8 +428,6 @@ class ServiceRecordController extends Controller
      * image into the PDF this is so we can send the file using the notify api. There is currently at 2MB limit to files
      * that can be uploaded.
      *
-     * @TODO: Take the 2MB limit off, and compress the file on upload
-     *
      * @param VerifyRequestSave $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -436,23 +436,27 @@ class ServiceRecordController extends Controller
         //$validation = $request->validated();
 
         // if (strpos($request->file('certificate')->getMimeType(), "image") !== false) {
-            Storage::makeDirectory('verification');
-            Storage::makeDirectory('upload');
+        Storage::makeDirectory('verification');
+        Storage::makeDirectory('upload');
 
-            $file = $request->file('certificate');
+        $file = $request->file('certificate');
 
-            $client_file = $_FILES['certificate']['name'];
-            $client_extension = end((explode(".", $client_file)));
-            $resized_file = storage_path('app/verification/') . time() . '-resized.jpg';
-            $uploaded_file = storage_path('app/upload/') . time() . '-uploaded.' . $client_extension;
-            $file->move(storage_path('app/upload'), $uploaded_file);
+        $client_file = $_FILES['certificate']['name'];
+        $client_explosion = explode(".", $client_file);
+        $client_extension = end($client_explosion);
+        $resized_file = storage_path('app/verification/') . time() . '-resized.jpg';
+        $uploaded_file = storage_path('app/upload/') . time() . '-uploaded.' . $client_extension;
+        $file->move(storage_path('app/upload'), $uploaded_file);
 
-            $max_file_size = '2000000'; // maximum file size, in bytes
-            $image_quality = 100;
+        $max_file_size = '2000000'; // maximum file size, in bytes
+        $image_quality = 100;
 
-//            die($uploaded_file);
+        if ($client_extension === 'pdf') {
+            $uploaded_file = $uploaded_file . '[0]';
+        }
 
-            $image_source = new \Imagick($uploaded_file);
+        try {
+            $image_source = new Imagick($uploaded_file . '[0]');
 
             do {
 //                $image = Image::make($request->file('certificate')->getRealPath())
@@ -462,21 +466,22 @@ class ServiceRecordController extends Controller
                     ->encode('jpg', $image_quality--)
                     ->save($resized_file);
             } while ($image->filesize() > $max_file_size && $image_quality > 10);
+        } catch (ImageException $exeception) {}
 
-            $pdf = new Fpdf();
-            $pdf->AddPage('P', 'a4');
-            $pdf->Image($resized_file, 0, 0);
-            $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
-            $pdf->Output('F', $newPath);
+        $pdf = new Fpdf();
+        $pdf->AddPage('P', 'a4');
+        $pdf->Image($resized_file, 0, 0);
+        $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
+        $pdf->Output('F', $newPath);
 
-            $verification = [
-                'death_certificate' => $newPath,
-                'uploaded' => 'Yes',
-                'method' => $request->input('verify_method')
-            ];
-            $request->session()->put('verification', $verification);
-            return redirect('/your-details');
-       // }
+        $verification = [
+            'death_certificate' => $newPath,
+            'uploaded' => 'Yes',
+            'method' => $request->input('verify_method')
+        ];
+        $request->session()->put('verification', $verification);
+        return redirect('/your-details');
+        // }
 
     }
 
