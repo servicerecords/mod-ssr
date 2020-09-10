@@ -22,8 +22,8 @@ RUN apt -y  --no-install-recommends install nodejs yarn
 # Move our application into the container
 COPY application/ /app
 # COPY nginx.conf /etc/nginx/sites-available/default
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY policy.xml /etc/ImageMagick-6/policy.xml
+COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/policy.xml /etc/ImageMagick-6/policy.xml
 
 # Install our application dependencies
 RUN cd /app
@@ -32,8 +32,8 @@ RUN npm install
 RUN npm run development
 
 # Add the entryscript to fire up Nginx and PHP-FPM
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-COPY docker-entrypoint.sh /etc/entrypoint.sh
+COPY ./docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY ./docker/docker-entrypoint.sh /etc/entrypoint.sh
 
 # Add Chrome for smoke testing
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
