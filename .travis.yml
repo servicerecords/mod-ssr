@@ -21,8 +21,8 @@ jobs:
 notifications:
   email:
     recipients:
-#      - amanda.moran637@mod.gov.uk
-#      - liam.cusack582@mod.gov.uk
+      - amanda.moran637@mod.gov.uk
+      - liam.cusack582@mod.gov.uk
       - toby@codesure.co.uk
     on_success: always
     on_failure: always
