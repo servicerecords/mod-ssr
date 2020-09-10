@@ -36,7 +36,7 @@
                         </span>
                     <input
                         value="{{ isset($service_details['regt_corps'] ) ? $service_details['regt_corps'] : old('regt_corps') }}"
-                        class="govuk-input govuk-input--width-10" id="regt_corps" name="regt_corps" type="text"
+                        class="govuk-input govuk-input--width-10" id="regt_corps" name="regt_corps" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
             </fieldset>
@@ -98,7 +98,7 @@
                             <input
                                 value="{{ isset($service_details['leave_army_reason_other'] ) ? $service_details['leave_army_reason_other'] : old('leave_army_reason_other') }}"
                                 class="govuk-input govuk-input--width-20" id="leave_army_reason_other"
-                                name="leave_army_reason_other" type="text" spellcheck="false">
+                                name="leave_army_reason_other" type="text" spellcheck="false" maxlength="120">
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                         </label>
                         <input
                             {{ (old('completion_info') == 'Territorial Army (TA)' || (isset($service_details['completion_info']) && $service_details['completion_info'] == 'Territorial Army (TA)')) ? 'checked' : '' }} class="govuk-input govuk-input--width-20"
-                            id="ta_army_number" name="ta_army_number" type="text" spellcheck="false">
+                            id="ta_army_number" name="ta_army_number" type="text" spellcheck="false" maxlength="120">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label" for="ta_army_regt_corps">
@@ -137,7 +137,7 @@
                         </label>
                         <input
                             {{ (old('completion_info') == 'Territorial Army (TA)' || (isset($service_details['completion_info']) && $service_details['completion_info'] == 'Territorial Army (TA)')) ? 'checked' : '' }} class="govuk-input govuk-input--width-20"
-                            id="ta_army_regt_corps" name="ta_army_regt_corps" type="text" spellcheck="false">
+                            id="ta_army_regt_corps" name="ta_army_regt_corps" type="text" spellcheck="false" maxlength="120">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label" for="ta_army_regt_corps">
@@ -148,7 +148,7 @@
                             </span>
                         <input
                             {{ (old('completion_info') == 'Territorial Army (TA)' || (isset($service_details['completion_info']) && $service_details['completion_info'] == 'Territorial Army (TA)')) ? 'checked' : '' }} class="govuk-input govuk-input--width-20"
-                            id="ta_army_dates" name="ta_army_dates" type="text" spellcheck="false">
+                            id="ta_army_dates" name="ta_army_dates" type="text" spellcheck="false" maxlength="120">
                     </div>
                 </div>
 
@@ -172,7 +172,7 @@
                         <input
                             value="{{ isset($service_details['aer_number'] ) ? $service_details['aer_number'] : old('aer_number') }}"
                             class="govuk-input govuk-input--width-20" id="aer_army_number" name="aer_number" type="text"
-                            spellcheck="false">
+                            spellcheck="false" maxlength="120">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label" for="aer_regt_corps">
@@ -181,7 +181,7 @@
                         <input
                             value="{{ isset($service_details['aer_regt_corps'] ) ? $service_details['aer_regt_corps'] : old('aer_regt_corps') }}"
                             class="govuk-input govuk-input--width-20" id="aer_regt_corps" name="aer_regt_corps"
-                            type="text" spellcheck="false">
+                            type="text" spellcheck="false" maxlength="120">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label" for="aer_regt_corps">
@@ -193,7 +193,7 @@
                         <input
                             value="{{ isset($service_details['aer_dates'] ) ? $service_details['aer_dates'] : old('aer_dates') }}"
                             class="govuk-input govuk-input--width-20" id="aer_dates" name="aer_dates" type="text"
-                            spellcheck="false">
+                            spellcheck="false" maxlength="120">
                     </div>
                 </div>
             </div>
@@ -217,7 +217,7 @@
                             <label class="govuk-label" for="disability_reason">
                                 Please give details
                             </label>
-                            <textarea class="govuk-textarea" id="" name="disability_reason" type="text"
+                            <textarea class="govuk-textarea" id="" name="disability_reason" maxlength="1000"
                                       rows="5">{{ isset($service_details['disability_reason'] ) ? $service_details['disability_reason'] : old('disability_reason') }}</textarea>
                         </div>
                     </div>

@@ -133,7 +133,7 @@
                                 <input
                                     value="{{(isset($your_details_relationship['relationship_other']) ? $your_details_relationship['relationship_other'] : old('relationship_other')) }}"
                                     class="govuk-input" id="relationship-8-other" name="relationship_other" type="text"
-                                    spellcheck="false">
+                                    spellcheck="false" maxlength="120">
                             </div>
                         </div>
                     </div>

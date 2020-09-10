@@ -20,7 +20,7 @@
                     <label class="govuk-label govuk-label--s" for="service_number">Official Service Number</label>
                     <input
                         value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}"
-                        class="govuk-input govuk-input--width-20" type="text" name="service_number" id="service_number">
+                        class="govuk-input govuk-input--width-20" type="text" name="service_number" id="service_number" maxlength="120">
                 </div>
 
 

@@ -16,7 +16,7 @@
                     <input
                         value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}"
                         class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text"
-                        spellcheck="false">
+                        spellcheck="false" maxlength="120">
                 </div>
 
                 <div class="govuk-form-group">

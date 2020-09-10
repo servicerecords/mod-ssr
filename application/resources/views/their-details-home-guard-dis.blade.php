@@ -16,7 +16,7 @@
                     <input
                         value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}"
                         class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text"
-                        spellcheck="false">
+                        spellcheck="false" maxlength="120">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="enlist_date">Date they joined (optional)</label>
@@ -105,7 +105,7 @@
                     <label class="govuk-label govuk-label--s" for="county">Which county did they serve in?
                         (optional)</label>
                     <input value="{{ isset($service_details['county'] ) ? $service_details['county'] : old('county') }}"
-                           type="text" class="govuk-input" id="county" name="county">
+                           type="text" class="govuk-input" id="county" name="county" maxlength="120">
                 </div>
 
                 <div class="govuk-form-group">
@@ -140,7 +140,7 @@
                     </label>
                     <input
                         value="{{ isset($service_details['battalions_companies'] ) ? $service_details['battalions_companies'] : old('battalions_companies') }}"
-                        type="text" class="govuk-input" id="battalions_companies" name="battalions_companies">
+                        type="text" class="govuk-input" id="battalions_companies" name="battalions_companies" maxlength="120">
                 </div>
             </fieldset>
         </div>

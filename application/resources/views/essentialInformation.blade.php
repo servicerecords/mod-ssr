@@ -16,7 +16,7 @@
                     <span id="info-1-item-hint" class="govuk-hint">Include all middle names</span>
                     <input
                         value="{{ isset($essential_information['firstnames'] ) ? $essential_information['firstnames'] : old('firstnames') }}"
-                        class="govuk-input govuk-input--20" id="firstname" name="firstnames" type="text"
+                        class="govuk-input govuk-input--20" id="firstname" name="firstnames" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
 
@@ -24,7 +24,7 @@
                     <label class="govuk-label govuk-label--s">Last name</label>
                     <input
                         value="{{ isset($essential_information['lastname'] ) ? $essential_information['lastname'] : old('lastname') }}"
-                        class="govuk-input govuk-input--20" id="lastname" name="lastname" type="text"
+                        class="govuk-input govuk-input--20" id="lastname" name="lastname" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
 
@@ -32,7 +32,7 @@
                     <label class="govuk-label govuk-label--s">Place of birth (optional)</label>
                     <input
                         value="{{ isset($essential_information['birth_place'] ) ? $essential_information['birth_place'] : old('birth_place') }}"
-                        class="govuk-input govuk-input--20" id="birth_place" name="birth_place" type="text"
+                        class="govuk-input govuk-input--20" id="birth_place" name="birth_place" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
                 <div class="govuk-form-group">

@@ -16,7 +16,7 @@
                         (optional)</label>
                     <input
                         value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}"
-                        class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text"
+                        class="govuk-input govuk-input--width-10" id="service_number" name="service_number" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
@@ -36,7 +36,7 @@
                     </span>
                     <input
                         value="{{ isset($service_details['regt_corps'] ) ? $service_details['regt_corps'] : old('regt_corps') }}"
-                        class="govuk-input govuk-input--width-10" id="regt_corps" name="regt_corps" type="text"
+                        class="govuk-input govuk-input--width-10" id="regt_corps" name="regt_corps" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
