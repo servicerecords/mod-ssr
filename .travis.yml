@@ -25,6 +25,7 @@ jobs:
             skip_cleanup: 'true'
             manifest: manifest-sandbox.yml
 
+
 #    - stage: building docker image
 #      if: branch = sandbox
 #      script:
