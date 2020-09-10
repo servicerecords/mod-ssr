@@ -4,14 +4,14 @@ jobs:
   include:
     - stage: build image for sandbox
       if: branch = "docker_build"
-      script:
-        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-        - docker build -t build-image .
-        - docker images
-        - docker tag build-image:latest "$DOCKER_USER"/srr:mod-development
-        - docker logout
-        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-        - docker push "$DOCKER_USER"/srr:mod-development
+#      script:
+#        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+#        - docker build -t build-image .
+#        - docker exec -it build-image bash -c './artisan dusk'
+#        - docker tag build-image:latest "$DOCKER_USER"/srr:mod-development
+#        - docker logout
+#        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+#        - docker push "$DOCKER_USER"/srr:mod-development
       deploy:
         - provider: cloudfoundry
           api: https://api.cloud.service.gov.uk
@@ -22,22 +22,9 @@ jobs:
           space: development
           on:
             repo: servicerecords/mod-ssr
+            branch: development
           skip_cleanup: 'true'
           manifest: manifest-sandbox.yml
-
-
-      #    - stage: building docker image
-      #      if: branch = sandbox
-      #      script:
-      #        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-      #        - docker build -t build-image .
-      #        - docker images
-      #        - docker tag build-image:latest "$DOCKER_USER"/srr:mod-sandbox
-      #        - docker logout
-      #        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-      #        - docker push "$DOCKER_USER"/srr:mod-sandbox
-      # - CF_DOCKER_PASSWORD="$CF_PASWORD" cf push Green -n docker_app-green -k 2G --docker-image codesuretoby/srr:mod-sandbox-"$TRAVIS_BUILD_NUMBER" --docker-username "$CF_USERNAME"
-
 
 
 notifications:
