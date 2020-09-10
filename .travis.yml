@@ -13,7 +13,7 @@ jobs:
         - docker push codesuretoby/srr:mod-qa-"$TRAVIS_BUILD_NUMBER"
         - docker tag build-image:latest codesuretoby/srr:mod-production-"$TRAVIS_BUILD_NUMBER"
         - docker push codesuretoby/srr:mod-production-"$TRAVIS_BUILD_NUMBER"
-        - CF_DOCKER_PASSWORD="$CF_PASWORD" cf push Green -n docker_app-green -k 2G --docker-image codesuretoby/srr:mod-sandbox-"$TRAVIS_BUILD_NUMBER" --docker-username "$CF_USERNAME"
+        # - CF_DOCKER_PASSWORD="$CF_PASWORD" cf push Green -n docker_app-green -k 2G --docker-image codesuretoby/srr:mod-sandbox-"$TRAVIS_BUILD_NUMBER" --docker-username "$CF_USERNAME"
 
 
 notifications:
