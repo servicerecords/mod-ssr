@@ -4,8 +4,8 @@ jobs:
   include:
     - stage: build image for sandbox
       if: branch = "docker_build"
-#      script:
-#        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+      script:
+        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
 #        - docker build -t build-image .
 ##        - docker exec -it build-image bash -c './artisan dusk'
 #        - docker tag build-image:latest "$DOCKER_USER"/srr:mod-development
