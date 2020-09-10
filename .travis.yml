@@ -2,28 +2,28 @@ services:
   - docker
 jobs:
   include:
-    - stage: build image for sandbox
-      if: branch = "docker_build"
-      script:
-        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-        - docker build -t build-image .
-        - docker images
-        - docker tag build-image:latest "$DOCKER_USER"/srr:mod-development
-        - docker logout
-        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-        - docker push "$DOCKER_USER"/srr:mod-development
-        deploy:
-          - provider: cloudfoundry
-            api: https://api.cloud.service.gov.uk
-            username: "$CF_USERNAME"
-            password:
-              secure: "$CF_PASSWORD"
-            organization: mod-request-a-historic-service-record
-            space: development
-            on:
-              repo: servicerecords/mod-ssr
-            skip_cleanup: 'true'
-            manifest: manifest-sandbox.yml
+    - if: branch = "docker_build"
+      - stage: build image for sandbox
+        script:
+          - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+          - docker build -t build-image .
+          - docker images
+          - docker tag build-image:latest "$DOCKER_USER"/srr:mod-development
+          - docker logout
+          - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+          - docker push "$DOCKER_USER"/srr:mod-development
+          deploy:
+            - provider: cloudfoundry
+              api: https://api.cloud.service.gov.uk
+              username: "$CF_USERNAME"
+              password:
+                secure: "$CF_PASSWORD"
+              organization: mod-request-a-historic-service-record
+              space: development
+              on:
+                repo: servicerecords/mod-ssr
+              skip_cleanup: 'true'
+              manifest: manifest-sandbox.yml
 
 
 #    - stage: building docker image
