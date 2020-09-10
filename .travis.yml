@@ -20,9 +20,9 @@ jobs:
             secure: "$CF_PASSWORD"
           organization: mod-request-a-historic-service-record
           space: development
-          on:
-            repo: servicerecords/mod-ssr
-            branch: development
+#          on:
+#            repo: servicerecords/mod-ssr
+#            branch: development
           skip_cleanup: 'true'
           manifest: manifest-sandbox.yml
 
