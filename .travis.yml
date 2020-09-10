@@ -4,8 +4,7 @@ jobs:
   include:
     - stage: building docker image
       script:
-#        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" --password-stdin
-        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" -p "$DOCKER_SECRET"
+        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" --password-stdin
         - docker build -t build-image .
         - docker images
         - docker tag build-image:latest codesuretoby/srr:mod-sandbox-"$TRAVIS_BUILD_NUMBER"

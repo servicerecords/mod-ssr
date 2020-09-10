@@ -5,6 +5,7 @@
 /storage/app
 /storage/*.key
 /vendor
+.idea
 .env
 .editorconfig
 .env.development
