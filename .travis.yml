@@ -12,19 +12,19 @@ jobs:
         - docker logout
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - docker push "$DOCKER_USER"/srr:mod-development
-      deploy:
-        - provider: cloudfoundry
-          api: https://api.cloud.service.gov.uk
-          username: "$CF_USERNAME"
-          password:
-            secure: "$CF_PASSWORD"
-          organization: mod-request-a-historic-service-record
-          space: development
-#          on:
-#            repo: servicerecords/mod-ssr
-#            branch: development
-          skip_cleanup: 'true'
-          manifest: manifest-sandbox.yml
+#      deploy:
+#        - provider: cloudfoundry
+#          api: https://api.cloud.service.gov.uk
+#          username: "$CF_USERNAME"
+#          password:
+#            secure: "$CF_PASSWORD"
+#          organization: mod-request-a-historic-service-record
+#          space: development
+##          on:
+##            repo: servicerecords/mod-ssr
+##            branch: development
+#          skip_cleanup: 'true'
+#          manifest: manifest-sandbox.yml
 
 
 notifications:
