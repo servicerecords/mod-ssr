@@ -5,13 +5,13 @@ jobs:
     - stage: build image for sandbox
       if: branch = "docker_build"
       script: skip
-#        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-#        - docker build -t build-image .
+        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+        - docker build -t build-image .
 #        - docker exec -it build-image bash -c './artisan dusk'
-#        - docker tag build-image:latest "$DOCKER_USER"/srr:mod-development
-#        - docker logout
-#        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-#        - docker push "$DOCKER_USER"/srr:mod-development
+        - docker tag build-image:latest "$DOCKER_USER"/srr:mod-development
+        - docker logout
+        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+        - docker push "$DOCKER_USER"/srr:mod-development
       deploy:
         - provider: cloudfoundry
           api: https://api.cloud.service.gov.uk
