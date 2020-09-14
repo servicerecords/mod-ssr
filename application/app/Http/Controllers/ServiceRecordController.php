@@ -13,6 +13,9 @@ use App\Http\Requests\VerifyRequestSave;
 use App\Http\Requests\YourInformationSave;
 use Carbon\Carbon;
 use Codedge\Fpdf\Fpdf\Fpdf;
+use Illuminate\Http\FileHelpers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Imagick;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -433,9 +436,6 @@ class ServiceRecordController extends Controller
      */
     public function verifySave(VerifyRequestSave $request)
     {
-        //$validation = $request->validated();
-
-        // if (strpos($request->file('certificate')->getMimeType(), "image") !== false) {
         Storage::makeDirectory('verification');
         Storage::makeDirectory('upload');
 
@@ -445,22 +445,23 @@ class ServiceRecordController extends Controller
         $client_explosion = explode(".", $client_file);
         $client_extension = end($client_explosion);
         $resized_file = storage_path('app/verification/') . time() . '-resized.jpg';
-        $uploaded_file = storage_path('app/upload/') . time() . '-uploaded.' . $client_extension;
-        $file->move(storage_path('app/upload'), $uploaded_file);
+
+        $src_file = storage_path('app/upload/') . time() . '-uploaded.' . $client_extension;
+        $dst_file = storage_path('app/upload/') . time() . '-converted.' . $client_extension;
+        $file->move(storage_path('app/upload'), $src_file);
+        if ($client_extension === 'pdf') {
+            $src_file = $src_file . '[0]';
+        }
 
         $max_file_size = '2000000'; // maximum file size, in bytes
         $image_quality = 100;
 
-        if ($client_extension === 'pdf') {
-            $uploaded_file = $uploaded_file . '[0]';
-        }
+        // Commandline to convert
+        `convert $src_file $dst_file`;
 
         try {
-            $image_source = new Imagick($uploaded_file . '[0]');
-
             do {
-//                $image = Image::make($request->file('certificate')->getRealPath())
-                $image = Image::make($image_source)
+                $image = Image::make($dst_file)
                     ->resize(595, 824)
                     ->greyscale()
                     ->encode('jpg', $image_quality--)
@@ -471,7 +472,8 @@ class ServiceRecordController extends Controller
         $pdf = new Fpdf();
         $pdf->AddPage('P', 'a4');
         $pdf->Image($resized_file, 0, 0);
-        $newPath = \Storage::disk('local')->path('verification/' . $request->file('certificate')->hashName() . '.pdf');
+        $hashName = str_replace('-', '', Str::uuid());
+        $newPath = \Storage::disk('local')->path('verification/' . str_replace('\'', '', $hashName) . '.pdf');
         $pdf->Output('F', $newPath);
 
         $verification = [
