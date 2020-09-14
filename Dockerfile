@@ -21,9 +21,10 @@ RUN apt -y  --no-install-recommends install nodejs yarn
 
 # Move our application into the container
 COPY application/ /app
-# COPY nginx.conf /etc/nginx/sites-available/default
-COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/000-default.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/policy.xml /etc/ImageMagick-6/policy.xml
+COPY ./docker/php.ini /etc/php/7.3/fpm/php.ini
 
 # Install our application dependencies
 RUN cd /app
