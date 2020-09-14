@@ -28,7 +28,7 @@
                         <span id="certificate-error"
                               class="govuk-error-message">{{$errors->first('certificate')}}</span>
                     @endif
-                    <input name="certificate" type="file" accept="image/jpg,image/jpeg,image/png" id="certificate"
+                    <input name="certificate" type="file" accept="image/jpg,image/jpeg,image/png,application/pdf" id="certificate"
                            class="govuk-body {{($errors->has('certificate') ? 'govuk-input--error' : '')}}">
                 </div>
 
