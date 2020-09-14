@@ -25,19 +25,12 @@
 
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176740731-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-176740731-1');
-
-        window.addEventListener('beforeunload', function (e) {
-            document.cookie.split(";").forEach(function(c) {
-                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-            });
-        });
     </script>
 </head>
 
