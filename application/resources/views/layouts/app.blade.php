@@ -25,13 +25,7 @@
 
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176740731-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-176740731-1');
-    </script>
+
 </head>
 
 <body class="govuk-template__body">
@@ -67,7 +61,7 @@
         </div>
         <div class="govuk-header__content">
             <a href="/" class="govuk-header__link govuk-header__link--service-name">
-                {{ env('APP_NAME') }}
+                {{ 'Apply for a deceased\'s military record' }}
             </a>
         </div>
     </div>
@@ -79,8 +73,8 @@
                 BETA
             </strong>
             <span class="govuk-phase-banner__text">
-                    This is a new service – your <a class="govuk-link" href="/feedback">feedback</a> will help us to improve it.
-                </span>
+                This is a new service – your <a class="govuk-link" href="/feedback">feedback</a> will help us to improve it.
+            </span>
         </p>
     </div>
 </div>
@@ -114,7 +108,7 @@
                     </li>
 
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="/help/feedback" target="_blank">
+                        <a class="govuk-footer__link" href="/feedback" target="_blank">
                             Feedback
                         </a>
                     </li>
@@ -160,6 +154,16 @@
     window.GOVUKFrontend.CookieBanner.init();
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_ID', 'UA-176740731-1') }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ env('GA_ID', 'UA-176740731-1') }}');
+</script>
+
+
 @stack('mod-scripts')
 </body>
 
