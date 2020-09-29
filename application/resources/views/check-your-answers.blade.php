@@ -10,6 +10,7 @@
         <ul class="govuk-list govuk-list--bullet">
             <li>By submitting your request you are confirming that the details are correct.</li>
             <li>A payment of £30 is required.</li>
+            <li>The payment is not refundable even if a record is not found.</li>
         </ul>
         <a class="govuk-button" href="/pay">Accept and pay</a>
     @else
