@@ -54,6 +54,24 @@
 
                 <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">PHPSESSID</td>
+                    <td class="govuk-table__cell">
+                        auto generated session cookie by the server which contains a random long number which is given out by the server itself.
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of Session
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">XSRF-TOKEN</td>
+                    <td class="govuk-table__cell">
+                        A standard cookie used to prevent a malicious exploit of a website
+                    </td>
+                    <td class="govuk-table__cell">
+                        2 hours
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
                     <td class="govuk-table__cell">_ga</td>
                     <td class="govuk-table__cell">
                         Used to distinguish users
@@ -97,6 +115,42 @@
                     </td>
                     <td class="govuk-table__cell">
                         90 days
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Apply_for_a_deceaseds_military_record_session</td>
+                    <td class="govuk-table__cell">
+                        Holds session data to complete the application
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of session
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Cookies_Preference_set</td>
+                    <td class="govuk-table__cell">
+                        Registers the input cookie preference
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of session
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">MoD_ssr_session</td>
+                    <td class="govuk-table__cell">
+                        Session cookie to track responses. Ensure the integrity of data input
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of session
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Cookies_policy</td>
+                    <td class="govuk-table__cell">
+                        Register the response to cookies permission question
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of session
                     </td>
                 </tr>
                 </tbody>
