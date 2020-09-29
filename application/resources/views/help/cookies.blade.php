@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="govuk-heading-l">Cookies on search for an historic service record</h1>
+    <h1 class="govuk-heading-l">Cookies on Apply for a deceased’s military record</h1>
 
     <p class="govuk-body">Cookies are files saved on your computer, tablet or telephone when you visit a website.
         The online request an historic service record service puts cookies onto your computer in order to:</p>
