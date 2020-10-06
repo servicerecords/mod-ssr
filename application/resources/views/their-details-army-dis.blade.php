@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('title', 'Details of the serviceperson')
 
 @section('content')
@@ -27,7 +26,7 @@
                     <input
                         value="{{ isset($service_details['discharge_year'] ) ? $service_details['discharge_year'] : old('discharge_year') }}"
                         class="govuk-input govuk-input--width-4" id="dis_date" name="discharge_year" type="number"
-                        patter="[0-9]*" size="4">
+                        pattern="[0-9]*" size="4" maxlength="4">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="regt_corps">Regt/Corps (optional)</label>
@@ -39,10 +38,7 @@
                         class="govuk-input govuk-input--width-10" id="regt_corps" name="regt_corps" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
-                <div class="govuk-form-group">
-                    @csrf
-                    <button type="submit" class="govuk-button">Continue</button>
-                </div>
+                @include('partials.form-continue')
             </fieldset>
         </div>
     </form>

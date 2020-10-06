@@ -26,7 +26,7 @@ Route::get('/countries', function () {
 });
 
 Route::get('/', 'ServiceRecordController@index');
-Route::get('/bootstrap', 'ServiceRecordController@bootstrap');
+Route::get('/leave', 'ServiceRecordController@leave');
 Route::get('/service', 'ServiceRecordController@serviceChoice');
 Route::get('/service/death-in-service', 'ServiceRecordController@deathInService');
 Route::get('/essential-information', 'ServiceRecordController@essentialInformation');
@@ -57,6 +57,7 @@ Route::post('/verify', 'ServiceRecordController@verifySave');
 Route::get('/feedback', 'FeedbackController@index');
 Route::get('/feedback/success', 'FeedbackController@success');
 Route::post('/feedback', 'FeedbackController@save');
+Route::get('/feedback/email', 'FeedbackController@email');
 
 #Route::get('/pay', 'PaymentController@payment');
 Route::get('/pay', 'PaymentController@processPayment');

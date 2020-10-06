@@ -4,6 +4,9 @@
 @section('title', 'Details of the serviceperson')
 
 @section('content')
+
+    <p class="govuk-body">This application process will not tell you if a record is held.</p>
+
     <form action="/service" method="post" class="govuk-form" id="service" novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             @include('partials.form-errors')
@@ -56,12 +59,8 @@
                     </div>
                 </details>
             </div>-->
-            <div class="govuk-form-group govuk-!-margin-top-5">
-                @csrf
-                <button type="submit" class="govuk-button" name="details_service">
-                    Continue
-                </button>
-            </div>
+
+            @include('partials.form-continue')
         </div>
     </form>
 

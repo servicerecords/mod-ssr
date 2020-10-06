@@ -217,7 +217,6 @@
   background-color: #dee0e2;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
@@ -6271,5 +6270,9 @@
 
 .gem-c-cookie-banner .gem-c-cookie-banner__confirmation {
   display: none;
+}
+
+.autocomplete__menu {
+  font-family: Arial;
 }
 

@@ -89,6 +89,12 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+
+        'dynamodb' => [
+            'driver' => 'monolog',
+            'handler' => \Monolog\Handler\DynamoDbHandler::class,
+            'with' => []
+        ]
     ],
 
 ];

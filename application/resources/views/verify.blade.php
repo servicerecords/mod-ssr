@@ -32,13 +32,7 @@
                            class="govuk-body {{($errors->has('certificate') ? 'govuk-input--error' : '')}}">
                 </div>
 
-                <div class="govuk-form-group">
-                    @csrf
-
-                    <button type="submit" class="govuk-button">
-                        Continue
-                    </button>
-                </div>
+                @include('partials.form-continue')
             </fieldset>
         </div>
     </form>

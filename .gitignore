@@ -5,6 +5,15 @@
 /storage/app
 /storage/*.key
 /vendor
+application/node_modules
+application/public/hot
+application/public/storage
+application/public/verification
+application/storage/app
+application/storage/*.key
+application/vendor
+application/.env
+
 .idea
 .env
 .editorconfig

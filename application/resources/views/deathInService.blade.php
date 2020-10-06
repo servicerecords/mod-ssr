@@ -28,12 +28,8 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group">
-            @csrf
-            <button type="submit" class="govuk-button">
-                Continue
-            </button>
-        </div>
+
+       @include('partials.form-continue')
     </form>
 
 @endsection

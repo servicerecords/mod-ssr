@@ -3,7 +3,8 @@ applications:
   - name: srrdigital-dev
     memory: 1G
     disk_quota: 2G
+    env:
+      CF_DOCKER_PASSWORD: Maisie2014!
     docker:
       image: codesuretoby/srr:mod-sandbox
-
-
+      username: codesuretoby

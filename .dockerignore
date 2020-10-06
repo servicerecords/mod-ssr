@@ -1,4 +1,3 @@
 ./application/ci
-./application/storage
 ./application/vendor
 ./application/node_modules

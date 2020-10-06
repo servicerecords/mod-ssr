@@ -8,9 +8,7 @@
           novalidate="novalidate">
         <div class="govuk-form-group {{ count($errors) >0 ? 'govuk-form-group--error' :'' }}">
             <fieldset class="govuk-fieldset">
-
                 @include('partials.form-errors')
-
                 <div class="govuk-form-group {{ count($errors) > 0 ? 'govuk-form-group--error' :'' }}">
                     <label class="govuk-label govuk-label--s">First name(s)</label>
                     <span id="info-1-item-hint" class="govuk-hint">Include all middle names</span>
@@ -19,7 +17,6 @@
                         class="govuk-input govuk-input--20" id="firstname" name="firstnames" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
-
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s">Last name</label>
                     <input
@@ -27,12 +24,12 @@
                         class="govuk-input govuk-input--20" id="lastname" name="lastname" type="text" maxlength="120"
                         spellcheck="false">
                 </div>
-
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s">Place of birth (optional)</label>
                     <input
                         value="{{ isset($essential_information['birth_place'] ) ? $essential_information['birth_place'] : old('birth_place') }}"
-                        class="govuk-input govuk-input--20" id="birth_place" name="birth_place" type="text" maxlength="120"
+                        class="govuk-input govuk-input--20" id="birth_place" name="birth_place" type="text"
+                        maxlength="120"
                         spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
@@ -49,7 +46,7 @@
                                 <input
                                     value="{{ isset($essential_information['dob_day'] ) ? $essential_information['dob_day'] : old('dob_day') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-2 {{($errors->has('dob_day') || $errors->has('dob_year') ? 'govuk-input--error' : '')}}"
-                                    id="dob-day" name="dob_day" type="number">
+                                    id="dob-day" name="dob_day" type="number" maxlength="2" max="31">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
@@ -58,7 +55,7 @@
                                 <input
                                     value="{{ isset($essential_information['dob_month'] ) ? $essential_information['dob_month'] : old('dob_month') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-2 {{($errors->has('dob_month') || $errors->has('dob_year') ? 'govuk-input--error' : '')}}"
-                                    id="dob-month" name="dob_month" type="number">
+                                    id="dob-month" name="dob_month" type="number" maxlength="2" max="12">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
@@ -67,20 +64,40 @@
                                 <input
                                     value="{{ isset($essential_information['dob_year'] ) ? $essential_information['dob_year'] : old('dob_year') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-4 {{($errors->has('dob_day') || $errors->has('dob_year') ? 'govuk-input--error' : '')}}"
-                                    id="dob-year" name="dob_year" type="number">
+                                    id="dob-year" name="dob_year" type="number" maxlength="4" max="2020">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="govuk-form-group">
-                    @csrf
-                    <button type="submit" class="govuk-button">
-                        Continue
-                    </button>
-                </div>
+                @include('partials.form-continue')
             </fieldset>
         </div>
     </form>
 
+    <script>
+        /**
+         * Loop though all elements we want to zeroPad to fulfil our day/month requirement
+         */
+        for (let element of ['dob-day', 'dob-month']) {
+            document.getElementById(element).addEventListener('blur', function (event) {
+                let value = event.target.value
+                if (parseInt(value) > 0) {
+                    event.target.value = zeroPad(value, 2)
+                } else {
+                    event.target.value = null
+                }
+            })
+        }
+
+
+        /**
+         * Zero-pad a value x times
+         * @param value any
+         * @param amount int
+         */
+        function zeroPad(value, amount) {
+            return ('0' + value).substr(-amount)
+        }
+    </script>
 @endsection

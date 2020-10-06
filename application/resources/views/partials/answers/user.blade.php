@@ -56,7 +56,7 @@
     </div>
 </dl>
 
-@if(Session::get('verification')['method'] != '')
+@if(@Session::get('verification')['method'] != '')
     <h2 class="govuk-heading-m">Documentation</h2>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">

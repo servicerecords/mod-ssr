@@ -20,27 +20,20 @@
                     <label class="govuk-label govuk-label--s" for="service_number">Official Service Number</label>
                     <input
                         value="{{ isset($service_details['service_number'] ) ? $service_details['service_number'] : old('service_number') }}"
-                        class="govuk-input govuk-input--width-20" type="text" name="service_number" id="service_number" maxlength="120">
+                        class="govuk-input govuk-input--width-20" type="text" name="service_number" id="service_number"
+                        maxlength="120">
                 </div>
-
-
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s">Further Information</label>
                     <span id="useful-item-hint" class="govuk-hint">
-              Please include any other information that may help indentify the
-              service record e.g. Ranks, Grades, Regiments, Nation Insurance
-              Number etc.
-            </span>
+                      Please include any other information that may help indentify the
+                      service record e.g. Ranks, Grades, Regiments, Nation Insurance
+                      Number etc.
+                    </span>
                     <textarea class="govuk-textarea" id="more_detail" name="further_information" rows="5"
                               aria-describedby="useful-item-hint">{{ isset($service_details['further_information'] ) ? $service_details['further_information'] : old('further_information') }}</textarea>
                 </div>
-
-                <div class="govuk-form-group">
-                    @csrf
-                    <button type="submit" class="govuk-button">
-                        Continue
-                    </button>
-                </div>
+                @include('partials.form-continue')
             </fieldset>
         </div>
     </form>

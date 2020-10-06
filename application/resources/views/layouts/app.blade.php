@@ -24,8 +24,6 @@
     @stack('mod-css')
 
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
-
-
 </head>
 
 <body class="govuk-template__body">
@@ -92,7 +90,7 @@
         </div>
     </main>
 </div>
-<footer class="govuk-footer " role="contentinfo">
+<footer class="govuk-footer" role="contentinfo">
     <div class="govuk-width-container ">
 
         <div class="govuk-footer__meta">
@@ -162,7 +160,6 @@
 
     gtag('config', '{{ env('GA_ID', 'UA-176740731-1') }}');
 </script>
-
 
 @stack('mod-scripts')
 </body>

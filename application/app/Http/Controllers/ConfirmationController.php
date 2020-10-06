@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Alphagov\Notifications\Exception\ApiException;
 use Alphagov\Notifications\Exception\NotifyException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ConfirmationController extends Controller
 {
-    //
     protected $land_email;
     protected $sea_email;
     protected $air_email;
@@ -15,14 +18,15 @@ class ConfirmationController extends Controller
     protected $unknown_email;
     protected $templates;
 
-    //
     public function __construct()
     {
-        $this->land_email = env('LAND_EMAIL', 'Liam.Cusack582@mod.gov.uk');
-        $this->sea_email = env('SEA_EMAIL', 'Liam.Cusack582@mod.gov.uk');
-        $this->air_email = env('AIR_EMAIL', 'Liam.Cusack582@mod.gov.uk');
-        $this->accounts_email = env('ACCOUNTS_EMAIL', 'Liam.Cusack582@mod.gov.uk');
-        $this->unknown_email = env('UNKNOWN_EMAIL', 'Liam.Cusack582@mod.gov.uk');
+        $fallbackEmail = 'lauren.phillips225@mod.gov.uk';
+
+        $this->land_email = env('LAND_EMAIL', $fallbackEmail);
+        $this->sea_email = env('SEA_EMAIL', $fallbackEmail);
+        $this->air_email = env('AIR_EMAIL', $fallbackEmail);
+        $this->accounts_email = env('ACCOUNTS_EMAIL', $fallbackEmail);
+        $this->unknown_email = env('UNKNOWN_EMAIL', $fallbackEmail);
         $this->templates = [
             'ARM_DIS' => '5f3a549b-9019-4c7f-8995-fb47ae4905bd',
             'ARM' => 'c811ac5c-cd6f-4702-8db5-ff105e364277',
@@ -44,76 +48,67 @@ class ConfirmationController extends Controller
      */
     public function index(Request $request)
     {
-        sleep(3);
         if (null === $request->get('uuid')) {
             $success = true;
         } else {
             $success = $this->_checkPayment($request);
         }
 
-        if ($success === true) {
-            $response = $this->_sendSearchNotification($request);
-            if (is_object($response) && $response->getCode() !== 200) {
-                return view('process_error');
-            } else {
-                //Everthing is OK send the customer notification.
-                $dbs_office = $request->session()->get('dbs_office') ?? '';
-                $reference = $request->session()->get('reference') ?? '';
-                $response = $this->_sendCustomerNotification($request);
-                //@todo what if an email doesn't get sent here, we don't even do a check here?
-                $request->session()->flush(); //Flush the session, we are don't want to store data when we don't want too.
-
-                return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
-            }
-        } else {
+        if ($success !== true) {
             return view('process_error', ['message' => $success['message']]);
         }
+
+        $searchNotificationResponse = $this->_sendSearchNotification($request);
+        if (!is_array($searchNotificationResponse)) {
+            return view('process_error');
+        }
+
+        $this->_sendCustomerNotification($request);
+
+        $dbs_office = $request->session()->get('dbs_office') ?? '';
+        $reference = $request->session()->get('reference') ?? '';
+        $request->session()->flush();
+        return view('confirmation', ['dbs_team' => $dbs_office, 'reference' => $reference]);
     }
 
     private function _checkPayment($request)
     {
+        $client = new Client([
+            'base_uri' => 'https://publicapi.payments.service.gov.uk/v1/',
+            'timeout' => 30.0,
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
+                'Content-Type' => 'application/json'
+            ]
+        ]);
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments/" . $request->session()->get($request->get('uuid')),
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_HTTPHEADER => array(
-                "Accept: application/json",
-                "Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
-                "Content-Type: application/json",
-            ),
-        ));
+        try {
+            $paymentId = $request->session()->get($request->get('uuid'), 'UNKNOWN');
+            $response = $client->get('payments/' . $paymentId);
+            $body = json_decode($response->getBody()->getContents());
 
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            return $err;
-        } else {
-            $response = json_decode($response, true);
-            if ($response['state']['status'] == "success") {
+            if ($body->state->status === 'success') {
                 return true;
-            } else {
-                if (isset($response['state']) && !isset($response['state']['message'])) {
-                    return [
-                        'message' => 'There was an error with your payment please contact xxx xxxxxx and use your reference ' . $request->session()->get('reference')
-                    ];
-                } else {
-                    return [
-                        'message' => $response['state']['message']
-                    ];
-                }
             }
+
+            if (isset($response->state) && !isset($response->state->message)) {
+                Log::error('PAY ERR: ' . __LINE__ . '::' . $response->state->message);
+                return [
+                    'message' => 'There was an error with your payment please contact xxx xxxxxx and use your reference ' . $request->session()->get('reference')
+                ];
+            }
+
+
+            Log::error('PAY ERR: ' . __LINE__ . '::' . $response->state->message);
+            return [
+                'message' => $response->state->message
+            ];
+
+        } catch (GuzzleException $e) {
+            Log::critical($e->getMessage());
+            return false;
         }
-
-
     }
 
     /**
@@ -121,10 +116,9 @@ class ConfirmationController extends Controller
      * @param $request
      * @return NotifyException|array|\Exception
      */
-    private function _sendSearchNotification($request)
+    private function _sendSearchNotification(Request $request)
     {
-        //die(print_r($service));
-        switch ($request->session()->get('service')) {
+        switch ($request->session()->get('service', 'Unknown')) {
             case 'Royal Navy / Royal Marines':
                 $emails = $this->sea_email;
                 $request->session()->put('dbs_office', 'Navy');
@@ -161,11 +155,10 @@ class ConfirmationController extends Controller
             $template_shortcode = $template_shortcode . '_DIS';
         }
 
+        $upload = '';
         if (null !== $request->session()->get('verification.death_certificate')) {
             $file_data = file_get_contents($request->session()->get('verification.death_certificate'));
             $upload = $notifyClient->prepareUpload($file_data);
-        } else {
-            $upload = '';
         }
 
         try {
@@ -173,33 +166,33 @@ class ConfirmationController extends Controller
                 $emails,
                 $this->templates[$template_shortcode],
                 [
-                    'reference' => $request->session()->get('reference'),
-                    'firstname' => $request->session()->get('essential_information.firstnames'),
-                    'lastname' => $request->session()->get('essential_information.lastname'),
-                    'dob' => $request->session()->get('essential_information.dob'),
+                    'reference' => $request->session()->get('reference') ?? '',
+                    'firstname' => $request->session()->get('essential_information.firstnames') ?? '',
+                    'lastname' => $request->session()->get('essential_information.lastname') ?? '',
+                    'dob' => $request->session()->get('essential_information.dob') ?? '',
                     //'dob_accurate' => $request->session()->get('essential_information.dob_accurate'),
-                    'date_joined' => (null === $request->session()->get('service_details.join_date') ? '??/??/??' : $request->session()->get('service_details.join_date')),
-                    'unit' => $request->session()->get('service'),
-                    'service_number' => (null === $request->session()->get('service_details.service_number') ? '' : $request->session()->get('service_details.service_number')),
-                    'death_in_service' => (null === $request->session()->get('death_in_service.death') ? '' : $request->session()->get('death_in_service.death')),
-                    'date_of_death' => (null === $request->session()->get('service_details.discharge_date') ? '' : $request->session()->get('service_details.discharge_date')),
-                    'further_information' => (null === $request->session()->get('essential_information.further_information') ? '' : $request->session()->get('essential_information.further_information')),
-                    'request_full_name' => (null === $request->session()->get('your_details.fullname') ? '' : $request->session()->get('your_details.fullname')),
-                    'request_address' => (null === $request->session()->get('your_details.address_line_1') ? '' : $request->session()->get('your_details.address_line_1')),
-                    'battalions_companies' => (null == $request->session()->get('service_details.battalions_companies') ? '' : $request->session()->get('service_details.battalions_companies')),
-                    'county' => (null == $request->session()->get('service_details.county') ? '' : $request->session()->get('service_details.county')),
-                    'address' => (null == $request->session()->get('service_details.address') ? '' : $request->session()->get('service_details.address')),
-                    'discharge_address' => (null == $request->session()->get('service_details.discharge_address') ? '' : $request->session()->get('service_details.discharge_address')),
+                    'date_joined' => $request->session()->get('service_details.join_date', '??/??/??'),
+                    'unit' => $request->session()->get('service') ?? '',
+                    'service_number' => $request->session()->get('service_details.service_number') ?? '',
+                    'death_in_service' => $request->session()->get('death_in_service.death',) ?? '',
+                    'date_of_death' => $request->session()->get('service_details.discharge_date',) ?? '',
+                    'further_information' => $request->session()->get('essential_information.further_information',) ?? '',
+                    'request_full_name' => $request->session()->get('your_details.fullname',) ?? '',
+                    'request_address' => $request->session()->get('your_details.address_line_1',) ?? '',
+                    'battalions_companies' => $request->session()->get('service_details.battalions_companies',) ?? '',
+                    'county' => $request->session()->get('service_details.county',) ?? '',
+                    'address' => $request->session()->get('service_details.address',) ?? '',
+                    'discharge_address' => $request->session()->get('service_details.discharge_address',) ?? '',
                     // add address line 2
-                    'postcode' => (null === $request->session()->get('your_details.address_postcode') ? '' : $request->session()->get('your_details.address_postcode')),
-                    'country' => (null === $request->session()->get('your_details.address_county') ? '' : $request->session()->get('your_details.address_county')),
-                    'related' => (null === $request->session()->get('your_details.relation.related') ? '' : $request->session()->get('your_details.relation.related')),
-                    'relationship' => (null === $request->session()->get('your_details.relationship.relationship') ? '' : $request->session()->get('your_details.relationship.relationship')),
+                    'postcode' => $request->session()->get('your_details.address_postcode',) ?? '',
+                    'country' => $request->session()->get('your_details.address_county', ''),
+                    'related' => $request->session()->get('your_details.relation.related',) ?? '',
+                    'relationship' => $request->session()->get('your_details.relationship.relationship',) ?? '',
                     'next_of_kin' => ($request->session()->get('your_details.relationship.next_of_kin') !== 'Yes' ? 'No' : 'Yes'),
-                    'email' => (null === $request->session()->get('your_details.email') ? '' : $request->session()->get('your_details.email')),
-                    'telephone' => (null === $request->session()->get('your_details.telephone') ? '' : $request->session()->get('your_details.telephone')),
+                    'email' => $request->session()->get('your_details.email',) ?? '',
+                    'telephone' => $request->session()->get('your_details.telephone',) ?? '',
                     'payment_status' => (null !== $request->session()->get($request->get('uuid')) ? 'Paid' : 'No payment was required'),
-                    'verification' => (null === $request->session()->get('verification.uploaded') ? '' : $request->session()->get('verification.uploaded')),
+                    'verification' => $request->session()->get('verification.uploaded',) ?? '',
                     'link_to_verification' => $upload,
                     'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? $request->session()->get('service_details.leave_army_reason') : '-'),
                     'further_service' => (null !== ($request->session()->get('service_details.completion_ifo')) ? implode(",", $request->session()->get('service_details.completion_ifo')) : '-'),
@@ -207,14 +200,16 @@ class ConfirmationController extends Controller
                 ],
                 $request->session()->get('reference')
             );
+
             return $response;
-        } catch (NotifyException $e) {
+        } catch (ApiException $e) {
+            Log::critical($e->getErrorMessage());
             return $e;
         }
     }
 
     /**
-     * SEnd the customer notification, we use the customer notification template, and pass the reference in as the only
+     * Send the customer notification, we use the customer notification template, and pass the reference in as the only
      * data.
      *
      * @param $request
@@ -235,7 +230,8 @@ class ConfirmationController extends Controller
                     'reference' => $request->session()->get('reference'),
                 ]);
             return $response;
-        } catch (\Exception $e) {
+        } catch (ApiException $e) {
+            Log::critical($e->getErrorMessage());
             return $e;
         }
     }

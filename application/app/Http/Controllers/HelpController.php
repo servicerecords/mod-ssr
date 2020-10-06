@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Http\Request;
+
 class HelpController extends Controller
 {
     public function cookies()
@@ -17,5 +20,12 @@ class HelpController extends Controller
     public function accessibility()
     {
         return view('help.accessibility');
+    }
+
+    /**
+     * Update a users preference as to allow Google tracking or not
+     */
+    public function saveTrackingPreference(Request $request) {
+
     }
 }

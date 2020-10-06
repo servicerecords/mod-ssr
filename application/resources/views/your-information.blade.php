@@ -78,7 +78,8 @@
                     <input
                         value="{{ isset($your_details['address_postcode'] ) ? $your_details['address_postcode'] : old('address_postcode') }}"
                         class="govuk-input govuk-input--width-10 {{"" !== $errors->first('address_postcode')}} ? 'govuk-input--error' : ''}}"
-                        id="address-postcode" name="address_postcode" type="text" aria-required="true" autocomplete="new-password"
+                        id="address-postcode" name="address_postcode" type="text" aria-required="true"
+                        autocomplete="new-password"
                         aria-describedby="{{null !== $errors->first('address_postcode') ? 'address-postcode-error' : ''}}">
                 </div>
 
@@ -91,14 +92,12 @@
                     @endif
 
                     <select name="country"
-                            class="govuk-select  {{"" !== $errors->first('country') ? 'govuk-input--error' : ''}}"
+                            class="govuk-select {{"" !== $errors->first('country') ? 'govuk-input--error' : ''}}"
                             id="location-autocomplete" autocomplete="new-password">
                         <option value=""></option>
                         @foreach($countries as $value)
                             <option
-                                value="{{$value[1]}}" {{ ($value[1] === $your_details['country']) ? 'selected' : '' }}>
-                                {{$value[0]}}
-                            </option>
+                                value="{{$value[1]}}" {{ ($value[1] === $your_details['country']) ? 'selected' : '' }}>{{$value[0]}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -143,33 +142,28 @@
                                        class="govuk-label govuk-radios__label govuk-label--s">No</label>
                             </div>
                         </div>
-
                     </fieldset>
                 </div>
-
-
             </fieldset>
         </div>
-        <div class="govuk-form-group">
-            @csrf
-            <button type="submit" class="govuk-button">Continue</button>
-        </div>
+        @include('partials.form-continue')
     </form>
 
 @endsection
 
-
 @push('mod-scripts')
-
     <script type="text/javascript" src="/js/location-autocomplete.js"></script>
     <script type="text/javascript">
         openregisterLocationPicker({
             selectElement: document.getElementById('location-autocomplete'),
             additionalSynonyms: [
-                { name: 'blighty', code: 'country:GB' },
+                {name: 'blighty', code: 'country:GB'},
             ],
             url: '/assets/location-autocomplete-graph.json'
         })
     </script>
+@endpush
 
+@push('mod-styles')
+    <link href="/css/location-autocomplete.min.css" media="all" rel="stylesheet" type="text/css"/>
 @endpush

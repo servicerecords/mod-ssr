@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('title', 'Details of the serviceperson')
 
 @section('content')
@@ -32,7 +31,7 @@
                                 <input
                                     value="{{ isset($service_details['join_day'] ) ? $service_details['join_day'] : old('join_day') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-2" id="join_day"
-                                    name="join_day" type="number" pattern="[0-9]*">
+                                    name="join_day" type="number" pattern="[0-9]*" maxlength="2">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
@@ -43,7 +42,7 @@
                                 <input
                                     value="{{ isset($service_details['join_month'] ) ? $service_details['join_month'] : old('join_month') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-2" id="join_month"
-                                    name="join_month" type="number" pattern="[0-9]*">
+                                    name="join_month" type="number" pattern="[0-9]*" maxlength="2">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
@@ -54,7 +53,7 @@
                                 <input
                                     value="{{ isset($service_details['join_year'] ) ? $service_details['join_year'] : old('join_year') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-4" id="join_year"
-                                    name="join_year" type="number" pattern="[0-9]*">
+                                    name="join_year" type="number" pattern="[0-9]*" maxlength="4">
                             </div>
                         </div>
                     </div>
@@ -74,7 +73,7 @@
                                 <input
                                     value="{{ isset($service_details['discharge_day'] ) ? $service_details['discharge_day'] : old('discharge_day') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-2" id="discharge_day"
-                                    name="discharge_day" type="number" pattern="[0-9]*" min="0" max="31">
+                                    name="discharge_day" type="number" pattern="[0-9]*" min="0" max="31" maxlength="2">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
@@ -86,7 +85,7 @@
                                     value="{{ isset($service_details['discharge_month'] ) ? $service_details['discharge_month'] : old('discharge_month') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-2"
                                     id="discharge_month" name="discharge_month" type="number" pattern="[0-9]*" min="0"
-                                    max="12">
+                                    max="12" maxlength="2">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
@@ -97,7 +96,7 @@
                                 <input
                                     value="{{ isset($service_details['discharge_year'] ) ? $service_details['discharge_year'] : old('discharge_year') }}"
                                     class="govuk-input govuk-date-input__input govuk-input--width-4" id="discharge_year"
-                                    name="discharge_year" type="number" pattern="[0-9]*" min="0" max="2014">
+                                    name="discharge_year" type="number" pattern="[0-9]*" min="0" max="2014" maxlength="4">
                             </div>
                         </div>
                     </div>
@@ -115,9 +114,6 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group">
-            @csrf
-            <button type="submit" class="govuk-button">Continue</button>
-        </div>
+        @include('partials.form-continue')
     </form>
 @endsection

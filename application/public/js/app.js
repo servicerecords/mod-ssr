@@ -93,6 +93,12 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 //('govuk-frontend/all')
@@ -169,9 +175,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       'settings': true,
       'usage': true,
       'campaigns': true
-    };
+    }; // window.GOVUK.setCookie('cookies_policy', JSON.stringify(approvedConsent), {days: 365})
+
     window.GOVUK.setCookie('cookies_policy', JSON.stringify(approvedConsent), {
-      days: 365
+      days: 0
     });
   };
 
@@ -216,7 +223,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
 
     window.GOVUK.setCookie('cookies_policy', JSON.stringify(cookieConsent), {
-      days: 365
+      days: 0
     });
   };
 
@@ -370,7 +377,7 @@ window.GOVUKFrontend.CookieBanner = {
     if (this.cookieBanner) {
       this.cookieBanner.style.display = 'none';
       window.GOVUK.cookie('cookies_preferences_set', 'true', {
-        days: 365
+        days: 0
       });
     }
 
@@ -388,7 +395,7 @@ window.GOVUKFrontend.CookieBanner = {
     this.showConfirmationMessage();
     this.cookieBannerConfirmationMessage.focus();
     window.GOVUK.cookie('cookies_preferences_set', 'true', {
-      days: 356
+      days: 0
     });
 
     if (window.GOVUK.analyticsInit) {
@@ -396,6 +403,29 @@ window.GOVUKFrontend.CookieBanner = {
     }
   }
 };
+/**
+ * Fix maxlength for numeric fields`
+ */
+
+var _iterator = _createForOfIteratorHelper(document.querySelectorAll('[type="number"]')),
+    _step;
+
+try {
+  for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    var element = _step.value;
+    element.addEventListener('keypress', function (event) {
+      var maxlength = this.getAttribute('maxlength');
+
+      if (this.value.length >= maxlength) {
+        event.preventDefault();
+      }
+    });
+  }
+} catch (err) {
+  _iterator.e(err);
+} finally {
+  _iterator.f();
+}
 
 /***/ }),
 
@@ -428,9 +458,9 @@ window.GOVUKFrontend.CookieBanner = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/toby/Sites/MoD/mod-ssr/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/toby/Sites/MoD/mod-ssr/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/toby/Sites/MoD/mod-ssr/resources/sass/application-ie8.scss */"./resources/sass/application-ie8.scss");
+__webpack_require__(/*! D:\Projects\Clients\MoD\mod-ssr\application\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\Projects\Clients\MoD\mod-ssr\application\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\Projects\Clients\MoD\mod-ssr\application\resources\sass\application-ie8.scss */"./resources/sass/application-ie8.scss");
 
 
 /***/ })

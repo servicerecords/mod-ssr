@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -24,65 +27,49 @@ class PaymentController extends Controller
     {
         $unique_id = uniqid();
 
-        // The params that will be posted to gov pay.
         $post_params = [
-            'amount' => 3000, //£30.00
-            'reference' => $request->session()->get('reference'), //This is reference that is first created when the user chooses the service.
-            'description' => $this->description, //description of the payment.
-            // 'return_url' => env('GOV_PAY_RETURN_URL', 'https://mod-ssr.co.uk') . '/confirmation?uuid=' . $unique_id, //The URL the user gets returned to when payment has taken place, whetehr successfully or unsucessfully.
-            'return_url' => env('GOV_PAY_RETURN_URL', 'https://srrdigital-sandbox.cloudapps.digital') . '/confirmation?uuid=' . $unique_id, //The URL the user gets returned to when payment has taken place, whetehr successfully or unsucessfully.
-            //If not return is specified we default the local development domain.
-            'email' => $request->session()->get('your_details.email') //The users email address, used to for GovPay to send a payment notification.
+            'amount' => 3000,
+            'reference' => $request->session()->get('reference'),
+            'description' => $this->description,
+            'return_url' => env('GOV_PAY_RETURN_URL', 'https://srrdigital-sandbox.cloudapps.digital') . '/confirmation?uuid=' . $unique_id,
+            'email' => $request->session()->get('your_details.email', '')
         ];
 
-        //If the user selected that they wish to use their address from the their information page for their billing details
-        //Then we pull that out of the session and send it with the post data from above.
         if ($request->session()->get('your_details.use_billing') == 'Yes') {
             $post_params['prefilled_cardholder_details'] = [
                 "cardholder_name" => '',
                 "billing_address" => [
-                    'line1' => null !== $request->session()->get('your_details.address_line_1') ? $request->session()->get('your_details.address_line_1') : '',
-                    'line2' => null !== $request->session()->get('your_details.address_line_2') ? $request->session()->get('your_details.address_line_2') : '',
-                    'postcode' => null !== $request->session()->get('your_details.address_postcode') ? $request->session()->get('your_details.address_postcode') : '',
-                    'city' => null !== $request->session()->get('your_details.address_town') ? $request->session()->get('your_details.address_town') : '',
-                    'country' => null !== $request->session()->get('your_details.country') ? $request->session()->get('your_details.country') : ''
+                    'line1' => $request->session()->get('your_details.address_line_1', ''),
+                    'line2' => $request->session()->get('your_details.address_line_2', ''),
+                    'postcode' => $request->session()->get('your_details.address_postcode', ''),
+                    'city' => $request->session()->get('your_details.address_town', ''),
+                    'country' => $request->session()->get('your_details.country', '')
                 ]
             ];
         }
 
-        //Set up the cURL request
-        //@todo: Look at moving this to Guzzle to make it cleaner and less lines.
-        $curl = curl_init();
+        $client = new Client([
+            'base_uri' => 'https://publicapi.payments.service.gov.uk/v1/',
+            'timeout' => 2.0,
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'),
+                'Content-Type' => 'application/json'
+            ]
+        ]);
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://publicapi.payments.service.gov.uk/v1/payments",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => json_encode($post_params, JSON_UNESCAPED_SLASHES),
-            CURLOPT_HTTPHEADER => array(
-                "Accept: application/json",
-                "Authorization: Bearer " . env('GOV_PAY_API_KEY', 'kiaer1kpiaolo3m7hc13p2jln7anjhi4v0ggcgluu1jqek4kr4pajq7cu4'), //This comes from the gov pay dashboard, if there isn't and API key in the ENV vars we default to sandbox.
-                "Content-Type: application/json",
-            ),
-        ));
+        try {
+            $response = $client->request('POST', 'payments', [
+                'body' => json_encode($post_params, JSON_UNESCAPED_SLASHES)
+            ]);
 
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
-            //Everything looks to have worked ok, we can move them forward to the confirmation page, this is specified in the return URL.
-            $response = json_decode($response, true);
-            $request->session()->put($unique_id, $response['payment_id']);
-            return redirect($response['_links']['next_url']['href']);
+            $body = json_decode($response->getBody()->getContents());
+            if ($response->getStatusCode() < 400) {
+                $request->session()->put($unique_id, $body->payment_id);
+                return redirect($body->_links->next_url->href);
+            }
+        } catch (GuzzleException $e) {
+            Log::critical($e->getMessage());
         }
     }
 }

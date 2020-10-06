@@ -11,29 +11,51 @@
                 @if($errors->first('next_of_kin'))
                     <span id="service-error" class="govuk-error-message">{{$errors->first('next_of_kin')}}</span>
                 @endif
+                <p class="govuk-body">Where the serviceperson died less than 25 years ago, only the immediate next of
+                    kin will get the career information.</p>
 
-                <div class="govuk-radios govuk-radios--inline">
-                    <div class="govuk-radios__item">
-                        <input
-                            {{ (old('next_of_kin') == "Yes" || (isset($next_of_kin['next_of_kin']) && $next_of_kin['next_of_kin'] == "Yes")) ? 'checked' : '' }} class="govuk-radios__input"
-                            id="next_of_kin" name="next_of_kin" type="radio" value="Yes">
-                        <label class="govuk-label govuk-radios__label" for="next_of_kin">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                        <input
-                            {{ (old('next_of_kin') == "No" || (isset($next_of_kin['next_of_kin']) && $next_of_kin['next_of_kin'] == "No")) ? 'checked' : '' }} class="govuk-radios__input"
-                            id="next_of_kin_2" name="next_of_kin" type="radio" value="No">
-                        <label class="govuk-label govuk-radios__label" for="next_of_kin_2">
-                            No
-                        </label>
+                <div class="govuk-form-group">
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input
+                                {{ (old('next_of_kin') == "Yes" || (isset($next_of_kin['next_of_kin']) && $next_of_kin['next_of_kin'] == "Yes")) ? 'checked' : '' }} class="govuk-radios__input"
+                                id="next_of_kin" name="next_of_kin" type="radio" value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="next_of_kin">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input
+                                {{ (old('next_of_kin') == "No" || (isset($next_of_kin['next_of_kin']) && $next_of_kin['next_of_kin'] == "No")) ? 'checked' : '' }} class="govuk-radios__input"
+                                id="next_of_kin_2" name="next_of_kin" type="radio" value="No">
+                            <label class="govuk-label govuk-radios__label" for="next_of_kin_2">
+                                No
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div class="govuk-form-group govuk-!-margin-top-5">
-                    @csrf
-                    <button type="submit" class="govuk-button">Continue</button>
+
+                <div class="govuk-form-group">
+                    <div class="govuk-details__text" aria-hidden="true">
+                        <p class="govuk-body">The immediate next of kin is the serviceperson’s closest living
+                            relation from the list below.
+                        </p>
+                    </div>
                 </div>
+                <div class="govuk-form-group">
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>Spouse/Civil Partner</li>
+                        <li>Son/Daughter</li>
+                        <li>Grandchild</li>
+                        <li>Mother/Father</li>
+                        <li>Brother/Sister</li>
+                        <li>Niece/Nephew</li>
+                        <li>Grandparent</li>
+                        <li>Other</li>
+                    </ul>
+                </div>
+
+                @include('partials.form-continue')
             </fieldset>
         </div>
     </form>

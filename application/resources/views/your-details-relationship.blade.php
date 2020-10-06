@@ -14,6 +14,8 @@
                     <h2 class="govuk-fieldset__heading">How are you related to the serviceperson?</h2>
                 </legend>
 
+                <p class="govuk-body">Related applicants may get access to more sensitive information about the
+                    serviceperson than non-related applicants.</p>
 
                 <div class="govuk-form-group">
                     @if($errors->first('related'))
@@ -170,37 +172,12 @@
                     </fieldset>
                 </div> -->
                 </div>
-                <div class="govuk-form-group">
-                    <details class="govuk-details" role="group">
-                        <summary class="govuk-details__summary" role="button"
-                                 aria-controls="details-content-e0c053e5-5ef7-40ff-be62-f8146fe9ff57"
-                                 aria-expanded="false">
-                                <span class="govuk-details__summary-text">
-                                    Who the MOD regards as the immediate Next of Kin?
-                                </span>
-                        </summary>
-                        <div class="govuk-details__text" id="details-content-e0c053e5-5ef7-40ff-be62-f8146fe9ff57"
-                             aria-hidden="true">
-                            <p class="govuk-body">The MOD will regard the Next of Kin to be the first living
-                                relative from the following list:</p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>Spouse/Civil Partner</li>
-                                <li>Son/Daughter</li>
-                                <li>Grandchild</li>
-                                <li>Brother/Sister</li>
-                                <li>Nephew/Neice</li>
-                                <li>Grandparent</li>
-                                <li>Other</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
+
             </fieldset>
+            <p class="govuk-body">You may be contacted to provide proof of your relationship with the service
+                person.</p>
         </div>
-        <div class="govuk-form-group">
-            @csrf
-            <button type="submit" class="govuk-button">Continue</button>
-        </div>
+        @include('partials.form-continue')
     </form>
 
 @endsection

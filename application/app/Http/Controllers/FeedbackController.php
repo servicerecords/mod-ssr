@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FeedbackSave;
+use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
@@ -40,7 +41,7 @@ class FeedbackController extends Controller
         $validated = $request->validated();
 
         $notifyClient = new \Alphagov\Notifications\Client([
-            'apiKey' => env('NOTIFY_API_KEY'),
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75'),
             'httpClient' => new \Http\Adapter\Guzzle6\Client
         ]);
 
@@ -50,14 +51,22 @@ class FeedbackController extends Controller
                 'feedback' => (null !== $request->input('more_detail') ? $request->input('more_detail') : '-')
             ];
             $response = $notifyClient->sendEmail(
-                env('FEEDBACK_EMAIL'),
+                env('FEEDBACK_EMAIL', 'liam.cusack582@mod.gov.uk'),
                 '0f3b68c3-4589-4466-a743-73f73e841187',
                 $params);
             return redirect('/feedback/success');
         } catch (\Exception $e) {
             return $e;
         }
+    }
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function email(Request $request) {
+        return view('email.confirmation', [
+            'service_url' => env('APP_URL', 'http://localhost:8000/')
+        ]);
     }
 }

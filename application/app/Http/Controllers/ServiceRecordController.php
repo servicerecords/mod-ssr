@@ -25,24 +25,12 @@ use Intervention\Image\Facades\Image as Image;
 class ServiceRecordController extends Controller
 {
     /**
-     * Show the users our welsome page.
+     * Show the users our welcome page.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         return view('welcome');
-    }
-
-    /**
-     * Bootstrap service to clear down all cookies and hanging chads
-     *
-     * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function bootstrap(Request $request)
-    {
-        $request->session()->flush();
-        return redirect('/service');
     }
 
     /**
@@ -68,7 +56,6 @@ class ServiceRecordController extends Controller
     public function serviceChoiceSave(ServiceChoiceSave $request)
     {
         $request->session()->put('reference', $this->_createReference($request->input('service')));
-
         $request->session()->put('service', $request->input('service'));
         return redirect('/service/death-in-service');
     }
@@ -288,7 +275,9 @@ class ServiceRecordController extends Controller
     public function yourDetails(Request $request)
     {
         $your_details = $request->session()->get('your_details');
-        // Not quite.. bad cheetah!
+        if(!isset($your_details['country'])) {
+            $your_details['country'] = '';
+        }
 
         $country_path = public_path('assets/location-autocomplete-canonical-list.json');
 
@@ -348,21 +337,6 @@ class ServiceRecordController extends Controller
         $request->session()->put('your_details', $request->all());
         return redirect('/your-details/relationship');
     }
-
-    /*
-    public function yourDetailsCommunication(Request $request)
-    {
-        $communication = $request->session()->get('your_details.communication');
-        //$referer = $request->server('HTTP_REFERER');
-        return view('your-details-communication', ['communication' => $communication]);
-    }
-    public function youDetailsCommunicationSave(CommunicationRequest $request)
-    {
-        $validation = $request->validated();
-        $request->session()->put('your_details.communication', $request->all());
-        return redirect('/check-your-answers');
-    }
-    */
 
     /**
      * We are processing the relation here, if they user is not related we can send them straight to the cehck your
@@ -499,8 +473,15 @@ class ServiceRecordController extends Controller
     public function checkYourAnswers(Request $request)
     {
         $data = $request->session();
-        //$referer = $request->server('HTTP_REFERER');
         return view('check-your-answers', ['data' => $data]);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function leave(Request $request) {
+        $request->session()->flush();
+        return redirect('/');
     }
 
 }

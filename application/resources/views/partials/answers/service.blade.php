@@ -186,11 +186,13 @@
                 </div>
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Futher service after army
+                        Further service after army
                     </dt>
                     <dd class="govuk-summary-list__value">
                         @if(isset(Session::get('service_details')['completion_info']))
-                            <p class="govuk-body">{{Session::get('service_details')['completion_info']}}</p>
+                            @foreach (Session::get('service_details')['completion_info'] as $service)
+                                <p class="govuk-body">{{$service}}</p>
+                            @endforeach
                         @endif
                     </dd>
                     <dd class="govuk-summary-list__actions">

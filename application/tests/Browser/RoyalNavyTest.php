@@ -3,10 +3,13 @@
 namespace Tests\Browser;
 
 use Laravel\Dusk\Browser;
+use Tests\Browser\Traits\Interactions;
 use Tests\DuskTestCase;
 
 class RoyalNavyTest extends DuskTestCase
 {
+    use Interactions;
+
     /**
      * A Dusk test example.
      *
@@ -30,23 +33,7 @@ class RoyalNavyTest extends DuskTestCase
                 ->press('Continue')
                 ->assertSee('Details of the serviceperson');
 
-            $browser->assertSee('First name(s)')
-                ->assertSee('Last name')
-                ->assertSee('Place of birth (optional)')
-                ->assertSee('Date of birth')
-                ->assertSee('For example, 31 3 1910. A year of birth is required.');
-
-            $browser->type('firstnames', 'Test Service Person')
-                ->type('lastname', 'User')
-                ->type('birth_place', 'United Kingdom')
-                ->type('dob_day', '31')      // <-- This should be properly tested
-                ->type('dob_month', '3')     // <-- This should be properly tested
-                ->type('dob_year', '1910')   // <-- This should be properly tested (future years, etc)
-                ->press('Continue');
-
-            $browser->assertSee('Official Service number (optional)');
-            $browser->waitForText('Continue');
-            $browser->press('Continue');
+            $this->completeServicepersonDetails($browser);
 
             $browser->assertSee('Sending documentation');
             $browser->attach('certificate', __DIR__ . '/mod-cert-low-low.jpg');
@@ -79,11 +66,7 @@ class RoyalNavyTest extends DuskTestCase
                 ->press('Continue')
                 ->assertSee('Details of the serviceperson');
 
-            $browser->assertSee('First name(s)')
-                ->assertSee('Last name')
-                ->assertSee('Place of birth (optional)')
-                ->assertSee('Date of birth')
-                ->assertSee('For example, 31 3 1910. A year of birth is required.');
+            $this->completeServicepersonDetails($browser);
 
             // Check we get an error message when submitting an empty form
         });

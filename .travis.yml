@@ -12,19 +12,55 @@ jobs:
 #        - docker logout
 #        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
 #        - docker push "$DOCKER_USER"/srr:mod-development
+
+      # Production Environment Vars
+      # LAND_EMAIL=APC-sp-disclosures4@mod.gov.uk
+      # SEA_EMAIL=NAVYSEC-DISCCELLMAILBOX@mod.gov.uk
+      # AIR_EMAIL=Air-COSPers-Disclosures@mod.gov.uk
+      # FEEDBACK_EMAIL=lauren.phillips225@mod.gov.uk
+      # GOV_PAY_API_KEY=jmgv5ggt5t910gtkmp8rotrfa5e2gefgmg6macfq3iegv4tuf6ivto6ske
+      # GOV_PAY_RETURN_URL=https://srrdigital-production.cloudapps.digital
+      # NOTIFY_API_KEY="srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75"
+      # APP_DEBUG=false
+      # APP_ENV=production
+      # APP_KEY=base64:QpIsi49Y7zN2MvOssZ1cuVUCtdBjW8gYWuYjFiQ5E2k=
+
+      # Live Test Environment Vars
+      # FEEDBACK_EMAIL=DBSCIO-RAHSRFeedback@mod.gov.uk
+      # APP_DEBUG=false
+      # GOV_PAY_API_KEY=jmgv5ggt5t910gtkmp8rotrfa5e2gefgmg6macfq3iegv4tuf6ivto6ske
+      # SEA_EMAIL=NAVYSEC-DISCCELLMAILBOX@mod.gov.uk
+      # APP_ENV=live-test
+      # GOV_PAY_RETURN_URL=https://srrdigital-live-test.cloudapps.digital
+      # APP_KEY=base64:NXqu463PTthxfYKJA4dZAcoyArgTXrfvWc8bP/bmZfs=
+      # LAND_EMAIL=APC-sp-disclosures4@mod.gov.uk
+      # APP_URL=https://srrdigital-live-test.cloudapps.digital
+      # NOTIFY_API_KEY=srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75
+      # AIR_EMAIL=Air-COSPers-Disclosures@mod.gov.uk
+
+      # QA Environment Vars
+      # FEEDBACK_EMAIL=amanda.moran637@mod.uk
+      # GOV_PAY_RETURN_URL=https://srrdigital-qa.cloudapps.digital
+      # APP_KEY=base64:D+46PLyWMals3yMD3OjYG1kqa9D7f81c7599yhEfsPo=
+      # NOTIFY_API_KEY=srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75
+
+
       deploy:
-        - provider: cloudfoundry
-          api: https://api.cloud.service.gov.uk
-          username: toby@codesure.co.uk
-          password:
-            secure: aEz/q9GlioUg54PYP3qTytnvnfNJg+pgv8zGOKySXWuG1cfTbqOWFP+9DdJoJmbjQZGNwMeY19jnWcg2TGyqxFl+fb3qTnERk3cBIxle80WLSG2GCpCdieJYDUhQQRfMjQA7WPJU7NChBchHQbd0WjRx0L+9pXgIJwRKa9fd94ZZsxw5v0K4Xk+iAz3mhArazF8RjRtyWMRNcWMISYwI6O0jQeV+PPmI9OpT8X0dIN0rm0WrzvloKPSDgBMcrcYRUZxXVO1M2FIu6BNjJMp0BIaEvZthQ5+dyW+a1/b90onxwabpkPnb6sO0zSaaOpofnF8KMWz2GfAPrF/jz5DLgjSL/WatQqlBfFGS1nVx0PntTzB1oYhI390/gjiuDN2ghGF1/GY2biJ8mLcHhEWHxolVFV9kjGGw/kcLQgsrf4saeEv8j/CzW2ye3dyrAayavoJ0ZtMVh0yR5BNvAjgA+0R0nyOYgeqr3e53Mb9BnPTzj9pWrfEmkZRj/XDIuURjVxbZF4RFO0ddLHoIvEf6wDzwUVpi1EnmR8pdVaOsx55t2f6NAiZuiH9HqT+ZrGGlkB0QkHQUnG2kfic+oujFWrNhQY3YGn1r0Hnt9iQbnEtCmKqOk5Z4sSqDhLJmNK66emxhdZB2oAQ0XoMdNoNjIlQyUxlf5rNUEafPWWzFH3Q=
-          organization: mod-request-a-historic-service-record
-          space: development
-          on:
-            repo: servicerecords/mod-ssr
-            branch: docker_build
-          skip_cleanup: 'true'
-          manifest: manifest-sandbox.yml
+        - provider: script
+          skip_cleanup: true
+          script: env CF_SPACE=development CF_APP_NAME=docker_deploy CF_MANIFEST=manifest-test.yml
+#        - provider: cloudfoundry
+#          api: https://api.cloud.service.gov.uk
+#          username: toby@codesure.co.uk
+#          password:
+#            secure: aEz/q9GlioUg54PYP3qTytnvnfNJg+pgv8zGOKySXWuG1cfTbqOWFP+9DdJoJmbjQZGNwMeY19jnWcg2TGyqxFl+fb3qTnERk3cBIxle80WLSG2GCpCdieJYDUhQQRfMjQA7WPJU7NChBchHQbd0WjRx0L+9pXgIJwRKa9fd94ZZsxw5v0K4Xk+iAz3mhArazF8RjRtyWMRNcWMISYwI6O0jQeV+PPmI9OpT8X0dIN0rm0WrzvloKPSDgBMcrcYRUZxXVO1M2FIu6BNjJMp0BIaEvZthQ5+dyW+a1/b90onxwabpkPnb6sO0zSaaOpofnF8KMWz2GfAPrF/jz5DLgjSL/WatQqlBfFGS1nVx0PntTzB1oYhI390/gjiuDN2ghGF1/GY2biJ8mLcHhEWHxolVFV9kjGGw/kcLQgsrf4saeEv8j/CzW2ye3dyrAayavoJ0ZtMVh0yR5BNvAjgA+0R0nyOYgeqr3e53Mb9BnPTzj9pWrfEmkZRj/XDIuURjVxbZF4RFO0ddLHoIvEf6wDzwUVpi1EnmR8pdVaOsx55t2f6NAiZuiH9HqT+ZrGGlkB0QkHQUnG2kfic+oujFWrNhQY3YGn1r0Hnt9iQbnEtCmKqOk5Z4sSqDhLJmNK66emxhdZB2oAQ0XoMdNoNjIlQyUxlf5rNUEafPWWzFH3Q=
+#          organization: mod-request-a-historic-service-record
+#          space: development
+#          on:
+#            repo: servicerecords/mod-ssr
+#            branch: docker_build
+#          skip_cleanup: 'true'
+#          manifest: manifest-sandbox.yml
 
 
 notifications:
