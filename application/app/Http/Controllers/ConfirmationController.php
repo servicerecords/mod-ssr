@@ -40,7 +40,7 @@ class ConfirmationController extends Controller
     }
 
     /**
-     * Determine if the payment was sucessful or not and show the correct view based on that value.
+     * Determine if the payment was successful or not and show the correct view based on that value.
      * We use a parameter in the URL called uuid to get the payment ID from the session which is stored again this UUID.
      *
      * @param Request $request
@@ -98,7 +98,6 @@ class ConfirmationController extends Controller
                     'message' => 'There was an error with your payment please contact xxx xxxxxx and use your reference ' . $request->session()->get('reference')
                 ];
             }
-
 
             Log::error('PAY ERR: ' . __LINE__ . '::' . $response->state->message);
             return [
@@ -225,9 +224,13 @@ class ConfirmationController extends Controller
         try {
             $response = $notifyClient->sendEmail(
                 $request->session()->get('your_details.email'),
-                'cb31d5be-1f34-4546-bb1e-a784dcd2f390',
+//                'cb31d5be-1f34-4546-bb1e-a784dcd2f390',
+                '567f3c9f-4e9f-45b1-99ef-1d559c0f676d',
                 [
-                    'reference' => $request->session()->get('reference'),
+                    'service_feedback_url' => env('APP_URL', 'http://srrdigital-sandbox.cloudapps.digital/feedback'),
+                    'dbs_branch' => $dbs_office = $request->session()->get('dbs_office') ?? '',
+                    'dbs_email' => $request->session()->get('dbs_email'),
+                    'reference_number' => $request->session()->get('reference'),
                 ]);
             return $response;
         } catch (ApiException $e) {
