@@ -29,36 +29,3 @@ jobs:
 #            branch: docker_build
 #          skip_cleanup: 'true'
 #          manifest: manifest-sandbox.yml
-
-
-notifications:
-  email:
-    recipients:
-      #      - amanda.moran637@mod.gov.uk
-      #      - liam.cusack582@mod.gov.uk
-      - toby@codesure.co.uk
-    on_success: always
-    on_failure: always
-#deploy:
-#  - provider: cloudfoundry
-#    api: https://api.cloud.service.gov.uk
-#    username: "$CF_USERNAME"
-#    password:
-#      secure: "$CF_PASSWORD"
-#    organization: mod-request-a-historic-service-record
-#    space: development
-#    on:
-#      repo: servicerecords/mod-ssr
-#    skip_cleanup: 'true'
-#    manifest: manifest-sandbox.yml
-#  - provider: cloudfoundry
-#    api: https://api.cloud.service.gov.uk
-#    username: "$CF_USERNAME"
-#    password:
-#      secure: "$CF_PASSWORD"
-#    organization: mod-request-a-historic-service-record
-#    space: development
-#    on:
-#      repo: servicerecords/mod-ssr
-#    skip_cleanup: 'true'
-#    manifest: manifest-qa.yml
