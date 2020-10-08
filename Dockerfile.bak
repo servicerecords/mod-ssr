@@ -1,0 +1,69 @@
+#FROM ubuntu:20.04
+#FROM nginx:latest
+FROM php:apache
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/London
+
+WORKDIR /var/www/html
+
+# Install all requirements
+RUN apt -y update --fix-missing
+RUN apt -y upgrade
+RUN apt -y install git wget ghostscript imagemagick libmagickwand-dev libzip-dev unzip gnupg2
+RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN rm nodesource_setup.sh
+RUN apt -y install nodejs yarn
+RUN pear channel-update pear.php.net
+RUN pecl install zlib zip
+RUN printf "\n" | pecl install imagick
+RUN echo "extension=zip.so" >> /usr/local/etc/php/conf.d/zip.ini
+RUN echo "extension=imagick.so" >> /usr/local/etc/php/conf.d/imagick.ini
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '8a6138e2a05a8c28539c9f0fb361159823655d7ad2deecb371b04a83966c61223adc522b0189079e3e9e277cd72b8897') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
+RUN mv composer.phar /usr/bin/composer
+
+# Move our application into the container
+COPY application/ /var/www/html
+#COPY apache.conf /etc/apache2/sites-enabled/000-default.conf
+COPY policy.xml /etc/ImageMagick-6/policy.xml
+
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+
+# Install our application dependencies
+RUN cd /var/www/html
+RUN composer install
+RUN npm install
+RUN npm run development
+
+# Add Chrome for smoke testing
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt -y install ./google-chrome-stable_current_amd64.deb
+RUN rm ./google-chrome-stable_current_amd64.deb
+
+# Bit of a clean up
+RUN apt -y remove build-essential wget nodejs yarn git libzip-dev unzip gnupg2 libmagickwand-dev
+RUN apt -y remove python python3
+RUN apt -y autoremove
+RUN apt clean
+RUN apt autoclean
+RUN rm -rf /tmp/*
+RUN rm -rf /var/lib/apt/lists/*
+#RUN rm -rf /var/www/html/node_modules
+#RUN rm -rf /var/www/html/package-lock.json
+#RUN rm -rf /var/www/html/package.json
+#RUN rm -rf /var/www/html/webpack.mix.js
+#RUN rm -rf /var/www/html/server.php
+#RUN rm -rf /var/www/html/artisan
+#RUN rm -rf /var/www/html/INSTALL.md
+#RUN rm -rf /var/www/html/README.md
+
+# Set basic permissions
+RUN chmod -R 777 /var/www/html/public
+RUN chmod -R 777 /var/www/html/storage

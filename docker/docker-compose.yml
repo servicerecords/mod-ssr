@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  mod_srr:
+    image: mod:test
+    container_name: mod_test
+    restart: always
+    ports:
+      - "6666:8080"
