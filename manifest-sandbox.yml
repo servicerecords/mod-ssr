@@ -4,7 +4,7 @@ applications:
     memory: 1G
     disk_quota: 2G
     env:
-      CF_DOCKER_PASSWORD: Maisie2014!
+      CF_DOCKER_PASSWORD: ${CF_PASSWORD}
     docker:
-      image: codesuretoby/srr:mod-sandbox
-      username: codesuretoby
+      image: codesure/srrdigital:sandbox
+      username: ${DOCKER_USERNAME}

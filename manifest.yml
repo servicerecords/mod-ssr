@@ -4,6 +4,4 @@ applications:
     memory: 1G
     disk_quota: 2G
     docker:
-      image: codesuretoby/srr:mod-sandbox
-
-
+      image: codesure/srrdigital:sandbox

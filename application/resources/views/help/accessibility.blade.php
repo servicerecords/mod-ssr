@@ -34,7 +34,6 @@
         easy read, audio recording or braille:</p>
     <ul class="govuk-list govuk-list--bullet">
         <li>email <a href="DBSCIO-RAHSRFeedback@mod.gov.uk">DBSCIO-RAHSRFeedback@mod.gov.uk</a></li>
-        <li>call 01400 266895</li>
     </ul>
 
     <p class="govuk-list govuk-list--bullet">
@@ -46,9 +45,7 @@
         not
         listed on this page or think we’re not meeting accessibility requirements, contact:</p>
     <ul class="govuk-list govuk-list--bullet">
-        <li>Lauren Phillips</li>
         <li>email <a href="DBSCIO-RAHSRFeedback@mod.gov.uk">DBSCIO-RAHSRFeedback@mod.gov.uk</a></li>
-        <li>call 01400 266895</li>
     </ul>
 
     <h2 class="govuk-heading-m">Enforcement procedure</h2>
@@ -95,14 +92,6 @@
 
     <p class="govuk-body">we plan to continue testing in these areas.</p>
 
-    <h2 class="govuk-heading-m">How we tested this website</h2>
-    <p class="govuk-body">This website was last tested on 17th February 2020. The test was carried out by the Ministry
-        of Defence</p>
-    <p class="govuk-body">We tested:</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>our main website platform, available at:</li>
-    </ul>
-
     <h2 class="govuk-heading-m">What we're doing to improve accessibility</h2>
     <p class="govuk-body">This interface has not been tested with all accessibility technologies.</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -115,5 +104,5 @@
     </ul>
 
     <p class="govuk-body">we plan to continue testing in these areas.</p>
-    <p class="govuk-body">This statement was prepared on 01 February 2020. It was last updated on 4 March 2020.</p>
+    <p class="govuk-body">This statement was prepared on 01 February 2020. It was last updated on 08 October 2020.</p>
 @endsection

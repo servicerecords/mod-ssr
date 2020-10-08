@@ -1,9 +1,9 @@
 ---
 applications:
-  - name: srrdigital-dev
+  - name: srrdigital-production
     memory: 1G
     disk_quota: 2G
     docker:
-      image: codesuretoby/srr:mod-prod
+      image: codesure/srrdigital:production
 
 
