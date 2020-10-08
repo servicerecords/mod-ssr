@@ -17,15 +17,4 @@ jobs:
         - provider: script
           skip_cleanup: true
           script: env CF_SPACE=development CF_APP_NAME=docker_deploy CF_MANIFEST=manifest-test.yml
-#        - provider: cloudfoundry
-#          api: https://api.cloud.service.gov.uk
-#          username: toby@codesure.co.uk
-#          password:
-#            secure: aEz/q9GlioUg54PYP3qTytnvnfNJg+pgv8zGOKySXWuG1cfTbqOWFP+9DdJoJmbjQZGNwMeY19jnWcg2TGyqxFl+fb3qTnERk3cBIxle80WLSG2GCpCdieJYDUhQQRfMjQA7WPJU7NChBchHQbd0WjRx0L+9pXgIJwRKa9fd94ZZsxw5v0K4Xk+iAz3mhArazF8RjRtyWMRNcWMISYwI6O0jQeV+PPmI9OpT8X0dIN0rm0WrzvloKPSDgBMcrcYRUZxXVO1M2FIu6BNjJMp0BIaEvZthQ5+dyW+a1/b90onxwabpkPnb6sO0zSaaOpofnF8KMWz2GfAPrF/jz5DLgjSL/WatQqlBfFGS1nVx0PntTzB1oYhI390/gjiuDN2ghGF1/GY2biJ8mLcHhEWHxolVFV9kjGGw/kcLQgsrf4saeEv8j/CzW2ye3dyrAayavoJ0ZtMVh0yR5BNvAjgA+0R0nyOYgeqr3e53Mb9BnPTzj9pWrfEmkZRj/XDIuURjVxbZF4RFO0ddLHoIvEf6wDzwUVpi1EnmR8pdVaOsx55t2f6NAiZuiH9HqT+ZrGGlkB0QkHQUnG2kfic+oujFWrNhQY3YGn1r0Hnt9iQbnEtCmKqOk5Z4sSqDhLJmNK66emxhdZB2oAQ0XoMdNoNjIlQyUxlf5rNUEafPWWzFH3Q=
-#          organization: mod-request-a-historic-service-record
-#          space: development
-#          on:
-#            repo: servicerecords/mod-ssr
-#            branch: docker_build
-#          skip_cleanup: 'true'
-#          manifest: manifest-sandbox.yml
+
