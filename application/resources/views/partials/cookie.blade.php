@@ -5,7 +5,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <div class="gem-c-cookie-banner__message">
                     <span class="govuk-heading-m">Tell us whether you accept cookies</span>
-                    <p class="govuk-body">We use <a class="govuk-link" href="https://gov.uk/help/cookies">cookies to
+                    <p class="govuk-body">We use <a class="govuk-link" href="/help/cookies">cookies to
                             collect information</a> about how you use GOV.UK. We use this information to make the
                         website work as well as possible and improve government services.</p>
                 </div>
@@ -26,7 +26,7 @@
                            role="button" data-module="track-click"
                            data-track-category="cookieBanner"
                            data-track-action="Cookie banner settings clicked"
-                           href="https://gov.uk/help/cookies">Set cookie preferences</a>
+                           href="/help/cookies">Set cookie preferences</a>
                     </div>
                 </div>
             </div>

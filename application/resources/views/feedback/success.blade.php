@@ -6,7 +6,7 @@
             Feedback submission complete
         </h1>
         <div class="govuk-panel__body">
-            Thank you for your feedback on the Request an historic service record request service
+            Thank you for your feedback on the {{ env('APP_NAME', 'Apply for a deceased\'s military record') }} service
         </div>
     </div>
 

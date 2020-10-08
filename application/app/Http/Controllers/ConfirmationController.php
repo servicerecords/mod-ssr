@@ -229,13 +229,27 @@ class ConfirmationController extends Controller
                 [
                     'service_feedback_url' => env('APP_URL', 'http://srrdigital-sandbox.cloudapps.digital/feedback'),
                     'dbs_branch' => $dbs_office = $request->session()->get('dbs_office') ?? '',
-                    'dbs_email' => $request->session()->get('dbs_email'),
-                    'reference_number' => $request->session()->get('reference'),
+                    'dbs_email' => $this->getServiceEmail(),
+                    'reference_number' => $request->session()->get('reference') ?? '',
                 ]);
             return $response;
         } catch (ApiException $e) {
             Log::critical($e->getErrorMessage());
             return $e;
         }
+    }
+
+    private function getServiceEmail() {
+        switch (session()->get('service', 'Unknown')) {
+            case 'Royal Navy / Royal Marines':
+                return $this->sea_email;
+            case 'Army':
+            case 'Home Guard':
+                return $this->land_email;
+            case 'Royal Air Force (RAF)':
+                return $this->air_email;
+        }
+
+        return $this->unknown_email;
     }
 }

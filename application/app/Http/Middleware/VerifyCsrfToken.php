@@ -19,7 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'spay'
+        'spay',
     ];
 
     public function handle($request, \Closure $next)

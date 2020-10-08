@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="govuk-heading-l">Accessibility statement for Request an historic service record</h1>
+    <h1 class="govuk-heading-l">Accessibility statement for {{ env('APP_NAME', 'Apply for a deceased\'s military record') }}</h1>
 
     <p class="govuk-body">This website is run by the Ministry of Defence. We want as many people as possible to be able
         to use this website. For example, that means you should be able to:</p>
@@ -83,7 +83,7 @@
         <li>accessibility problems</li>
     </ul>
 
-    <p class="govuk-bdy">This interface has not been tested with all accessibility technologies.</p>
+    <p class="govuk-body">This interface has not been tested with all accessibility technologies.</p>
     <ul class="govuk-list govuk-list--bullet">
         <li>which of the WCAG 2.1 AA success criteria the problem fails on</li>
     </ul>
@@ -104,7 +104,7 @@
     </ul>
 
     <h2 class="govuk-heading-m">What we're doing to improve accessibility</h2>
-    <p class-="govuk-body">This interface has not been tested with all accessibility technologies.</p>
+    <p class="govuk-body">This interface has not been tested with all accessibility technologies.</p>
     <ul class="govuk-list govuk-list--bullet">
         <li>which of the WCAG 2.1 AA success criteria the problem fails on</li>
     </ul>

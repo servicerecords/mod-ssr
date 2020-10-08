@@ -27,7 +27,7 @@
 
             <ul class="govuk-list govuk-list--bullet">
                 <li>how you got to the site</li>
-                <li>the pages you visit on search for an historic service record and how long you spend on each page</li>
+                <li>the pages you visit on search for {{ env('APP_NAME', 'Apply for a deceased\'s military record') }} and how long you spend on each page</li>
                 <li>what you click on while you're visiting the site</li>
             </ul>
 
@@ -97,6 +97,28 @@
                 </tr>
                 </tbody>
             </table>
+
+            <form action="/help/cookies" method="post" class="govuk-form">
+                @csrf
+                <div class="govuk-form-group">
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" type="radio" id="tracking-yes" name="tracking" value="yes"
+                                   @if($tracking === 'yes') checked="checked" @endif>
+
+                            <label class="govuk-label govuk-radios__label" for="tracking-yes">Use cookies that measure my website use</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" type="radio" id="tracking-no" name="tracking" value="no"
+                                   @if($tracking !== 'yes') checked="checked" @endif>
+                            <label class="govuk-label govuk-radios__label" for="tracking-no">Do not use cookies that measure my website use</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-form-group">
+                    <button type="submit" class="govuk-button">Save settings</button>
+                </div>
+            </form>
             <p class="govuk-body">Google isn't allowed to use or share our analytics data.</p>
         </li>
 

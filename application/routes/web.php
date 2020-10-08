@@ -40,6 +40,7 @@ Route::get('/check-your-answers', 'ServiceRecordController@checkYourAnswers');
 Route::get('/verify', 'ServiceRecordController@verify');
 
 Route::get('/help/cookies', 'HelpController@cookies');
+Route::post('/help/cookies', 'HelpController@cookiesToggle');
 Route::get('/help/privacy', 'HelpController@privacy');
 Route::get('/help/accessibility', 'HelpController@accessibility');
 

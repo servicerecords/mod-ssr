@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Request an historic service record')
+@section('title', env('APP_NAME', 'Apply for a deceased\'s military record'))
 
 @section('content')
 

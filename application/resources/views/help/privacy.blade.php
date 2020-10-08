@@ -4,7 +4,7 @@
 
     <h1 class="govuk-heading-l">Privacy Policy</h1>
 
-    <p class="govuk-body">When you request an historic service record you will be asked for a range of information,
+    <p class="govuk-body">When you {{ Str::lower( env('APP_NAME', 'Apply for a deceased\'s military record' ) ) }} you will be asked for a range of information,
         including your name and contact details, the name of your subject, their date of birth, and further
         information to help identify their records.
     </p>

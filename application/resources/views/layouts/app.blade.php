@@ -59,7 +59,7 @@
         </div>
         <div class="govuk-header__content">
             <a href="/" class="govuk-header__link govuk-header__link--service-name">
-                {{ 'Apply for a deceased\'s military record' }}
+                {{ env('APP_NAME', 'Apply for a deceased\'s military record') }}
             </a>
         </div>
     </div>
@@ -144,6 +144,7 @@
         </div>
     </div>
 </footer>
+
 <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 <script src="/js/all.js"></script>
 <script src="/js/app.js"></script>
@@ -151,6 +152,7 @@
     window.GOVUKFrontend.initAll();
     window.GOVUKFrontend.CookieBanner.init();
 </script>
+@if(session()->get('tracking', 'yes') == 'yes')
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_ID', 'UA-176740731-1') }}"></script>
 <script>
@@ -160,7 +162,7 @@
 
     gtag('config', '{{ env('GA_ID', 'UA-176740731-1') }}');
 </script>
-
+@endif
 @stack('mod-scripts')
 </body>
 
