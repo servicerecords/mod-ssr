@@ -1,5 +1,7 @@
 services:
   - docker
+language:
+  - php
 jobs:
   include:
     - stage: build image for sandbox
