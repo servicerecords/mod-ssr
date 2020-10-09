@@ -30,28 +30,28 @@ ENV TZ=Europe/London
 # --- End Sandbox Build
 
 # --- Start QA Build
-ENV APP_NAME="Apply for a deceased's military record"
-ENV LAND_EMAIL=lauren.phillips225@mod.gov.uk
-ENV SEA_EMAIL=lauren.phillips225@mod.gov.uk
-ENV AIR_EMAIL=lauren.phillips225@mod.gov.uk
-ENV ACCOUNTS_EMAIL=lauren.phillips225@mod.gov.uk
-ENV FEEDBACK_EMAIL=lauren.phillips225@mod.gov.uk
-ENV UNKNOWN_EMAIL=lauren.phillips225@mod.gov.uk
-ENV GOV_PAY_RETURN_URL="https://srrdigital-qa.cloudapps.digital"
-ENV APP_URL="https://srrdigital-qa.cloudapps.digital/"
-ENV APP_KEY="base64:D+46PLyWMals3yMD3OjYG1kqa9D7f81c7599yhEfsPo="
-ENV APP_DEBUG=false
-ENV DEBUGBAR_ENABLED=false
-ENV LOG_CHANNEL=stack
-ENV BROADCAST_DRIVER=log
-ENV CACHE_DRIVER=file
-ENV QUEUE_CONNECTION=sync
-ENV SESSION_DRIVER=file
-ENV SESSION_LIFETIME=20
-ENV SESSION_SECURE_COOKIE=true
-ENV SENTRY_LARAVEL_DSN="https://3adb3e786b9c430c8a6c9bed07ad0ef2@o430224.ingest.sentry.io/5378341"
-ENV NOTIFY_API_KEY="srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75"
-ENV GA_ID="UA-176740731-3"
+#ENV APP_NAME="Apply for a deceased's military record"
+#ENV LAND_EMAIL=lauren.phillips225@mod.gov.uk
+#ENV SEA_EMAIL=lauren.phillips225@mod.gov.uk
+#ENV AIR_EMAIL=lauren.phillips225@mod.gov.uk
+#ENV ACCOUNTS_EMAIL=lauren.phillips225@mod.gov.uk
+#ENV FEEDBACK_EMAIL=lauren.phillips225@mod.gov.uk
+#ENV UNKNOWN_EMAIL=lauren.phillips225@mod.gov.uk
+#ENV GOV_PAY_RETURN_URL="https://srrdigital-qa.cloudapps.digital"
+#ENV APP_URL="https://srrdigital-qa.cloudapps.digital/"
+#ENV APP_KEY="base64:D+46PLyWMals3yMD3OjYG1kqa9D7f81c7599yhEfsPo="
+#ENV APP_DEBUG=false
+#ENV DEBUGBAR_ENABLED=false
+#ENV LOG_CHANNEL=stack
+#ENV BROADCAST_DRIVER=log
+#ENV CACHE_DRIVER=file
+#ENV QUEUE_CONNECTION=sync
+#ENV SESSION_DRIVER=file
+#ENV SESSION_LIFETIME=20
+#ENV SESSION_SECURE_COOKIE=true
+#ENV SENTRY_LARAVEL_DSN="https://3adb3e786b9c430c8a6c9bed07ad0ef2@o430224.ingest.sentry.io/5378341"
+#ENV NOTIFY_API_KEY="srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75"
+#ENV GA_ID="UA-176740731-3"
 # --- End Sandbox Build
 
 #ENV NOTIFY_API_KEY=srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75
