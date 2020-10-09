@@ -3,7 +3,7 @@ services:
 jobs:
   include:
     - stage: build image for sandbox
-      if: branch = "docker_build"
+#      if: branch = "docker_build"
       script:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - docker build -t build-image .
