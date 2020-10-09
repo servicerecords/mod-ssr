@@ -13,11 +13,12 @@ jobs:
         - docker tag build-image:latest codesure/srrdigital:sandbox
         - docker logout
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-        - docker run -it codesure/srrdigital:sandbox bash
-        - cd /app
-        - ./artisan dusk
-        - exit
-        - docker push codesure/srrdigital:sandbox
+#        - docker run -it codesure/srrdigital:sandbox bash
+        - docker image ls
+#        - cd /app
+#        - ./artisan dusk
+#        - exit
+#        - docker push codesure/srrdigital:sandbox
 
       deploy:
         - provider: script
