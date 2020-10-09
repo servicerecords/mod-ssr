@@ -29,7 +29,7 @@ jobs:
 
       deploy:
         - provider: script
-          skip_cleanup: true
+          cleanup: true
           script: env CF_SPACE=development CF_APP_NAME=docker_deploy CF_MANIFEST=manifest-test.yml
 #        - provider: cloudfoundry
 #          api: https://api.cloud.service.gov.uk
