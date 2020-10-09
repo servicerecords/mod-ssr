@@ -13,17 +13,7 @@ jobs:
         - docker tag build-image:latest codesure/srrdigital:sandbox
         - docker logout
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-        - docker exec -it codesure/srrdigital:sandbox bash
-        - sed -i 's/{{APP_URL}}/"$APP_URL"/g' .env
-        - sed -i 's/{{LAND_EMAIL}}/"$LAND_EMAIL"/g' .env
-        - sed -i 's/{{SEA_EMAIL}}/"$SEA_EMAIL"/g' .env
-        - sed -i 's/{{AIR_EMAIL}}/"$AIR_EMAIL"/g' .env
-        - sed -i 's/{{ACCOUNTS_EMAIL}}/"$ACCOUNTS_EMAIL"/g' .env
-        - sed -i 's/{{FEEDBACK_EMAIL}}/"$FEEDBACK_EMAIL"/g' .env
-        - sed -i 's/{{UNKNOWN_EMAIL}}/"$UNKNOWN_EMAIL"/g' .env
-        - sed -i 's/{{GOV_PAY_RETURN_URL}}/"$GOV_PAY_RETURN_URL"/g' .env
-        - sed -i 's/{{NOTIFY_API_KEY}}/"$NOTIFY_API_KEY"/g' .env
-        - sed -i 's/{{GA_ID}}/"$GA_ID"/g' .env
+        - docker run -it codesure/srrdigital:sandbox bash
         - cd /app
         - ./artisan dusk
         - exit
