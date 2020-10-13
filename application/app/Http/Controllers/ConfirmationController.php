@@ -160,49 +160,63 @@ class ConfirmationController extends Controller
             $upload = $notifyClient->prepareUpload($file_data);
         }
 
+        $data = [
+            'reference' => $request->session()->get('reference') ?? '',
+            'firstname' => $request->session()->get('essential_information.firstnames') ?? '',
+            'lastname' => $request->session()->get('essential_information.lastname') ?? '',
+            'dob' => $request->session()->get('essential_information.dob') ?? '',
+            //'dob_accurate' => $request->session()->get('essential_information.dob_accurate'),
+            'date_joined' => $request->session()->get('service_details.join_date', '??/??/??'),
+            'unit' => $request->session()->get('service') ?? '',
+            'service_number' => $request->session()->get('service_details.service_number') ?? '',
+            'death_in_service' => $request->session()->get('death_in_service.death',) ?? '',
+            'date_of_death' => $request->session()->get('service_details.discharge_date',) ?? '',
+            'further_information' => $request->session()->get('essential_information.further_information',) ?? '',
+            'request_full_name' => $request->session()->get('your_details.fullname',) ?? '',
+            'request_address' => $request->session()->get('your_details.address_line_1',) ?? '',
+            'battalions_companies' => $request->session()->get('service_details.battalions_companies',) ?? '',
+            'county' => $request->session()->get('service_details.county',) ?? '',
+            'address' => $request->session()->get('service_details.address',) ?? '',
+            'discharge_address' => $request->session()->get('service_details.discharge_address',) ?? '',
+            // add address line 2
+            'postcode' => $request->session()->get('your_details.address_postcode',) ?? '',
+            'country' => $request->session()->get('your_details.address_county', ''),
+            'related' => $request->session()->get('your_details.relation.related',) ?? '',
+            'relationship' => $request->session()->get('your_details.relationship.relationship',) ?? '',
+            'next_of_kin' => ($request->session()->get('your_details.relationship.next_of_kin') !== 'Yes' ? 'No' : 'Yes'),
+            'email' => $request->session()->get('your_details.email',) ?? '',
+            'telephone' => $request->session()->get('your_details.telephone',) ?? '',
+            'payment_status' => (null !== $request->session()->get($request->get('uuid')) ? 'Paid' : 'No payment was required'),
+            'verification' => $request->session()->get('verification.uploaded',) ?? '',
+            'link_to_verification' => $upload,
+            'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? $request->session()->get('service_details.leave_army_reason') : '-'),
+            'further_service' => (null !== ($request->session()->get('service_details.completion_ifo')) ? implode(",", $request->session()->get('service_details.completion_ifo')) : '-'),
+            'leave_army_reason_other' => (null !== ($request->session()->get('service_details.leave_army_reason_other')) ? $request->session()->get('service_details.leave_army_reason_other') : '-')
+        ];
+
         try {
             $response = $notifyClient->sendEmail(
                 $emails,
                 $this->templates[$template_shortcode],
-                [
-                    'reference' => $request->session()->get('reference') ?? '',
-                    'firstname' => $request->session()->get('essential_information.firstnames') ?? '',
-                    'lastname' => $request->session()->get('essential_information.lastname') ?? '',
-                    'dob' => $request->session()->get('essential_information.dob') ?? '',
-                    //'dob_accurate' => $request->session()->get('essential_information.dob_accurate'),
-                    'date_joined' => $request->session()->get('service_details.join_date', '??/??/??'),
-                    'unit' => $request->session()->get('service') ?? '',
-                    'service_number' => $request->session()->get('service_details.service_number') ?? '',
-                    'death_in_service' => $request->session()->get('death_in_service.death',) ?? '',
-                    'date_of_death' => $request->session()->get('service_details.discharge_date',) ?? '',
-                    'further_information' => $request->session()->get('essential_information.further_information',) ?? '',
-                    'request_full_name' => $request->session()->get('your_details.fullname',) ?? '',
-                    'request_address' => $request->session()->get('your_details.address_line_1',) ?? '',
-                    'battalions_companies' => $request->session()->get('service_details.battalions_companies',) ?? '',
-                    'county' => $request->session()->get('service_details.county',) ?? '',
-                    'address' => $request->session()->get('service_details.address',) ?? '',
-                    'discharge_address' => $request->session()->get('service_details.discharge_address',) ?? '',
-                    // add address line 2
-                    'postcode' => $request->session()->get('your_details.address_postcode',) ?? '',
-                    'country' => $request->session()->get('your_details.address_county', ''),
-                    'related' => $request->session()->get('your_details.relation.related',) ?? '',
-                    'relationship' => $request->session()->get('your_details.relationship.relationship',) ?? '',
-                    'next_of_kin' => ($request->session()->get('your_details.relationship.next_of_kin') !== 'Yes' ? 'No' : 'Yes'),
-                    'email' => $request->session()->get('your_details.email',) ?? '',
-                    'telephone' => $request->session()->get('your_details.telephone',) ?? '',
-                    'payment_status' => (null !== $request->session()->get($request->get('uuid')) ? 'Paid' : 'No payment was required'),
-                    'verification' => $request->session()->get('verification.uploaded',) ?? '',
-                    'link_to_verification' => $upload,
-                    'reason_for_leaving' => (null !== ($request->session()->get('service_details.leave_army_reason')) ? $request->session()->get('service_details.leave_army_reason') : '-'),
-                    'further_service' => (null !== ($request->session()->get('service_details.completion_ifo')) ? implode(",", $request->session()->get('service_details.completion_ifo')) : '-'),
-                    'leave_army_reason_other' => (null !== ($request->session()->get('service_details.leave_army_reason_other')) ? $request->session()->get('service_details.leave_army_reason_other') : '-')
-                ],
+                $data,
                 $request->session()->get('reference')
             );
 
             return $response;
         } catch (ApiException $e) {
             Log::critical($e->getErrorMessage());
+
+            $failure = [
+                'email' => $emails,
+                'template' => $this->templates[$template_shortcode],
+                'data' => $data,
+            ];
+
+            $failureFile = storage_path('app/notify/failure.json');
+            $failures = json_decode(file_get_contents($failureFile));
+            array_push($failures, $failure);
+            file_put_contents($failureFile, json_encode($failures));
+
             return $e;
         }
     }
@@ -221,25 +235,37 @@ class ConfirmationController extends Controller
             'httpClient' => new \Http\Adapter\Guzzle6\Client
         ]);
 
+        $data = [
+            'service_feedback_url' => env('APP_URL', 'http://srrdigital-sandbox.cloudapps.digital/feedback'),
+            'dbs_branch' => $dbs_office = $request->session()->get('dbs_office') ?? '',
+            'dbs_email' => $this->getServiceEmail(),
+            'reference_number' => $request->session()->get('reference') ?? '',
+        ];
+
         try {
-            $response = $notifyClient->sendEmail(
+            return $notifyClient->sendEmail(
                 $request->session()->get('your_details.email'),
-//                'cb31d5be-1f34-4546-bb1e-a784dcd2f390',
                 '567f3c9f-4e9f-45b1-99ef-1d559c0f676d',
-                [
-                    'service_feedback_url' => env('APP_URL', 'http://srrdigital-sandbox.cloudapps.digital/feedback'),
-                    'dbs_branch' => $dbs_office = $request->session()->get('dbs_office') ?? '',
-                    'dbs_email' => $this->getServiceEmail(),
-                    'reference_number' => $request->session()->get('reference') ?? '',
-                ]);
-            return $response;
+                $data);
         } catch (ApiException $e) {
             Log::critical($e->getErrorMessage());
+            $failure = [
+                'email' => $request->session()->get('your_details.email'),
+                'template' => $request->session()->get('your_details.email'),
+                'data' => $data,
+            ];
+
+            $failureFile = storage_path('app/notify/failure.json');
+            $failures = json_decode(file_get_contents($failureFile));
+            array_push($failures, $failure);
+            file_put_contents($failureFile, json_encode($failures));
+
             return $e;
         }
     }
 
-    private function getServiceEmail() {
+    private function getServiceEmail()
+    {
         switch (session()->get('service', 'Unknown')) {
             case 'Royal Navy / Royal Marines':
                 return $this->sea_email;
