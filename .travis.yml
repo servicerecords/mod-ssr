@@ -10,17 +10,18 @@ jobs:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - ls
         - cp docker/.env docker/.env-build
-#        - sed -i 's/{{APP_URL}}/"$APP_URL"/g' ./docker/.env-build
-#        - sed -i 's/{{APP_ENV}}/"$APP_ENV"/g' ./docker/.env-build
-#        - sed -i 's/{{LAND_EMAIL}}/"$LAND_EMAIL"/g' ./docker/.env-build
-#        - sed -i 's/{{SEA_EMAIL}}/"$SEA_EMAIL"/g' ./docker/.env-build
-#        - sed -i 's/{{AIR_EMAIL}}/"$AIR_EMAIL"/g' ./docker/.env-build
-#        - sed -i 's/{{ACCOUNTS_EMAIL}}/"$ACCOUNTS_EMAIL"/g' ./docker/.env-build
-#        - sed -i 's/{{FEEDBACK_EMAIL}}/"$FEEDBACK_EMAIL"/g' ./docker/.env-build
-#        - sed -i 's/{{UNKNOWN_EMAIL}}/"$UNKNOWN_EMAIL"/g' ./docker/.env-build
-#        - sed -i 's/{{GOV_PAY_RETURN_URL}}/"$GOV_PAY_RETURN_URL"/g' ./docker/.env-build
-#        - sed -i 's/{{NOTIFY_API_KEY}}/"$NOTIFY_API_KEY"/g' ./docker/.env-build
-#        - sed -i 's/{{GA_ID}}/"$GA_ID"/g' ./docker/.env-build
+        - sed -i 's/{{APP_URL}}/"$APP_URL"/g' ./docker/.env-build
+        - sed -i 's/{{APP_ENV}}/"$APP_ENV"/g' ./docker/.env-build
+        - sed -i 's/{{LAND_EMAIL}}/"$LAND_EMAIL"/g' ./docker/.env-build
+        - sed -i 's/{{SEA_EMAIL}}/"$SEA_EMAIL"/g' ./docker/.env-build
+        - sed -i 's/{{AIR_EMAIL}}/"$AIR_EMAIL"/g' ./docker/.env-build
+        - sed -i 's/{{ACCOUNTS_EMAIL}}/"$ACCOUNTS_EMAIL"/g' ./docker/.env-build
+        - sed -i 's/{{FEEDBACK_EMAIL}}/"$FEEDBACK_EMAIL"/g' ./docker/.env-build
+        - sed -i 's/{{UNKNOWN_EMAIL}}/"$UNKNOWN_EMAIL"/g' ./docker/.env-build
+        - sed -i 's/{{GOV_PAY_RETURN_URL}}/"$GOV_PAY_RETURN_URL"/g' ./docker/.env-build
+        - sed -i 's/{{NOTIFY_API_KEY}}/"$NOTIFY_API_KEY"/g' ./docker/.env-build
+        - sed -i 's/{{GA_ID}}/"$GA_ID"/g' ./docker/.env-build
+        - cat docker/.env-build
 #        - docker build -t build-image .
         #- docker exec -it build-image bash -c './artisan dusk'
 #        - docker tag build-image:latest codesure/srrdigital:sandbox
