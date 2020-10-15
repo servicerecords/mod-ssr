@@ -22,7 +22,7 @@ jobs:
         - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
         - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
         - cat docker/.env-build
-#        - docker build -t build-image .
+        - docker build -t build-image .
         #- docker exec -it build-image bash -c './artisan dusk'
 #        - docker tag build-image:latest codesure/srrdigital:sandbox
 #        - docker logout
