@@ -21,7 +21,7 @@ jobs:
         - sed -i 's/{{NOTIFY_API_KEY}}/"$NOTIFY_API_KEY"/g' ./docker/.env-build
         - sed -i 's/{{GA_ID}}/"$GA_ID"/g' ./docker/.env-build
         - docker build -t build-image .
-        - docker exec -it build-image bash -c './artisan dusk'
+        #- docker exec -it build-image bash -c './artisan dusk'
         - docker tag build-image:latest codesure/srrdigital:sandbox
         - docker logout
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
