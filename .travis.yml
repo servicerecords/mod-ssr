@@ -10,17 +10,17 @@ jobs:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - ls
         - cp docker/.env docker/.env-build
-        - sed -ri "s/{{APP_URL}}/$APP_URL/" ./docker/.env-build
-        - sed -ri "s/{{APP_ENV}}/$APP_ENV/" ./docker/.env-build
-        - sed -ri "s/{{LAND_EMAIL}}/$LAND_EMAIL/" ./docker/.env-build
-        - sed -ri "s/{{SEA_EMAIL}}/$SEA_EMAIL/" ./docker/.env-build
-        - sed -ri "s/{{AIR_EMAIL}}/$AIR_EMAIL/" ./docker/.env-build
-        - sed -ri "s/{{ACCOUNTS_EMAIL}}/$ACCOUNTS_EMAIL/" ./docker/.env-build
-        - sed -ri "s/{{FEEDBACK_EMAIL}}/$FEEDBACK_EMAIL/" ./docker/.env-build
-        - sed -ri "s/{{UNKNOWN_EMAIL}}/$UNKNOWN_EMAIL/" ./docker/.env-build
-        - sed -ri "s/{{GOV_PAY_RETURN_URL}}/$GOV_PAY_RETURN_URL/" ./docker/.env-build
-        - sed -ri "s/{{NOTIFY_API_KEY}}/$NOTIFY_API_KEY/" ./docker/.env-build
-        - sed -ri "s/{{GA_ID}}/$GA_ID/" ./docker/.env-build
+        - sed -ri "s/ENV_APP_URL/$APP_URL/" ./docker/.env-build
+        - sed -ri "s/ENV_APP_ENV/$APP_ENV/" ./docker/.env-build
+        - sed -ri "s/ENV_LAND_EMAIL/$LAND_EMAIL/" ./docker/.env-build
+        - sed -ri "s/ENV_SEA_EMAIL/$SEA_EMAIL/" ./docker/.env-build
+        - sed -ri "s/ENV_AIR_EMAIL/$AIR_EMAIL/" ./docker/.env-build
+        - sed -ri "s/ENV_ACCOUNTS_EMAIL/$ACCOUNTS_EMAIL/" ./docker/.env-build
+        - sed -ri "s/ENV_FEEDBACK_EMAIL/$FEEDBACK_EMAIL/" ./docker/.env-build
+        - sed -ri "s/ENV_UNKNOWN_EMAIL/$UNKNOWN_EMAIL/" ./docker/.env-build
+        - sed -ri "s/ENV_GOV_PAY_RETURN_URL/$GOV_PAY_RETURN_URL/" ./docker/.env-build
+        - sed -ri "s/ENV_NOTIFY_API_KEY/$NOTIFY_API_KEY/" ./docker/.env-build
+        - sed -ri "s/ENV_GA_ID/$GA_ID/" ./docker/.env-build
         - cat docker/.env-build
 #        - docker build -t build-image .
         #- docker exec -it build-image bash -c './artisan dusk'
