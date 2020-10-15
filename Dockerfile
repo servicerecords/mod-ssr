@@ -27,5 +27,5 @@ RUN ./artisan dusk
 EXPOSE 80
 
 # Fire up the entrypoint script
-CMD ["/usr/local/bin/docker-entrypoint.sh"]
+#CMD ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["/etc/entrypoint.sh"]
