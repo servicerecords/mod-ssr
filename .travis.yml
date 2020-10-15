@@ -2,6 +2,8 @@ services:
   - docker
 language:
   - php
+addons:
+  chrome: stable
 jobs:
   include:
     - stage: build image for sandbox
@@ -47,3 +49,5 @@ jobs:
 #            branch: docker_build
 #          skip_cleanup: 'true'
 #          manifest: manifest-sandbox.yml
+notifications:
+  email: false
