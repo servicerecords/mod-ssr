@@ -21,7 +21,7 @@ RUN chmod -R 777 /app/public
 RUN chmod -R 777 /app/storage
 
 RUN cd /app
-RUN ./artisan dusk
+RUN php artisan dusk
 
 # Expose our HTTP port to the Host
 EXPOSE 80
