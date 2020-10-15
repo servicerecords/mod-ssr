@@ -10,7 +10,7 @@ jobs:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - ls
         - cp docker/.env docker/.env-build
-        - sed -ri "s/ENV_APP_URL/$APP_URL/" ./docker/.env-build
+        - sed -ri "s/ENV_APP_URL/'$APP_URL'/" ./docker/.env-build
         - sed -ri "s/ENV_APP_ENV/$APP_ENV/" ./docker/.env-build
         - sed -ri "s/ENV_LAND_EMAIL/$LAND_EMAIL/" ./docker/.env-build
         - sed -ri "s/ENV_SEA_EMAIL/$SEA_EMAIL/" ./docker/.env-build
