@@ -34,10 +34,7 @@ class RoyalNavyTest extends DuskTestCase
                 ->assertSee('Details of the serviceperson');
 
             $this->completeServicepersonDetails($browser);
-
-            $browser->assertSee('Sending documentation');
-            $browser->attach('certificate', __DIR__ . '/mod-cert-low-low.jpg');
-            $browser->press('Continue');
+            $this->uploadDocument($browser);
 
             $browser->screenshot('post-photo.jpg');
         });
