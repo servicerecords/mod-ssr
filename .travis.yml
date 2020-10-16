@@ -1,9 +1,5 @@
 services:
   - docker
-#language:
-#  - php
-#addons:
-#  chrome: stable
 env:
   global:
     - CF_API=api.cloud.service.gov.uk
@@ -13,28 +9,29 @@ env:
 jobs:
   include:
     - stage: build image for sandbox
-      if: branch = "docker_build"
+#      if: branch = "docker_build"
+      if: branch IN ("docker_build", "sandbox")
       script:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - ls
         - chmod 755 ci/deploy_to_cf.sh
         - chmod 755 ci/zero_downtime.sh
-#        - cp docker/.env docker/.env-build
-#        - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
-#        - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
-#        - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
-#        - sed -ri "s|ENV_SEA_EMAIL|$SEA_EMAIL|" ./docker/.env-build
-#        - sed -ri "s|ENV_AIR_EMAIL|$AIR_EMAIL|" ./docker/.env-build
-#        - sed -ri "s|ENV_ACCOUNTS_EMAIL|$ACCOUNTS_EMAIL|" ./docker/.env-build
-#        - sed -ri "s|ENV_FEEDBACK_EMAIL|$FEEDBACK_EMAIL|" ./docker/.env-build
-#        - sed -ri "s|ENV_UNKNOWN_EMAIL|$UNKNOWN_EMAIL|" ./docker/.env-build
-#        - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
-#        - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
-#        - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
-#        - cat docker/.env-build
-#        - docker build -t build-image .
-#        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:docker_build
-#        - docker push "$DOCKER_ORGANISATION"/srrdigital:docker_build
+        - cp docker/.env docker/.env-build
+        - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
+        - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
+        - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_SEA_EMAIL|$SEA_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_AIR_EMAIL|$AIR_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_ACCOUNTS_EMAIL|$ACCOUNTS_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_FEEDBACK_EMAIL|$FEEDBACK_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_UNKNOWN_EMAIL|$UNKNOWN_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
+        - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
+        - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
+        - cat docker/.env-build
+        - docker build -t build-image .
+        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
+        - docker push "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
 
       deploy:
         - provider: script
@@ -43,16 +40,6 @@ jobs:
           script: env CF_SPACE=development CF_APP_NAME=docker_deploy CF_MANIFEST=manifest-sandbox.yml ci/deploy_to_cf.sh
           on:
             branch: docker_build
-#          script: env CF_SPACE=development CF_APP_NAME=docker_deploy CF_MANIFEST=manifest-test.yml
-#        - provider: cloudfoundry
-#          api: https://api.cloud.service.gov.uk
-#          password:
-#            secure: aEz/q9GlioUg54PYP3qTytnvnfNJg+pgv8zGOKySXWuG1cfTbqOWFP+9DdJoJmbjQZGNwMeY19jnWcg2TGyqxFl+fb3qTnERk3cBIxle80WLSG2GCpCdieJYDUhQQRfMjQA7WPJU7NChBchHQbd0WjRx0L+9pXgIJwRKa9fd94ZZsxw5v0K4Xk+iAz3mhArazF8RjRtyWMRNcWMISYwI6O0jQeV+PPmI9OpT8X0dIN0rm0WrzvloKPSDgBMcrcYRUZxXVO1M2FIu6BNjJMp0BIaEvZthQ5+dyW+a1/b90onxwabpkPnb6sO0zSaaOpofnF8KMWz2GfAPrF/jz5DLgjSL/WatQqlBfFGS1nVx0PntTzB1oYhI390/gjiuDN2ghGF1/GY2biJ8mLcHhEWHxolVFV9kjGGw/kcLQgsrf4saeEv8j/CzW2ye3dyrAayavoJ0ZtMVh0yR5BNvAjgA+0R0nyOYgeqr3e53Mb9BnPTzj9pWrfEmkZRj/XDIuURjVxbZF4RFO0ddLHoIvEf6wDzwUVpi1EnmR8pdVaOsx55t2f6NAiZuiH9HqT+ZrGGlkB0QkHQUnG2kfic+oujFWrNhQY3YGn1r0Hnt9iQbnEtCmKqOk5Z4sSqDhLJmNK66emxhdZB2oAQ0XoMdNoNjIlQyUxlf5rNUEafPWWzFH3Q=
-#          organization: mod-request-a-historic-service-record
-#          space: development
-#          on:
-#            repo: servicerecords/mod-ssr
-#            branch: docker_build
-#          skip_cleanup: 'true'
+
 notifications:
   email: false
