@@ -1,9 +1,9 @@
 services:
   - docker
-language:
-  - php
-addons:
-  chrome: stable
+#language:
+#  - php
+#addons:
+#  chrome: stable
 jobs:
   include:
     - stage: build image for sandbox
