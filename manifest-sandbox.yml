@@ -1,10 +1,10 @@
 ---
 applications:
   - name: test-app
-    host: test-app
-    domain: srrdigital-sandbox-zdt.cloudapps.digital
+    routes:
+      - route: srrdigital-sandbox-zdt.cloudapps.digital
     memory: 800M
     disk_quota: 2G
-    instances: 2
+    instances: 1
     docker:
       image: codesure/srrdigital:docker_build
