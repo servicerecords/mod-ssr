@@ -1,9 +1,10 @@
 ---
 applications:
-  - name: srrdigital-qa
-    memory: 1G
+  - name: test-app
+    routes:
+      - route: srrdigital-qa.cloudapps.digital
+    memory: 800M
     disk_quota: 2G
+    instances: 1
     docker:
       image: codesure/srrdigital:qa
-
-
