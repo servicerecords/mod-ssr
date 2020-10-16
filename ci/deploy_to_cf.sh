@@ -13,4 +13,4 @@ echo "============== LOGGING INTO CLOUD FOUNDRY =============="
 
 
 echo "============== DEPLOYING ${CF_APP_NAME} TO ${CF_SPACE} SPACE ON CLOUD FOUNDRY =============="
-#ci/zero_downtime.sh
+ci/zero_downtime.sh
