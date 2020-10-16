@@ -19,7 +19,7 @@ class HomeGuardTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertSee('Request an historic service record');
+                ->assertSee('Apply for a deceased\'s military record');
 
             $browser->click('a.govuk-button.govuk-button--start')
                 ->assertSee('Details of the serviceperson')
@@ -52,7 +52,7 @@ class HomeGuardTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertSee('Request an historic service record');
+                ->assertSee('Apply for a deceased\'s military record');
 
             $browser->click('a.govuk-button.govuk-button--start')
                 ->assertSee('Details of the serviceperson')

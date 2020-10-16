@@ -19,7 +19,7 @@ class FileUploadTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Request an historic service record');
+                    ->assertSee('Apply for a deceased\'s military record');
         });
     }
 }

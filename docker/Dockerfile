@@ -29,12 +29,14 @@ COPY ./docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY ./docker/docker-entrypoint.sh /etc/entrypoint.sh
 
 # Add Chrome for smoke testing
-#RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#RUN apt -y install ./google-chrome-stable_current_amd64.deb
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# RUN apt -y install ./google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb
+RUN apt install -f
 #RUN rm google-chrome-stable_current_amd64.deb
 #RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 #RUN chmod 755 /etc/entrypoint.sh
-RUN apt -y install chromium-driver
+#RUN apt -y install chromium-driver
 
 # Bit of a clean up
 RUN apt -y remove build-essential wget && rm -rf /var/lib/apt/lists/*

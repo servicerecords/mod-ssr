@@ -98,6 +98,8 @@
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/event-dispatcher-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/http-client-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/symfony/mime" />
