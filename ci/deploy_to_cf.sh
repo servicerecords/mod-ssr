@@ -9,6 +9,8 @@ tar -xvf cf_cli_6.26.0.tar
 ls
 
 echo "============== LOGGING INTO CLOUD FOUNDRY =============="
+echo $CF_SPACE
+
 ./cf login -a=$CF_API -s=$CF_SPACE -o=$CF_ORGANIZATION -u=$CF_USERNAME -p=$CF_PASSWORD
 
 
