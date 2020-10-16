@@ -5,12 +5,6 @@ services:
 #addons:
 #  chrome: stable
 
-env:
-  global:
-    - CF_API=$CF_API
-    - CF_ORGANIZATION=$CF_ORGANIZATION
-    - CF_USERNAME=$CF_USERNAME
-
 jobs:
   include:
     - stage: build image for sandbox
