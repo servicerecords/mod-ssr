@@ -9,7 +9,7 @@ tar -xvf cf_cli_6.26.0.tar
 ls
 
 echo "============== LOGGING INTO CLOUD FOUNDRY =============="
-./cf login -a=api.cloud.service.gov.uk -s=development -o=mod-request-a-historic-service-record -u=$CF_USERNAME -p=$CF_PASSWORD
+./cf login -a=api.cloud.service.gov.uk -s=development -o=mod-request-a-historic-service-record -u="$CF_USERNAME" -p="$CF_PASSWORD"
 
 
 echo "============== DEPLOYING ${CF_APP_NAME} TO ${CF_SPACE} SPACE ON CLOUD FOUNDRY =============="
