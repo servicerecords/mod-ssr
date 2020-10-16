@@ -47,7 +47,7 @@ jobs:
           manifest: manifest-qa.yml
           script: env CF_SPACE=qa CF_APP_NAME=Blue CF_MANIFEST=manifest-sandbox.yml ci/deploy_to_cf.sh
           on:
-            branch: sandbox
+            branch: qa
 
 notifications:
   email: false
