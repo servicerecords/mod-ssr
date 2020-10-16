@@ -11,8 +11,8 @@ ls
 echo "============== LOGGING INTO CLOUD FOUNDRY =============="
 echo $CF_USERNAME
 
-./cf login -a=api.cloud.service.gov.uk -s=development -o=mod-request-a-historic-service-record -u=toby@codesure.co.uk -p=Maisie2014!
+# ./cf login -a=api.cloud.service.gov.uk -s=development -o=mod-request-a-historic-service-record -u=$CF_USERNAME -p=Maisie2014!
 
 
 echo "============== DEPLOYING ${CF_APP_NAME} TO ${CF_SPACE} SPACE ON CLOUD FOUNDRY =============="
-ci/zero_downtime.sh
+#ci/zero_downtime.sh
