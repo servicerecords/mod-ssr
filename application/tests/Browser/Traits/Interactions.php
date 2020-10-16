@@ -54,4 +54,10 @@ trait Interactions
             $browser->back();
         }
     }
+
+    protected function uploadDocument(Browser $browser) {
+        $browser->assertSee('Sending documentation');
+        $browser->attach('certificate', __DIR__ . '/../test-image.png');
+        $browser->press('Continue');
+    }
 }
