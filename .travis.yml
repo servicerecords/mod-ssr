@@ -1,66 +1,53 @@
-language: php
-php:
-  - 7.3.12
-deploy:
-  - provider: cloudfoundry
-    api: https://api.cloud.service.gov.uk
-    username: simon@87development.co.uk
-    password:
-      secure: sph0VDhVj5oQupQP7O8JOCyA/VaavARMEE3gb4RETEUmgO1Qm85PeLko+Qzfl5EXpypyAT1ekqN9h5g1BBrZwsKYP4TsWAB0oT30d3r+2eHfiO/KvhffffFJbh+s0LSTj5H8BkuobhDBV71hP3IfwRtkC6BqrkKRewQilmzfSaVwmolCqTwqciiXLh+96X57fE+OxHmnUe9Tl/FDzJmQ2IKbQQMTVumFb35XyRwKK7UI6j2QKs0ZCmrcbERy8qeggRXWCk1qQo1TIq1DJlWNsZiZXyvCTlRYCUh/1Z3TDKkVyd8jJ4dfHJfoY4mLjPALzAFO2cPVjlmzpBV83KpNy1LK3e6rrVJxxyimJ0kmalAEY5AcyxUFljFXlHtMhUuslz6sr6z1tKeHhkOYyY3nbcg5At18fMTc5QOFmeIWvGbkAY6fxw2TJeHbNMm7QWeAxz3xiC2rRwDbYiIE9NGkh63scWmXPZ522QPTDRDOox1uuzSAWUAB1km58TMOJViTxKE1eMtfxwojq8P1+nRwYCymufB7wdmoOiq3jdMU3WV5FDaRKSgeNxG1sawve5NYct5zZLRMfrzTF/Sn2IQZZ/JmwShlLfLm1QLY3zICbcLwIq2tEC5y4u41+kp+l830ja4Y7UPd88Q04OZW2Im+aNB1M/l9kkd+4KYdeH9fCo4=
-    organization: mod-request-a-historic-service-record
-    space: qa
-    manifest: manifest-qa.yml
-    on:
-      repo: servicerecords/mod-ssr
-      branch: qa
-  - provider: cloudfoundry
-    api: https://api.cloud.service.gov.uk
-    username: simon@87development.co.uk
-    password:
-      secure: sph0VDhVj5oQupQP7O8JOCyA/VaavARMEE3gb4RETEUmgO1Qm85PeLko+Qzfl5EXpypyAT1ekqN9h5g1BBrZwsKYP4TsWAB0oT30d3r+2eHfiO/KvhffffFJbh+s0LSTj5H8BkuobhDBV71hP3IfwRtkC6BqrkKRewQilmzfSaVwmolCqTwqciiXLh+96X57fE+OxHmnUe9Tl/FDzJmQ2IKbQQMTVumFb35XyRwKK7UI6j2QKs0ZCmrcbERy8qeggRXWCk1qQo1TIq1DJlWNsZiZXyvCTlRYCUh/1Z3TDKkVyd8jJ4dfHJfoY4mLjPALzAFO2cPVjlmzpBV83KpNy1LK3e6rrVJxxyimJ0kmalAEY5AcyxUFljFXlHtMhUuslz6sr6z1tKeHhkOYyY3nbcg5At18fMTc5QOFmeIWvGbkAY6fxw2TJeHbNMm7QWeAxz3xiC2rRwDbYiIE9NGkh63scWmXPZ522QPTDRDOox1uuzSAWUAB1km58TMOJViTxKE1eMtfxwojq8P1+nRwYCymufB7wdmoOiq3jdMU3WV5FDaRKSgeNxG1sawve5NYct5zZLRMfrzTF/Sn2IQZZ/JmwShlLfLm1QLY3zICbcLwIq2tEC5y4u41+kp+l830ja4Y7UPd88Q04OZW2Im+aNB1M/l9kkd+4KYdeH9fCo4=
-    organization: mod-request-a-historic-service-record
-    space: development
-    manifest: manifest-development.yml
-    on:
-      repo: servicerecords/mod-ssr
-      branch: development
-  - provider: cloudfoundry
-    api: https://api.cloud.service.gov.uk
-    username: simon@87development.co.uk
-    password:
-      secure: sph0VDhVj5oQupQP7O8JOCyA/VaavARMEE3gb4RETEUmgO1Qm85PeLko+Qzfl5EXpypyAT1ekqN9h5g1BBrZwsKYP4TsWAB0oT30d3r+2eHfiO/KvhffffFJbh+s0LSTj5H8BkuobhDBV71hP3IfwRtkC6BqrkKRewQilmzfSaVwmolCqTwqciiXLh+96X57fE+OxHmnUe9Tl/FDzJmQ2IKbQQMTVumFb35XyRwKK7UI6j2QKs0ZCmrcbERy8qeggRXWCk1qQo1TIq1DJlWNsZiZXyvCTlRYCUh/1Z3TDKkVyd8jJ4dfHJfoY4mLjPALzAFO2cPVjlmzpBV83KpNy1LK3e6rrVJxxyimJ0kmalAEY5AcyxUFljFXlHtMhUuslz6sr6z1tKeHhkOYyY3nbcg5At18fMTc5QOFmeIWvGbkAY6fxw2TJeHbNMm7QWeAxz3xiC2rRwDbYiIE9NGkh63scWmXPZ522QPTDRDOox1uuzSAWUAB1km58TMOJViTxKE1eMtfxwojq8P1+nRwYCymufB7wdmoOiq3jdMU3WV5FDaRKSgeNxG1sawve5NYct5zZLRMfrzTF/Sn2IQZZ/JmwShlLfLm1QLY3zICbcLwIq2tEC5y4u41+kp+l830ja4Y7UPd88Q04OZW2Im+aNB1M/l9kkd+4KYdeH9fCo4=
-    organization: mod-request-a-historic-service-record
-    space: live-test
-    manifest: manifest-live-test.yml
-    on:
-      repo: servicerecords/mod-ssr
-      branch: live-test
-  - provider: cloudfoundry
-    api: https://api.cloud.service.gov.uk
-    username: simon@87development.co.uk
-    password:
-      secure: sph0VDhVj5oQupQP7O8JOCyA/VaavARMEE3gb4RETEUmgO1Qm85PeLko+Qzfl5EXpypyAT1ekqN9h5g1BBrZwsKYP4TsWAB0oT30d3r+2eHfiO/KvhffffFJbh+s0LSTj5H8BkuobhDBV71hP3IfwRtkC6BqrkKRewQilmzfSaVwmolCqTwqciiXLh+96X57fE+OxHmnUe9Tl/FDzJmQ2IKbQQMTVumFb35XyRwKK7UI6j2QKs0ZCmrcbERy8qeggRXWCk1qQo1TIq1DJlWNsZiZXyvCTlRYCUh/1Z3TDKkVyd8jJ4dfHJfoY4mLjPALzAFO2cPVjlmzpBV83KpNy1LK3e6rrVJxxyimJ0kmalAEY5AcyxUFljFXlHtMhUuslz6sr6z1tKeHhkOYyY3nbcg5At18fMTc5QOFmeIWvGbkAY6fxw2TJeHbNMm7QWeAxz3xiC2rRwDbYiIE9NGkh63scWmXPZ522QPTDRDOox1uuzSAWUAB1km58TMOJViTxKE1eMtfxwojq8P1+nRwYCymufB7wdmoOiq3jdMU3WV5FDaRKSgeNxG1sawve5NYct5zZLRMfrzTF/Sn2IQZZ/JmwShlLfLm1QLY3zICbcLwIq2tEC5y4u41+kp+l830ja4Y7UPd88Q04OZW2Im+aNB1M/l9kkd+4KYdeH9fCo4=
-    organization: mod-request-a-historic-service-record
-    space: production
-    manifest: manifest-production.yml
-    on:
-      repo: servicerecords/mod-ssr
-      branch: master
-before_script:
-  - composer self-update
-  - composer install --prefer-source --no-interaction --dev
-  - npm update
-script:
-  - cp .env.travis .env
-  - mkdir public/images/
-  - mkdir public/images/vendor
-  - mkdir public/images/vendor/govuk-frontend
-  - cp -R node_modules/govuk-frontend/assets/images/. ./public/images/vendor/govuk-frontend
-  - php vendor/bin/phpunit --configuration phpunit.xml
-  - php vendor/bin/phpunit tests/Feature/SmokeTestCases.php --configuration phpunit.xml
+services:
+  - docker
+env:
+  global:
+    - CF_API=api.cloud.service.gov.uk
+    - CF_ORGANIZATION=mod-request-a-historic-service-record
+    - CF_USERNAME=toby@codesure.co.uk
+    - secure: "Rlal6uRpsfYlp0xLuIpd4w5SGdiaUG5nQEW4AJf9LBb+Hnmkryp9iJ4t4g16/kbEmg54cv3b930ulRoLFlLx0ZggsE0kaMi8z01e4xHIZeGP3onSUlidnlFysgmpg/+6wOlIyfDKvfWIq8mZNCPdGGVc6k9D6bkDTS3E/B+ZZxAq8JkDnzQFpUwAnRzEsO/tKZ41J78Wc2SSHE5qCsQ8BF4nnGbBG2YtcaBZTJDt9noWqYuHpBvMZxmJNsgPphMS6n9sUrGUg8C/A3dOBR/J/j/yJz5n0uNlWOWyf/qzDPT+TUpW1CJP+6v4QVdwMdR8AyVWuEeRZVo+eJkxfL2bvRdu3NIzUGfGgfel70HZFrUjsONliy37L5beBhMuXI1hHyxU6g3NXwkA1zE4I03g+rudLGdrPFs1Vg2XL4kJsTsqvS5ylUEFcHt6q4KvYF5W73h6iRheGROL/HUYoTRNncnrsCK1vNkCCNClzzfFd3v5ck3RseLW3kTi1rZV1zN6UErAEdpyQctxb/hgRTootygqJlICy6g09YbNXj8pGqsiJxtFHaHI2tiEaVviqsf63aEGA7J1RyG9+p67sadDdymCooeHzD3GFndOfgKqOU8coXTLqcrDYe7T7+5hDP/Vho7jQORshSYvj5LtgNkPblsvQl2LTKCoA8dTAxLSlGE="
+jobs:
+  include:
+    - stage: Build Docker Image for branch
+#      if: branch = "docker_build"
+      if: branch IN ("sandbox", "qa")
+      script:
+        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+        - ls
+        - chmod 755 ci/deploy_to_cf.sh
+        - chmod 755 ci/zero_downtime.sh
+        - cp docker/.env docker/.env-build
+        - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
+        - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
+        - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_SEA_EMAIL|$SEA_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_AIR_EMAIL|$AIR_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_ACCOUNTS_EMAIL|$ACCOUNTS_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_FEEDBACK_EMAIL|$FEEDBACK_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_UNKNOWN_EMAIL|$UNKNOWN_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
+        - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
+        - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
+        - cat docker/.env-build
+        - docker build -t build-image .
+        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
+        - docker push "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
+
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          manifest: manifest-sandbox.yml
+          script: env CF_SPACE=development CF_APP_NAME=Blue CF_MANIFEST=manifest-sandbox.yml ci/deploy_to_cf.sh
+          on:
+            branch: sandbox
+
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          manifest: manifest-qa.yml
+          script: env CF_SPACE=qa CF_APP_NAME=Blue CF_MANIFEST=manifest-sandbox.yml ci/deploy_to_cf.sh
+          on:
+            branch: sandbox
+
 notifications:
-  email:
-    recipients:
-      - Amanda.Moran637@mod.gov.uk
-    on_success: always
-    on_failure: always
+  email: false

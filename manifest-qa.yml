@@ -1,5 +1,10 @@
 ---
 applications:
-  - name: srrdigital-qa
-    memory: 256M
-    buildpack: https://github.com/cloudfoundry/php-buildpack.git#v4.3.78
+  - name: test-app
+    routes:
+      - route: srrdigital-qa.cloudapps.digital
+    memory: 800M
+    disk_quota: 2G
+    instances: 1
+    docker:
+      image: codesure/srrdigital:qa
