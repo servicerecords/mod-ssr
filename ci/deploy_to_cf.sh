@@ -6,6 +6,7 @@ echo "============== INSTALLING CLOUD FOUNDRY CLI CLIENT =============="
 wget --max-redirect=1 --output-document=cf_cli_6.26.0.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=7.1.0&source=github-rel"
 gunzip cf_cli_6.26.0.tgz
 tar -xvf cf_cli_6.26.0.tar
+ls
 
 echo "============== LOGGING INTO CLOUD FOUNDRY =============="
 ./cf login -a=$CF_API -s=$CF_SPACE -o=$CF_ORGANIZATION -u=$CF_USERNAME -p=$CF_PASSWORD
