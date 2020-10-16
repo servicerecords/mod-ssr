@@ -11,30 +11,26 @@ jobs:
       script:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - ls
-        - cp docker/.env docker/.env-build
-        - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
-        - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
-        - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
-        - sed -ri "s|ENV_SEA_EMAIL|$SEA_EMAIL|" ./docker/.env-build
-        - sed -ri "s|ENV_AIR_EMAIL|$AIR_EMAIL|" ./docker/.env-build
-        - sed -ri "s|ENV_ACCOUNTS_EMAIL|$ACCOUNTS_EMAIL|" ./docker/.env-build
-        - sed -ri "s|ENV_FEEDBACK_EMAIL|$FEEDBACK_EMAIL|" ./docker/.env-build
-        - sed -ri "s|ENV_UNKNOWN_EMAIL|$UNKNOWN_EMAIL|" ./docker/.env-build
-        - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
-        - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
-        - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
-        - cat docker/.env-build
-        - docker build -t build-image .
-        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:docker_build
-#        - docker logout
-#        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-#        - docker image ls
-#        - exit
-        - docker push "$DOCKER_ORGANISATION"/srrdigital:docker_build
+#        - cp docker/.env docker/.env-build
+#        - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
+#        - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
+#        - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
+#        - sed -ri "s|ENV_SEA_EMAIL|$SEA_EMAIL|" ./docker/.env-build
+#        - sed -ri "s|ENV_AIR_EMAIL|$AIR_EMAIL|" ./docker/.env-build
+#        - sed -ri "s|ENV_ACCOUNTS_EMAIL|$ACCOUNTS_EMAIL|" ./docker/.env-build
+#        - sed -ri "s|ENV_FEEDBACK_EMAIL|$FEEDBACK_EMAIL|" ./docker/.env-build
+#        - sed -ri "s|ENV_UNKNOWN_EMAIL|$UNKNOWN_EMAIL|" ./docker/.env-build
+#        - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
+#        - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
+#        - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
+#        - cat docker/.env-build
+#        - docker build -t build-image .
+#        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:docker_build
+#        - docker push "$DOCKER_ORGANISATION"/srrdigital:docker_build
 
       deploy:
         - provider: script
-          if: branch = "docker_build"
+          branch: docker_build
           skip_cleanup: true
           manifest: manifest-sandbox.yml
           script: ci/deploy_to_cf.sh
