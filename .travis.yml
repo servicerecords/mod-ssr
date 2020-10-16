@@ -25,13 +25,12 @@ jobs:
         - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
         - cat docker/.env-build
         - docker build -t build-image .
-        #- docker exec -it build-image bash -c './artisan dusk'
-#        - docker tag build-image:latest codesure/srrdigital:sandbox
+        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:docker_build
 #        - docker logout
 #        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
 #        - docker image ls
 #        - exit
-#        - docker push codesure/srrdigital:sandbox
+        - docker push "$DOCKER_ORGANISATION"/srrdigital:docker_build
 
       deploy:
         - provider: script

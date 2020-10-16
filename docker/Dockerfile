@@ -11,7 +11,12 @@ RUN apt -y upgrade
 RUN apt -y --no-install-recommends install unzip \
                    php-fpm php-bcmath php-bz2 php-calendar \
                    php-curl php-intl php-json php-imagick wget \
-                   php-xml php-zip composer ghostscript imagemagick
+                   php-xml php-zip composer ghostscript imagemagick \
+                   libasound2 libatk-bridge2.0 libatk1.0-0 libatspi2.0-0 \
+                   libcairo2 libdrm2 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 \
+                   libnss3 libpango-1.0-0 libpangocairo-1.0-0 libx11-xcb1 libxcb-dri3-0 \
+                   libxcomposite1 libxdamage1 libxfixes3 libxrandr2 xdg-utils \
+                   fonts-liberation libgbm1
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
@@ -32,14 +37,15 @@ COPY ./docker/docker-entrypoint.sh /etc/entrypoint.sh
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 # RUN apt -y install ./google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb
-RUN apt install -f
+RUN ln -s /usr/bin/google-chrome /usr/bin/chromium
+
 #RUN rm google-chrome-stable_current_amd64.deb
-#RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
-#RUN chmod 755 /etc/entrypoint.sh
-#RUN apt -y install chromium-driver
+RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+RUN chmod 755 /etc/entrypoint.sh
+COPY docker/chromedriver /usr/local/bin/chromedriver
 
 # Bit of a clean up
-RUN apt -y remove build-essential wget && rm -rf /var/lib/apt/lists/*
+# RUN apt -y remove wget && rm -rf /var/lib/apt/lists/*
 
 # Set basic permissions
 RUN mkdir -p /app/public
