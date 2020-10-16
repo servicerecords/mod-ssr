@@ -8,6 +8,8 @@ trait Interactions
 {
     protected function completeServicepersonDetails(Browser $browser)
     {
+        $browser->assertSee('Details of the serviceperson');
+
         $browser->assertSee('First name(s)')
             ->assertSee('Last name')
             ->assertSee('Place of birth (optional)')
@@ -34,7 +36,8 @@ trait Interactions
             ->type('address_line_1', '1 Any Street')
             ->type('address_town', 'Any Town')
             ->type('address_postcode', 'AB12 3DE')
-            ->type('#location-autocomplete', 'country:GB')
+//            ->type('#location-autocomplete', 'country:GB')
+                ->value('#location-autocomplete', 'United Kingdom')
             ->type('telephone', '01234567890')
             ->radio('use_billing', 'Yes')
             ->press('Continue')
@@ -50,5 +53,11 @@ trait Interactions
             $browser->assertDontSee('Page not found'); // The best we can do to assert not a 404
             $browser->back();
         }
+    }
+
+    protected function uploadDocument(Browser $browser) {
+        $browser->assertSee('Sending documentation');
+        $browser->attach('certificate', __DIR__ . '/../test-image.png');
+        $browser->press('Continue');
     }
 }

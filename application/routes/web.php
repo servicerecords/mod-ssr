@@ -64,4 +64,3 @@ Route::get('/feedback/email', 'FeedbackController@email');
 Route::get('/pay', 'PaymentController@processPayment');
 
 Route::get('/confirmation', 'ConfirmationController@index');
-

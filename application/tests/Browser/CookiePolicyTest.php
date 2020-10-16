@@ -24,12 +24,6 @@ class CookiePolicyTest extends DuskTestCase
                 ->refresh()
                 ->assertMissing('#global-cookie-message')
                 ->quit();
-
-            $browser->visit('/')
-                ->assertMissing('#global-cookie-message');
-
-            $browser->screenshot('quitting.png');
-//                ->assertHasCookie('cookies_preferences_set', false);
         });
     }
 

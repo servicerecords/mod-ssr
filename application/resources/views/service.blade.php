@@ -47,18 +47,6 @@
                     </div>
                 </div>
             </fieldset>
-            <!--<div class="govuk-form-group govuk-!-margin-top-5">
-                <details class="govuk-details" role="group">
-                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-f1dc968c-6b6d-4b21-8489-9f2109e5f478" aria-expanded="false">
-              <span class="govuk-details__summary-text">
-                Served in more than one service?
-              </span>
-                    </summary>
-                    <div class="govuk-details__text" id="details-content-f1dc968c-6b6d-4b21-8489-9f2109e5f478" aria-hidden="true">
-                        Please choose the service above that is believed to be the last service served in. Your request will be sent to this service.
-                    </div>
-                </details>
-            </div>-->
 
             @include('partials.form-continue')
         </div>

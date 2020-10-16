@@ -21,7 +21,7 @@
                            aria-describedby="{{null !== $errors->first('fullname') ? 'fullname-error' : ''}}">
                 </div>
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="fullname">Your email address</label>
+                    <label class="govuk-label govuk-label--s" for="fullname">Email</label>
                     @if($errors->has('email'))
                         <span id="email-error" class="govuk-error-message">{{$errors->first('email')}}</span>
                     @endif
@@ -30,9 +30,9 @@
                            name="email" type="text" spellcheck="false" aria-required="true"
                            aria-describedby="{{null !== $errors->first('email') ? 'email-error' : ''}}">
                 </div>
-                <div class="govuk-form-group">
+                <div class="govuk-form-group govuk-!-margin-bottom-2">
                     <label class="govuk-label govuk-label--s" for="address-line-1">
-                        Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+                        Building number or name and street
                     </label>
                     @if($errors->has('address_line_1'))
                         <span id="address-line-1-error"
@@ -110,7 +110,7 @@
                         For international numbers include the country code.
                     </span>
                     @if($errors->first('telephone'))
-                        <span id="telephone-error" class="govuk-error-message">Enter your telephone number</span>
+                        <span id="telephone-error" class="govuk-error-message">Telephone number</span>
                     @endif
                     <input
                         value="{{ isset($your_details['telephone'] ) ? $your_details['telephone'] : old('telephone') }}"
@@ -156,10 +156,7 @@
     <script type="text/javascript">
         openregisterLocationPicker({
             selectElement: document.getElementById('location-autocomplete'),
-            additionalSynonyms: [
-                {name: 'blighty', code: 'country:GB'},
-            ],
-            url: '/assets/location-autocomplete-graph.json'
+            url: '/assets/countries-autocomplete-graph.json'
         })
     </script>
 @endpush

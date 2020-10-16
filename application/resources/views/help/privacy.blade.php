@@ -9,8 +9,6 @@
         information to help identify their records.
     </p>
 
-
-
     <p class="govuk-body">
         Information you enter will be held temporarily and securely in line with our <a href="/help/cookies">cookie policy</a>.
         We do this so you can progress through and complete your application. At the end of the process this information

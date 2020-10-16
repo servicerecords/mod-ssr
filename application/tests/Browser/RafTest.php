@@ -19,7 +19,7 @@ class RafTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertSee('Request an historic service record');
+                ->assertSee('Apply for a deceased\'s military record');
 
             $browser->click('a.govuk-button.govuk-button--start')
                 ->assertSee('Details of the serviceperson')
@@ -34,10 +34,7 @@ class RafTest extends DuskTestCase
                 ->assertSee('Details of the serviceperson');
 
             $this->completeServicepersonDetails($browser);
-
-            $browser->assertSee('Sending documentation');
-            $browser->attach('certificate', __DIR__ . '/mod-cert-low-low.jpg');
-            $browser->press('Continue');
+            $this->uploadDocument($browser);
 
             $browser->screenshot('post-photo.jpg');
         });
@@ -52,7 +49,7 @@ class RafTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertSee('Request an historic service record');
+                ->assertSee('Apply for a deceased\'s military record');
 
             $browser->click('a.govuk-button.govuk-button--start')
                 ->assertSee('Details of the serviceperson')

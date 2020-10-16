@@ -30,11 +30,4 @@ class HelpController extends Controller
         return view('help.accessibility');
     }
 
-    /**
-     * Update a users preference as to allow Google tracking or not
-     */
-    public function saveTrackingPreference(Request $request)
-    {
-
-    }
 }

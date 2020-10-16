@@ -1,20 +1,45 @@
 services:
   - docker
+env:
+  global:
+    - CF_API=api.cloud.service.gov.uk
+    - CF_ORGANIZATION=mod-request-a-historic-service-record
+    - CF_USERNAME=toby@codesure.co.uk
+    - secure: "Rlal6uRpsfYlp0xLuIpd4w5SGdiaUG5nQEW4AJf9LBb+Hnmkryp9iJ4t4g16/kbEmg54cv3b930ulRoLFlLx0ZggsE0kaMi8z01e4xHIZeGP3onSUlidnlFysgmpg/+6wOlIyfDKvfWIq8mZNCPdGGVc6k9D6bkDTS3E/B+ZZxAq8JkDnzQFpUwAnRzEsO/tKZ41J78Wc2SSHE5qCsQ8BF4nnGbBG2YtcaBZTJDt9noWqYuHpBvMZxmJNsgPphMS6n9sUrGUg8C/A3dOBR/J/j/yJz5n0uNlWOWyf/qzDPT+TUpW1CJP+6v4QVdwMdR8AyVWuEeRZVo+eJkxfL2bvRdu3NIzUGfGgfel70HZFrUjsONliy37L5beBhMuXI1hHyxU6g3NXwkA1zE4I03g+rudLGdrPFs1Vg2XL4kJsTsqvS5ylUEFcHt6q4KvYF5W73h6iRheGROL/HUYoTRNncnrsCK1vNkCCNClzzfFd3v5ck3RseLW3kTi1rZV1zN6UErAEdpyQctxb/hgRTootygqJlICy6g09YbNXj8pGqsiJxtFHaHI2tiEaVviqsf63aEGA7J1RyG9+p67sadDdymCooeHzD3GFndOfgKqOU8coXTLqcrDYe7T7+5hDP/Vho7jQORshSYvj5LtgNkPblsvQl2LTKCoA8dTAxLSlGE="
 jobs:
   include:
     - stage: build image for sandbox
-      if: branch = "docker_build"
+#      if: branch = "docker_build"
+      if: branch IN ("docker_build", "sandbox")
       script:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
+        - ls
+        - chmod 755 ci/deploy_to_cf.sh
+        - chmod 755 ci/zero_downtime.sh
+        - cp docker/.env docker/.env-build
+        - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
+        - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
+        - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_SEA_EMAIL|$SEA_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_AIR_EMAIL|$AIR_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_ACCOUNTS_EMAIL|$ACCOUNTS_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_FEEDBACK_EMAIL|$FEEDBACK_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_UNKNOWN_EMAIL|$UNKNOWN_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
+        - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
+        - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
+        - cat docker/.env-build
         - docker build -t build-image .
-        - docker exec -it build-image bash -c './artisan dusk'
-        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:sandbox
-        - docker logout
-        - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
-        - docker push "$DOCKER_ORGANISATION"/srrdigital:sandbox
+        - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
+        - docker push "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
 
       deploy:
         - provider: script
           skip_cleanup: true
-          script: env CF_SPACE=development CF_APP_NAME=docker_deploy CF_MANIFEST=manifest-test.yml
+          manifest: manifest-sandbox.yml
+          script: env CF_SPACE=development CF_APP_NAME=docker_deploy CF_MANIFEST=manifest-sandbox.yml ci/deploy_to_cf.sh
+          on:
+            branch: docker_build
 
+notifications:
+  email: false

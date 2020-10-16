@@ -49,7 +49,6 @@
         </style>
     </head>
     <body>
-    BIT OF A MINIMAL
         <div class="flex-center position-ref full-height">
             <div class="code">
                 @yield('code')

@@ -1,10 +1,10 @@
 ---
 applications:
-  - name: srrdigital-dev
-    memory: 1G
+  - name: test-app
+    host: test-app
+    domain: srrdigital-sandbox-zdt.cloudapps.digital
+    memory: 800M
     disk_quota: 2G
-    env:
-      CF_DOCKER_PASSWORD: ${CF_PASSWORD}
+    instances: 2
     docker:
-      image: codesure/srrdigital:sandbox
-      username: ${DOCKER_USERNAME}
+      image: codesure/srrdigital:docker_build
