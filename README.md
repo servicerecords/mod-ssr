@@ -9,7 +9,7 @@ Once cloned it is wise to run,
 
 This will install any PHP dependencies and whatever front end dependencies GDS prescribe in their design system.
 
-##Branching
+## Branching
 
 The development process runs essentially in 3 branches, *local*, *development* & *master* the local branch should always be a clone of *development*, as *master* could be behind *development* due to live issue fixes etc. Going forward as the project grows and the team becomes more agile each story/ticket should have it's own branch.  To merge *local* into *development* and *development* into *master* a PR should be created, a code review carried out, and a full test run before a PR is reviewed.
 
@@ -20,7 +20,7 @@ We utilise to third party services and their attributed libraries GovPay to take
 
 We also run GovNotify which is a notification queue system where we offset and communication too, for us this means sending the DBS offices any requests that the application takes.
 
-##Testing
+## Testing
 
 Testing is based on Webdriver/Selenium tests and are executed as Dusk E2E tests performed under QA. Should a new path taken during QA cause an error,
 this path should be replicated as an E2E test and code hardening written to shore up the application.
@@ -31,12 +31,12 @@ Execute tests using the Artisan tool:
     ./artisan dusk
 ```
 
-##Deploy
+## Deploy
 
 We run continuous deployment from master via Travis. Upon successful branch merge, Travis builds a fresh Docker image, executes smoke tests and
 pushes to our Docker Hub instance before Blue/Green deployment to PaaS
 
-##Licence
+## Licence
 
 Unless stated otherwise, the codebase is released under [the MIT License](https://github.com/servicerecords/mod-ssr/blob/master/LICENCE.md). This covers both the codebase and any sample code in the documentation.
 
