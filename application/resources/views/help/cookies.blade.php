@@ -21,13 +21,16 @@
     <ul class="govuk-list govuk-list--number">
         <li><strong>Cookies that measure website use</strong>
             <p class="govuk-body">We use Google Analytics to measure how you found, access and use the website so we can
-                improve it, based on user needs. We do not allow Google to use or share the data about how you use this site.</p>
+                improve it, based on user needs. We do not allow Google to use or share the data about how you use this
+                site.</p>
 
             <p class="govuk-body">Google Analytics stores anonymised information about:</p>
 
             <ul class="govuk-list govuk-list--bullet">
                 <li>how you got to the site</li>
-                <li>the pages you visit on search for {{ env('APP_NAME', 'Apply for a deceased\'s military record') }} and how long you spend on each page</li>
+                <li>the pages you visit on search for {{ env('APP_NAME', 'Apply for a deceased\'s military record') }}
+                    and how long you spend on each page
+                </li>
                 <li>what you click on while you're visiting the site</li>
             </ul>
 
@@ -103,20 +106,21 @@
                 <div class="govuk-form-group">
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" type="radio" id="tracking-yes" name="tracking" value="yes"
+                            <input class="govuk-radios__input" type="radio" id="tracking-yes" name="tracking"
+                                   value="yes" rel="usage-policy"
                                    @if($tracking === 'yes') checked="checked" @endif>
 
-                            <label class="govuk-label govuk-radios__label" for="tracking-yes">Use cookies that measure my website use</label>
+                            <label class="govuk-label govuk-radios__label" for="tracking-yes">Use cookies that measure
+                                my website use</label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" type="radio" id="tracking-no" name="tracking" value="no"
+                            <input class="govuk-radios__input" type="radio" id="tracking-no" name="tracking"
+                                   value="no" rel="usage-policy"
                                    @if($tracking !== 'yes') checked="checked" @endif>
-                            <label class="govuk-label govuk-radios__label" for="tracking-no">Do not use cookies that measure my website use</label>
+                            <label class="govuk-label govuk-radios__label" for="tracking-no">Do not use cookies that
+                                measure my website use</label>
                         </div>
                     </div>
-                </div>
-                <div class="govuk-form-group">
-                    <button type="submit" class="govuk-button">Save settings</button>
                 </div>
             </form>
             <p class="govuk-body">Google isn't allowed to use or share our analytics data.</p>
@@ -129,56 +133,56 @@
 
             <table class="govuk-table">
                 <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                        <th scope="col" class="govuk-table__header">
-                            Name
-                        </th>
-                        <th scope="col" class="govuk-table__header">
-                            Purpose
-                        </th>
-                        <th scope="col" class="govuk-table__header">
-                            Expires
-                        </th>
-                    </tr>
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">
+                        Name
+                    </th>
+                    <th scope="col" class="govuk-table__header">
+                        Purpose
+                    </th>
+                    <th scope="col" class="govuk-table__header">
+                        Expires
+                    </th>
+                </tr>
                 </thead>
 
                 <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">XSRF-TOKEN</td>
-                        <td class="govuk-table__cell">
-                            A standard cookie used to prevent a malicious exploit of a website
-                        </td>
-                        <td class="govuk-table__cell">
-                            2 hours
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">apply_for_a_deceaseds_military_record_session</td>
-                        <td class="govuk-table__cell">
-                            Holds session data to complete the application
-                        </td>
-                        <td class="govuk-table__cell">
-                            End of session
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">cookies_Preference_set</td>
-                        <td class="govuk-table__cell">
-                            Registers the input cookie preference
-                        </td>
-                        <td class="govuk-table__cell">
-                            End of session
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">cookies_policy</td>
-                        <td class="govuk-table__cell">
-                            Register the response to cookies permission question
-                        </td>
-                        <td class="govuk-table__cell">
-                            End of session
-                        </td>
-                    </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">XSRF-TOKEN</td>
+                    <td class="govuk-table__cell">
+                        A standard cookie used to prevent a malicious exploit of a website
+                    </td>
+                    <td class="govuk-table__cell">
+                        2 hours
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">apply_for_a_deceaseds_military_record_session</td>
+                    <td class="govuk-table__cell">
+                        Holds session data to complete the application
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of session
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">cookies_Preference_set</td>
+                    <td class="govuk-table__cell">
+                        Registers the input cookie preference
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of session
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">cookies_policy</td>
+                    <td class="govuk-table__cell">
+                        Register the response to cookies permission question
+                    </td>
+                    <td class="govuk-table__cell">
+                        End of session
+                    </td>
+                </tr>
                 </tbody>
             </table>
 
@@ -188,3 +192,27 @@
     </ul>
 
 @endsection
+
+@push('mod-scripts')
+    <script>
+        const radioElements = document.querySelectorAll('[rel="usage-policy"]')
+        let policy = JSON.parse(window.GOVUK.getCookie('cookies_policy'))
+
+        radioElements.forEach(function (element) {
+            element.addEventListener('change', function(input) {
+                policy['usage'] = input.target.value == 'no' ? false : true
+                window.GOVUK.setCookie('cookies_policy', JSON.stringify(policy), {days: 0} )
+                window.GOVUK.setCookie('cookies_preferences_set', true, {days: 0} )
+            })
+        })
+
+
+        if(policy['usage'] === false) {
+            document.getElementById('tracking-yes').checked = false
+            document.getElementById('tracking-no').checked = true
+        } else {
+            document.getElementById('tracking-yes').checked = true
+            document.getElementById('tracking-no').checked = false
+        }
+    </script>
+@endpush

@@ -9,7 +9,7 @@
                 {{ Session::get('service') }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/service">
+                <a class="govuk-link" href="/change-answer?return_to=service">
                     Change<span class="govuk-visually-hidden"> service</span>
                 </a>
             </dd>
@@ -26,7 +26,7 @@
                 {{ Session::get('service_details')['service_number'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/service-details">
+                <a class="govuk-link" href="/change-answer?return_to=service-details">
                     Change<span class="govuk-visually-hidden"> service</span>
                 </a>
             </dd>
@@ -39,7 +39,7 @@
                 {{ Session::get('death_in_service')['death'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/service/death-in-service">
+                <a class="govuk-link" href="/change-answer?return_to=service/death-in-service">
                     Change<span class="govuk-visually-hidden"> death in service</span>
                 </a>
             </dd>
@@ -52,7 +52,7 @@
                 {{ Session::get('essential_information')['firstnames'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/essential-information">
+                <a class="govuk-link" href="/change-answer?return_to=essential-information">
                     Change<span class="govuk-visually-hidden"> first names</span>
                 </a>
             </dd>
@@ -65,7 +65,7 @@
                 {{ Session::get('essential_information')['lastname'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/essential-information">
+                <a class="govuk-link" href="/change-answer?return_to=essential-information">
                     Change<span class="govuk-visually-hidden"> last name</span>
                 </a>
             </dd>
@@ -78,7 +78,7 @@
                 {{ Session::get('essential_information')['dob'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/essential-information">
+                <a class="govuk-link" href="/change-answer?return_to=essential-information">
                     Change<span class="govuk-visually-hidden"> date of birth</span>
                 </a>
             </dd>
@@ -92,7 +92,7 @@
                     {{ Session::get('service_details')['join_date'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change<span class="govuk-visually-hidden"> date joined</span>
                     </a>
                 </dd>
@@ -109,7 +109,7 @@
                     {{ Session::get('service_details')['discharge_date'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change<span class="govuk-visually-hidden"> date discharged</span>
                     </a>
                 </dd>
@@ -125,7 +125,7 @@
                     {{ Session::get('service_details')['join_date'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change<span class="govuk-visually-hidden"> date joined</span>
                     </a>
                 </dd>
@@ -142,7 +142,7 @@
                     {{ Session::get('service_details')['discharge_date'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change
                     </a>
                 </dd>
@@ -162,7 +162,7 @@
                     {{ Session::get('service_details')['discharge_year'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change
                     </a>
                 </dd>
@@ -179,7 +179,7 @@
                         @endif
                     </dd>
                     <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="/service-details">
+                        <a class="govuk-link" href="/change-answer?return_to=service-details">
                             Change
                         </a>
                     </dd>
@@ -196,7 +196,7 @@
                         @endif
                     </dd>
                     <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="/service-details">
+                        <a class="govuk-link" href="/change-answer?return_to=service-details">
                             Change
                         </a>
                     </dd>
@@ -211,7 +211,7 @@
                                 {{ (isset(Session::get('service_details')['ta_army_number']) ? Session::get('service_details')['ta_army_number'] : '-') }}
                             </dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="/service-details">
+                                <a class="govuk-link" href="/change-answer?return_to=service-details">
                                     Change
                                 </a>
                             </dd>
@@ -224,7 +224,7 @@
                                 {{ (isset(Session::get('service_details')['army_regt_corps']) ? Session::get('service_details')['army_regt_corps'] : '-') }}
                             </dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="/service-details">
+                                <a class="govuk-link" href="/change-answer?return_to=service-details">
                                     Change
                                 </a>
                             </dd>
@@ -237,7 +237,7 @@
                                 {{ (isset(Session::get('service_details')['ta_army_dates']) ? Session::get('service_details')['ta_army_dates'] : '-') }}
                             </dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="/service-details">
+                                <a class="govuk-link" href="/change-answer?return_to=service-details">
                                     Change
                                 </a>
                             </dd>
@@ -253,7 +253,7 @@
                                 {{ (isset(Session::get('service_details')['aer_number']) ? Session::get('service_details')['aer_number'] : '-') }}
                             </dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="/service-details">
+                                <a class="govuk-link" href="/change-answer?return_to=service-details">
                                     Change
                                 </a>
                             </dd>
@@ -266,7 +266,7 @@
                                 {{ (isset(Session::get('service_details')['aer_regt_corps']) ? Session::get('service_details')['aer_regt_corps'] : '') }}
                             </dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="/service-details">
+                                <a class="govuk-link" href="/change-answer?return_to=service-details">
                                     Change
                                 </a>
                             </dd>
@@ -279,7 +279,7 @@
                                 {{ (isset(Session::get('service_details')['aer_dates']) ? Session::get('service_details')['aer_dates'] : '-' ) }}
                             </dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="/service-details">
+                                <a class="govuk-link" href="/change-answer?return_to=service-details">
                                     Change
                                 </a>
                             </dd>
@@ -299,7 +299,7 @@
                     {{ (isset(Session::get('service_details')['county'])) ? Session::get('service_details')['county'] : '' }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change
                     </a>
                 </dd>
@@ -312,7 +312,7 @@
                     {{ (isset(Session::get('service_details')['address_at_entlistment'])) ? Session::get('service_details')['address_at_entlistment'] : '' }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change
                     </a>
                 </dd>
@@ -325,7 +325,7 @@
                     {{ (isset(Session::get('service_details')['battalions_companies'])) ? Session::get('service_details')['battalions_companies'] : '' }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/service-details">
+                    <a class="govuk-link" href="/change-answer?return_to=service-details">
                         Change
                     </a>
                 </dd>

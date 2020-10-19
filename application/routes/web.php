@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('cookie-test', function () {
-
-    return redirect('test-redirect')->withCookie($cookie);
-});
-
 Route::get('test-redirect', function (Request $request) {
     $cookie = \Cookie::get('cookie');
     dd($cookie);
@@ -64,3 +59,4 @@ Route::get('/feedback/email', 'FeedbackController@email');
 Route::get('/pay', 'PaymentController@processPayment');
 
 Route::get('/confirmation', 'ConfirmationController@index');
+Route::get('/change-details', 'ChangeDetailsController@index');
