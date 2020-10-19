@@ -9,8 +9,7 @@ env:
 jobs:
   include:
     - stage: Build Docker Image for branch
-#      if: branch = "docker_build"
-      if: branch IN ("sandbox", "qa")
+      if: branch IN ("sandbox", "qa", "master")
       script:
         - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USER" docker.io --password-stdin
         - ls
