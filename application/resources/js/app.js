@@ -286,7 +286,7 @@ window.GOVUKFrontend.CookieBanner = {
         window.GOVUK.approveAllCookieTypes();
         this.showConfirmationMessage();
         this.cookieBannerConfirmationMessage.focus();
-        window.GOVUK.cookie('cookies_preferences_set', value, {days: 0});
+        window.GOVUK.cookie('cookies_preferences_set', true, {days: 0});
         if (window.GOVUK.analyticsInit) {
             window.GOVUK.analyticsInit()
         }
