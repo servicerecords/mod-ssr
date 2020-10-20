@@ -14,7 +14,7 @@ class ChangeAnswerController extends Controller
      */
     public function index(Request $request, $return_to)
     {
-        session()->put('updating_answer', true);
+        session()->put('updating_answer', false);
         return redirect('/'. $return_to);
     }
 }
