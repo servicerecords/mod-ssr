@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CookieTrackingRequest;
 use Illuminate\Http\Request;
 
-class ChangeDetailsController extends Controller
+class ChangeAnswerController extends Controller
 {
     /**
      * @param Request $request
@@ -14,6 +14,7 @@ class ChangeDetailsController extends Controller
      */
     public function index(Request $request, $return_to)
     {
-
+        session()->put('updating_answer', true);
+        return redirect('/'. $return_to);
     }
 }

@@ -57,7 +57,9 @@ class ServiceRecordController extends Controller
     {
         $request->session()->put('reference', $this->_createReference($request->input('service')));
         $request->session()->put('service', $request->input('service'));
-        return redirect('/service/death-in-service');
+
+        return (session('updating_answer', false))
+            ? redirect('/check-your-answers') : redirect('/service/death-in-service');
     }
 
     /**
@@ -111,7 +113,8 @@ class ServiceRecordController extends Controller
     public function deathInServiceSave(DeathInServiceSave $request)
     {
         $request->session()->put('death_in_service', $request->all());
-        return redirect('/essential-information');
+        return (session('updating_answer', false))
+            ? redirect('/check-your-answers') : redirect('/essential-information');
     }
 
     /**
@@ -147,7 +150,8 @@ class ServiceRecordController extends Controller
                 $request->session()->get('essential_information.dob_year')
             )
         );
-        return redirect('/service-details');
+        return (session('updating_answer', false))
+            ? redirect('/check-your-answers') : redirect('/service-details');
     }
 
     /**
@@ -240,7 +244,8 @@ class ServiceRecordController extends Controller
         if ($request->session()->get('death_in_service.death') == 'No' && !$this->_agePastThreshold($request->session()->get('essential_information.dob'))) {
             return redirect('/verify');
         }
-        return redirect('/your-details');
+        return (session('updating_answer', false))
+            ? redirect('/check-your-answers') : redirect('/your-details');
     }
 
     /**
@@ -335,7 +340,8 @@ class ServiceRecordController extends Controller
         $validated = $request->validated();
 
         $request->session()->put('your_details', $request->all());
-        return redirect('/your-details/relationship');
+        return (session('updating_answer', false))
+            ? redirect('/check-your-answers') : redirect('/your-details/relationship');
     }
 
     /**
@@ -354,7 +360,8 @@ class ServiceRecordController extends Controller
             $request->session()->put('your_details.payment_required', true);
             return redirect('/check-your-answers');
         } else {
-            return redirect('/your-details/relationship');
+            return (session('updating_answer', false))
+                ? redirect('/check-your-answers') : redirect('/your-details/relationship');
         }
 
     }
@@ -378,18 +385,19 @@ class ServiceRecordController extends Controller
         if ($request->input('relationship') == "I am not related") {
             return redirect('/check-your-answers');
         }
-        return redirect('/your-details/next-of-kin');
+        return session('updating_answer', false)
+            ? redirect('/check-your-answers') : redirect('/your-details/next-of-kin');
     }
 
     public function nextOfKinSave(NextOfKinRequest $request)
     {
-        //$validated = $request->validated();
         $request->session()->put('your_details.next_of_kin', $request->input('next_of_kin'));
-        return redirect('/check-your-answers');
+        return session('updating_answer', false)
+            ? redirect('/check-your-answers') : redirect('/check-your-answers');
     }
 
     /**
-     * Serve the user with the vertification page, this is where proof of death. i.e. The death certificate is uploaded.
+     * Serve the user with the verification page, this is where proof of death. i.e. The death certificate is uploaded.
      *
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -456,9 +464,8 @@ class ServiceRecordController extends Controller
             'method' => $request->input('verify_method')
         ];
         $request->session()->put('verification', $verification);
-        return redirect('/your-details');
-        // }
-
+        return  (session('updating_answer', false))
+            ? redirect('/check-your-answers') : redirect('/your-details');
     }
 
     /**
@@ -472,6 +479,7 @@ class ServiceRecordController extends Controller
      */
     public function checkYourAnswers(Request $request)
     {
+        session()->put('updating_answer', false);
         $data = $request->session();
         return view('check-your-answers', ['data' => $data]);
     }

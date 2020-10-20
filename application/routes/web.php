@@ -59,4 +59,4 @@ Route::get('/feedback/email', 'FeedbackController@email');
 Route::get('/pay', 'PaymentController@processPayment');
 
 Route::get('/confirmation', 'ConfirmationController@index');
-Route::get('/change-details', 'ChangeDetailsController@index');
+Route::get('/change-answer/{return_to}', 'ChangeAnswerController@index');
