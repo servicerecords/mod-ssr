@@ -200,12 +200,11 @@
 
         radioElements.forEach(function (element) {
             element.addEventListener('change', function(input) {
-                policy['usage'] = input.target.value == 'no' ? false : true
+                policy['usage'] = input.target.value.toLowerCase() === 'no' ? false : true
                 window.GOVUK.setCookie('cookies_policy', JSON.stringify(policy), {days: 0} )
                 window.GOVUK.setCookie('cookies_preferences_set', true, {days: 0} )
             })
         })
-
 
         if(policy['usage'] === false) {
             document.getElementById('tracking-yes').checked = false

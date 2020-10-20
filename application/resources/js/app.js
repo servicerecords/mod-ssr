@@ -306,8 +306,16 @@ for (let element of document.querySelectorAll('[type="number"]')) {
     });
 }
 
-window.GOVUK.canTrackUsage = function() {
+window.canTrackUsage = function() {
     const policy = JSON.parse(window.GOVUK.getCookie('cookies_policy'))
 
     return policy['usage'] || true
+}
+
+const hideCookieButton  = document.querySelector('a.gem-c-cookie-banner__hide-button')
+if(hideCookieButton) {
+    hideCookieButton.addEventListener('click', function(event) {
+        event.preventDefault()
+        document.getElementById('global-cookie-message').remove()
+    })
 }

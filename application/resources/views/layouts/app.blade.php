@@ -28,20 +28,8 @@
 </head>
 
 <body class="govuk-template__body">
-<a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 @include('partials.cookie')
-<div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1">
-    <p class="gem-c-cookie-banner__confirmation-message">
-        You’ve accepted all cookies. You can <a class="govuk-link" href="/help/cookies" data-module="track-click"
-                                                data-track-category="cookieBanner"
-                                                data-track-action="Cookie banner settings clicked from confirmation">change
-            your cookie settings</a> at any time.
-    </p>
-    <button class="gem-c-cookie-banner__hide-button" data-hide-cookie-banner="true" data-module="track-click"
-            data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide
-    </button>
-</div>
-</div>
+
 <header class="govuk-header " role="banner" data-module="header">
     <div class="govuk-header__container govuk-width-container">
         <div class="govuk-header__logo">
@@ -153,7 +141,6 @@
     window.GOVUKFrontend.initAll();
     window.GOVUKFrontend.CookieBanner.init();
 </script>
-@if(session()->get('tracking', 'yes') == 'yes')
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_ID', 'UA-176740731-1') }}"></script>
 <script>
@@ -165,11 +152,9 @@
         }
 
         gtag('js', new Date());
-
         gtag('config', '{{ env('GA_ID', 'UA-176740731-1') }}');
     }
 </script>
-@endif
 @stack('mod-scripts')
 </body>
 
