@@ -18,6 +18,11 @@ class CookiePolicyTest extends DuskTestCase
             $browser->visit('/')
                 ->assertPresent('#global-cookie-message')
                 ->assertButtonEnabled('Accept all cookies')
+                ->click('#global-cookie-message button')
+                ->assertHasCookie('cookies_preferences_set', false)
+                ->assertSeeIn('#global-cookie-message', 'You’ve accepted all cookies')
+                ->refresh()
+                ->assertMissing('#global-cookie-message')
                 ->quit();
         });
     }
