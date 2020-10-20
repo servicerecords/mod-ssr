@@ -9,7 +9,7 @@
             {{ Session::get('your_details')['fullname'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/your-details">
+            <a class="govuk-link" href="/change-answer/your-details">
                 Change<span class="govuk-visually-hidden"> your name</span>
             </a>
         </dd>
@@ -23,7 +23,7 @@
             <p class="govuk-body">{{ Session::get('your_details')['address_line_2'] }}</p>
         </dd>
         <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/your-details">
+            <a class="govuk-link" href="/change-answer/your-details">
                 Change<span class="govuk-visually-hidden"> address street number and name</span>
             </a>
         </dd>
@@ -36,7 +36,7 @@
             {{ Session::get('your_details')['address_town'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#/your-details">
+            <a class="govuk-link" href="/change-answer/your-details">
                 Change<span class="govuk-visually-hidden"> town/city</span>
             </a>
         </dd>
@@ -49,7 +49,7 @@
             {{ Session::get('your_details')['address_postcode'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/your-details">
+            <a class="govuk-link" href="/change-answer/your-details">
                 Change<span class="govuk-visually-hidden"> postcode</span>
             </a>
         </dd>
@@ -67,7 +67,7 @@
                 {{ Session::get('verification')['method'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/verify">
+                <a class="govuk-link" href="/change-answer/verify">
                     Change
                 </a>
             </dd>
@@ -81,7 +81,7 @@
                     {{ Session::get('verification')['death_certificate'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="verify">
+                    <a class="govuk-link" href="/change-answer/verify">
                         Change
                     </a>
                 </dd>

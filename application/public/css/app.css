@@ -6265,11 +6265,40 @@
 .gem-c-cookie-banner#global-cookie-message {
   background-color: #f3f2f1;
   padding: 20px 0;
-  box-sizing: border-box;
 }
 
-.gem-c-cookie-banner .gem-c-cookie-banner__confirmation {
+.gem-c-cookie-banner__confirmation {
   display: none;
+  border: none;
+  outline: none;
+}
+
+.gem-c-cookie-banner__confirmation-message {
+  float: left;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: 19px;
+}
+
+.gem-c-cookie-banner__confirmation-message:focus {
+  border: none;
+  outline: none;
+}
+
+.gem-c-cookie-banner__hide-button {
+  float: right;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  font-family: "GDS Transport", arial, sans-serif;
+  line-height: 1.3157894737;
+}
+
+.gem-c-cookie-banner__hide-button:focus {
+  border: none;
+  outline: none;
 }
 
 .autocomplete__menu {

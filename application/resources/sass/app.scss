@@ -21,11 +21,41 @@ $govuk-assets-path: 'assets/';
     &#global-cookie-message {
         background-color: #f3f2f1;
         padding: 20px 0;
-        box-sizing: border-box;
+        //box-sizing: border-box;
+
     }
 
-    .gem-c-cookie-banner__confirmation {
+    &__confirmation {
         display: none;
+        border: none;
+        outline: none;
+    }
+
+    &__confirmation-message {
+        float: left;
+        border: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        font-size: 19px;
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    &__hide-button {
+        float: right;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        font-family: "GDS Transport",arial,sans-serif;
+        line-height:1.3157894737;
+        &:focus {
+            border: none;
+            outline: none;
+        }
     }
 }
 
