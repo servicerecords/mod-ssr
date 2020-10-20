@@ -209,6 +209,11 @@
         if(policy['usage'] === false) {
             document.getElementById('tracking-yes').checked = false
             document.getElementById('tracking-no').checked = true
+
+            // Delete Google Cookies
+            window.GOVUK.deleteCookie('_gid')
+            window.GOVUK.deleteCookie('_ga')
+            window.GOVUK.deleteCookie('_ga_gtag_{{ env('GA_ID', 'UA-176740731-1') }}')
         } else {
             document.getElementById('tracking-yes').checked = true
             document.getElementById('tracking-no').checked = false
