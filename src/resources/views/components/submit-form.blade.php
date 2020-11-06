@@ -1,5 +1,5 @@
 @props([
-'submitLabel' => 'Continue',
+'submitLabel' => 'Save and continue',
 'cancelLabel' => 'Cancel application',
 'canCancel' => true
 ])
