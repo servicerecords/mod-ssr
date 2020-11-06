@@ -13,7 +13,7 @@ class SendingDocumentationRequest extends DigitalRequest
     public function rules()
     {
         return [
-            'death-certificate' => 'required|file|max:10000|mimes:jpeg,png,pdf|mimetypes:image/jpeg,image/png,image/bmp,application/pdf'
+            'death-certificate' => 'required|file|max:50000|mimes:jpeg,png,pdf|mimetypes:image/jpeg,image/png,image/bmp,application/pdf'
         ];
     }
 
@@ -26,7 +26,7 @@ class SendingDocumentationRequest extends DigitalRequest
             'death-certificate.required' => 'A death certificate is required',
             'death-certificate.mimes' => 'Your document is not an accepted file type',
             'death-certificate.mimetypes' => 'Your document is not an accepted file type',
-            'death-certificate.max' => 'Your file must not be greater than 10Mb'
+            'death-certificate.max' => 'Your file must not be greater than 50Mb'
         ];
     }
 }
