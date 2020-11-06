@@ -14,7 +14,8 @@
 @if($children)
     <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-{{ $_id }}">
         @foreach($children as $child)
-        <x-textfield :label="$child['label']" :field="$field . '-' . $child['field']" :hint="$child['hint'] ?? ''" :mandatory="$child['mandatory'] ?? true"></x-textfield>
+            <x-textfield :label="$child['label']" :field="$field . '-' . $child['field']" :hint="$child['hint'] ?? ''"
+                         :mandatory="$child['mandatory'] ?? true"></x-textfield>
         @endforeach
     </div>
 @endif

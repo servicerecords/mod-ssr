@@ -1,11 +1,11 @@
 <x-date-field
-    :label="session('serviceperson-died-in-service', 'no') === 'no' ? 'Year of discharge' : 'Year of death in service'"
-    field="serviceperson-discharged" hint="Approximate if you are unsure."
+    :label="session('serviceperson-died-in-service', \App\Models\Constant::NO) === \App\Models\Constant::NO ? 'Year of discharge' : 'Year of death in service'"
+    field="serviceperson-discharged-date" hint="Approximate if you are unsure."
     :hide-day="true" :hide-month="true" :hide-year-label="true"
     :mandatory="false"></x-date-field>
 
 <x-textfield label="Regt/Corps" field="serviceperson-regiment"
-             :hint="session('serviceperson-died-in-service', 'no') === 'no' ? 'At time of discharge' : 'At time of death'"
+             :hint="session('serviceperson-died-in-service', \App\Models\Constant::NO) === \App\Models\Constant::NO ? 'At time of discharge' : 'At time of death'"
              :mandatory="false"></x-textfield>
 
 @if(session('serviceperson-died-in-service', App\Models\Constant::YES) === App\Models\Constant::NO)
@@ -26,6 +26,7 @@
                       :options="[
                     [
                       'label'    => 'Territorial Army (TA)',
+                      'field'    => '-ta',
                       'children' => [
                         [ 'label' => 'Number', 'field' => 'ta-number' ],
                         [ 'label' => 'Regt/Corps', 'field' => 'ta-regiment' ],
@@ -34,6 +35,7 @@
                     ],
                     [
                       'label'    => 'Army Emergency Reserve (AER)',
+                      'field'    => '-aer',
                       'children' => [
                         [ 'label' => 'Number', 'field' => 'aer-number' ],
                         [ 'label' => 'Regt/Corps', 'field' => 'aer-regiment' ],
