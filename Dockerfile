@@ -7,7 +7,7 @@ ENV TZ=Europe/London
 WORKDIR /app
 
 # Move our application into the containerdocker
-COPY application/ /app
+COPY src/ /app
 COPY ./docker/.env-build /app/.env
 
 # Install our application dependencies
@@ -22,8 +22,6 @@ RUN chmod -R 777 /app/storage
 
 RUN cd /app
 RUN php artisan dusk:chrome-driver
-#RUN useradd test
-#RUN su test
 RUN php artisan dusk
 
 # Expose our HTTP port to the Host

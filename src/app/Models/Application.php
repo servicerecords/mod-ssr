@@ -1,0 +1,305 @@
+<?php
+
+
+namespace App\Models;
+
+
+use GuzzleHttp\Client;
+use Illuminate\Support\Str;
+use \Alphagov\Notifications\Client as Notify;
+
+class Application
+{
+    private static $instance = null;
+    private $serviceperson = [];
+    private $applicant = [];
+    private $deathCertificate = false;
+
+    private $standardQuestions = [
+        ['label' => 'Service', 'field' => 'serviceperson-service', 'route' => 'service'],
+        ['label' => 'Service number', 'field' => 'serviceperson-service-number', 'route' => 'serviceperson-details'],
+        ['label' => 'First name(s)', 'field' => 'serviceperson-first-name', 'route' => 'essential-information'],
+        ['label' => 'Last name', 'field' => 'serviceperson-last-name', 'route' => 'essential-information'],
+        ['label' => 'Place of birth', 'field' => 'serviceperson-place-of-birth', 'route' => 'essential-information'],
+        ['label' => 'Date of birth', 'field' => 'serviceperson-date-of-birth', 'route' => 'essential-information'],
+    ];
+
+    private $questionOrder = [
+        Constant::SERVICEPERSION => [
+            ServiceBranch::NAVY => [
+                ['label' => 'Date they joined', 'field' => 'serviceperson-date-enlisted', 'route' => 'serviceperson-details'],
+                ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
+                ['label' => 'Date of death in service', 'field' => 'serviceperson-date-discharged', 'route' => 'serviceperson-details'],
+                ['label' => 'Further information', 'field' => 'serviceperson-discharged-information', 'route' => 'serviceperson-details'],
+            ],
+            ServiceBranch::ARMY => [
+
+                ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
+                ['label' => 'Year of death in service', 'field' => 'serviceperson-date-discharged', 'route' => 'serviceperson-details'],
+                ['label' => 'Regt/Corps', 'field' => 'serviceperson-regiment', 'route' => 'serviceperson-details'],
+                ['label' => 'Why they left the Army', 'field' => 'serviceperson-reason-for-leaving', 'route' => 'serviceperson-details'],
+                ['label' => 'Territorial Army (TA)', 'field' => 'serviceperson-additional-service-ta', 'route' => 'serviceperson-details'],
+                ['label' => 'TA Number', 'field' => 'serviceperson-additional-service-ta-number', 'route' => 'serviceperson-details'],
+                ['label' => 'TA Regt/Corps', 'field' => 'serviceperson-additional-service-ta-regiment', 'route' => 'serviceperson-details'],
+                ['label' => 'TA Dates', 'field' => 'serviceperson-additional-service-ta-dates-hint', 'route' => 'serviceperson-details'],
+                ['label' => 'Army Emergency Reserve (AER)', 'field' => 'serviceperson-additional-service-aer', 'route' => 'serviceperson-details'],
+                ['label' => 'AER Reserve Number', 'field' => 'serviceperson-additional-service-aer-number', 'route' => 'serviceperson-details'],
+                ['label' => 'AER Regt/Corps', 'field' => 'serviceperson-additional-service-aer-regiment', 'route' => 'serviceperson-details'],
+                ['label' => 'AER Dates', 'field' => 'serviceperson-additional-service-aer-dates-hint', 'route' => 'serviceperson-details'],
+                ['label' => 'Disability Pension been applied for', 'field' => 'serviceperson-disability-pension', 'route' => 'serviceperson-details'],
+                ['label' => 'Further information', 'field' => 'serviceperson-additional-information', 'route' => 'serviceperson-details'],
+            ],
+            ServiceBranch::RAF => [
+                ['label' => 'Date they joined', 'field' => 'serviceperson-date-enlisted', 'route' => 'serviceperson-details'],
+                ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
+                ['label' => 'Date of casualty / aircraft loss', 'field' => 'serviceperson-date-discharged', 'route' => 'serviceperson-details'],
+                ['label' => 'Further information', 'field' => 'serviceperson-discharged-information', 'route' => 'serviceperson-details'],
+            ],
+            ServiceBranch::HOME_GUARD => [
+                ['label' => 'National Registration number', 'field' => 'serviceperson-service-number', 'route' => 'serviceperson-details'],
+                ['label' => 'Date they joined', 'field' => 'serviceperson-enlisted-date', 'route' => 'serviceperson-details'],
+                ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
+                ['label' => 'Date of death in service', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details'],
+                ['label' => 'County did they serve in', 'field' => 'serviceperson-county-served', 'route' => 'serviceperson-details'],
+                ['label' => 'Address when they joined', 'field' => 'serviceperson-address-when-joined', 'route' => 'serviceperson-details'],
+                ['label' => 'Numbers of any Battalions and Companies', 'field' => 'serviceperson-battalions', 'route' => 'serviceperson-details'],
+            ],
+        ],
+        Constant::APPLICANT => [
+            ['label' => 'Your full name', 'field' => 'applicant-name', 'route' => 'applicant-details'],
+            ['label' => 'Email address', 'field' => 'applicant-email-address', 'route' => 'applicant-details'],
+            ['label' => 'Building and street', 'field' => 'applicant-address-line-1', 'route' => 'applicant-details'],
+            ['label' => 'Address Line 2', 'field' => 'applicant-address-line-2', 'route' => 'applicant-details'],
+            ['label' => 'Town', 'field' => 'applicant-address-town', 'route' => 'applicant-details'],
+            ['label' => 'Postcode', 'field' => 'applicant-address-postcode', 'route' => 'applicant-details'],
+            ['label' => 'Country', 'field' => 'applicant-address-country', 'route' => 'applicant-details'],
+            ['label' => 'Telephone Number', 'field' => 'applicant-telephone', 'route' => 'applicant-details'],
+            ['label' => 'Relationship to serviceperson', 'field' => 'applicant-relationship', 'route' => 'applicant-relationship'],
+//            ['label' => 'Other relationship', 'field' => 'applicant-relationship-other', 'route' => 'applicant-relationship'],
+            ['label' => 'Was spouse at death', 'field' => 'applicant-relationship-spouse-at-death', 'route' => 'applicant-relationship'],
+            ['label' => 'No surviving spouse', 'field' => 'applicant-relationship-no-surviving-spouse', 'route' => 'applicant-relationship'],
+            ['label' => 'Is next of kin', 'field' => 'applicant-next-of-kin', 'route' => 'applicant-next-of-kin'],
+        ]
+    ];
+
+    /**
+     * Application constructor.
+     */
+    private function __construct()
+    {
+        $session = session()->all();
+        foreach ($session as $sessionKey => $sessionValue) {
+            if (Str::startsWith($sessionKey, 'serviceperson-')) {
+                $this->serviceperson[$sessionKey] = $sessionValue;
+                continue;
+            }
+
+            if (Str::startsWith($sessionKey, 'applicant-')) {
+                $this->applicant[$sessionKey] = $sessionValue;
+                continue;
+            }
+
+            if ($sessionKey === 'death-certificate') {
+                $this->deathCertificate = file_get_contents(storage_path($sessionValue));
+            }
+        }
+    }
+
+    /**
+     * @return Application|null
+     */
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new Application();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * @return array
+     */
+    public function getServiceperson()
+    {
+        $responses = array_merge(
+            $this->standardQuestions,
+            $this->questionOrder[Constant::SERVICEPERSION][session('service', ServiceBranch::ARMY)]
+        );
+
+        foreach ($responses as $responseKey => $response) {
+            $responses[$responseKey]['value'] = session($response['field'], 'n/a');
+        }
+
+        return $responses;
+    }
+
+    /**
+     * @return array
+     */
+    public function getApplicant()
+    {
+        $responses = $this->questionOrder[Constant::APPLICANT];
+
+        foreach ($responses as $responseKey => $response) {
+            if (session($response['field'], 'n/a') == trim('')) {
+                unset($responses[$responseKey]);
+                continue;
+            }
+
+            $responses[$responseKey]['value'] = session($response['field'], 'n/a');
+
+            switch(session('service', ServiceBranch::HOME_GUARD)) {
+                case ServiceBranch::HOME_GUARD:
+                    if ($response['label'] === 'Service number') {
+                        $responses[$responseKey]['label'] = 'National Registration';
+                    }
+                    break;
+            }
+
+            if ($responses[$responseKey]['field'] === 'applicant-relationship') {
+                if (session('applicant-relationship', Constant::RELATION_OTHER) === Constant::RELATION_OTHER) {
+                    $responses[$responseKey]['value'] = session('applicant-relationship-other', 'n/a');
+                }
+            }
+
+        }
+
+        return $responses;
+    }
+
+    /**
+     * @return array
+     */
+    public function getServicepersionAnswers()
+    {
+        return $this->questionOrder;
+    }
+
+    /**
+     * @return bool|string
+     */
+    public function getDeathCertificate()
+    {
+        return $this->deathCertificate;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFree()
+    {
+        switch (session('applicant-relationship')) {
+            case Constant::RELATION_SPOUSE:
+                return true;
+            case Constant::RELATION_PARENT:
+                return session('applicant-relationship-no-surviving-spouse', true);
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $section
+     * @return int
+     */
+    public function sectionComplete($section)
+    {
+        return (session('section-complete', 0) & $section);
+    }
+
+    /**
+     * @param $section
+     */
+    public function markSectionInComplete($section)
+    {
+        return (session('section-complete', 0) & ~$section);
+    }
+
+    /**
+     *
+     */
+    public function resetCompletedSections()
+    {
+        session(['section-complete' => 0]);
+    }
+
+    /**
+     * @param $section
+     */
+    public function markSectionComplete($section)
+    {
+        session(['section-complete' => session('section->complete', 0) | $section]);
+    }
+
+    /**
+     * Send notification to DBS Branch
+     */
+    public function notifyBranch()
+    {
+        $templateId = '68640434-bc34-4c0c-b8d4-de6d734661c6';
+        $serviceBranch = ServiceBranch::getInstance();
+        $template = $serviceBranch->getEmailTemplate(
+            session('serviceperson-service')
+        );
+
+        $notify = new Notify([
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
+//            'httpClient' => new \Http\Adapter\Guzzle6\Client
+            'httpClient' => new Client()
+        ]);
+
+        $template = $notify->getTemplate('68640434-bc34-4c0c-b8d4-de6d734661c6');
+
+        $notify = new Notify([
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
+            'httpClient' => new Client()
+        ]);
+        $template = $notify->getTemplate($templateId);
+        $data = [];
+        if ($template) {
+            $properties = $template['personalisation'];
+
+            foreach ($properties as $property => $propertyValue) {
+                $data[$property] = session($property, 'n/a');
+            }
+        }
+
+        $response = $notify->sendEmail(
+            'toby@codesure.co.uk',
+            $templateId,
+            $data,
+            session('applicant-reference')
+        );
+
+        if (!session('serviceperson-died-in-service') && session('death-certificate')) {
+            $fileAttachment = $client->prepareUpload(
+                file_get_contents(storage_path(session('death-certificate')))
+            );
+        }
+    }
+
+    /**
+     * Send notification to applicant
+     */
+    public function notifyApplicant()
+    {
+    }
+
+    /**
+     * Create a unique reference for each new request.
+     */
+    protected function createReference()
+    {
+        switch (session('serviceperson-service')) {
+            case ServiceBranch::ARMY:
+                break;
+            case ServiceBranch::NAVY:
+                break;
+            case ServiceBranch::NAVY:
+                break;
+            case ServiceBranch::NAVY:
+                break;
+        }
+    }
+}
