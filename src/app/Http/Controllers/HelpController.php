@@ -14,6 +14,7 @@ class HelpController extends Controller
     {
         return view('cookie-policy');
     }
+
     /**
      * @return mixed
      */
@@ -21,6 +22,7 @@ class HelpController extends Controller
     {
         return view('privacy-policy');
     }
+
     /**
      * @return mixed
      */

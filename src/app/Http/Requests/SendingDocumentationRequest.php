@@ -13,7 +13,7 @@ class SendingDocumentationRequest extends DigitalRequest
     public function rules()
     {
         return [
-            'death-certificate' =>'required|file|max:10000|mimes:jpeg,png,pdf|mimetypes:image/jpeg,image/png,image/bmp,application/pdf'
+            'death-certificate' => 'required|file|max:10000|mimes:jpeg,png,pdf|mimetypes:image/jpeg,image/png,image/bmp,application/pdf'
         ];
     }
 

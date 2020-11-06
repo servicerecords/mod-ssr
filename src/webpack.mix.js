@@ -12,12 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/css/all.scss', 'public/css', [
-
-    ])
-    .sass('resources/css/all-ie8.scss', 'public/css', [
-
-    ]);
+    .sass('resources/css/all.scss', 'public/css', [])
+    .sass('resources/css/all-ie8.scss', 'public/css', []);
 
 
 if (mix.inProduction()) {

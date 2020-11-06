@@ -41,6 +41,6 @@ class CookiePolicyController extends Controller
         setcookie('cookie_policy', $cookie_policy, 0, '/', $_SERVER['HTTP_HOST'], false, false);
 
         return redirect('cookie-policy');
-       // dd($cookie);
+        // dd($cookie);
     }
 }

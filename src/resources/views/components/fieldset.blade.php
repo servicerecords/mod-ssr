@@ -6,7 +6,7 @@
         </legend>
 
         <p class="govuk-body">
-        {{ $subtext }}
+            {{ $subtext }}
         </p>
 
         {{ $slot }}

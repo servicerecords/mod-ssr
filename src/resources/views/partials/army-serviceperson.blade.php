@@ -1,8 +1,7 @@
 <x-date-field
     :label="session('serviceperson-died-in-service', \App\Models\Constant::NO) === \App\Models\Constant::NO ? 'Year of discharge' : 'Year of death in service'"
     field="serviceperson-discharged-date" hint="Approximate if you are unsure."
-    :hide-day="true" :hide-month="true" :hide-year-label="true"
-    :mandatory="false"></x-date-field>
+    :hide-day="true" :hide-month="true" :hide-year-label="true" :mandatory="false"></x-date-field>
 
 <x-textfield label="Regt/Corps" field="serviceperson-regiment"
              :hint="session('serviceperson-died-in-service', \App\Models\Constant::NO) === \App\Models\Constant::NO ? 'At time of discharge' : 'At time of death'"
@@ -24,25 +23,25 @@
                       field="serviceperson-additional-service"
                       :mandatory="false"
                       :options="[
-                    [
-                      'label'    => 'Territorial Army (TA)',
-                      'field'    => '-ta',
-                      'children' => [
-                        [ 'label' => 'Number', 'field' => 'ta-number' ],
-                        [ 'label' => 'Regt/Corps', 'field' => 'ta-regiment' ],
-                        [ 'label' => 'Dates', 'field' => 'ta-dates', 'hint' => 'No format required'],
-                      ]
-                    ],
-                    [
-                      'label'    => 'Army Emergency Reserve (AER)',
-                      'field'    => '-aer',
-                      'children' => [
-                        [ 'label' => 'Number', 'field' => 'aer-number' ],
-                        [ 'label' => 'Regt/Corps', 'field' => 'aer-regiment' ],
-                        [ 'label' => 'Dates', 'field' => 'aer-dates', 'hint' => 'No format required'],
-                      ]
-                    ]
-                  ]"></x-checkbox-group>
+                        [
+                          'label'    => 'Territorial Army (TA)',
+                          'field'    => '-ta',
+                          'children' => [
+                            [ 'label' => 'Number', 'field' => 'ta-number' ],
+                            [ 'label' => 'Regt/Corps', 'field' => 'ta-regiment' ],
+                            [ 'label' => 'Dates', 'field' => 'ta-dates', 'hint' => 'No format required'],
+                          ]
+                        ],
+                        [
+                          'label'    => 'Army Emergency Reserve (AER)',
+                          'field'    => '-aer',
+                          'children' => [
+                            [ 'label' => 'Number', 'field' => 'aer-number' ],
+                            [ 'label' => 'Regt/Corps', 'field' => 'aer-regiment' ],
+                            [ 'label' => 'Dates', 'field' => 'aer-dates', 'hint' => 'No format required'],
+                          ]
+                        ]
+                      ]"></x-checkbox-group>
 
     <x-radio-group label="Has a Disability Pension been applied for?"
                    field="serviceperson-disability-pension"
@@ -56,6 +55,5 @@
     <x-text-area label="Further information"
                  field="serviceperson-additional-information"
                  hint="For example Ranks, Grades, Regiments, National Insurance number."
-                 :mandatory="false"
-                 :character-limit="200"></x-text-area>
+                 :mandatory="false" :character-limit="200"></x-text-area>
 @endif

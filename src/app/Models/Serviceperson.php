@@ -8,67 +8,65 @@ use Illuminate\Support\Str;
 
 class Serviceperson
 {
+    private static $instance = null;
     private $fields = [
         ['label' => '', 'field' => '', 'change' => '', 'route' => '']
     ];
-
     private $formFields = [
-        [ 'label' => 'Which service did they last serve in?', 'field' => 'serviceperson-service'],
-        [ 'label' => 'Did they die in service?', 'field' => 'serviceperson-died-in-service'],
-        [ 'label' => 'First name(s)', 'field' => 'serviceperson-first-name'],
-        [ 'label' => 'Last name', 'field' => 'serviceperson-last-name'],
-        [ 'label' => 'Place of birth', 'field' => 'serviceperson-place-of-birth', 'mandatory' => false],
-        [ 'label' => 'Date of birth', 'field' => 'serviceperson-date-of-birth'],
-        [ 'label' => 'Day', 'field' => 'serviceperson-date-of-birth-day'],
-        [ 'label' => 'Month', 'field' => 'serviceperson-date-of-birth-month'],
-        [ 'label' => 'Year', 'field' => 'serviceperson-date-of-birth-year'],
+        ['label' => 'Which service did they last serve in?', 'field' => 'serviceperson-service'],
+        ['label' => 'Did they die in service?', 'field' => 'serviceperson-died-in-service'],
+        ['label' => 'First name(s)', 'field' => 'serviceperson-first-name'],
+        ['label' => 'Last name', 'field' => 'serviceperson-last-name'],
+        ['label' => 'Place of birth', 'field' => 'serviceperson-place-of-birth', 'mandatory' => false],
+        ['label' => 'Date of birth', 'field' => 'serviceperson-date-of-birth'],
+        ['label' => 'Day', 'field' => 'serviceperson-date-of-birth-day'],
+        ['label' => 'Month', 'field' => 'serviceperson-date-of-birth-month'],
+        ['label' => 'Year', 'field' => 'serviceperson-date-of-birth-year'],
 
         // NAVY SIS/DIS
-        [ 'label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
-        [ 'label' => 'Date they joined', 'field' => 'serviceperson-enlisted', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-discharged-information', 'mandatory' => false],
+        ['label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
+        ['label' => 'Date they joined', 'field' => 'serviceperson-enlisted', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged-information', 'mandatory' => false],
         // NAVY SIS/DIS
-        [ 'label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
-        [ 'label' => 'Date they joined', 'field' => 'serviceperson-enlisted', 'mandatory' => false],
-        [ 'label' => 'Date of death in service ', 'field' => 'serviceperson-discharged', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-discharged-information', 'mandatory' => false],
+        ['label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
+        ['label' => 'Date they joined', 'field' => 'serviceperson-enlisted', 'mandatory' => false],
+        ['label' => 'Date of death in service ', 'field' => 'serviceperson-discharged', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged-information', 'mandatory' => false],
 
         // ARMY SIS
-        [ 'label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-regiment', 'mandatory' => false],
+        ['label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-regiment', 'mandatory' => false],
 
         // ARMY DIS
-        [ 'label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-regiment', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-reason-for-leaving', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-service', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-service-ta-number', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-service-ta-regiment', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-service-ta-date', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-service-aer-number', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-service-aer-regiment', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-service-aer-date', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-disability-pension', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-additional-information', 'mandatory' => false],
+        ['label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-regiment', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-reason-for-leaving', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-service', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-service-ta-number', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-service-ta-regiment', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-service-ta-date', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-service-aer-number', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-service-aer-regiment', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-service-aer-date', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-disability-pension', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-additional-information', 'mandatory' => false],
 
         // RAF SIS/DIS
-        [ 'label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-enlisted', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
-        [ 'label' => '', 'field' => 'serviceperson-discharged-information', 'mandatory' => false],
+        ['label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-enlisted', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged-information', 'mandatory' => false],
 
-       // HOME_GUARD SIS/DIS
-       [ 'label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
-       [ 'label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
-       [ 'label' => '', 'field' => 'serviceperson-county-served', 'mandatory' => false],
-       [ 'label' => '', 'field' => 'serviceperson-address-when-joined', 'mandatory' => false],
-       [ 'label' => '', 'field' => 'serviceperson-battalions', 'mandatory' => false],
+        // HOME_GUARD SIS/DIS
+        ['label' => 'Official Service number', 'field' => 'serviceperson-service-number', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-discharged', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-county-served', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-address-when-joined', 'mandatory' => false],
+        ['label' => '', 'field' => 'serviceperson-battalions', 'mandatory' => false],
     ];
-
-    private static $instance = null;
 
     /**
      * Application constructor.
@@ -156,7 +154,7 @@ class Serviceperson
     {
         array_push($this->fields,
             [
-                'label'  => '', 'field' => '',
+                'label' => '', 'field' => '',
                 'change' => '', 'route' => ''
             ]
         );

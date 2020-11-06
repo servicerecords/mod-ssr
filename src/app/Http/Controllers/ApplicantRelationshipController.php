@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ApplicantDetailsRequest;
 use App\Http\Requests\ApplicantRelationshipRequest;
 use App\Models\Applicant;
+use App\Models\Application;
 use App\Models\Constant;
 use Illuminate\Http\Request;
 
@@ -112,6 +113,7 @@ class ApplicantRelationshipController extends Controller
             session([$field => $request->input($field)]);
         }
 
+        Application::getInstance()->markSectionComplete(Constant::SECTION_APPLICANT_RELATIONSHIP);
         if ($request->input('application-relationship') === Constant::RELATION_UNRELATED) {
             return redirect()->route('check-answers');
         }

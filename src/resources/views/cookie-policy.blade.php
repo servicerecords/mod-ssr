@@ -46,11 +46,11 @@
 
                 <tbody class="govuk-table__body">
                 @foreach($cookies['usage'] as $cookie)
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">{{ $cookie['name'] }}</td>
-                    <td class="govuk-table__cell">{{ $cookie['purpose'] }}</td>
-                    <td class="govuk-table__cell">{{ $cookie['expires'] }}</td>
-                </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">{{ $cookie['name'] }}</td>
+                        <td class="govuk-table__cell">{{ $cookie['purpose'] }}</td>
+                        <td class="govuk-table__cell">{{ $cookie['expires'] }}</td>
+                    </tr>
                 @endforeach
                 </tbody>
             </table>
@@ -94,7 +94,8 @@
                 </tbody>
             </table>
 
-            <p class="govuk-body">Find out more about cookies on <a href="https://www.gov.uk/help/cookie-details">GOV.UK</a></p>
+            <p class="govuk-body">Find out more about cookies on <a
+                    href="https://www.gov.uk/help/cookie-details">GOV.UK</a></p>
         </li>
     </ul>
 

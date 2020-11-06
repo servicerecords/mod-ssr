@@ -257,7 +257,7 @@ window.GOVUKFrontend.CookieBanner = {
     showCookieMessage: function () {
         var shouldHaveCoookieMessage = (window.GOVUK.cookie('cookies_preferences_set')) !== 'true';
         if (shouldHaveCoookieMessage) {
-            if(this.cookieBanner) {
+            if (this.cookieBanner) {
                 this.cookieBanner.style.display = 'block';
 
                 if (!window.GOVUK.cookie('cookies_policy')) {

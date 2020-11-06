@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\ServicepersonDetailsRequest;
+use App\Models\Application;
 use App\Models\Constant;
 use App\Models\ServiceBranch;
 
@@ -50,6 +51,7 @@ class ServicepersonDetailsController extends Controller
             session([$field => $request->input($field)]);
         }
 
+        Application::getInstance()->markSectionComplete(Constant::SECTION_SERVICEPERSON_DETAILS);
         if (session('serviceperson-died-in-service', Constant::YES) === Constant::NO) {
             return redirect()->route('sending-documentation');
         }

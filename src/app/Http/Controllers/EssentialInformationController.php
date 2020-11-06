@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EssentialInformationRequest;
+use App\Models\Application;
+use App\Models\Constant;
 
 class EssentialInformationController extends Controller
 {
@@ -33,10 +35,11 @@ class EssentialInformationController extends Controller
      */
     public function save(EssentialInformationRequest $request)
     {
-        foreach($this->fields as $field) {
+        foreach ($this->fields as $field) {
             session([$field => $request->input($field)]);
         }
 
+        Application::getInstance()->markSectionComplete(Constant::SECTION_ESSENTIAL_INFO);
         return redirect()->route('serviceperson-details');
     }
 }

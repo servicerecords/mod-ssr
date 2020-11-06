@@ -13,7 +13,7 @@ class ErrorMessage extends Component
      *
      * @param string $field
      */
-    public function __construct($field ='')
+    public function __construct($field = '')
     {
         $this->field = $field;
     }

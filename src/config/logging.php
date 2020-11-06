@@ -110,7 +110,7 @@ return [
             'with' => [
                 'client' => new DynamoDbClient([
                     'profile' => 'srrdigital',
-                    'region'  => 'eu-west-1', // Ireland
+                    'region' => 'eu-west-1', // Ireland
                     // 'region'  => 'eu-west-2', // London
                     'version' => 'latest',
                 ]),

@@ -5,9 +5,9 @@
 @section('content')
     <form method="post" action="{{ route('applicant-next-of-kin.save') }}" novalidate>
 
-            <p class="govuk-body">The immediate next of kin is the serviceperson’s closest living
-                relation from the list below.
-            </p>
+        <p class="govuk-body">The immediate next of kin is the serviceperson’s closest living
+            relation from the list below.
+        </p>
 
         <x-error-summary :errors="$errors"></x-error-summary>
 

@@ -13,7 +13,7 @@ class CheckboxGroup extends FormField
 
     public function __construct($field = null, $label = 'Option', $value = null, $hint = false, $selected = null,
                                 $options = [], $labelExtra = null, $mandatory = true, $characterLimit = false,
-                                $fullWidth = false, $autocomplete= false,$hideLabel = false, $children = [])
+                                $fullWidth = false, $autocomplete = false, $hideLabel = false, $children = [])
     {
 
         parent::__construct($field, $label, $value, $hint, $selected, $options,

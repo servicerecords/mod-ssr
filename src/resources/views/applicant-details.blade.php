@@ -28,7 +28,7 @@
                      autocomplete="postal-code"
                      field="applicant-address-postcode"></x-textfield>
         <x-country label="Country"
-                     field="applicant-address-country"></x-country>
+                   field="applicant-address-country"></x-country>
         <x-textfield label="Telephone Number"
                      autocomplete="tel"
                      field="applicant-telephone"

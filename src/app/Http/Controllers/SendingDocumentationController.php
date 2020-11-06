@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SendingDocumentationRequest;
+use App\Models\Application;
 use App\Models\Constant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,7 @@ class SendingDocumentationController extends Controller
      */
     public function save(SendingDocumentationRequest $request)
     {
-        if(session('death-certificate')) {
+        if (session('death-certificate')) {
             Storage::delete(session('death-certificate'));
             session()->forget('death-certificate');
         }
@@ -56,6 +57,7 @@ class SendingDocumentationController extends Controller
         Storage::delete($path);
         session(['death-certificate' => 'app/converted/' . $filename . '.pdf']);
 
+        Application::getInstance()->markSectionComplete(Constant::SECTION_DEATH_CERTIFICATE);
         return redirect()->route('applicant-details');
     }
 }

@@ -37,11 +37,11 @@ class DeathInServiceController extends Controller
     ];
 
     /**
-     * @return RedirectResponse|Request
+     * @return Application|Factory|View|RedirectResponse|Request
      */
     public function index()
     {
-        if(!session('service')) {
+        if (!session('service')) {
             return redirect()->route('service');
         }
 
@@ -56,10 +56,11 @@ class DeathInServiceController extends Controller
      */
     public function save(DeathInServiceRequest $request)
     {
-        foreach($this->fields as $field) {
+        foreach ($this->fields as $field) {
             session([$field => $request->input($field)]);
         }
 
+        \App\Models\Application::getInstance()->markSectionComplete(Constant::SECTION_DIED_IN_SERVICE);
         return redirect()->route('essential-information');
     }
 }

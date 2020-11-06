@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplicantDetailsRequest;
+use App\Models\Application;
 use App\Models\Constant;
 use Illuminate\Http\Request;
 
@@ -40,17 +41,20 @@ class ApplicantDetailsController extends Controller
         'applicant-details-transfer',
     ];
 
-    public function index() {
+    public function index()
+    {
         return view('applicant-details', [
             'options' => $this->options
         ]);
     }
 
-    public function save(ApplicantDetailsRequest $request) {
-        foreach($this->fields as $field) {
+    public function save(ApplicantDetailsRequest $request)
+    {
+        foreach ($this->fields as $field) {
             session([$field => $request->input($field)]);
         }
 
+        Application::getInstance()->markSectionComplete(Constant::SECTION_APPLICANT_DETAILS);
         return redirect()->route('applicant-relationship');
     }
 }

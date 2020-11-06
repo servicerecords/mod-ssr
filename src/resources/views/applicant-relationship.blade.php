@@ -3,7 +3,7 @@
 @section('pageTitle', 'Your details')
 
 @section('content')
-   <form method="post" action="{{ route('applicant-relationship.save') }}" novalidate>
+    <form method="post" action="{{ route('applicant-relationship.save') }}" novalidate>
         <x-error-summary :errors="$errors"></x-error-summary>
         <x-radio-group label="How are you related to the serviceperson?"
                        field="applicant-relationship"

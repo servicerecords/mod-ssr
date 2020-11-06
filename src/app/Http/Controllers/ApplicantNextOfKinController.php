@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplicantNextOfKinRequest;
+use App\Models\Application;
 use App\Models\Constant;
 
 class ApplicantNextOfKinController extends Controller
@@ -31,17 +32,20 @@ class ApplicantNextOfKinController extends Controller
         'applicant-next-of-kin',
     ];
 
-    public function index() {
+    public function index()
+    {
         return view('applicant-next-of-kin', [
             'options' => $this->options
         ]);
     }
 
-    public function save(ApplicantNextOfKinRequest $request) {
-        foreach($this->fields as $field) {
+    public function save(ApplicantNextOfKinRequest $request)
+    {
+        foreach ($this->fields as $field) {
             session([$field => $request->input($field)]);
         }
 
+        Application::getInstance()->markSectionComplete(Constant::SECTION_APPLICANT_NEXT_OF_KIN);
         return redirect()->route('check-answers');
     }
 }

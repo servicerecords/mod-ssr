@@ -15,8 +15,8 @@
     <form method="post" action="{{ route('sending-documentation.save') }}" enctype="multipart/form-data" novalidate>
         <x-error-summary :errors="$errors"></x-error-summary>
         <x-file-upload label="Upload your death certificate"
-                     field="death-certificate"
-                     accept=".jpg,.jpeg,.png,.bmp,.pdf"></x-file-upload>
+                       field="death-certificate"
+                       accept=".jpg,.jpeg,.png,.bmp,.pdf"></x-file-upload>
         <x-submit-form></x-submit-form>
     </form>
 @endsection

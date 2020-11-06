@@ -6,15 +6,12 @@ namespace App\Models;
 
 class ServiceBranch
 {
-    private static $instance = null;
-
     private const FALLBACK_EMAIL = 'lauren.phillips225@mod.gov.uk';
-
     public const NAVY = 'NAVY';
     public const RAF = 'RAF';
     public const ARMY = 'ARMY';
     public const HOME_GUARD = 'HOME_GUARD';
-
+    private static $instance = null;
     /**
      * @var array[]
      */
@@ -33,21 +30,26 @@ class ServiceBranch
                 'FIELDS' => [
                     'SIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-enlisted',
-                        'serviceperson-discharged',
+                        'serviceperson-enlisted-date-day',
+                        'serviceperson-enlisted-date-month',
+                        'serviceperson-enlisted-date-year',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                         'serviceperson-discharged-information'
                     ],
                     'DIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-enlisted',
-                        'serviceperson-discharged',
+                        'serviceperson-enlisted-date-day',
+                        'serviceperson-enlisted-date-month',
+                        'serviceperson-enlisted-date-year',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                         'serviceperson-discharged-information',
                     ]
                 ],
-                'EMAIL_TEMPLATE' => [
-                    'SIS' => 'df015c4f-0f1b-4559-9f2d-c37624590c8d',
-                    'DIS' => 'edd45189-db4c-4b20-a5c8-a7490a4439e8'
-                ],
+                'EMAIL_TEMPLATE' => 'df015c4f-0f1b-4559-9f2d-c37624590c8d',
                 'EMAIL_ADDRESS' => env('SEA_EMAIL', self::FALLBACK_EMAIL)
             ],
             self::ARMY => [
@@ -57,12 +59,16 @@ class ServiceBranch
                 'FIELDS' => [
                     'DIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-discharged',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                         'serviceperson-regiment',
                     ],
                     'SIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-discharged',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                         'serviceperson-regiment',
                         'serviceperson-reason-for-leaving',
                         'serviceperson-additional-service',
@@ -77,11 +83,6 @@ class ServiceBranch
                     ]
                 ],
                 'EMAIL_TEMPLATE' => '68640434-bc34-4c0c-b8d4-de6d734661c6',
-//                 [
-
-//                    'SIS' => 'c811ac5c-cd6f-4702-8db5-ff105e364277',
-//                    'DIS' => '5f3a549b-9019-4c7f-8995-fb47ae4905bd'
-//                ],
                 'EMAIL_ADDRESS' => env('LAND_EMAIL', self::FALLBACK_EMAIL)
             ],
             self::RAF => [
@@ -91,21 +92,26 @@ class ServiceBranch
                 'FIELDS' => [
                     'SIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-enlisted',
-                        'serviceperson-discharged',
+                        'serviceperson-enlisted-date-day',
+                        'serviceperson-enlisted-date-month',
+                        'serviceperson-enlisted-date-year',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                         'serviceperson-discharged-information'
                     ],
                     'DIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-enlisted',
-                        'serviceperson-discharged',
+                        'serviceperson-enlisted-date-day',
+                        'serviceperson-enlisted-date-month',
+                        'serviceperson-enlisted-date-year',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                         'serviceperson-discharged-information'
                     ]
                 ],
-                'EMAIL_TEMPLATE' => [
-                    'SIS' => '9f2603ce-2bd0-4bc4-868b-72a3c066b10a',
-                    'DIS' => 'debb071c-90be-4254-898f-31ab28c58f3d'
-                ],
+                'EMAIL_TEMPLATE' =>'9f2603ce-2bd0-4bc4-868b-72a3c066b10a',
                 'EMAIL_ADDRESS' => env('AIR_EMAIL', self::FALLBACK_EMAIL)
             ],
             self::HOME_GUARD => [
@@ -115,23 +121,30 @@ class ServiceBranch
                 'FIELDS' => [
                     'SIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-discharged',
                         'serviceperson-county-served',
                         'serviceperson-address-when-joined',
                         'serviceperson-battalions',
+                        'serviceperson-enlisted-day',
+                        'serviceperson-enlisted-month',
+                        'serviceperson-enlisted-year',
+                        'serviceperson-discharged-day',
+                        'serviceperson-discharged-month',
+                        'serviceperson-discharged-year',
                     ],
                     'DIS' => [
                         'serviceperson-service-number',
-                        'serviceperson-discharged',
                         'serviceperson-county-served',
                         'serviceperson-address-when-joined',
                         'serviceperson-battalions',
+                        'serviceperson-enlisted-day',
+                        'serviceperson-enlisted-month',
+                        'serviceperson-enlisted-year',
+                        'serviceperson-discharged-day',
+                        'serviceperson-discharged-month',
+                        'serviceperson-discharged-year',
                     ]
                 ],
-                'EMAIL_TEMPLATE' => [
-                    'SIS' => 'f61949e7-4a5e-4d2d-8264-bbbf5e25ddfc',
-                    'DIS' => 'a4cae06b-1ac7-4f9e-97ea-1b6f47e147c9'
-                ],
+                'EMAIL_TEMPLATE' =>'f61949e7-4a5e-4d2d-8264-bbbf5e25ddfc',
                 'EMAIL_ADDRESS' => env('LAND_EMAIL', self::FALLBACK_EMAIL)
             ],
         ];

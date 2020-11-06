@@ -22,7 +22,7 @@ class Controller extends BaseController
      */
     public function callAction($method, $parameters)
     {
-        $progression =array_merge(
+        $progression = array_merge(
             [
                 '/',
                 'service/death-in-service',

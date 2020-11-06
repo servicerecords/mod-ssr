@@ -1,15 +1,21 @@
-window.GOVUK.analyticsInit = function() {
+window.GOVUK.analyticsInit = function () {
     "use strict";
 
     var consentCookie = window.GOVUK.getConsentCookie();
 
     var dummyAnalytics = {
-        addLinkedTrackerDomain: function(){},
-        setDimension: function(){},
-        setOptionsForNextPageView: function(){},
-        trackEvent: function(){},
-        trackPageview: function(){},
-        trackShare: function(){},
+        addLinkedTrackerDomain: function () {
+        },
+        setDimension: function () {
+        },
+        setOptionsForNextPageView: function () {
+        },
+        trackEvent: function () {
+        },
+        trackPageview: function () {
+        },
+        trackShare: function () {
+        },
     };
 
     // Disable analytics by default

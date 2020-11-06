@@ -25,8 +25,8 @@ abstract class DigitalRequest extends FormRequest
      */
     public function withValidator(Validator $validator)
     {
-        if($validator->fails()) {
-            Log::info('VALIDATION_ERROR', $validator->errors()->getMessages() );
+        if ($validator->fails()) {
+            Log::info('VALIDATION_ERROR', $validator->errors()->getMessages());
         }
     }
 }

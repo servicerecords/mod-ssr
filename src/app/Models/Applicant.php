@@ -8,19 +8,18 @@ use Illuminate\Support\Str;
 
 class Applicant
 {
+    private static $instance = null;
     private $formFields = [
-        ['label' => '', 'field' => 'applicant-name',             'mandatory' => true],
-        ['label' => '', 'field' => 'applicant-email-address',    'mandatory' => true],
-        ['label' => '', 'field' => 'applicant-address-line-1',   'mandatory' => true],
-        ['label' => '', 'field' => 'applicant-address-line-2',   'mandatory' => true],
-        ['label' => '', 'field' => 'applicant-address-town',     'mandatory' => true],
+        ['label' => '', 'field' => 'applicant-name', 'mandatory' => true],
+        ['label' => '', 'field' => 'applicant-email-address', 'mandatory' => true],
+        ['label' => '', 'field' => 'applicant-address-line-1', 'mandatory' => true],
+        ['label' => '', 'field' => 'applicant-address-line-2', 'mandatory' => true],
+        ['label' => '', 'field' => 'applicant-address-town', 'mandatory' => true],
         ['label' => '', 'field' => 'applicant-address-postcode', 'mandatory' => true],
-        ['label' => '', 'field' => 'applicant-address-country',  'mandatory' => true],
-        ['label' => '', 'field' => 'applicant-telephone',        'mandatory' => true],
+        ['label' => '', 'field' => 'applicant-address-country', 'mandatory' => true],
+        ['label' => '', 'field' => 'applicant-telephone', 'mandatory' => true],
         ['label' => '', 'field' => 'applicant-details-transfer', 'mandatory' => true],
     ];
-
-    private static $instance = null;
 
     /**
      * Application constructor.

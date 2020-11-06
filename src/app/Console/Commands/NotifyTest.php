@@ -47,7 +47,7 @@ class NotifyTest extends Command
         ]);
         $template = $notify->getTemplate($templateId);
         $data = [];
-        if($template) {
+        if ($template) {
             $properties = $template['personalisation'];
 
             print_r($properties);

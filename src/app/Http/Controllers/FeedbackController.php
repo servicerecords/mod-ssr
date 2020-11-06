@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('feedback');
     }
 
-    public function send() {}
+    public function send()
+    {
+    }
 }
