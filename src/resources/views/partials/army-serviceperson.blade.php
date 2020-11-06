@@ -27,18 +27,18 @@
                           'label'    => 'Territorial Army (TA)',
                           'field'    => '-ta',
                           'children' => [
-                            [ 'label' => 'Number', 'field' => 'ta-number' ],
-                            [ 'label' => 'Regt/Corps', 'field' => 'ta-regiment' ],
-                            [ 'label' => 'Dates', 'field' => 'ta-dates', 'hint' => 'No format required'],
+                            [ 'label' => 'Number', 'field' => 'number' ],
+                            [ 'label' => 'Regt/Corps', 'field' => 'regiment' ],
+                            [ 'label' => 'Dates', 'field' => 'dates', 'hint' => 'No format required'],
                           ]
                         ],
                         [
                           'label'    => 'Army Emergency Reserve (AER)',
                           'field'    => '-aer',
                           'children' => [
-                            [ 'label' => 'Number', 'field' => 'aer-number' ],
-                            [ 'label' => 'Regt/Corps', 'field' => 'aer-regiment' ],
-                            [ 'label' => 'Dates', 'field' => 'aer-dates', 'hint' => 'No format required'],
+                            [ 'label' => 'Number', 'field' => 'number' ],
+                            [ 'label' => 'Regt/Corps', 'field' => 'regiment' ],
+                            [ 'label' => 'Dates', 'field' => 'dates', 'hint' => 'No format required'],
                           ]
                         ]
                       ]"></x-checkbox-group>
