@@ -17,7 +17,7 @@
                      :mandatory="false"></x-textfield>
         <x-date-field label="Date of birth"
                       hint="For example, 31 3 1910. A year of birth is required."
-                      field="serviceperson-date-of-birth"></x-date-field>
+                      field="serviceperson-date-of-birth-date"></x-date-field>
         <x-submit-form></x-submit-form>
     </form>
 @endsection

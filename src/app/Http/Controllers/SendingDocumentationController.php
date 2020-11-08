@@ -51,7 +51,6 @@ class SendingDocumentationController extends Controller
         }
 
         $image->setImageFormat('pdf');
-//        $image->transformImageColorspace(Imagick::COLORSPACE_GRAY);
         $image->setColorspace( Imagick::IMGTYPE_GRAYSCALE);
         $image->writeImage(storage_path('app/converted/' . $filename . '.pdf'));
 
