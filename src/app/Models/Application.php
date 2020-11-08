@@ -4,9 +4,12 @@
 namespace App\Models;
 
 
+use Carbon\Carbon;
+use Carbon\Exceptions\InvalidPeriodParameterException;
 use GuzzleHttp\Client;
 use Illuminate\Support\Str;
 use \Alphagov\Notifications\Client as Notify;
+use Mockery\Exception;
 
 class Application
 {
@@ -21,21 +24,20 @@ class Application
         ['label' => 'First name(s)', 'field' => 'serviceperson-first-name', 'route' => 'essential-information'],
         ['label' => 'Last name', 'field' => 'serviceperson-last-name', 'route' => 'essential-information'],
         ['label' => 'Place of birth', 'field' => 'serviceperson-place-of-birth', 'route' => 'essential-information'],
-        ['label' => 'Date of birth', 'field' => 'serviceperson-date-of-birth', 'route' => 'essential-information'],
+        ['label' => 'Date of birth', 'field' => 'serviceperson-date-of-birth-date', 'route' => 'essential-information'],
     ];
 
     private $questionOrder = [
         Constant::SERVICEPERSION => [
             ServiceBranch::NAVY => [
-                ['label' => 'Date they joined', 'field' => 'serviceperson-date-enlisted', 'route' => 'serviceperson-details'],
+                ['label' => 'Date they joined', 'field' => 'serviceperson-enlisted-date', 'route' => 'serviceperson-details'],
                 ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
-                ['label' => 'Date of death in service', 'field' => 'serviceperson-date-discharged', 'route' => 'serviceperson-details'],
+                ['label' => 'Date of death in service', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details'],
                 ['label' => 'Further information', 'field' => 'serviceperson-discharged-information', 'route' => 'serviceperson-details'],
             ],
             ServiceBranch::ARMY => [
-
                 ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
-                ['label' => 'Year of death in service', 'field' => 'serviceperson-date-discharged', 'route' => 'serviceperson-details'],
+                ['label' => 'Year of death in service', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details'],
                 ['label' => 'Regt/Corps', 'field' => 'serviceperson-regiment', 'route' => 'serviceperson-details'],
                 ['label' => 'Why they left the Army', 'field' => 'serviceperson-reason-for-leaving', 'route' => 'serviceperson-details'],
                 ['label' => 'Territorial Army (TA)', 'field' => 'serviceperson-additional-service-ta', 'route' => 'serviceperson-details'],
@@ -50,9 +52,9 @@ class Application
                 ['label' => 'Further information', 'field' => 'serviceperson-additional-information', 'route' => 'serviceperson-details'],
             ],
             ServiceBranch::RAF => [
-                ['label' => 'Date they joined', 'field' => 'serviceperson-date-enlisted', 'route' => 'serviceperson-details'],
+                ['label' => 'Date they joined', 'field' => 'serviceperson-enlisted-date', 'route' => 'serviceperson-details'],
                 ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
-                ['label' => 'Date of casualty / aircraft loss', 'field' => 'serviceperson-date-discharged', 'route' => 'serviceperson-details'],
+                ['label' => 'Date of casualty / aircraft loss', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details'],
                 ['label' => 'Further information', 'field' => 'serviceperson-discharged-information', 'route' => 'serviceperson-details'],
             ],
             ServiceBranch::HOME_GUARD => [
@@ -75,7 +77,6 @@ class Application
             ['label' => 'Country', 'field' => 'applicant-address-country', 'route' => 'applicant-details'],
             ['label' => 'Telephone Number', 'field' => 'applicant-telephone', 'route' => 'applicant-details'],
             ['label' => 'Relationship to serviceperson', 'field' => 'applicant-relationship', 'route' => 'applicant-relationship'],
-//            ['label' => 'Other relationship', 'field' => 'applicant-relationship-other', 'route' => 'applicant-relationship'],
             ['label' => 'Was spouse at death', 'field' => 'applicant-relationship-spouse-at-death', 'route' => 'applicant-relationship'],
             ['label' => 'No surviving spouse', 'field' => 'applicant-relationship-no-surviving-spouse', 'route' => 'applicant-relationship'],
             ['label' => 'Is next of kin', 'field' => 'applicant-next-of-kin', 'route' => 'applicant-next-of-kin'],
@@ -128,7 +129,11 @@ class Application
         );
 
         foreach ($responses as $responseKey => $response) {
-            $responses[$responseKey]['value'] = session($response['field'], 'n/a');
+            if (Str::endsWith($response['field'], '-date')) {
+                $responses[$responseKey]['value'] = $this->generateDateString($response['field']);
+            } else {
+                $responses[$responseKey]['value'] = session($response['field'], 'n/a');
+            }
         }
 
         return $responses;
@@ -149,7 +154,7 @@ class Application
 
             $responses[$responseKey]['value'] = session($response['field'], 'n/a');
 
-            switch(session('service', ServiceBranch::HOME_GUARD)) {
+            switch (session('service', ServiceBranch::HOME_GUARD)) {
                 case ServiceBranch::HOME_GUARD:
                     if ($response['label'] === 'Service number') {
                         $responses[$responseKey]['label'] = 'National Registration';
@@ -239,17 +244,9 @@ class Application
     {
         $templateId = '68640434-bc34-4c0c-b8d4-de6d734661c6';
         $serviceBranch = ServiceBranch::getInstance();
-        $template = $serviceBranch->getEmailTemplate(
+        $template = $serviceBranch->getEmailTemplateId(
             session('serviceperson-service')
         );
-
-        $notify = new Notify([
-            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
-//            'httpClient' => new \Http\Adapter\Guzzle6\Client
-            'httpClient' => new Client()
-        ]);
-
-        $template = $notify->getTemplate('68640434-bc34-4c0c-b8d4-de6d734661c6');
 
         $notify = new Notify([
             'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
@@ -291,15 +288,53 @@ class Application
      */
     protected function createReference()
     {
-        switch (session('serviceperson-service')) {
-            case ServiceBranch::ARMY:
-                break;
-            case ServiceBranch::NAVY:
-                break;
-            case ServiceBranch::NAVY:
-                break;
-            case ServiceBranch::NAVY:
-                break;
+        $code = ServiceBranch::getInstance()->getCode(session('serviceperson-service', ServiceBranch::ARMY));
+        return $code . '-' . time() . '-' . date('d-m-Y');
+    }
+
+    protected function generateDateString($field)
+    {
+        $day = $month = $year = '';
+
+        if ($field === 'serviceperson-date-of-birth-date') {
+            $day = session('serviceperson-date-of-birth-date-day', Constant::DAY_PLACEHOLDER);
+            $month = session('serviceperson-date-of-birth-date-month', Constant::MONTH_PLACEHOLDER);
+            $year = session('serviceperson-date-of-birth-date-year', Constant::YEAR_PLACEHOLDER);
+        } else {
+            $fields = ServiceBranch::getInstance()->getFields(
+                session('service', ServiceBranch::ARMY),
+                session('servicepersion-died-in-service')
+            );
+
+            if (array_key_exists($field . '-day', array_flip($fields))) {
+                $day = session($field . '-day', Constant::DAY_PLACEHOLDER);
+            }
+
+            if (array_key_exists($field . '-month', array_flip($fields))) {
+                $month = session($field . '-month', Constant::MONTH_PLACEHOLDER);
+            }
+
+            if (array_key_exists($field . '-year', array_flip($fields))) {
+                $year = session($field . '-year', Constant::YEAR_PLACEHOLDER);
+            }
         }
+
+        if (trim($day) == '') $day = Constant::DAY_PLACEHOLDER;
+        else $day = sprintf('%02d', $day);
+
+        if (trim($month) == '') $month = Constant::MONTH_PLACEHOLDER;
+        else $month = sprintf('%02d', $month);
+
+        if (trim($year) == '') $year = Constant::YEAR_PLACEHOLDER;
+        else $year = sprintf('%04d', $year);
+
+        if($day !== Constant::DAY_PLACEHOLDER && $month !== Constant::MONTH_PLACEHOLDER && $year !== Constant::YEAR_PLACEHOLDER) {
+            try {
+                $date = Carbon::create($year, $month, $day);
+                return $date->format('j F Y');
+            } catch (Exception $e) {}
+        }
+
+        return $day . '-' . $month . '-' . $year;
     }
 }

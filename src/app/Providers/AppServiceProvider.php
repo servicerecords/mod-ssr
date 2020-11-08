@@ -24,9 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        URL::forceScheme('https');
-//        view()->composer('layouts.app', function($view) {
-//            $view->with('returnUrl', 'Smug bastard');
-//        });
+        if(env('APP_ENV', 'local') !== 'local') {
+            URL::forceScheme('https');
+        } else {
+            URL::forceScheme('http');
+        }
     }
 }

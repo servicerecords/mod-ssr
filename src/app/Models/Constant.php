@@ -32,6 +32,7 @@ class Constant
     public const SECTION_APPLICANT_DETAILS = 32;
     public const SECTION_APPLICANT_RELATIONSHIP = 64;
     public const SECTION_APPLICANT_NEXT_OF_KIN = 128;
+    public const SECTION_CHECK_ANSWERS = 256;
 
     public const SERVICEPERSION = 'serviceperson';
     public const APPLICANT = 'applicant';

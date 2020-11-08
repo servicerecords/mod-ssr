@@ -51,9 +51,9 @@ class EssentialInformationRequest extends DigitalRequest
         return [
             'serviceperson-first-name' => 'required',
             'serviceperson-last-name' => 'required',
-            'serviceperson-date-of-birth-day' => 'digits_between:1,31|nullable',
-            'serviceperson-date-of-birth-month' => 'digits_between:1,12|nullable',
-            'serviceperson-date-of-birth-year' => 'required|digits:4|integer|validate_dob|max:' . date('Y'),
+            'serviceperson-date-of-birth-date-day' => 'digits_between:1,31|nullable',
+            'serviceperson-date-of-birth-date-month' => 'digits_between:1,12|nullable',
+            'serviceperson-date-of-birth-date-year' => 'required|digits:4|integer|validate_dob|max:' . date('Y'),
         ];
     }
 
@@ -65,15 +65,15 @@ class EssentialInformationRequest extends DigitalRequest
         return [
             'serviceperson-first-name.required' => 'Enter any first names',
             'serviceperson-last-name.required' => 'Enter a last name',
-            'serviceperson-date-of-birth-month.digits_between' => 'The date of birth\'s month must be no more than 2 characters in length',
-            'serviceperson-date-of-birth-month.between' => 'Enter a valid month',
-            'serviceperson-date-of-birth-day.between' => 'Enter a valid day',
-            'serviceperson-date-of-birth-day.digits_between' => 'The date of birth\'s day must be no more than 2 characters in length',
-            'serviceperson-date-of-birth-month.max' => 'The date of birth\'s month must be no more than 2 characters in length',
-            'serviceperson-date-of-birth-year.digits' => 'The date of birth\'s year must be 4 characters in length',
-            'serviceperson-date-of-birth-year.required' => 'Enter a year of birth, even if it is an estimate',
-            'serviceperson-date-of-birth-year.max' => 'Enter a date of birth (even if partial) that is in the past',
-            'serviceperson-date-of-birth-year.validate_dob' => 'Enter a valid date of birth'
+            'serviceperson-date-of-birth-date-month.digits_between' => 'The date of birth\'s month must be no more than 2 characters in length',
+            'serviceperson-date-of-birth-date-month.between' => 'Enter a valid month',
+            'serviceperson-date-of-birth-date-day.between' => 'Enter a valid day',
+            'serviceperson-date-of-birth-date-day.digits_between' => 'The date of birth\'s day must be no more than 2 characters in length',
+            'serviceperson-date-of-birth-date-month.max' => 'The date of birth\'s month must be no more than 2 characters in length',
+            'serviceperson-date-of-birth-date-year.digits' => 'The date of birth\'s year must be 4 characters in length',
+            'serviceperson-date-of-birth-date-year.required' => 'Enter a year of birth, even if it is an estimate',
+            'serviceperson-date-of-birth-date-year.max' => 'Enter a date of birth (even if partial) that is in the past',
+            'serviceperson-date-of-birth-date-year.validate_dob' => 'Enter a valid date of birth'
         ];
     }
 }

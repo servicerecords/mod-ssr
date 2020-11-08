@@ -16,9 +16,9 @@ class EssentialInformationController extends Controller
         'serviceperson-first-name',
         'serviceperson-last-name',
         'serviceperson-place-of-birth',
-        'serviceperson-date-of-birth-day',
-        'serviceperson-date-of-birth-month',
-        'serviceperson-date-of-birth-year'
+        'serviceperson-date-of-birth-date-day',
+        'serviceperson-date-of-birth-date-month',
+        'serviceperson-date-of-birth-date-year'
     ];
 
     /**

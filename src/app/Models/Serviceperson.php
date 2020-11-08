@@ -18,7 +18,7 @@ class Serviceperson
         ['label' => 'First name(s)', 'field' => 'serviceperson-first-name'],
         ['label' => 'Last name', 'field' => 'serviceperson-last-name'],
         ['label' => 'Place of birth', 'field' => 'serviceperson-place-of-birth', 'mandatory' => false],
-        ['label' => 'Date of birth', 'field' => 'serviceperson-date-of-birth'],
+        ['label' => 'Date of birth', 'field' => 'serviceperson-date-of-birth-date'],
         ['label' => 'Day', 'field' => 'serviceperson-date-of-birth-day'],
         ['label' => 'Month', 'field' => 'serviceperson-date-of-birth-month'],
         ['label' => 'Year', 'field' => 'serviceperson-date-of-birth-year'],

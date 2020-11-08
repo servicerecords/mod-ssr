@@ -180,7 +180,7 @@ class ServiceBranch
      * @param $branch
      * @return mixed|string
      */
-    public function getEmailTemplate($branch)
+    public function getEmailTemplateId($branch)
     {
         if (isset($this->branches[$branch])) {
             return $this->branches[$branch]['EMAIL_TEMPLATE'] ?? '';
@@ -199,6 +199,19 @@ class ServiceBranch
             return $this->branches[$branch]['EMAIL_ADDRESS'] ?? '';
         } else {
             return self::FALLBACK_EMAIL;
+        }
+    }
+
+    /**
+     * Get a branch code for creating an application reference
+     * @param $branch
+     * @return mixed|string
+     */
+    public function getCode($branch) {
+        if (isset($this->branches[$branch])) {
+            return $this->branches[$branch]['CODE'] ?? '';
+        } else {
+            return 'Branch not found for: "' . $branch . '"';
         }
     }
 

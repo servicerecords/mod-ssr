@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/', [\App\Http\Controllers\ServiceController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\ServiceController::class, 'index'])->name('home');
 
 Route::get('/service', [\App\Http\Controllers\ServiceController::class, 'index'])->name('service');
 Route::post('/service', [\App\Http\Controllers\ServiceController::class, 'save'])->name('service.save');
@@ -25,7 +25,9 @@ Route::post('/applicant-relationship', [\App\Http\Controllers\ApplicantRelations
 Route::get('/applicant-next-of-kin', [\App\Http\Controllers\ApplicantNextOfKinController::class, 'index'])->name('applicant-next-of-kin');
 Route::post('/applicant-next-of-kin', [\App\Http\Controllers\ApplicantNextOfKinController::class, 'save'])->name('applicant-next-of-kin.save');
 Route::get('/check-answers', [\App\Http\Controllers\CheckAnswersController::class, 'index'])->name('check-answers');
-Route::post('/check-answers', [\App\Http\Controllers\CheckAnswersController::class, 'index'])->name('check-answers.save');
+Route::post('/check-answers', [\App\Http\Controllers\CheckAnswersController::class, 'save'])->name('check-answers.save');
+Route::get('/cancel-application', [\App\Http\Controllers\CancelApplicationController::class, 'index'])->name('cancel-application');
+Route::post('/cancel-application', [\App\Http\Controllers\CancelApplicationController::class, 'index'])->name('cancel-application.save');
 
 Route::get('/cookie-policy', [\App\Http\Controllers\CookiePolicyController::class, 'index'])->name('cookie-policy');
 Route::post('/cookie-policy', [\App\Http\Controllers\CookiePolicyController::class, 'save'])->name('cookie-policy.save');
