@@ -286,9 +286,9 @@ class Application
     /**
      * Create a unique reference for each new request.
      */
-    protected function createReference()
+    public function createReference()
     {
-        $code = ServiceBranch::getInstance()->getCode(session('serviceperson-service', ServiceBranch::ARMY));
+        $code = ServiceBranch::getInstance()->getCode(session('service', ServiceBranch::ARMY));
         return $code . '-' . time() . '-' . date('d-m-Y');
     }
 

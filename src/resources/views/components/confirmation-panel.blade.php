@@ -7,6 +7,6 @@
         {{ $message }}
     </h1>
     <div class="govuk-panel__body">
-        Your reference number<br><strong>{{ $reference }}</strong>
+        Your reference number<br><strong>{{ session('application-reference') }}</strong>
     </div>
 </div>
