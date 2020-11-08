@@ -26,6 +26,8 @@ Route::get('/applicant-next-of-kin', [\App\Http\Controllers\ApplicantNextOfKinCo
 Route::post('/applicant-next-of-kin', [\App\Http\Controllers\ApplicantNextOfKinController::class, 'save'])->name('applicant-next-of-kin.save');
 Route::get('/check-answers', [\App\Http\Controllers\CheckAnswersController::class, 'index'])->name('check-answers');
 Route::post('/check-answers', [\App\Http\Controllers\CheckAnswersController::class, 'save'])->name('check-answers.save');
+Route::get('/confirmation/{uuid}', [\App\Http\Controllers\ConfirmationController::class, 'paid'])->name('confirmation');
+Route::get('/confirmation', [\App\Http\Controllers\ConfirmationController::class, 'free'])->name('confirmation');
 Route::get('/cancel-application', [\App\Http\Controllers\CancelApplicationController::class, 'index'])->name('cancel-application');
 Route::post('/cancel-application', [\App\Http\Controllers\CancelApplicationController::class, 'index'])->name('cancel-application.save');
 

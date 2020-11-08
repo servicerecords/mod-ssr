@@ -39,6 +39,6 @@ class CheckAnswersController extends Controller
      */
     public function save()
     {
-        return (Application::getInstance()->isFree()) ? redirect('confirmation') : redirect(Payment::getPaymentUrl());
+        return (Application::getInstance()->isFree()) ? redirect('confirmation') : redirect(Payment::getInstance()->getPaymentUrl());
     }
 }

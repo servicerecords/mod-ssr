@@ -3,6 +3,8 @@
 @section('pageTitle', false)
 
 @section('content')
+    <x-confirmation-panel></x-confirmation-panel>
+
     <p class="govuk-body">We have sent you a confirmation email.</p>
     <h2 class="govuk-heading-m">What happens next</h2>
     <p class="govuk-body">We've sent your request to the military disclosure branch.</p>
