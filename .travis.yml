@@ -28,6 +28,9 @@ jobs:
         - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
         - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
         - cat docker/.env-build
+        - cp docker/aws_credentials docker/aws_credentials-build
+        - sed -ri "s|AWS_ACCESS_KEY|$AWS_ACCESS_KEY|" ./docker/aws_credentials-build
+        - sed -ri "s|AWS_SECRET|$AWS_SECRET|" ./docker/aws_credentials-build
         - docker build -t build-image .
         - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
         - docker push "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
