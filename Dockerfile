@@ -7,8 +7,10 @@ ENV TZ=Europe/London
 WORKDIR /app
 
 # Move our application into the containerdocker
+RUN mkdir /root/.aws
 COPY src/ /app
 COPY ./docker/.env-build /app/.env
+COPY ./docker/aws_credentials-build /root/.aws/credentials
 
 # Install our application dependencies
 RUN cd /app
