@@ -35,7 +35,7 @@ class FeedbackController extends Controller
                 env('FEEDBACK_EMAIL', 'liam.cusack582@mod.gov.uk'),
                 '0f3b68c3-4589-4466-a743-73f73e841187',
                 $params);
-            return redirect('feedback.complete');
+            return redirect()->route('feedback.complete');
         } catch (\Exception $e) {
             return $e;
         }
@@ -46,6 +46,6 @@ class FeedbackController extends Controller
      */
     public function complete()
     {
-        return view('feedback.complete');
+        return view('feedback-complete');
     }
 }
