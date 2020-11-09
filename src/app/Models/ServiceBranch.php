@@ -12,6 +12,7 @@ class ServiceBranch
     public const ARMY = 'ARMY';
     public const HOME_GUARD = 'HOME_GUARD';
     private static $instance = null;
+
     /**
      * @var array[]
      */
@@ -196,7 +197,7 @@ class ServiceBranch
     public function getEmailAddress($branch)
     {
         if (isset($this->branches[$branch])) {
-            return $this->branches[$branch]['EMAIL_ADDRESS'] ?? '';
+            return $this->branches[$branch]['EMAIL_ADDRESS'] ?? self::FALLBACK_EMAIL;
         } else {
             return self::FALLBACK_EMAIL;
         }

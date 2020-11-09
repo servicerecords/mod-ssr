@@ -40,13 +40,5 @@ class Applicant
         return self::$instance;
     }
 
-    /**
-     *
-     */
-    protected function createDateOfBirth()
-    {
-
-    }
-
 
 }
