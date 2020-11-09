@@ -50,7 +50,7 @@ class ServiceBranch
                         'serviceperson-discharged-information',
                     ]
                 ],
-                'EMAIL_TEMPLATE' => 'df015c4f-0f1b-4559-9f2d-c37624590c8d',
+                'EMAIL_TEMPLATE' => 'e06c9e67-53c6-442e-962c-770b760ffc78',
                 'EMAIL_ADDRESS' => env('SEA_EMAIL', self::FALLBACK_EMAIL)
             ],
             self::ARMY => [
@@ -113,7 +113,7 @@ class ServiceBranch
                         'serviceperson-discharged-information'
                     ]
                 ],
-                'EMAIL_TEMPLATE' =>'9f2603ce-2bd0-4bc4-868b-72a3c066b10a',
+                'EMAIL_TEMPLATE' =>'f8c75425-34bd-4322-8bb2-7081066175df',
                 'EMAIL_ADDRESS' => env('AIR_EMAIL', self::FALLBACK_EMAIL)
             ],
             self::HOME_GUARD => [
@@ -146,7 +146,7 @@ class ServiceBranch
                         'serviceperson-discharged-year',
                     ]
                 ],
-                'EMAIL_TEMPLATE' =>'f61949e7-4a5e-4d2d-8264-bbbf5e25ddfc',
+                'EMAIL_TEMPLATE' =>'101ce364-49e9-443c-8e4a-befc369fbcd5',
                 'EMAIL_ADDRESS' => env('LAND_EMAIL', self::FALLBACK_EMAIL)
             ],
         ];

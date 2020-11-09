@@ -253,6 +253,12 @@ class Application
         if ($template) {
             $properties = $template['personalisation'];
 
+            if (!session('serviceperson-died-in-service') && session('death-certificate')) {
+                session(['attachment' => $notify->prepareUpload(
+                    file_get_contents(storage_path(session('death-certificate')))
+                )]);
+            }
+
             foreach ($properties as $property => $propertyValue) {
                 if (session()->has($property)) {
                     $data[$property] = session($property, 'n/a');
@@ -269,11 +275,7 @@ class Application
             session('applicant-reference')
         );
 
-        if (!session('serviceperson-died-in-service') && session('death-certificate')) {
-            $fileAttachment = $notify->prepareUpload(
-                file_get_contents(storage_path(session('death-certificate')))
-            );
-        }
+
     }
 
     /**
