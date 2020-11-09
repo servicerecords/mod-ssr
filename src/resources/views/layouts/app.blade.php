@@ -39,6 +39,8 @@
 
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
+<x-cookie-banner></x-cookie-banner>
+
 @include('partials.header')
 
 <div class="govuk-width-container ">

@@ -61,8 +61,8 @@
                                :hide-legend="true"
                                field="allow-usage"
                                :options="[
-                                    'yes' => 'Use cookies that measure my website use',
-                                    'no' => 'Do not use cookies that measure my website use'
+                                    ['value' => \App\Models\Constant::YES, 'label' => 'Use cookies that measure my website use', 'children' => []],
+                                    ['value' => \App\Models\Constant::NO , 'label' => 'Do not use cookies that measure my website use', 'children' => []]
                                ]"></x-radio-group>
                 <x-submit-form :can-cancel="false" submit-label="Save Preferences"></x-submit-form>
             </form>
