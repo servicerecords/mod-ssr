@@ -4,9 +4,11 @@
 namespace App\Models;
 
 
+use Alphagov\Notifications\Exception\ApiException;
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidPeriodParameterException;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use \Alphagov\Notifications\Client as Notify;
 use Mockery\Exception;
@@ -242,35 +244,33 @@ class Application
      */
     public function notifyBranch()
     {
-        $templateId = '68640434-bc34-4c0c-b8d4-de6d734661c6';
         $serviceBranch = ServiceBranch::getInstance();
-        $template = $serviceBranch->getEmailTemplateId(
-            session('serviceperson-service')
-        );
-
-        $notify = new Notify([
-            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitaldev-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-5372ddfc-dbe3-4e7f-a487-103a7f23fa53'),
-            'httpClient' => new Client()
-        ]);
+        $templateId = $serviceBranch->getEmailTemplateId(session('service'));
+        $notify = $this->getClient();
         $template = $notify->getTemplate($templateId);
         $data = [];
+
         if ($template) {
             $properties = $template['personalisation'];
 
             foreach ($properties as $property => $propertyValue) {
-                $data[$property] = session($property, 'n/a');
+                if (session()->has($property)) {
+                    $data[$property] = session($property, 'n/a');
+                } else {
+                    $data[$property] = 'n/a';
+                }
             }
         }
 
         $response = $notify->sendEmail(
-            'toby@codesure.co.uk',
+            ServiceBranch::getInstance()->getEmailAddress(session('service')),
             $templateId,
             $data,
             session('applicant-reference')
         );
 
         if (!session('serviceperson-died-in-service') && session('death-certificate')) {
-            $fileAttachment = $client->prepareUpload(
+            $fileAttachment = $notify->prepareUpload(
                 file_get_contents(storage_path(session('death-certificate')))
             );
         }
@@ -281,6 +281,34 @@ class Application
      */
     public function notifyApplicant()
     {
+        $templateId = '567f3c9f-4e9f-45b1-99ef-1d559c0f676d';
+        $data = [
+            'service_feedback_url' => env('APP_URL', 'http://srrdigital-sandbox.cloudapps.digital/feedback'),
+            'dbs_branch' => $dbs_office = session('serviceperson-service') ?? '',
+            'dbs_email' => ServiceBranch::getInstance()->getEmailAddress(session('service')) ?? '',
+            'reference_number' => session('application-reference') ?? '',
+        ];
+
+        try {
+            return $this->getClient()->sendEmail(
+                session('applicant-email-address'),
+                $templateId,
+                $data);
+        } catch (ApiException $e) {
+            Log::critical($e->getErrorMessage());
+            $failure = [
+                'email' => session('applicant-email-address'),
+                'template' => $templateId,
+                'data' => $data,
+            ];
+
+            $failureFile = storage_path('app/notify/failure.json');
+            $failures = json_decode(file_get_contents($failureFile));
+            array_push($failures, $failure);
+            file_put_contents($failureFile, json_encode($failures));
+
+            return $e;
+        }
     }
 
     /**
@@ -292,6 +320,10 @@ class Application
         return $code . '-' . time() . '-' . date('d-m-Y');
     }
 
+    /**
+     * @param $field
+     * @return string
+     */
     protected function generateDateString($field)
     {
         $day = $month = $year = '';
@@ -328,13 +360,25 @@ class Application
         if (trim($year) == '') $year = Constant::YEAR_PLACEHOLDER;
         else $year = sprintf('%04d', $year);
 
-        if($day !== Constant::DAY_PLACEHOLDER && $month !== Constant::MONTH_PLACEHOLDER && $year !== Constant::YEAR_PLACEHOLDER) {
+        if ($day !== Constant::DAY_PLACEHOLDER && $month !== Constant::MONTH_PLACEHOLDER && $year !== Constant::YEAR_PLACEHOLDER) {
             try {
                 $date = Carbon::create($year, $month, $day);
                 return $date->format('j F Y');
-            } catch (Exception $e) {}
+            } catch (Exception $e) {
+            }
         }
 
         return $day . '-' . $month . '-' . $year;
+    }
+
+    /**
+     * @return Notify
+     */
+    public function getClient()
+    {
+        return new Notify([
+            'apiKey' => env('NOTIFY_API_KEY', 'srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75'),
+            'httpClient' => new Client()
+        ]);
     }
 }
