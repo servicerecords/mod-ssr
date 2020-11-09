@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FeedbackRequest;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -22,7 +23,7 @@ class FeedbackController extends Controller
     {
         $notifyClient = new \Alphagov\Notifications\Client([
             'apiKey' => env('NOTIFY_API_KEY', 'srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75'),
-            'httpClient' => new \Http\Adapter\Guzzle6\Client
+            'httpClient' => new Client
         ]);
 
         try {
