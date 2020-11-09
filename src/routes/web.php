@@ -39,3 +39,4 @@ Route::get('/accessibility-statement', [\App\Http\Controllers\HelpController::cl
 // Customer feedback
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
 Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'send'])->name('feedback.send');
+Route::get('/feedback/complete', [\App\Http\Controllers\FeedbackController::class, 'complete'])->name('feedback.complete');

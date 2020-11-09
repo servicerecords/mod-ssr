@@ -8,18 +8,18 @@
         <x-radio-group label="Overall how do you feel about the service you received today?"
                        field="feedback-satisfaction"
                        :options="[
-                       'Very satisfied' => 'Very satisfied',
-                       'Satisfied' => 'Satisfied',
-                       'Neither satisfied or dissatisfied' => 'Neither satisfied or dissatisfied',
-                       'Dissatisfied' => 'Dissatisfied',
-                       'Very dissatisfied' => 'Very dissatisfied'
+                           ['label' => 'Very satisfied', 'children' => []],
+                           ['label' => 'Satisfied', 'children' => []],
+                           ['label' => 'Neither satisfied or dissatisfied', 'children' => []],
+                           ['label' => 'Dissatisfied', 'children' => []],
+                           ['label' => 'Very dissatisfied', 'children' => []],
                        ]"></x-radio-group>
 
-        <x-text-area label="Further information"
-                     field="serviceperson-discharged"
-                     hint="For example Ranks, Grades, Regiments, National Insurance number."
+        <x-text-area label="How could we improve this service?"
+                     field="feedback-improvement"
+                     hint="Do not include personal or financial information, like your National Insurance number or credit card details."
                      :mandatory="false"
-                     :character-limit="200"></x-text-area>
-        <x-submit-form submit="Send feedback"></x-submit-form>
+                     :character-limit="1200"></x-text-area>
+        <x-submit-form submitLabel="Send feedback" :can-cancel="false"></x-submit-form>
     </form>
 @endsection
