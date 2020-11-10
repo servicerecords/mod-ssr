@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Carbon\Exceptions\InvalidPeriodParameterException;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use \Alphagov\Notifications\Client as Notify;
 use Mockery\Exception;
@@ -275,8 +276,6 @@ class Application
             $data,
             session('applicant-reference')
         );
-
-
     }
 
     /**
@@ -383,5 +382,16 @@ class Application
             'apiKey' => env('NOTIFY_API_KEY', 'srrdigitalproduction-8ae4b688-c5e2-45ff-a873-eb149b3e23ff-ed3db9dd-d928-4d4c-89dc-8d22b4265e75'),
             'httpClient' => new Client()
         ]);
+    }
+
+    public function cleanup() {
+        $reference = session('application-reference');
+
+        if(session('death-certificate')) {
+            Storage::delete(session('death-certificate'));
+        }
+
+        session()->flush();
+        session(['application-reference' => $reference]);
     }
 }
