@@ -11,7 +11,7 @@ class ConfirmationController extends Controller
     /**
      * @param Request $request
      * @param $uuid
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function paid(Request $request, $uuid)
     {
@@ -22,13 +22,8 @@ class ConfirmationController extends Controller
             $application->notifyBranch();
             $application->notifyApplicant();
 
-            // Clear up session data and only retain our reference
             Application::getInstance()->cleanup();
-
-
-
-            return redirect()->route('complete');
-
+            return redirect()->route('confirmation.complete');
         } else {
             return view('confirmation-error', ['message' => 'There is a problem verifying your payment.']);
         }
@@ -38,6 +33,11 @@ class ConfirmationController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function free() {
+        $application = Application::getInstance();
+        $application->notifyBranch();
+        $application->notifyApplicant();
+
+        Application::getInstance()->cleanup();
         return view('confirmation-success');
     }
 
