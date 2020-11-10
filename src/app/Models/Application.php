@@ -253,7 +253,8 @@ class Application
         if ($template) {
             $properties = $template['personalisation'];
 
-            if (!session('serviceperson-died-in-service') && session('death-certificate')) {
+            if (session('serviceperson-died-in-service', Constant::NO) == Constant::NO
+                && session('death-certificate', false)) {
                 session(['attachment' => $notify->prepareUpload(
                     file_get_contents(storage_path(session('death-certificate')))
                 )]);
