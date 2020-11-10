@@ -33,10 +33,12 @@ Route::post('/cancel-application', [\App\Http\Controllers\CancelApplicationContr
 
 Route::get('/cookie-policy', [\App\Http\Controllers\CookiePolicyController::class, 'index'])->name('cookie-policy');
 Route::post('/cookie-policy', [\App\Http\Controllers\CookiePolicyController::class, 'save'])->name('cookie-policy.save');
-Route::get('/privacy-policy', [\App\Http\Controllers\HelpController::class, 'privacyPolicy'])->name('privacy-policy');
-Route::get('/accessibility-statement', [\App\Http\Controllers\HelpController::class, 'accessibilityStatement'])->name('accessibility-statement');
 
 // Customer feedback
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
 Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'send'])->name('feedback.send');
 Route::get('/feedback/complete', [\App\Http\Controllers\FeedbackController::class, 'complete'])->name('feedback.complete');
+
+
+Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
+Route::view('/accessibility-statement', 'accessibility-statement')->name('accessibility-statement');
