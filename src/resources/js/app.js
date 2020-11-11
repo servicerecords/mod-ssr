@@ -236,8 +236,8 @@ window.GOVUKFrontend.CookieBanner = {
             window.GOVUK.setDefaultConsentCookie();
         }
 
-        // this.cookieBanner = document.querySelector('.gem-c-cookie-banner');
-        // this.cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation');
+        this.cookieBanner = document.querySelector('.govuk-cookie-message__request');
+        this.cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation');
         this.setUpCookieMessage()
     },
     setUpCookieMessage: function () {
@@ -281,7 +281,7 @@ window.GOVUKFrontend.CookieBanner = {
         }
     },
     showConfirmationMessage: function () {
-        this.cookieBannerMainContent = document.querySelector('.gem-c-cookie-banner__wrapper');
+        this.cookieBannerMainContent = document.querySelector('.govuk-cookie-message__request');
         this.cookieBannerMainContent.style.display = 'none';
         this.cookieBannerConfirmationMessage.style.display = 'block';
     },
