@@ -1,0 +1,52 @@
+//$govuk-assets-path: '';
+//$govuk-images-path: '';
+//$govuk-fonts-path: '';
+
+@import "~govuk-frontend/govuk/all";
+
+#global-cookie-message {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.gem-c-cookie-banner__confirmation-message:focus {
+    border: none;
+    outline: none;
+}
+
+.govuk-hide-button  {
+    float: right;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+    border: none;
+    outline: none;
+    font-family: "GDS Transport", arial, sans-serif;
+}
+
+.govuk-hide-button :focus {
+    border: none;
+    outline: none;
+}
+
+.govuk-cookie-message {
+    &__request {
+    }
+    &__accepted {
+        display: none;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        outline: none;
+        overflow: hidden;
+
+        .govuk-body {
+            float: left;
+            margin: 0;
+        }
+    }
+}
+
+.autocomplete {
+    &__menu {
+        font-family: Arial;
+    }
+}

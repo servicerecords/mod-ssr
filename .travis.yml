@@ -28,6 +28,9 @@ jobs:
         - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
         - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
         - cat docker/.env-build
+        - cp docker/aws_credentials docker/aws_credentials-build
+        - sed -ri "s|AWS_ACCESS_KEY|$AWS_ACCESS_KEY|" ./docker/aws_credentials-build
+        - sed -ri "s|AWS_SECRET|$AWS_SECRET|" ./docker/aws_credentials-build
         - docker build -t build-image .
         - docker tag build-image:latest "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
         - docker push "$DOCKER_ORGANISATION"/srrdigital:"$DOCKER_TAG"
@@ -36,13 +39,13 @@ jobs:
         - provider: script
           skip_cleanup: true
           manifest: manifest-sandbox.yml
-          script: env CF_SPACE=development CF_APP_NAME=Blue CF_MANIFEST=manifest-sandbox.yml ci/deploy_to_cf.sh
+          script: env CF_SPACE=development CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-sandbox.yml ci/deploy_to_cf.sh
           on:
             branch: sandbox
         - provider: script
           skip_cleanup: true
           manifest: manifest-qa.yml
-          script: env CF_SPACE=qa CF_APP_NAME=Blue CF_MANIFEST=manifest-qa.yml ci/deploy_to_cf.sh
+          script: env CF_SPACE=qa CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-qa.yml ci/deploy_to_cf.sh
           on:
             branch: qa
 
