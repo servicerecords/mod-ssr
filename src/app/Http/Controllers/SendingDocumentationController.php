@@ -54,7 +54,15 @@ class SendingDocumentationController extends Controller
 
         $imageQuality = 100;
         $image->setImageFormat('jpg');
-        $image->setColorspace(Imagick::COLORSPACE_GRAY);
+        $image->setColorspace(Imagick::IMGTYPE_GRAYSCALE);
+
+        if ($image->getImageWidth() > $image->getImageHeight()) {;
+            $image->rotateImage(Imagick::COLOR_BLACK, 90);
+        }
+
+        if ($image->getImageLength() > self::MAX_FILESIZE) {
+            $image->scaleImage(595, 824, Imagick::FILTER_LANCZOS);
+        }
 
         do {
             $image->setCompressionQuality($imageQuality--);
