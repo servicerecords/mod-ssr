@@ -10,8 +10,9 @@ RUN apt update
 RUN apt -y upgrade
 RUN apt -y --no-install-recommends install unzip \
                    php-fpm php-bcmath php-bz2 php-calendar \
+                   php-mbstring \
                    php-curl php-intl php-json php-imagick wget \
-                   php-xml php-zip composer ghostscript imagemagick \
+                   php-xml php-zip ghostscript imagemagick \
                    libasound2 libatk-bridge2.0 libatk1.0-0 libatspi2.0-0 \
                    libcairo2 libdrm2 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 \
                    libnss3 libpango-1.0-0 libpangocairo-1.0-0 libx11-xcb1 libxcb-dri3-0 \
@@ -22,6 +23,10 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN rm nodesource_setup.sh
 RUN apt -y --no-install-recommends install nodejs yarn
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "if (hash_file('sha384', 'composer-setup.php') === 'c31c1e292ad7be5f49291169c0ac8f683499edddcfd4e42232982d0fd193004208a58ff6f353fde0012d35fdd72bc394') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
 
 # Move our application into the container
 COPY ./docker/000-default.conf /etc/nginx/conf.d/default.conf
