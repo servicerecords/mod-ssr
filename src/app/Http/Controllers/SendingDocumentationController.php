@@ -12,6 +12,8 @@ use Ramsey\Uuid\Uuid;
 
 class SendingDocumentationController extends Controller
 {
+    const MAX_FILESIZE = 2000000;
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|RedirectResponse
      */
@@ -50,8 +52,16 @@ class SendingDocumentationController extends Controller
             $image = new Imagick($document . '[0]');
         }
 
+        $imageQuality = 100;
+        $image->setImageFormat('jpg');
+        $image->greyscale();
+
+        do {
+            $image->encode('jpg', $imageQuality--);
+        } while ($image->filesize() > self::MAX_FILESIZE && $imageQuality > 10);
+
         $image->setImageFormat('pdf');
-        $image->setColorspace( Imagick::COLORSPACE_GRAY);
+        $image->setColorspace(Imagick::COLORSPACE_GRAY);
         $image->writeImage(storage_path('app/converted/' . $filename . '.pdf'));
 
         Storage::delete($path);
