@@ -236,8 +236,8 @@ window.GOVUKFrontend.CookieBanner = {
             window.GOVUK.setDefaultConsentCookie();
         }
 
-        this.cookieBanner = document.querySelector('.govuk-cookie-message__request');
-        this.cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation');
+        this.cookieBanner = document.querySelector('#global-cookie-message');
+        this.cookieBannerConfirmationMessage = document.querySelector('.govuk-cookie-message__accepted');
         this.setUpCookieMessage()
     },
     setUpCookieMessage: function () {
