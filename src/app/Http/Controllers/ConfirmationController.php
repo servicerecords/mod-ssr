@@ -24,6 +24,7 @@ class ConfirmationController extends Controller
         }
 
         if(session('application-reference', false)) {
+            session(['payment-status' => 'Paid']);
             $application->notifyBranch();
             $application->notifyApplicant();
 
@@ -36,18 +37,18 @@ class ConfirmationController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function free() {
         $application = Application::getInstance();
 
         if($application->isFree()) {
-
+            session(['payment-status' => 'Exempt']);
             $application->notifyBranch();
             $application->notifyApplicant();
 
             Application::getInstance()->cleanup();
-            return redirect()->route('confirmation-complete');
+            return redirect()->route('confirmation.complete');
         } else {
             return redirect()->route('cancel-application');
         }
