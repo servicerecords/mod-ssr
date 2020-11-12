@@ -34,11 +34,17 @@ class ConfirmationController extends Controller
      */
     public function free() {
         $application = Application::getInstance();
-        $application->notifyBranch();
-        $application->notifyApplicant();
 
-        Application::getInstance()->cleanup();
-        return view('confirmation-success');
+        if($application->isFree()) {
+
+            $application->notifyBranch();
+            $application->notifyApplicant();
+
+            Application::getInstance()->cleanup();
+            return redirect()->route('confirmation-complete');
+        } else {
+            return redirect()->route('cancel-application');
+        }
     }
 
     /**
@@ -47,4 +53,5 @@ class ConfirmationController extends Controller
     public function complete() {
         return view('confirmation-success');
     }
+
 }
