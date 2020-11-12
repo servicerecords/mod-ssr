@@ -14,7 +14,7 @@ This will install any PHP dependencies and whatever front end dependencies GDS p
 The development process runs essentially in 3 branches, *local*, *development* & *master* the local branch should always be a clone of *development*, as *master* could be behind *development* due to live issue fixes etc. Going forward as the project grows and the team becomes more agile each story/ticket should have it's own branch.  To merge *local* into *development* and *development* into *master* a PR should be created, a code review carried out, and a full test run before a PR is reviewed.
 
 
-##Third Party Dependencies
+## Third Party Dependencies
 
 We utilise to third party services and their attributed libraries GovPay to take payments, where we have a sandbox and production mode running, and have tested the live enviroment. 
 

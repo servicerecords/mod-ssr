@@ -1,9 +1,0 @@
----
-applications:
-  - name: srrdigital-qa
-    memory: 1G
-    disk_quota: 2G
-    docker:
-      image: codesure/srrdigital:qa
-
-
