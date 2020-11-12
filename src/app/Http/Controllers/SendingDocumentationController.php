@@ -8,6 +8,7 @@ use App\Models\Constant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Imagick;
+use ImagickPixel;
 use Ramsey\Uuid\Uuid;
 
 class SendingDocumentationController extends Controller
@@ -56,13 +57,11 @@ class SendingDocumentationController extends Controller
         $image->setImageFormat('jpg');
         $image->setColorspace(Imagick::IMGTYPE_GRAYSCALE);
 
-        if ($image->getImageWidth() > $image->getImageHeight()) {;
-            $image->rotateImage(Imagick::COLOR_BLACK, 90);
-        }
+        if ($image->getImageWidth() > $image->getImageHeight())
+            $image->rotateImage(new ImagickPixel('#00000000'), 90);
 
-        if ($image->getImageLength() > self::MAX_FILESIZE) {
+        if ($image->getImageLength() > self::MAX_FILESIZE)
             $image->scaleImage(595, 824, Imagick::FILTER_LANCZOS);
-        }
 
         do {
             $image->setCompressionQuality($imageQuality--);

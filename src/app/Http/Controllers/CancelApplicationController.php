@@ -15,7 +15,6 @@ class CancelApplicationController extends Controller
     public function index()
     {
         session()->flush();
-
         return redirect()->route('home');
     }
 }

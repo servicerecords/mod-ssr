@@ -10,7 +10,7 @@
                        hint="Related applicants may get access to more sensitive information about the serviceperson than non-related applicants."
                        :options="$relationships" :has-conditionals="true"></x-radio-group>
 
-        <p class="govuk-body">You may be contacted to provide proof of your relationship with the service person.</p>
+        <p class="govuk-body">You may be contacted to provide proof of your relationship with the serviceperson.</p>
         <x-submit-form></x-submit-form>
     </form>
 @endsection

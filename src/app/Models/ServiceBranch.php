@@ -7,11 +7,11 @@ namespace App\Models;
 class ServiceBranch
 {
     private const FALLBACK_EMAIL = 'lauren.phillips225@mod.gov.uk';
-    public const NAVY = 'NAVY';
-    public const RAF = 'RAF';
-    public const ARMY = 'ARMY';
-    public const HOME_GUARD = 'HOME_GUARD';
-    private static $instance = null;
+    public  const NAVY           = 'NAVY';
+    public  const RAF            = 'RAF';
+    public  const ARMY           = 'ARMY';
+    public  const HOME_GUARD     = 'HOME_GUARD';
+    private static $instance     = null;
 
     /**
      * @var array[]
@@ -26,6 +26,7 @@ class ServiceBranch
         $this->branches = [
             self::NAVY => [
                 'NAME' => 'Royal Navy or Royal Marines',
+                'SERVICE_BRANCH' => 'Navy',
                 'VALUE' => self::NAVY,
                 'CODE' => 'SEA',
                 'FIELDS' => [
@@ -55,6 +56,7 @@ class ServiceBranch
             ],
             self::ARMY => [
                 'NAME' => 'Army (including Territorial & Army Emergency Reserve)',
+                'SERVICE_BRANCH' => 'Army',
                 'VALUE' => self::ARMY,
                 'CODE' => 'LAN',
                 'FIELDS' => [
@@ -89,6 +91,7 @@ class ServiceBranch
             ],
             self::RAF => [
                 'NAME' => 'Royal Air Force (RAF)',
+                'SERVICE_BRANCH' => 'Air Force',
                 'VALUE' => self::RAF,
                 'CODE' => 'AIR',
                 'FIELDS' => [
@@ -118,6 +121,7 @@ class ServiceBranch
             ],
             self::HOME_GUARD => [
                 'NAME' => 'Home Guard',
+                'SERVICE_BRANCH' => 'Army',
                 'VALUE' => self::HOME_GUARD,
                 'CODE' => 'LAN',
                 'FIELDS' => [
@@ -211,6 +215,14 @@ class ServiceBranch
     public function getCode($branch) {
         if (isset($this->branches[$branch])) {
             return $this->branches[$branch]['CODE'] ?? '';
+        } else {
+            return 'Branch not found for: "' . $branch . '"';
+        }
+    }
+
+    public function getServiceBranch($branch) {
+        if (isset($this->branches[$branch])) {
+            return $this->branches[$branch]['SERVICE_BRANCH'] ?? '';
         } else {
             return 'Branch not found for: "' . $branch . '"';
         }

@@ -29,6 +29,9 @@
                        :hide-label="true"
                        :options="$options"></x-radio-group>
 
+        <p class="govuk-body">Where the serviceperson died less than 25 years ago, only the immediate next of
+            kin will get the career information.</p>
+
         <x-submit-form></x-submit-form>
     </form>
 
