@@ -7,7 +7,7 @@
 
     <p class="govuk-body">We have sent you a confirmation email.</p>
     <h2 class="govuk-heading-m">What happens next</h2>
-    <p class="govuk-body">We've sent your request to the military disclosure branch.</p>
+    <p class="govuk-body">We've sent your application to the military disclosure branch.</p>
     <p class="govuk-body">The confirmation email we sent contains your:</p>
     <div class="govuk-form-group">
         <ul class="govuk-list govuk-list--bullet">

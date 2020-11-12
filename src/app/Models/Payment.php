@@ -44,7 +44,7 @@ class Payment
         $data = [
             'amount' => 3000,
             'reference' => session('application-reference'),
-            'description' => 'Service Record Request',
+            'description' => 'Service Record Application',
             'return_url' => env('APP_URL', 'https://srrdigital-sandbox.cloudapps.digital') . '/confirmation/' . session('payment-reference'),
             'email' => session('applicant-email-address', '')
         ];
@@ -104,7 +104,18 @@ class Payment
      * @param $uuid
      * @return bool
      */
-    public function verifyPayment($uuid) {
-        return ($this->client->get('payments/' . session($uuid, false))->getStatusCode() === 200);
+    public function verifyPayment() {
+        $paymentId= session('payment-id', false);
+        if(!$paymentId) return false;
+
+        $response = $this->client->get('payments/' . $paymentId);
+        $statusCode =$response->getStatusCode();
+
+        if($statusCode !== 200) return false;
+
+        $responseData = json_decode($response->getBody()->getContents());
+        if($responseData->state->status === 'success') return true;
+
+        return false;
     }
 }

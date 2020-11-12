@@ -65,7 +65,7 @@ class Application
                 ['label' => 'Date they joined', 'field' => 'serviceperson-enlisted-date', 'route' => 'serviceperson-details'],
                 ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service'],
                 ['label' => 'Date of death in service', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details'],
-                ['label' => 'County did they serve in', 'field' => 'serviceperson-county-served', 'route' => 'serviceperson-details'],
+                ['label' => 'County they served in', 'field' => 'serviceperson-county-served', 'route' => 'serviceperson-details'],
                 ['label' => 'Address when they joined', 'field' => 'serviceperson-address-when-joined', 'route' => 'serviceperson-details'],
                 ['label' => 'Numbers of any Battalions and Companies', 'field' => 'serviceperson-battalions', 'route' => 'serviceperson-details'],
             ],
@@ -135,7 +135,7 @@ class Application
             if (Str::endsWith($response['field'], '-date')) {
                 $responses[$responseKey]['value'] = $this->generateDateString($response['field']);
             } else {
-                $responses[$responseKey]['value'] = session($response['field'], 'n/a');
+                $responses[$responseKey]['value'] = session($response['field'], '');
             }
         }
 
@@ -155,7 +155,7 @@ class Application
                 continue;
             }
 
-            $responses[$responseKey]['value'] = session($response['field'], 'n/a');
+            $responses[$responseKey]['value'] = session($response['field'], '');
 
             switch (session('service', ServiceBranch::HOME_GUARD)) {
                 case ServiceBranch::HOME_GUARD:
@@ -167,7 +167,7 @@ class Application
 
             if ($responses[$responseKey]['field'] === 'applicant-relationship') {
                 if (session('applicant-relationship', Constant::RELATION_OTHER) === Constant::RELATION_OTHER) {
-                    $responses[$responseKey]['value'] = session('applicant-relationship-other', 'n/a');
+                    $responses[$responseKey]['value'] = session('applicant-relationship-other', '');
                 }
             }
 
@@ -286,7 +286,7 @@ class Application
         $templateId = '567f3c9f-4e9f-45b1-99ef-1d559c0f676d';
         $data = [
             'service_feedback_url' => env('APP_URL', 'http://srrdigital-sandbox.cloudapps.digital/feedback'),
-            'dbs_branch' => $dbs_office = session('serviceperson-service') ?? '',
+            'dbs_branch' => $dbs_office = ServiceBranch::getInstance()->getServiceBranch(session('service')) ?? '',
             'dbs_email' => ServiceBranch::getInstance()->getEmailAddress(session('service')) ?? '',
             'reference_number' => session('application-reference') ?? '',
         ];
@@ -319,7 +319,7 @@ class Application
     public function createReference()
     {
         $code = ServiceBranch::getInstance()->getCode(session('service', ServiceBranch::ARMY));
-        return $code . '-' . time() . '-' . date('d-m-Y');
+        return $code . '-' . time();
     }
 
     /**

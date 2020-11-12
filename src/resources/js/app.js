@@ -271,7 +271,6 @@ window.GOVUKFrontend.CookieBanner = {
         }
     },
     hideCookieMessage: function (event) {
-        console.log(this.cookieBanner);
         //if (this.cookieBanner) {
         document.getElementById('global-cookie-message').style.display = 'none';
             // this.cookieBanner.style.display = 'none';
