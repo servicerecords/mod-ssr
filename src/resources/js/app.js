@@ -247,7 +247,7 @@ window.GOVUKFrontend.CookieBanner = {
             this.hideLink.addEventListener('click', this.hideCookieMessage);
         }
 
-        this.acceptCookiesLink = document.querySelector('button[data-accept-cookies]');
+        this.acceptCookiesLink = document.querySelector('a[data-accept-cookies]');
         if (this.acceptCookiesLink) {
             this.acceptCookiesLink.addEventListener('click', this.setCookieConsent.bind(this));
         }
