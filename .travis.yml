@@ -49,6 +49,25 @@ jobs:
           script: env CF_SPACE=qa CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-qa.yml ci/deploy_to_cf.sh
           on:
             branch: qa
+        - provider: script
+          skip_cleanup: true
+          manifest: manifest-production.yml
+          script: env CF_SPACE=production CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-production.yml ci/deploy_to_cf.sh
+          on:
+            branch: master
 
 notifications:
-  email: false
+  email:
+    if: branch IN ("sandbox", "qa", "master")
+    recipients:
+      - liam.cusack582@mod.gov.uk
+      - toby@codesure.co.uk
+    on_success: always
+    on_failure: always
+
+
+    if: branch IN ("qa","master")
+    recipients:
+      - amanda.moran637@mod.gov.uk
+      - lauren.phillips225@mod.gov.uk
+    on_success: always
