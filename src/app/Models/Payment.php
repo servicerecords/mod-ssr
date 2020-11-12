@@ -104,18 +104,18 @@ class Payment
      * @param $uuid
      * @return bool
      */
-    public function verifyPayment() {
-        $paymentId= session('payment-id', false);
-        if(!$paymentId) return false;
+    public function verifyPayment()
+    {
+        $paymentId = session('payment-id', false);
+        if (!$paymentId) return false;
 
         $response = $this->client->get('payments/' . $paymentId);
-        $statusCode =$response->getStatusCode();
+        $statusCode = $response->getStatusCode();
+        $data = json_decode($response->getBody()->getContents());
 
-        if($statusCode !== 200) return false;
+        if ($statusCode !== 200) return $data->state;
+        if ($data->state->status === 'success') return true;
 
-        $responseData = json_decode($response->getBody()->getContents());
-        if($responseData->state->status === 'success') return true;
-
-        return false;
+        return $data->state;
     }
 }

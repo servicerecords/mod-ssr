@@ -15,18 +15,24 @@ class ConfirmationController extends Controller
      */
     public function paid(Request $request, $uuid)
     {
-        $payment  = Payment::getInstance()->verifyPayment($uuid);
+        $payment  = Payment::getInstance()->verifyPayment();
         $application = Application::getInstance();
 
-        if($payment && session('application-reference', false)) {
+        if($payment !== true) {
+            Application::getInstance()->cleanup();
+            return view('confirmation-error', [ 'payment' => $payment ]);
+        }
+
+        if(session('application-reference', false)) {
             $application->notifyBranch();
             $application->notifyApplicant();
 
             Application::getInstance()->cleanup();
             return redirect()->route('confirmation.complete');
-        } else {
-            return view('confirmation-error', ['message' => 'There is a problem verifying your payment.']);
         }
+
+        Application::getInstance()->cleanup();
+        return view('confirmation-error', [ 'payment' => $payment ]);
     }
 
     /**
