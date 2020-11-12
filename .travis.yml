@@ -16,6 +16,7 @@ jobs:
         - chmod 755 ci/deploy_to_cf.sh
         - chmod 755 ci/zero_downtime.sh
         - cp docker/.env docker/.env-build
+        - sed -ri "s|ENV_APP_NAME|$APP_NAME|" ./docker/.env-build
         - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
         - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
         - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
