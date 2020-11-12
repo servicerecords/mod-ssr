@@ -1,4 +1,5 @@
 <div class="govuk-form-group @error($field) govuk-form-group--error @enderror">
+    <a name="{{ $field }}"></a>
     <fieldset class="govuk-fieldset">
         @if(!$hideLegend)
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">

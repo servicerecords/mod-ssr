@@ -45,9 +45,7 @@
 
 <div class="govuk-width-container ">
     <x-phase-banner></x-phase-banner>
-    @if(($returnUrl ?? false))
-        <a href="{{ $returnUrl }}" class="govuk-back-link">Back</a>
-    @endif
+    <x-back-button></x-back-button>
     <main class="govuk-main-wrapper" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
@@ -56,6 +54,7 @@
                 </h1>
                 @yield('content')
             </div>
+        </div>
     </main>
 </div>
 

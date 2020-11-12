@@ -137,6 +137,16 @@ class Application
             } else {
                 $responses[$responseKey]['value'] = session($response['field'], '');
             }
+
+            if (session('serviceperson-died-in-service', Constant::YES) == 'Yes') {
+                if (session('service') == ServiceBranch::HOME_GUARD) {
+                    session('label-serviceperson-discharged', 'Date of death in service');
+                } else {
+                    session('label-serviceperson-discharged', 'Date of casualty / aircraft loss');
+                }
+            } else {
+                session('label-serviceperson-discharged', 'Date they left');
+            }
         }
 
         return $responses;
@@ -384,10 +394,11 @@ class Application
         ]);
     }
 
-    public function cleanup() {
+    public function cleanup()
+    {
         $reference = session('application-reference');
 
-        if(session('death-certificate')) {
+        if (session('death-certificate')) {
             Storage::delete(session('death-certificate'));
         }
 
