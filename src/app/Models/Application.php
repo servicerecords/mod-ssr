@@ -81,7 +81,7 @@ class Application
             ['label' => 'Telephone Number', 'field' => 'applicant-telephone', 'route' => 'applicant-details'],
             ['label' => 'Relationship to serviceperson', 'field' => 'applicant-relationship', 'route' => 'applicant-relationship'],
             ['label' => 'Was spouse at death', 'field' => 'applicant-relationship-spouse-at-death', 'route' => 'applicant-relationship'],
-            ['label' => 'No surviving spouse', 'field' => 'applicant-relationship-no-surviving-spouse', 'route' => 'applicant-relationship'],
+            ['label' => 'Parent confirmed no spouse', 'field' => 'applicant-relationship-no-surviving-spouse', 'route' => 'applicant-relationship'],
             ['label' => 'Is next of kin', 'field' => 'applicant-next-of-kin', 'route' => 'applicant-next-of-kin'],
         ]
     ];
