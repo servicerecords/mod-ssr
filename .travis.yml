@@ -1,7 +1,3 @@
-dist: xenial
-language: ruby
-os:
-  - linux
 services:
   - docker
 env:
@@ -63,6 +59,12 @@ notifications:
       - liam.cusack582@mod.gov.uk
       - toby@codesure.co.uk
     if: branch IN ("sandbox", "qa", "master")
+    on_success: always
+    on_failure: always
+    recipients:
+      - liam.cusack582@mod.gov.uk
+      - toby@codesure.co.uk
+    if: branch IN ("qa", "master")
     on_success: always
     on_failure: always
 
