@@ -38,17 +38,20 @@ jobs:
 
       deploy:
         - provider: script
-          cleanup: false
+          skip_cleanup: true
+          manifest: manifest-sandbox.yml
           script: env CF_SPACE=development CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-sandbox.yml ci/deploy_to_cf.sh
           on:
             branch: sandbox
         - provider: script
-          cleanup: false
+          skip_cleanup: true
+          manifest: manifest-qa.yml
           script: env CF_SPACE=qa CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-qa.yml ci/deploy_to_cf.sh
           on:
             branch: qa
         - provider: script
-          cleanup: true
+          skip_cleanup: true
+          manifest: manifest-qa.yml
           script: env CF_SPACE=production CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-production.yml ci/deploy_to_cf.sh
           on:
             branch: master
