@@ -58,16 +58,16 @@ jobs:
 
 notifications:
   email:
-    if: branch IN ("sandbox", "qa", "master")
     recipients:
       - liam.cusack582@mod.gov.uk
       - toby@codesure.co.uk
+    if: branch IN ("sandbox", "qa", "master")
     on_success: always
     on_failure: always
 
 
-    if: branch IN ("qa","master")
-    recipients:
-      - amanda.moran637@mod.gov.uk
-      - lauren.phillips225@mod.gov.uk
-    on_success: always
+#    if: branch IN ("qa","master")
+#      recipients:
+#        - amanda.moran637@mod.gov.uk
+#        - lauren.phillips225@mod.gov.uk
+#      on_success: always
