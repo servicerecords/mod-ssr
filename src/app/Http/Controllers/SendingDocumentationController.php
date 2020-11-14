@@ -8,6 +8,7 @@ use App\Models\Constant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Imagick;
+use ImagickException;
 use ImagickPixel;
 use Ramsey\Uuid\Uuid;
 
@@ -30,7 +31,7 @@ class SendingDocumentationController extends Controller
     /**
      * @param SendingDocumentationRequest $request
      * @return RedirectResponse
-     * @throws \ImagickException
+     * @throws ImagickException
      */
     public function save(SendingDocumentationRequest $request)
     {
@@ -48,20 +49,46 @@ class SendingDocumentationController extends Controller
 
         Storage::makeDirectory('converted');
         $document = storage_path('app/' . $path);
-        $image = new Imagick($document);
+
         if ($request->file('death-certificate')->extension() === 'pdf') {
             $image = new Imagick($document . '[0]');
+        } else {
+            $imageData = file_get_contents($document);
+            $gdImage = imagecreatefromstring($imageData);
+
+            if (filesize($document) > self::MAX_FILESIZE) {
+                if (imagesx($gdImage) > imagesy($gdImage)) {
+                    $gdImage = imagescale($gdImage, 824, 595);
+                } else {
+                    $gdImage = imagescale($gdImage, 595, 824);
+                }
+            }
+
+            ob_start();
+            imagejpeg($gdImage);
+            $image = new Imagick();
+            $image->readImageBlob(ob_get_contents());
+            ob_end_clean();
         }
 
         $imageQuality = 100;
         $image->setImageFormat('jpg');
-        $image->setColorspace(Imagick::IMGTYPE_GRAYSCALE);
+        $image->setColorspace(Imagick::COLORSPACE_GRAY);
+        $image->transformImageColorspace(Imagick::COLORSPACE_GRAY);
 
-        if ($image->getImageWidth() > $image->getImageHeight())
-            $image->rotateImage(new ImagickPixel('#00000000'), 90);
+        if ($image->getImageLength() > self::MAX_FILESIZE) {
+            if ($image->getImageWidth() > $image->getImageHeight()) {
+                $image->scaleImage(824, 595, Imagick::FILTER_LANCZOS);
+            } else {
+                $image->scaleImage(595, 824, Imagick::FILTER_LANCZOS);
+            }
+        }
 
-        if ($image->getImageLength() > self::MAX_FILESIZE)
-            $image->scaleImage(595, 824, Imagick::FILTER_LANCZOS);
+        try {
+            if ($image->getImageWidth() > $image->getImageHeight())
+                $image->rotateImage(new ImagickPixel('#00000000'), 90);
+        } catch (ImagickException $exception) {
+        }
 
         do {
             $image->setCompressionQuality($imageQuality--);
@@ -70,7 +97,7 @@ class SendingDocumentationController extends Controller
         $image->setImageFormat('pdf');
         $image->writeImage(storage_path('app/converted/' . $filename . '.pdf'));
 
-        Storage::delete($path);
+        Storage::delete($document);
         session(['death-certificate' => 'app/converted/' . $filename . '.pdf']);
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_DEATH_CERTIFICATE);
