@@ -8,12 +8,12 @@
         stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
     ]>
 <policymap>
-    <policy domain="resource" name="memory" value="256MiB"/>
-    <policy domain="resource" name="map" value="512MiB"/>
+    <policy domain="resource" name="memory" value="2GiB"/>
+    <policy domain="resource" name="map" value="2GiB"/>
     <policy domain="resource" name="width" value="16KP"/>
     <policy domain="resource" name="height" value="16KP"/>
-    <policy domain="resource" name="area" value="128MB"/>
-    <policy domain="resource" name="disk" value="1GiB"/>
+    <policy domain="resource" name="area" value="512MB"/>
+    <policy domain="resource" name="disk" value="2GiB"/>
     <policy domain="delegate" rights="none" pattern="URL"/>
     <policy domain="delegate" rights="none" pattern="HTTPS"/>
     <policy domain="delegate" rights="none" pattern="HTTP"/>

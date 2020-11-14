@@ -394,6 +394,9 @@ class Application
         ]);
     }
 
+    /**
+     * Clear up the session
+     */
     public function cleanup()
     {
         $reference = session('application-reference');
