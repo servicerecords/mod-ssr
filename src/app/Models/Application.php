@@ -160,7 +160,7 @@ class Application
         $responses = $this->questionOrder[Constant::APPLICANT];
 
         foreach ($responses as $responseKey => $response) {
-            if (session($response['field'], 'n/a') == trim('')) {
+            if (session($response['field'], '') == trim('')) {
                 unset($responses[$responseKey]);
                 continue;
             }
@@ -329,7 +329,11 @@ class Application
     public function createReference()
     {
         $code = ServiceBranch::getInstance()->getCode(session('service', ServiceBranch::ARMY));
-        return $code . '-' . time();
+        $reference = $code . '-' . time();
+
+        session(['application-reference' => $reference]);
+
+        return $reference;
     }
 
     /**
