@@ -39,7 +39,6 @@ class Payment
     public function getPaymentUrl()
     {
         session(['payment-reference' => str_replace('-', '', Uuid::uuid4()->toString())]);
-        session(['application-reference' => Application::getInstance()->createReference()]);
 
         $data = [
             'amount' => 3000,

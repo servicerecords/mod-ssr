@@ -220,6 +220,10 @@ class ServiceBranch
         }
     }
 
+    /**
+     * @param $branch
+     * @return mixed|string
+     */
     public function getServiceBranch($branch) {
         if (isset($this->branches[$branch])) {
             return $this->branches[$branch]['SERVICE_BRANCH'] ?? '';
