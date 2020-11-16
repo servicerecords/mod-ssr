@@ -55,6 +55,10 @@ class ApplicantDetailsController extends Controller
         }
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_APPLICANT_DETAILS);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
         return redirect()->route('applicant-relationship');
     }
 }

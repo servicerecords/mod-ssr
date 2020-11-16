@@ -46,6 +46,7 @@ class ApplicantNextOfKinController extends Controller
         }
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_APPLICANT_NEXT_OF_KIN);
+
         return redirect()->route('check-answers');
     }
 }

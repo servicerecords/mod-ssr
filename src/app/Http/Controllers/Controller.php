@@ -32,6 +32,7 @@ class Controller extends BaseController
         }
         session(['allow-usage' => $policy['usage'] ?? false]);
 
+        $application = Application::getInstance();
         $progress = [
             'service' => Constant::SECTION_SERVICE,
             'death-in-service' => Constant::SECTION_DIED_IN_SERVICE,
@@ -46,13 +47,13 @@ class Controller extends BaseController
 
         $currentRoute = Route::currentRouteName();
         if(array_key_exists($currentRoute, $progress)) {
-            if(!Application::getInstance()->deathCertificateRequired()) {
+            if(!$application->deathCertificateRequired()) {
                 unset($progress['sending-documentation']);
             }
 
             foreach($progress as $name => $section) {
                 if($section < $progress[$currentRoute]) {
-                    if(!Application::getInstance()->sectionComplete($section)) {
+                    if(!$application->sectionComplete($section)) {
                         return redirect()->route($name);
                     }
                 }
