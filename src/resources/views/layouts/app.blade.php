@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="mask-icon" href="{{ asset('images/govuk-mask-icon.svg') }}" color="#0b0c0c">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/govuk-apple-touch-icon-180x180.png') }}">
     <link rel="apple-touch-icon" sizes="167x167" href="{{ asset('images/govuk-apple-touch-icon-167x167.png') }}">
@@ -18,7 +18,7 @@
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <!--<![endif]-->
 
-<!--[if IE 8]>
+    <!--[if IE 8]>
     <link href="{{ asset('css/all-ie8.css') }}" rel="stylesheet">
     <![endif]-->
 
@@ -68,12 +68,10 @@
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_ID', 'UA-176740731-1') }}"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', '{{ env('GA_ID', 'UA-176740731-1') }}');
+    window.dataLayer = window.dataLayer || []
+    function gtag() { dataLayer.push(arguments) }
+    gtag('js', new Date())
+    gtag('config', '{{ env('GA_ID', 'UA-176740731-1') }}')
 </script>
 @stack('scripts')
 </body>

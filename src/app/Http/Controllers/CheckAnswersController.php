@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Constant;
 use App\Models\Payment;
 
 
@@ -14,6 +15,8 @@ class CheckAnswersController extends Controller
     public function index()
     {
         $application = Application::getInstance();
+
+        Application::getInstance()->markSectionComplete(Constant::SECTION_CHECK_ANSWERS);
 
         return view('check-answers', [
             'serviceperson' => $application->getServiceperson(),
