@@ -26,11 +26,14 @@ class Controller extends BaseController
      */
     public function callAction($method, $parameters)
     {
-        $policy = $_COOKIE['cookies_policy'];
-        if($policy) {
-            $policy = json_decode($policy, JSON_OBJECT_AS_ARRAY);
+        session(['allow-usage' => Constant::NO]);
+        if(isset($_COOKIE['cookies_policy'])) {
+            $policy = $_COOKIE['cookies_policy'];
+            if ($policy) {
+                $policy = json_decode($policy, JSON_OBJECT_AS_ARRAY);
+                if($policy['usage']) session(['allow-usage' => Constant::YES]);
+            }
         }
-        session(['allow-usage' => $policy['usage'] ?? false]);
 
         $application = Application::getInstance();
         $progress = [
