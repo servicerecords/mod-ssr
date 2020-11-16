@@ -26,7 +26,7 @@ class ServiceBranch
         $this->branches = [
             self::NAVY => [
                 'NAME' => 'Royal Navy or Royal Marines',
-                'SERVICE_BRANCH' => 'Navy',
+                'SERVICE_BRANCH' => 'Royal Navy',
                 'VALUE' => self::NAVY,
                 'CODE' => 'SEA',
                 'FIELDS' => [
@@ -56,7 +56,7 @@ class ServiceBranch
             ],
             self::ARMY => [
                 'NAME' => 'Army (including Territorial & Army Emergency Reserve)',
-                'SERVICE_BRANCH' => 'Army',
+                'SERVICE_BRANCH' => 'British Army',
                 'VALUE' => self::ARMY,
                 'CODE' => 'LAN',
                 'FIELDS' => [
@@ -91,7 +91,7 @@ class ServiceBranch
             ],
             self::RAF => [
                 'NAME' => 'Royal Air Force (RAF)',
-                'SERVICE_BRANCH' => 'Air Force',
+                'SERVICE_BRANCH' => 'Royal Air Force',
                 'VALUE' => self::RAF,
                 'CODE' => 'AIR',
                 'FIELDS' => [
@@ -121,7 +121,7 @@ class ServiceBranch
             ],
             self::HOME_GUARD => [
                 'NAME' => 'Home Guard',
-                'SERVICE_BRANCH' => 'Army',
+                'SERVICE_BRANCH' => 'British Army',
                 'VALUE' => self::HOME_GUARD,
                 'CODE' => 'LAN',
                 'FIELDS' => [
