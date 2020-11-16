@@ -55,11 +55,11 @@
                 </tbody>
             </table>
 
-            <form method="post" action="{{ route('cookie-policy.save') }}" novalidate>
+            <form id="cookie-usage-preference-form" method="post" action="{{ route('cookie-policy.save') }}" novalidate>
                 @csrf
                 <x-radio-group label="Did they die in service?"
-                               :hide-legend="true"
                                field="allow-usage"
+                               :hide-legend="true"
                                :options="[
                                     ['value' => \App\Models\Constant::YES, 'label' => 'Use cookies that measure my website use', 'children' => []],
                                     ['value' => \App\Models\Constant::NO , 'label' => 'Do not use cookies that measure my website use', 'children' => []]
