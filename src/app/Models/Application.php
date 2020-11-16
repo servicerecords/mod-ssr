@@ -258,7 +258,7 @@ class Application
      */
     public function markSectionComplete($section)
     {
-        session(['section-complete' => session('section->complete', 0) | $section]);
+        session(['section-complete' => session('section-complete', 0) | $section]);
     }
 
     /**
