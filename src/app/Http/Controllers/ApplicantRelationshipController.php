@@ -114,6 +114,11 @@ class ApplicantRelationshipController extends Controller
         }
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_APPLICANT_RELATIONSHIP);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
+
         if ($request->input('application-relationship') === Constant::RELATION_UNRELATED) {
             return redirect()->route('check-answers');
         }

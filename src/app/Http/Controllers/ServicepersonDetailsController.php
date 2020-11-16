@@ -52,6 +52,11 @@ class ServicepersonDetailsController extends Controller
         }
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_SERVICEPERSON_DETAILS);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
+
         if (session('serviceperson-died-in-service', Constant::YES) === Constant::NO) {
             return redirect()->route('sending-documentation');
         }
