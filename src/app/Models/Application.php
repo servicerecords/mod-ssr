@@ -218,6 +218,17 @@ class Application
     }
 
     /**
+     * @return bool
+     */
+    public function deathCertificateRequired()
+    {
+        $diedInService = session('serviceperson-died-in-service', false);
+        $ageToDate = date('Y') - session('serviceperson-date-of-birth-date-year', date('Y'));
+
+        return (!$diedInService || $ageToDate > 116);
+    }
+
+    /**
      * @param $section
      * @return int
      */
@@ -411,5 +422,12 @@ class Application
 
         session()->flush();
         session(['application-reference' => $reference]);
+    }
+
+    /**
+     * @param $currentSection
+     */
+    public function priorSectionComplete($currentSection)
+    {
     }
 }
