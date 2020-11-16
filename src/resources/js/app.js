@@ -297,4 +297,4 @@ window.GOVUKFrontend.CookieBanner = {
     }
 }
 
-window[`ga-disable-${process.env['MIX_GA_ID']}` ] = true
+window[`ga-disable-${process.env['MIX_GA_ID']}` ] = false
