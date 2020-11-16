@@ -66,6 +66,15 @@
     window.GOVUKFrontend.initAll()
     window.GOVUKFrontend.CookieBanner.init()
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_ID', 'UA-176740731-1') }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', '{{ env('GA_ID', 'UA-176740731-1') }}');
+</script>
 @stack('scripts')
 </body>
 
