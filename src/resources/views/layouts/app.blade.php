@@ -32,7 +32,7 @@
     <meta name="description" content="Apply for the records of someone who's deceased">
 </head>
 
-<body class="govuk-template__body ">
+<body class="govuk-template__body">
 <script>
     document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
 </script>
@@ -49,6 +49,8 @@
     <main class="govuk-main-wrapper" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                <x-success-alert></x-success-alert>
+
                 <h1 class="govuk-heading-l">
                     @yield('pageTitle')
                 </h1>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 
 class CookiePolicyController extends Controller
 {
@@ -34,13 +33,7 @@ class CookiePolicyController extends Controller
 
     public function save(Request $request)
     {
-        $cookie_policy = $_COOKIE['cookies_policy'];
-
-        $policy = '{"essential":true,"settings":false,"usage":true,"campaigns":false}';
-
-        setcookie('cookie_policy', $cookie_policy, 0, '/', $_SERVER['HTTP_HOST'], false, false);
-
-        return redirect('cookie-policy');
-        // dd($cookie);
+        session()->flash('flash', 'Your cookie settings were saved');
+       return redirect()->route('cookie-policy');
     }
 }
