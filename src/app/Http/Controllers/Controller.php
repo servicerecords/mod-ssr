@@ -27,7 +27,9 @@ class Controller extends BaseController
     public function callAction($method, $parameters)
     {
         $policy = $_COOKIE['cookies_policy'];
-        $policy = json_decode($policy, JSON_OBJECT_AS_ARRAY);
+        if($policy) {
+            $policy = json_decode($policy, JSON_OBJECT_AS_ARRAY);
+        }
         session(['allow-usage' => $policy['usage'] ?? false]);
 
         $progress = [
