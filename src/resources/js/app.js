@@ -301,15 +301,17 @@ window.GOVUKFrontend.CookieBanner = {
 window[`ga-disable-${process.env['MIX_GA_ID']}`] = (window.GOVUK.getConsentCookie()?.usage ?? false)
 
 const cookiePreferenceForm = document.getElementById('cookie-usage-preference-form')
-cookiePreferenceForm.addEventListener('submit', function (event) {
-    const items = document.getElementsByName('allow-usage')
+if (cookiePreferenceForm) {
+    cookiePreferenceForm.addEventListener('submit', function (event) {
+        const items = document.getElementsByName('allow-usage')
 
-    for (let item of items) {
-        if (item.nodeName.toLowerCase() === 'input') {
-            if (item.checked) {
-                window.GOVUK.setUsageCookieValue((item.value !== 'No'))
-                window[`ga-disable-${process.env['MIX_GA_ID']}`] = (item.value !== 'No')
+        for (let item of items) {
+            if (item.nodeName.toLowerCase() === 'input') {
+                if (item.checked) {
+                    window.GOVUK.setUsageCookieValue((item.value !== 'No'))
+                    window[`ga-disable-${process.env['MIX_GA_ID']}`] = (item.value !== 'No')
+                }
             }
         }
-    }
-})
+    })
+}
