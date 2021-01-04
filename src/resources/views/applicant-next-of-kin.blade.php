@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.app', ['title' => 'Are you the immediate next of kin - '])
 @section('pageTitle', 'Are you the immediate next of kin?')
 
 @section('content')

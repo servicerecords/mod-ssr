@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ $errors->any() ? 'Error: ' : '' }}{{ env('APP_NAME', 'GOV.UK - The best place to find government services and information') }}</title>
+    <title>{{ $errors->any() ? 'Error: ' : '' }}{{ $title ?? '' }}{{ env('APP_NAME', 'The best place to find government services and information') }} - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
