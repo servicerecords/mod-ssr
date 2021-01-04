@@ -3,7 +3,7 @@
     <fieldset class="govuk-fieldset">
         @if(!$hideLegend)
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                <h1 class="govuk-fieldset__heading">{{ $label }}{{ !$mandatory ? ' (optional)' : '' }}</h1>
+                <{{ $questionTag }} class="govuk-fieldset__heading">{{ $label }}{{ !$mandatory ? ' (optional)' : '' }}</{{ $questionTag }}>
             </legend>
         @endif
         <x-hint :hint="$hint" :field="$field"></x-hint>
