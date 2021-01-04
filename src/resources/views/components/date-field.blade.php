@@ -10,7 +10,6 @@
 
 
     <div class="govuk-date-input" id="{{ $field }}">
-
         @if($singleField)
             <x-date-input :hideLabel="true" :field="$field" :period="$period"></x-date-input>
         @else
