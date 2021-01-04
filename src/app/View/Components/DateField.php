@@ -53,6 +53,16 @@ class DateField extends FormField
     public $hideYearLabel = false;
 
     /**
+     * @var bool
+     */
+    public $singleField = false;
+
+    /**
+     * @var bool
+     */
+    public $period = 'year';
+
+    /**
      * Create a new component instance.
      *
      * @param null $field
@@ -74,12 +84,14 @@ class DateField extends FormField
      * @param bool $hideDayLabel
      * @param bool $hideMonthLabel
      * @param bool $hideYearLabel
+     * @param bool $singleField
+     * @param bool $period
      */
     public function __construct($field = null, $label = 'Option', $value = null, $hint = false, $selected = null,
                                 $options = [], $labelExtra = null, $mandatory = true, $characterLimit = false,
                                 $fullWidth = false, $autocomplete = false, $hideDay = false, $hideMonth = false, $hideYear = false,
                                 $dayLabel = 'Day', $monthLabel = 'Month', $yearLabel = 'Year',
-                                $hideDayLabel = false, $hideMonthLabel = false, $hideYearLabel = false)
+                                $hideDayLabel = false, $hideMonthLabel = false, $hideYearLabel = false, $singleField = false, $period = 'year')
     {
         parent::__construct($field, $label, $value, $hint, $selected, $options,
             $labelExtra, $mandatory, $characterLimit, $fullWidth, $autocomplete);
@@ -93,6 +105,8 @@ class DateField extends FormField
         $this->hideDayLabel = $hideDayLabel;
         $this->hideMonthLabel = $hideMonthLabel;
         $this->hideYearLabel = $hideYearLabel;
+        $this->singleField = $singleField;
+        $this->period = $period;
     }
 
     /**
