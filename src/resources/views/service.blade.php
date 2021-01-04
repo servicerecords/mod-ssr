@@ -9,7 +9,7 @@
         <x-error-summary :errors="$errors"></x-error-summary>
         <x-radio-group label="Which service did they last serve in?"
                        field="service"
-                       :questionTag="h2"
+                       :questionTag="'h2'"
                        :selected="session('service', null)"
                        :options="$branches"></x-radio-group>
         <x-submit-form :canCancel="false"></x-submit-form>
