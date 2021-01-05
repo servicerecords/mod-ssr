@@ -15,30 +15,43 @@ class ConfirmationController extends Controller
      */
     public function paid(Request $request, $uuid)
     {
-        $payment  = Payment::getInstance()->verifyPayment($uuid);
+        $payment  = Payment::getInstance()->verifyPayment();
         $application = Application::getInstance();
 
-        if($payment && session('application-reference', false)) {
+        if($payment !== true) {
+            Application::getInstance()->cleanup();
+            return view('confirmation-error', [ 'payment' => $payment ]);
+        }
+
+        if(session('application-reference', false)) {
+            session(['payment-status' => 'Paid']);
+            $application->notifyBranch();
+            $application->notifyApplicant();
+
+            Application::getInstance()->cleanup();
+            return redirect()->route('confirmation.complete');
+        }
+
+        Application::getInstance()->cleanup();
+        return view('confirmation-error', [ 'payment' => $payment ]);
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function free() {
+        $application = Application::getInstance();
+
+        if($application->isFree()) {
+            session(['payment-status' => 'Exempt']);
             $application->notifyBranch();
             $application->notifyApplicant();
 
             Application::getInstance()->cleanup();
             return redirect()->route('confirmation.complete');
         } else {
-            return view('confirmation-error', ['message' => 'There is a problem verifying your payment.']);
+            return redirect()->route('cancel-application');
         }
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function free() {
-        $application = Application::getInstance();
-        $application->notifyBranch();
-        $application->notifyApplicant();
-
-        Application::getInstance()->cleanup();
-        return view('confirmation-success');
     }
 
     /**
@@ -47,4 +60,5 @@ class ConfirmationController extends Controller
     public function complete() {
         return view('confirmation-success');
     }
+
 }

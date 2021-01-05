@@ -16,6 +16,7 @@ jobs:
         - chmod 755 ci/deploy_to_cf.sh
         - chmod 755 ci/zero_downtime.sh
         - cp docker/.env docker/.env-build
+        - sed -ri "s|ENV_APP_NAME|$APP_NAME|" ./docker/.env-build
         - sed -ri "s|ENV_APP_URL|$APP_URL|" ./docker/.env-build
         - sed -ri "s|ENV_APP_ENV|$APP_ENV|" ./docker/.env-build
         - sed -ri "s|ENV_LAND_EMAIL|$LAND_EMAIL|" ./docker/.env-build
@@ -48,6 +49,25 @@ jobs:
           script: env CF_SPACE=qa CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-qa.yml ci/deploy_to_cf.sh
           on:
             branch: qa
+        - provider: script
+          skip_cleanup: true
+          manifest: manifest-qa.yml
+          script: env CF_SPACE=production CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-production.yml ci/deploy_to_cf.sh
+          on:
+            branch: master
 
 notifications:
-  email: false
+  email:
+    recipients:
+      - liam.cusack582@mod.gov.uk
+      - toby@codesure.co.uk
+    if: branch IN ("sandbox", "qa", "master")
+    on_success: always
+    on_failure: always
+
+
+#    if: branch IN ("qa","master")
+#      recipients:
+#        - amanda.moran637@mod.gov.uk
+#        - lauren.phillips225@mod.gov.uk
+#      on_success: always
