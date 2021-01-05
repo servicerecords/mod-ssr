@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Unauthorized - '])
 
 @section('pageTitle', __('Unauthorized'))
 @section('code', '401')

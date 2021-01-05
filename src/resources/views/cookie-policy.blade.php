@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Cookie statement - '])
 
 @section('pageTitle', 'Cookies on Apply for a deceased’s military record')
 

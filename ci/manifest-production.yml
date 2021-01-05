@@ -1,8 +1,11 @@
 ---
 applications:
-  - name: srrdigital-production
-    memory: 1G
+  - name: test-app
+    routes:
+      - route: srrdigital-prodution.cloudapps.digital
+    memory: 800M
     disk_quota: 2G
+    instances: 1
     docker:
       image: codesure/srrdigital:production
 
