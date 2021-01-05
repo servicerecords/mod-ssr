@@ -51,7 +51,7 @@ jobs:
             branch: qa
         - provider: script
           skip_cleanup: true
-          manifest: manifest-qa.yml
+          manifest: manifest-production.yml
           script: env CF_SPACE=production CF_APP_NAME=Blue CF_MANIFEST=ci/manifest-production.yml ci/deploy_to_cf.sh
           on:
             branch: master
