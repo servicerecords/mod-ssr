@@ -12,13 +12,19 @@ class RadioGroup extends FormField
     public $hideLegend = false;
 
     /**
+     * @var string
+     */
+    public $questionTag = 'h1';
+
+    /**
      * @var bool|mixed
      */
     public $hasConditionals = false;
 
     public function __construct($field = null, $label = 'Option', $value = null, $hint = false, $selected = null,
                                 $options = [], $labelExtra = null, $mandatory = true, $characterLimit = false,
-                                $fullWidth = false, $autocomplete = false, $hideLabel = false, $hideLegend = false, $hasConditionals = false)
+                                $fullWidth = false, $autocomplete = false, $hideLabel = false, $hideLegend = false, $hasConditionals = false,
+    $questionTag='h1')
     {
 
         parent::__construct($field, $label, $value, $hint, $selected, $options,
@@ -26,6 +32,7 @@ class RadioGroup extends FormField
 
         $this->hideLegend = $hideLegend;
         $this->hasConditionals = $hasConditionals;
+        $this->questionTag = $questionTag;
     }
 
     /**
