@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Service will be available at a later date - '])
 
 @section('pageTitle', __('This service will be available at a later date'))
 @section('content')

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DeathInServiceRequest;
+use App\Models\Application;
 use App\Models\Constant;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -37,7 +37,7 @@ class DeathInServiceController extends Controller
     ];
 
     /**
-     * @return Application|Factory|View|RedirectResponse|Request
+     * @return \Illuminate\Contracts\Foundation\Application|Factory|View|RedirectResponse
      */
     public function index()
     {
@@ -60,7 +60,12 @@ class DeathInServiceController extends Controller
             session([$field => $request->input($field)]);
         }
 
-        \App\Models\Application::getInstance()->markSectionComplete(Constant::SECTION_DIED_IN_SERVICE);
+        Application::getInstance()->markSectionComplete(Constant::SECTION_DIED_IN_SERVICE);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
+
         return redirect()->route('essential-information');
     }
 }

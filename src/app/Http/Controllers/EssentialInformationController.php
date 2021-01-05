@@ -40,6 +40,11 @@ class EssentialInformationController extends Controller
         }
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_ESSENTIAL_INFO);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
+
         return redirect()->route('serviceperson-details');
     }
 }

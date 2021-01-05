@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.app', ['title' => 'Application complete - '])
 @section('pageTitle', false)
 
 @section('content')

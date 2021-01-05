@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Accessibility statement - '])
 
 @section('pageTitle', 'Accessibility statement for ' . env('APP_NAME', 'Apply for a deceased\'s military record'))
 

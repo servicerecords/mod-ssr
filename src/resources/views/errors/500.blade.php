@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Sorry, there is a problem with the service - '])
 
 @section('pageTitle', __('Sorry, there is a problem with the service'))
 @section('content')

@@ -41,6 +41,11 @@ class ServiceController extends Controller
         session(['serviceperson-service' => ServiceBranch::getInstance()->getName($request->get('service'))]);
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_SERVICE);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
+
         return redirect()->route('death-in-service');
     }
 }

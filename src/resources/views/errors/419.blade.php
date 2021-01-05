@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Page Expired - '])
 
 @section('pageTitle', __('Page Expired'))
 @section('code', '419')
