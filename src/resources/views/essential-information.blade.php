@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Their Details - ']))
+@extends('layouts.app', ['title' => 'Serviceperson\'s Details - ']))
 @section('pageTitle', 'Details of the serviceperson')
 
 @section('content')
