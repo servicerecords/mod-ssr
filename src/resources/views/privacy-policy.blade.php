@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Privacy Policy - '])
 
 @section('pageTitle', 'Privacy Policy')
 
