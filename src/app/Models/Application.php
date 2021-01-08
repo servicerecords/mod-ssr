@@ -80,9 +80,9 @@ class Application
             ['label' => 'Country', 'field' => 'applicant-address-country', 'route' => 'applicant-details', 'change' => 'your country'],
             ['label' => 'Telephone Number', 'field' => 'applicant-telephone', 'route' => 'applicant-details', 'change' => 'your telephone number'],
             ['label' => 'Relationship to serviceperson', 'field' => 'applicant-relationship', 'route' => 'applicant-relationship', 'change' => 'relationship to serviceperson'],
-            ['label' => 'Was spouse at death', 'field' => 'applicant-relationship-spouse-at-death', 'route' => 'applicant-relationship', 'change' => 'if you were their spouse at death'],
+            ['label' => 'Spouse at death', 'field' => 'applicant-relationship-spouse-at-death', 'route' => 'applicant-relationship', 'change' => 'if you were their spouse at death'],
             ['label' => 'Parent confirmed no spouse', 'field' => 'applicant-relationship-no-surviving-spouse', 'route' => 'applicant-relationship', 'change' => 'if a parent confirmed no spouse'],
-            ['label' => 'Is next of kin', 'field' => 'applicant-next-of-kin', 'route' => 'applicant-next-of-kin', 'change' => 'if you are their next of kin'],
+            ['label' => 'Immediate Next of kin', 'field' => 'applicant-next-of-kin', 'route' => 'applicant-next-of-kin', 'change' => 'if you are their next of kin'],
         ]
     ];
 
@@ -366,7 +366,7 @@ class Application
             );
 
             if (array_key_exists($field . '-day', array_flip($fields))) {
-                $day = session($field . '-day', Constant::DAY_PLACEHOLDER);
+                $day = session($field   . '-day', Constant::DAY_PLACEHOLDER);
             }
 
             if (array_key_exists($field . '-month', array_flip($fields))) {
