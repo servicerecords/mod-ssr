@@ -57,7 +57,7 @@ class Application
             ServiceBranch::RAF => [
                 ['label' => 'Date they joined', 'field' => 'serviceperson-enlisted-date', 'route' => 'serviceperson-details', 'change' => 'date they joined'],
                 ['label' => 'Died in service', 'field' => 'serviceperson-died-in-service', 'route' => 'death-in-service', 'change' => 'if they died in service'],
-                ['label' => 'Date of casualty / aircraft loss', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'date of casualty or aircraft loss'],
+                ['label' => 'Date of death in service', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'date of death in service'],
                 ['label' => 'Further information', 'field' => 'serviceperson-discharged-information', 'route' => 'serviceperson-details', 'change' => 'further information'],
             ],
             ServiceBranch::HOME_GUARD => [
@@ -246,7 +246,7 @@ class Application
     }
 
     /**
-     *
+     * @return void
      */
     public function resetCompletedSections()
     {
