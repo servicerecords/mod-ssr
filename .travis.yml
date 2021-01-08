@@ -25,6 +25,7 @@ jobs:
         - sed -ri "s|ENV_ACCOUNTS_EMAIL|$ACCOUNTS_EMAIL|" ./docker/.env-build
         - sed -ri "s|ENV_FEEDBACK_EMAIL|$FEEDBACK_EMAIL|" ./docker/.env-build
         - sed -ri "s|ENV_UNKNOWN_EMAIL|$UNKNOWN_EMAIL|" ./docker/.env-build
+        - sed -ri "s|ENV_GOV_PAY_API_KEY|$GOV_PAY_API_KEY|" ./docker/.env-build
         - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
         - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
         - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
