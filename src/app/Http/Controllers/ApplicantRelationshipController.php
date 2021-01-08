@@ -25,7 +25,7 @@ class ApplicantRelationshipController extends Controller
             'value' => Constant::RELATION_SPOUSE,
             'children' => [
                 [
-                    'label' => 'Confirm here if you were their spouse/civil partner at the time of death',
+                    'label' => 'Confirm here if you were their spouse or civil partner at the time of death',
                     'field' => 'spouse-at-death',
                     'value' => Constant::YES,
                     'type' => 'x-checkbox'
@@ -47,7 +47,7 @@ class ApplicantRelationshipController extends Controller
             'value' => Constant::RELATION_PARENT,
             'children' => [
                 [
-                    'label' => 'Confirm here if the serviceperson did NOT have a living Spouse/Civil Partner at the time of death',
+                    'label' => 'Confirm here if the serviceperson did NOT have a living Spouse or Civil Partner at the time of death',
                     'field' => 'no-surviving-spouse',
                     'value' => Constant::YES,
                     'type' => 'x-checkbox'

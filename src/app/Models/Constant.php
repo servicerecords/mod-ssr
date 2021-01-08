@@ -15,12 +15,12 @@ class Constant
     public const YEAR_PLACEHOLDER = 'YYYY';
 
     public const RELATION_UNRELATED = 'I am not related';
-    public const RELATION_SPOUSE = 'I am their spouse/civil partner';
-    public const RELATION_CHILD = 'I am their son/daughter';
+    public const RELATION_SPOUSE = 'I am their spouse or civil partner';
+    public const RELATION_CHILD = 'I am their son or daughter';
     public const RELATION_GRANDCHILD = 'I am their grandchild';
-    public const RELATION_PARENT = 'I am their mother/father';
-    public const RELATION_SIBLING = 'I am their brother/sister';
-    public const RELATION_NIECE_NEPHEW = 'I am their niece/nephew';
+    public const RELATION_PARENT = 'I am their mother or father';
+    public const RELATION_SIBLING = 'I am their brother or sister';
+    public const RELATION_NIECE_NEPHEW = 'I am their niece or nephew';
     public const RELATION_GRANDPARENT = 'I am their grandparent';
     public const RELATION_OTHER = 'Other';
 

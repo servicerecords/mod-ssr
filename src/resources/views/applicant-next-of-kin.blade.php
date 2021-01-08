@@ -5,19 +5,19 @@
     <form method="post" action="{{ route('applicant-next-of-kin.save') }}" novalidate>
 
         <p class="govuk-body">The immediate next of kin is the serviceperson’s closest living
-            relation from the list below.
+            relation from the list.
         </p>
 
         <x-error-summary :errors="$errors"></x-error-summary>
 
         <div class="govuk-details__text{{ $errors->first('applicant-next-of-kin') ? ' govuk-!-margin-bottom-7': '' }}">
             <ul class="govuk-list govuk-list--bullet">
-                <li>Spouse/Civil Partner</li>
-                <li>Son/Daughter</li>
+                <li>Spouse or Civil Partner</li>
+                <li>Son or Daughter</li>
                 <li>Grandchild</li>
-                <li>Mother/Father</li>
-                <li>Brother/Sister</li>
-                <li>Niece/Nephew</li>
+                <li>Mother  or  Father</li>
+                <li>Brother or Sister</li>
+                <li>Niece or Nephew</li>
                 <li>Grandparent</li>
                 <li>Other</li>
             </ul>

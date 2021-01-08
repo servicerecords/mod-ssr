@@ -29,7 +29,7 @@
                           'children' => [
                             [ 'label' => 'Number', 'field' => 'number' ],
                             [ 'label' => 'Regt/Corps', 'field' => 'regiment' ],
-                            [ 'label' => 'Dates', 'field' => 'dates', 'hint' => 'No format required'],
+                            [ 'label' => 'Dates', 'field' => 'dates'],
                           ]
                         ],
                         [
@@ -38,7 +38,7 @@
                           'children' => [
                             [ 'label' => 'Number', 'field' => 'number' ],
                             [ 'label' => 'Regt/Corps', 'field' => 'regiment' ],
-                            [ 'label' => 'Dates', 'field' => 'dates', 'hint' => 'No format required'],
+                            [ 'label' => 'Dates', 'field' => 'dates'],
                           ]
                         ]
                       ]"></x-checkbox-group>

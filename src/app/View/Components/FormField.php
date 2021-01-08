@@ -97,7 +97,6 @@ abstract class FormField extends Component
         $this->label = $label;
         $this->labelExtra = $labelExtra;
         $this->value = $value;
-        $this->hint = $hint;
         $this->selected = $selected;
         $this->options = $options;
         $this->mandatory = $mandatory;
@@ -106,5 +105,14 @@ abstract class FormField extends Component
         $this->autocomplete = $autocomplete;
         $this->hideLabel = $hideLabel;
         $this->_id = Str::lower(Str::snake(str_replace(['/'], ' or ', str_replace(['(', ')'], '', $label))));
+
+        if($hint) {
+            if(Str::endsWith($hint, '.')) {
+                $this->hint = $hint;
+            } else {
+                $this->hint = $hint . '.';
+            }
+        }
+
     }
 }
