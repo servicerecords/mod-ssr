@@ -3,8 +3,8 @@
     aria-describedby="@if($hint){{ $field }}-hint @endif @error($field) {{ $field }}-year-error @enderror">
 
     <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h1 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                 {{ $label }}
             </h1>
         </legend>
