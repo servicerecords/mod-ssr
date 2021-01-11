@@ -1,14 +1,18 @@
 @props([
-    'label' => '',
-    'field' => '',
-    'period' => '',
+    'overLabel' => '',
+    'label'     => '',
+    'field'     => '',
+    'period'    => '',
     'hideLabel' => false,
 ])
 
 <div class="govuk-date-input__item">
     <div class="govuk-form-group">
         @if(!$hideLabel)
-            <label class="govuk-label govuk-date-input__label" for="{{ $field }}-{{ $period }}">{{ $label }}</label>
+            <label class="govuk-label govuk-date-input__label" for="{{ $field }}-{{ $period }}">
+                <span ></span>
+                {{ $label }}
+            </label>
         @endif
         <input
             class="govuk-input govuk-date-input__input govuk-input--width-2 @error($field .'-' . $period) govuk-input--error @enderror"
