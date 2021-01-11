@@ -3,7 +3,7 @@
     'field' => 'Unset field',
     'extra' => false,
     'mandatory' => true,
-    'hidden'
+    'hidden',
 ])
 <label class="govuk-label" for="{{ $field }}">
     @if($hidden)<span class="govuk-visually-hidden">{{ $label }}</span>@else{{ $label }}@endif

@@ -12,7 +12,7 @@
         class="govuk-input @if(!$fullWidth)govuk-!-width-two-thirds @endif @error($field) govuk-input--error @enderror"
         id="{{ $field }}" name="{{ $field }}" type="{{ $type }}"
         @if(!$spellcheck)spellcheck="false" @endif @if($autocomplete)autocomplete="{{ $autocomplete }}"
-        @endif @if(!$maxlength) maxlength="120" @endif
+        @endif @if(!$maxlength) maxlength="120" @endif @if($autocomplete === 'tel') inputmode="numeric" @endif
         value="{{ old($field, session($field)) }}"
         @if($ariaDescribedBy)
         aria-describedby="{{ join(' ', $ariaDescribedBy) }}"
