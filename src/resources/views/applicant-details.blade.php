@@ -32,7 +32,6 @@
                      autocomplete="tel"
                      field="applicant-telephone"
                      type="tel"
-                     autocomplete="tel"
                      hint="For international numbers include the country code."></x-textfield>
         <x-radio-group label="Use these details for billing?"
                        field="applicant-details-transfer"
