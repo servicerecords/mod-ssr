@@ -37,6 +37,6 @@
                 settings</a> at any time.
         </p>
         <a href="#" class="govuk-hide-button govuk" data-hide-cookie-banner="true" data-module="track-click"
-           data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide</a>
+           data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide<span class="govuk-visually-hidden"> cookies message</span></a>
     </div>
 </div>
