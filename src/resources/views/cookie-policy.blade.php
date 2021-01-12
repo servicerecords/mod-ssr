@@ -1,6 +1,12 @@
 @extends('layouts.app', ['title' => 'Cookie statement - '])
-
 @section('pageTitle', 'Cookies on Apply for a deceased’s military record')
+
+@push('scripts')
+<script>
+    window.GOVUKFrontend.CookieBanner.setCookieConsent()
+    window.GOVUKFrontend.CookieBanner.hideCookieMessage()
+</script>
+@endpush
 
 @section('content')
     <p class="govuk-body">Cookies are files saved on your computer, tablet or telephone when you visit a website.

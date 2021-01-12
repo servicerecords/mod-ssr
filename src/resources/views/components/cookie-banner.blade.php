@@ -36,7 +36,7 @@
                        data-track-action="Cookie banner settings clicked from confirmation">change your cookie
                 settings</a> at any time.
         </p>
-        <a href="#" class="govuk-hide-button govuk" data-hide-cookie-banner="true" data-module="track-click"
+        <a href="#" class="govuk-hide-button govuk govuk-link" data-hide-cookie-banner="true" data-module="track-click"
            data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide<span class="govuk-visually-hidden"> cookies message</span></a>
     </div>
 </div>
