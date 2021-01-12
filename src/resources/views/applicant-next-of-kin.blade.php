@@ -23,7 +23,7 @@
             </ul>
         </div>
 
-        <x-radio-group label=""
+        <x-radio-group label="Are you the immediate next of kin?"
                        field="applicant-next-of-kin"
                        :hide-label="true"
                        :options="$options"></x-radio-group>
