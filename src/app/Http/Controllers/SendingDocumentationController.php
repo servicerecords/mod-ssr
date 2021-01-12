@@ -17,18 +17,10 @@ class SendingDocumentationController extends Controller
     const MAX_FILESIZE = 2000000;
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|RedirectResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        if (session('serviceperson-died-in-service', Constant::YES) === Constant::YES) {
-            if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
-                return redirect()->route('check-answers');
-            }
-
-            return redirect()->route('applicant-details');
-        }
-
         return view('sending-documentation');
     }
 
