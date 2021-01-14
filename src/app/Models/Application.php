@@ -46,11 +46,11 @@ class Application
                 ['label' => 'Territorial Army (TA)', 'field' => 'serviceperson-additional-service-ta', 'route' => 'serviceperson-details', 'change' => 'Territorial Army served'],
                 ['label' => 'TA Number', 'field' => 'serviceperson-additional-service-ta-number', 'route' => 'serviceperson-details', 'change' => 'TA number'],
                 ['label' => 'TA Regt/Corps', 'field' => 'serviceperson-additional-service-ta-regiment', 'route' => 'serviceperson-details', 'change' => 'TA Regiment or Corps'],
-                ['label' => 'TA Dates', 'field' => 'serviceperson-additional-service-ta-dates-hint', 'route' => 'serviceperson-details', 'change' => 'TA Dates'],
+                ['label' => 'TA Dates', 'field' => 'serviceperson-additional-service-ta-dates', 'route' => 'serviceperson-details', 'change' => 'TA Dates'],
                 ['label' => 'Army Emergency Reserve (AER)', 'field' => 'serviceperson-additional-service-aer', 'route' => 'serviceperson-details', 'change' => 'AER served'],
                 ['label' => 'AER Reserve Number', 'field' => 'serviceperson-additional-service-aer-number', 'route' => 'serviceperson-details', 'change' => 'AER Reserve number'],
                 ['label' => 'AER Regt/Corps', 'field' => 'serviceperson-additional-service-aer-regiment', 'route' => 'serviceperson-details', 'change' => 'AER Regiment or Corps'],
-                ['label' => 'AER Dates', 'field' => 'serviceperson-additional-service-aer-dates-hint', 'route' => 'serviceperson-details', 'change' => 'AER dates'],
+                ['label' => 'AER Dates', 'field' => 'serviceperson-additional-service-aer-dates', 'route' => 'serviceperson-details', 'change' => 'AER dates'],
                 ['label' => 'Disability Pension been applied for', 'field' => 'serviceperson-disability-pension', 'route' => 'serviceperson-details', 'change' => 'if disability pension applied for'],
                 ['label' => 'Further information', 'field' => 'serviceperson-additional-information', 'route' => 'serviceperson-details', 'change' => 'further information'],
             ],
@@ -107,6 +107,27 @@ class Application
                 $this->deathCertificate = file_get_contents(storage_path($sessionValue));
             }
         }
+
+        if(session('service', ServiceBranch::ARMY) === ServiceBranch::ARMY) {
+            if(session('serviceperson-died-in-service', Constant::YES) === Constant::NO) {
+                $this->questionOrder[Constant::SERVICEPERSION][ServiceBranch::ARMY][1] =
+                    ['label' => 'Year of discharge', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
+            }
+        }
+
+       // dd(session()->all());
+
+        /**
+         * "serviceperson-additional-service-ta" => "Territorial Army (TA)"
+         * "serviceperson-additional-service-ta-number" => null
+         * "serviceperson-additional-service-ta-regiment" => null
+         * "serviceperson-additional-service-ta-date" => null
+         * "serviceperson-additional-service-aer" => "Army Emergency Reserve (AER)"
+         * "serviceperson-additional-service-aer-number" => null
+         * "serviceperson-additional-service-aer-regiment" => null
+         * "serviceperson-additional-service-aer-date" => null
+         */
+
     }
 
     /**
@@ -225,7 +246,7 @@ class Application
         $diedInService = session('serviceperson-died-in-service', Constant::NO) === Constant::YES;
         $ageToDate = date('Y') - session('serviceperson-date-of-birth-date-year', date('Y'));
 
-        return (!$diedInService || $ageToDate > 116);
+        return (!$diedInService || $ageToDate <= 116);
     }
 
     /**
