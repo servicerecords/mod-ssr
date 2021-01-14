@@ -6,7 +6,18 @@
         Death certificate required
     </h2>
     <p class="govuk-body">
-        Upload your death certificate in .jpg, .png or .pdf formats.
+        Upload the serviceperson’s death certificate.
+    </p>
+
+    <div class="govuk-details__text govuk-!-margin-bottom-4">
+        <ul class="govuk-list govuk-list--bullet">
+            <li>jpg</li>
+            <li>png</li>
+            <li>pdf</li>
+        </ul>
+    </div>
+
+    <p class="govuk-body">
         PDF files must have the death certificate on the first page.
         Ensure image is clear and shows all of the death certificate.
     </p>
