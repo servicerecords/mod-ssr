@@ -77,11 +77,11 @@ class ServiceBranch
                         'serviceperson-additional-service-ta',
                         'serviceperson-additional-service-ta-number',
                         'serviceperson-additional-service-ta-regiment',
-                        'serviceperson-additional-service-ta-date',
+                        'serviceperson-additional-service-ta-dates',
                         'serviceperson-additional-service-aer',
                         'serviceperson-additional-service-aer-number',
                         'serviceperson-additional-service-aer-regiment',
-                        'serviceperson-additional-service-aer-date',
+                        'serviceperson-additional-service-aer-dates',
                         'serviceperson-disability-pension',
                         'serviceperson-additional-information'
                     ]
