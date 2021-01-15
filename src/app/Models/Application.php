@@ -243,10 +243,10 @@ class Application
      */
     public function deathCertificateRequired()
     {
-        $diedInService = session('serviceperson-died-in-service', Constant::NO) === Constant::YES;
+        $diedInService = session('serviceperson-died-in-service', Constant::YES);
         $ageToDate = date('Y') - session('serviceperson-date-of-birth-date-year', date('Y'));
 
-        return (!$diedInService || $ageToDate <= 116);
+        return ($diedInService === Constant::NO || $ageToDate >= 116);
     }
 
     /**
