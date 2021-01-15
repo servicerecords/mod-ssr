@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Sending Documentation Death Certificate Upload - ']))
+@extends('layouts.app', ['title' => 'Sending Documentation Death Certificate Upload - '])
 @section('pageTitle', 'Sending documentation')
 
 @section('content')
