@@ -22,87 +22,36 @@
     <p class="govuk-body">AbilityNet has advice on making your device easier to use if you have a disability.</p>
 
     <h2 class="govuk-heading-m">How accessible this website is</h2>
+    <p class="govuk-body">We know some parts of this website are not fully accessible</p>
 
-    <p class="govuk-body">We know some parts of this website are not fully accessible:</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>you cannot modify the line height or spacing of text</li>
-    </ul>
-
-    <h2 class="govuk-heading-m">What to do if you cannot access parts of this website</h2>
-    <p class="govuk-body">If you need information on this website in a different format like accessible PDF, large
-        print,
-        easy read, audio recording or braille:</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>email <a href="DBSCIO-RAHSRFeedback@mod.gov.uk">DBSCIO-RAHSRFeedback@mod.gov.uk</a></li>
-    </ul>
-
-    <p class="govuk-list govuk-list--bullet">
-        We'll consider your request and get back to you in 5 days.
-    </p>
+    <h2 class="govuk-heading-m">Feedback and contact information</h2>
+    <p class="govuk-body">If you have accessibility feedback on this website, please use the feedback page at the end of the application.</p>
+    <p class="govuk-body">We’ll consider your request and get back to you in 7 days.</p>
 
     <h2 class="govuk-heading-m">Reporting accessibility problems with this website</h2>
-    <p class="govuk-body">We're always looking to improve the accessibility of this website. If you find any problems
-        not
-        listed on this page or think we’re not meeting accessibility requirements, contact:</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>email <a href="DBSCIO-RAHSRFeedback@mod.gov.uk">DBSCIO-RAHSRFeedback@mod.gov.uk</a></li>
-    </ul>
+    <p class="govuk-body">We’re always looking to improve the accessibility of this website. If you find any problems
+        not listed on this page or think we’re not meeting accessibility requirements, contact us through our feedback page.</p>
 
     <h2 class="govuk-heading-m">Enforcement procedure</h2>
     <p class="govuk-body">The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector
-        Bodies
-        (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If
-        you’re not happy with how we respond
-        to your complaint, contact the <a href="https://www.equalityadvisoryservice.com/">Equality Advisory and Support
-            Service (EASS)</a>.
-        [Note: if your organisation is based in Northern Ireland, refer users who want to complain to the Equalities
-        Commission for Northern Ireland (ECNI) instead
-        of the EASS and EHRC.]</p>
+        Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the 'accessibility regulations').
+        If you’re not happy with how we respond to your complaint,
+        <a href="https://www.equalityadvisoryservice.com/">contact the Equality Advisory and Support Service (EASS)</a>.</p>
 
-    <h2 class="govuk-heading-m">Contacting us by phone or visiting us in person</h2>
-    <p class="govuk-body">We provide a text relay service for people who are D/deaf, hearing impaired or have a speech
-        impediment.</p>
-    <p class="govuk-body">Our offices have audio induction loops, or if you contact us before your visit we can arrange
-        a British Sign Language (BSL) interpreter.</p>
+    <h2 class="govuk-heading-m">Technical information about this website’s accessibility</h2>
+    <p class="govuk-body">The Ministry of Defence is committed to making its website accessible, in accordance with the
+        Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.</p>
 
-    <h2 class="govuk-heading-m">Technical information about this website's accessibility</h2>
-    <p class="govuk-body">The Ministry of Defence is committed to making its website accessible,
-        in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations
-        2018.</p>
-    <p class="govuk-list govuk-list--bullet">This website is partially compliant with the <a
-            href="https://www.w3.org/TR/WCAG21/">Web Content
-            Accessibility Guidelines</a> version 2.1 AA standard, due to the non-compliances listed below.</p>
+    <h2 class="govuk-heading-m">Compliance status</h2>
+    <p class="govuk-body">This website is fully compliant with the
+        <a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines version 2.1</a> AA standard.</p>
 
-    <h2 class="govuk-heading-m">Non accessible content</h2>
-    <p class="govuk-body">The content listed below is non-accessible for the following reasons.</p>
-    <p class="govuk-body">Non compliance with the accessibility regulations</p>
-    <ul class="govuk-list--bullet govuk-list">
-        <li>accessibility problems</li>
-    </ul>
+    <h2 class="govuk-heading-m">Content that’s not within the scope of the accessibility regulations</h2>
+    <p class="govuk-body">Our accessibility roadmap shows how and when we plan to improve accessibility on this website.</p>
 
-    <p class="govuk-body">This interface has not been tested with all accessibility technologies.</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>which of the WCAG 2.1 AA success criteria the problem fails on</li>
-    </ul>
-
-    <p class="govuk-body">4.1.2 and 4.1.3 have not been tested with all assistive technologies</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>when you plan to fix the problem</li>
-    </ul>
-
-    <p class="govuk-body">we plan to continue testing in these areas.</p>
-
-    <h2 class="govuk-heading-m">What we're doing to improve accessibility</h2>
-    <p class="govuk-body">This interface has not been tested with all accessibility technologies.</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>which of the WCAG 2.1 AA success criteria the problem fails on</li>
-    </ul>
-
-    <p class="govuk-body">4.1.2 and 4.1.3 have not been tested with all assistive technologies</p>
-    <ul class="govuk-list govuk-list--bullet">
-        <li>when you plan to fix the problem</li>
-    </ul>
-
-    <p class="govuk-body">we plan to continue testing in these areas.</p>
-    <p class="govuk-body">This statement was prepared on 01 February 2020. It was last updated on 08 October 2020.</p>
+    <h2 class="govuk-heading-m">Preparation of this accessibility statement</h2>
+    <p class="govuk-body">This statement was prepared on 16th December 2020. It was last reviewed on 15th January 2021.</p>
+    <p class="govuk-body">This website was last tested w/c 11th January 2021. The test was carried out by Digital Accessibility Centre.</p>
+    <p class="govuk-body">We tested the entire service.</p>
+    <p class="govuk-body">You can read the full accessibility test report on request from the disclosure branch.</p>
 @endsection
