@@ -6,7 +6,7 @@
         Death certificate required
     </h2>
     <p class="govuk-body">
-        Upload the serviceperson’s death certificate.
+        Upload the serviceperson’s death certificate in one of the listed formats.
     </p>
 
     <div class="govuk-details__text govuk-!-margin-bottom-4">
@@ -24,7 +24,7 @@
 
     <form method="post" action="{{ route('sending-documentation.save') }}" enctype="multipart/form-data" novalidate>
         <x-error-summary :errors="$errors"></x-error-summary>
-        <x-file-upload label="Upload your death certificate"
+        <x-file-upload label="Upload the serviceperson’s death certificate"
                        field="death-certificate"
                        accept=".jpg,.jpeg,.png,.bmp,.pdf"></x-file-upload>
         <x-submit-form></x-submit-form>
