@@ -6,14 +6,16 @@ use Illuminate\Contracts\Validation\Rule;
 
 class Month implements Rule
 {
+    private $message = null;
+
     /**
      * Create a new rule instance.
      *
-     * @return void
+     * @param null|string $message
      */
-    public function __construct()
+    public function __construct(string $message = null)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -35,6 +37,6 @@ class Month implements Rule
      */
     public function message()
     {
-        return 'Enter a valid month';
+        return $this->message ?? 'Enter a valid month';
     }
 }
