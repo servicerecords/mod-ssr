@@ -1,5 +1,5 @@
 <div id="global-cookie-message" class="govuk-clearfix" data-module="cookie-banner" role="region"
-     aria-label="cookie banner" data-nosnippet="">
+     aria-label="cookie banner" data-nosnippet="" style="display: none;">
     <div class="govuk-cookie-message__request govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
