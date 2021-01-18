@@ -108,14 +108,21 @@ class Application
             }
         }
 
-        if(session('service', ServiceBranch::ARMY) === ServiceBranch::ARMY) {
             if(session('serviceperson-died-in-service', Constant::YES) === Constant::NO) {
-                $this->questionOrder[Constant::SERVICEPERSION][ServiceBranch::ARMY][1] =
-                    ['label' => 'Year of discharge', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
-            }
-        }
 
-       // dd(session()->all());
+                switch(session('service', ServiceBranch::ARMY)) {
+                    case ServiceBranch::ARMY:
+                        $this->questionOrder[Constant::SERVICEPERSION][ServiceBranch::ARMY][1] =
+                            ['label' => 'Year of discharge', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
+                        break;
+
+                    default:
+                        $this->questionOrder[Constant::SERVICEPERSION][session('service')][1] =
+                            ['label' => 'Date they left', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
+                        break;
+                }
+
+        }
 
         /**
          * "serviceperson-additional-service-ta" => "Territorial Army (TA)"
@@ -450,16 +457,4 @@ class Application
         session()->flush();
         session(['application-reference' => $reference]);
     }
-
-    /**
-     * @param $currentSection
-     */
-    public function priorSectionComplete($currentSection)
-    {
-    }
-
-    /**
-     * Verify the entire application
-     */
-    public function verify() {}
 }
