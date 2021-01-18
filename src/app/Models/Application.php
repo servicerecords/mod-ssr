@@ -108,26 +108,27 @@ class Application
             }
         }
 
-        if(session('service', ServiceBranch::ARMY) === ServiceBranch::ARMY) {
-            if(session('serviceperson-died-in-service', Constant::YES) === Constant::NO) {
-                $this->questionOrder[Constant::SERVICEPERSION][ServiceBranch::ARMY][1] =
-                    ['label' => 'Year of discharge', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
+        if(session('serviceperson-died-in-service', Constant::YES) === Constant::NO) {
+            switch(session('service', ServiceBranch::ARMY)) {
+                case ServiceBranch::ARMY:
+                    $this->questionOrder[Constant::SERVICEPERSION][ServiceBranch::ARMY][1] =
+                        ['label' => 'Year of discharge', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
+                    break;
+
+
+                case ServiceBranch::NAVY:
+                case ServiceBranch::RAF:
+                    $this->questionOrder[Constant::SERVICEPERSION][session('service')][2] =
+                        ['label' => 'Date they left', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
+                    break;
+
+
+                case ServiceBranch::HOME_GUARD:
+                    $this->questionOrder[Constant::SERVICEPERSION][session('service')][3] =
+                        ['label' => 'Date they left', 'field' => 'serviceperson-discharged-date', 'route' => 'serviceperson-details', 'change' => 'year of discharge'];
+                    break;
             }
         }
-
-       // dd(session()->all());
-
-        /**
-         * "serviceperson-additional-service-ta" => "Territorial Army (TA)"
-         * "serviceperson-additional-service-ta-number" => null
-         * "serviceperson-additional-service-ta-regiment" => null
-         * "serviceperson-additional-service-ta-date" => null
-         * "serviceperson-additional-service-aer" => "Army Emergency Reserve (AER)"
-         * "serviceperson-additional-service-aer-number" => null
-         * "serviceperson-additional-service-aer-regiment" => null
-         * "serviceperson-additional-service-aer-date" => null
-         */
-
     }
 
     /**
@@ -450,16 +451,4 @@ class Application
         session()->flush();
         session(['application-reference' => $reference]);
     }
-
-    /**
-     * @param $currentSection
-     */
-    public function priorSectionComplete($currentSection)
-    {
-    }
-
-    /**
-     * Verify the entire application
-     */
-    public function verify() {}
 }

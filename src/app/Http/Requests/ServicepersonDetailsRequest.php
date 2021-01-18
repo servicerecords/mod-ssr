@@ -33,15 +33,15 @@ class ServicepersonDetailsRequest extends DigitalRequest
             case ServiceBranch::RAF:
                 $rules = [
                     'serviceperson-enlisted-date-day' => [
-                        'nullable', 'integer',
+                        'nullable',
                         new Day(
                             request()->input('serviceperson-enlisted-date-month'),
                             request()->input('serviceperson-enlisted-date-year'),
                             'Enter a valid day they joined'
                         )],
-                    'serviceperson-enlisted-date-month' => ['nullable', 'integer', new Month('Enter a valid month they joined')],
+                    'serviceperson-enlisted-date-month' => ['nullable',  new Month('Enter a valid month they joined')],
                     'serviceperson-enlisted-date-year' => 'nullable|integer|max:' . date('Y'),
-                    'serviceperson-discharged-date-day' => ['nullable', 'integer',
+                    'serviceperson-discharged-date-day' => ['nullable',
                         new Day(
                             request()->input('serviceperson-enlisted-date-month'),
                             request()->input('serviceperson-enlisted-date-year'),
@@ -49,7 +49,7 @@ class ServicepersonDetailsRequest extends DigitalRequest
                                 'Enter a valid day they died in service' :
                                 'Enter a valid day they left service'
                         )],
-                    'serviceperson-discharged-date-month' => ['nullable', 'integer', new Month(
+                    'serviceperson-discharged-date-month' => ['nullable', new Month(
                         session('serviceperson-died-in-service', Constant::YES) === Constant::YES ?
                             'Enter a valid month they died in service' :
                             'Enter a valid month they left service'

@@ -11,11 +11,13 @@
 
     <div class="govuk-details__text govuk-!-margin-bottom-4">
         <ul class="govuk-list govuk-list--bullet">
+            <li>bmp</li>
             <li>jpg</li>
             <li>png</li>
             <li>pdf</li>
         </ul>
     </div>
+
 
     <p class="govuk-body">
         PDF files must have the death certificate on the first page.
@@ -24,7 +26,7 @@
 
     <form method="post" action="{{ route('sending-documentation.save') }}" enctype="multipart/form-data" novalidate>
         <x-error-summary :errors="$errors"></x-error-summary>
-        <x-file-upload label="Upload the serviceperson’s death certificate"
+        <x-file-upload label="Upload the serviceperson's death certificate."
                        field="death-certificate"
                        accept=".jpg,.jpeg,.png,.bmp,.pdf"></x-file-upload>
         <x-submit-form></x-submit-form>
