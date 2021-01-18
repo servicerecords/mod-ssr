@@ -18,6 +18,7 @@
         </ul>
     </div>
 
+
     <p class="govuk-body">
         PDF files must have the death certificate on the first page.
         Ensure image is clear and shows all of the death certificate.
