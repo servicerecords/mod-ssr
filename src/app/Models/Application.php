@@ -246,7 +246,7 @@ class Application
         $diedInService = session('serviceperson-died-in-service', Constant::YES);
         $ageToDate = date('Y') - session('serviceperson-date-of-birth-date-year', date('Y'));
 
-        return ($diedInService === Constant::NO || $ageToDate >= 116);
+        return ($diedInService === Constant::NO || $ageToDate < 116);
     }
 
     /**
