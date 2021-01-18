@@ -249,7 +249,10 @@ class Application
         if($diedInService === Constant::YES)
             return false;
 
-        return ($diedInService === Constant::NO || $ageToDate < 116);
+        if($ageToDate >= 116)
+            return false;
+
+        return true;
     }
 
     /**
@@ -454,4 +457,9 @@ class Application
     public function priorSectionComplete($currentSection)
     {
     }
+
+    /**
+     * Verify the entire application
+     */
+    public function verify() {}
 }
