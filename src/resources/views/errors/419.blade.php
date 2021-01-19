@@ -14,6 +14,6 @@
     </p>
     <p class="govuk-body">
         If the web address is correct or you selected a link or button,
-        You will need to <a href="/service">Restart your application</a>.
+        You will need to <a href="/service">restart your application</a>.
     </p>
 @endsection
