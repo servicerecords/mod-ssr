@@ -11,7 +11,6 @@
 
     <div class="govuk-details__text govuk-!-margin-bottom-4">
         <ul class="govuk-list govuk-list--bullet">
-            <li>bmp</li>
             <li>jpg</li>
             <li>png</li>
             <li>pdf</li>
@@ -28,7 +27,7 @@
         <x-error-summary :errors="$errors"></x-error-summary>
         <x-file-upload label="Upload the serviceperson's death certificate."
                        field="death-certificate"
-                       accept=".jpg,.jpeg,.png,.bmp,.pdf"></x-file-upload>
+                       accept=".jpg,.jpeg,.png,.pdf"></x-file-upload>
         <x-submit-form></x-submit-form>
     </form>
 @endsection
