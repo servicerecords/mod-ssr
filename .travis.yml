@@ -29,6 +29,7 @@ jobs:
         - sed -ri "s|ENV_GOV_PAY_RETURN_URL|$GOV_PAY_RETURN_URL|" ./docker/.env-build
         - sed -ri "s|ENV_NOTIFY_API_KEY|$NOTIFY_API_KEY|" ./docker/.env-build
         - sed -ri "s|ENV_GA_ID|$GA_ID|" ./docker/.env-build
+        - sed -ri "s|ENV_LOGGLY_KEY|$GA_LOGGLY_KEY|" ./docker/.env-buil
         - cat docker/.env-build
         - cp docker/aws_credentials docker/aws_credentials-build
         - sed -ri "s|AWS_ACCESS_KEY|$AWS_ACCESS_KEY|" ./docker/aws_credentials-build
