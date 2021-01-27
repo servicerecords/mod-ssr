@@ -117,6 +117,14 @@ return [
                 'table' => 'srrdigital',
                 'level' => 'debug'
             ],
+        ],
+
+        'loggly' => [
+            'driver' => 'monolog',
+            'handler' => \App\Logging\ModLogHandler::class,
+            'with' => [
+                'token' => env('LOGGLY_KEY', '4f87c692-21a3-416d-a8f9-991f3b0d31f6')
+            ]
         ]
     ],
 
