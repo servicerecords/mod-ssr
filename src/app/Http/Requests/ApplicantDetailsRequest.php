@@ -32,7 +32,7 @@ class ApplicantDetailsRequest extends DigitalRequest
         return [
             'applicant-name.required' => 'Enter your full name',
             'applicant-email-address.required' => 'Enter your email address',
-            'applicant-email-address.email' => 'Make sure you have entered a valid email address',
+            'applicant-email-address.email' => 'Enter an email address in the correct format, like name@example.com',
             'applicant-address-line-1.required' => 'Enter your house name/number and street address',
             'applicant-address-town.required' => 'Enter your town',
             'applicant-address-postcode.required' => 'Enter the postcode of your address',

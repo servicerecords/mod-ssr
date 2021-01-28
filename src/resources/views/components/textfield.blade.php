@@ -10,12 +10,12 @@
     <x-error-message :field="$field"></x-error-message>
     <input
         class="govuk-input @if(!$fullWidth)govuk-!-width-two-thirds @endif @error($field) govuk-input--error @enderror"
-        id="{{ $field }}" name="{{ $field }}" type="text"
+        id="{{ $field }}" name="{{ $field }}" type="{{ $type }}"
         @if(!$spellcheck)spellcheck="false" @endif @if($autocomplete)autocomplete="{{ $autocomplete }}"
-        @endif @if(!$maxlength) maxlength="120" @endif
+        @endif @if(!$maxlength) maxlength="120" @endif @if($autocomplete === 'tel') inputmode="numeric" pattern="[0-9]*" @endif
         value="{{ old($field, session($field)) }}"
         @if($ariaDescribedBy)
-        aria-describedby="{{ join(' ',$ariaDescribedBy) }}"
+        aria-describedby="{{ join(' ', $ariaDescribedBy) }}"
         @endif
     >
 </div>

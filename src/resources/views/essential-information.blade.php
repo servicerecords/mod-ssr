@@ -1,5 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Serviceperson\'s Details - '])
 @section('pageTitle', 'Details of the serviceperson')
+
 @section('content')
     <form method="post" action="{{ route('essential-information.save') }}" novalidate>
         <x-error-summary :errors="$errors"></x-error-summary>

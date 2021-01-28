@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.app', ['title' => 'Check your answers - '])
 @section('pageTitle', 'Check your answers before sending your application')
 
 @section('content')

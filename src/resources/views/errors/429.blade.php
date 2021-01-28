@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Too many requests - '])
 
 @section('pageTitle', __('Too Many Requests'))
 @section('code', '429')

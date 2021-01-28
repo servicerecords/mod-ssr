@@ -1,10 +1,12 @@
 <div class="govuk-form-group @error($field) govuk-form-group--error @enderror">
-    <a name="{{ $field }}"></a>
+    <a id="{{ $field }}"></a>
     <fieldset class="govuk-fieldset">
-        @if(!$hideLegend)
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                <h1 class="govuk-fieldset__heading">{{ $label }}{{ !$mandatory ? ' (optional)' : '' }}</h1>
-            </legend>
+        @if($label)
+            @if(!$hideLegend)
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m{{ $hideLabel ? ' govuk-visually-hidden': '' }}">
+                    <{{ $questionTag }} class="govuk-fieldset__heading">{{ $label }}{{ !$mandatory ? ' (optional)' : '' }}</{{ $questionTag }}>
+                </legend>
+            @endif
         @endif
         <x-hint :hint="$hint" :field="$field"></x-hint>
         <x-error-message :field="$field"></x-error-message>

@@ -2,40 +2,15 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Constant;
+use App\Models\ServiceBranch;
+use App\Rules\Day;
+use App\Rules\Month;
 use Carbon\Carbon;
 use Illuminate\Validation\Factory as ValidationFactory;
 
 class ServicepersonDetailsRequest extends DigitalRequest
 {
-    public function __construct(ValidationFactory $validationFactory)
-    {
-
-        $validationFactory->extend(
-            'validate_dob',
-            function ($attribute, $value, $parameters) {
-                if ((null !== request()->input('date-of-birth-day') && null !== request()->input('date-of-birth-month')) && null !== request()->input('date-of-birth-year')) {
-                    $input = request()->input('date-of-birth-day') . '/' . sprintf("%02d", request()->input('date-of-birth-month')) . '/' . request()->input('date-of-birth-year');
-
-                    try {
-                        $d = \DateTime::createFromFormat('d/m/Y', $input);
-                        $date = $d && $d->format('d/m/Y') === $input;
-                        if ($date === false) {
-                            return false;
-                        }
-                        Carbon::parse($d)->isPast();
-                        return true;
-                    } catch (\Exception $e) {
-                        dd(request()->input('date-of-birth-day'), request()->input('date-of-birth-month'), request()->input('date-of-birth-year'), $e);
-                        return false;
-                    }
-                } else {
-                    return true;
-                }
-            },
-            (isset($message) ? $message : '')
-        );
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -43,8 +18,48 @@ class ServicepersonDetailsRequest extends DigitalRequest
      */
     public function rules()
     {
-        return [
-        ];
+        $rules = [];
+
+        // dd(session()->all());
+
+        switch (session('service', ServiceBranch::ARMY)) {
+            case ServiceBranch::ARMY:
+                $rules = [
+                    'serviceperson-discharged-date-year' => 'nullable|integer|max:' . date('Y'),
+                ];
+                break;
+
+            case ServiceBranch::NAVY:
+            case ServiceBranch::RAF:
+                $rules = [
+                    'serviceperson-enlisted-date-day' => [
+                        'nullable',
+                        new Day(
+                            request()->input('serviceperson-enlisted-date-month'),
+                            request()->input('serviceperson-enlisted-date-year'),
+                            'Enter a valid day they joined'
+                        )],
+                    'serviceperson-enlisted-date-month' => ['nullable',  new Month('Enter a valid month they joined')],
+                    'serviceperson-enlisted-date-year' => 'nullable|integer|max:' . date('Y'),
+                    'serviceperson-discharged-date-day' => ['nullable',
+                        new Day(
+                            request()->input('serviceperson-enlisted-date-month'),
+                            request()->input('serviceperson-enlisted-date-year'),
+                            session('serviceperson-died-in-service', Constant::YES) === Constant::YES ?
+                                'Enter a valid day they died in service' :
+                                'Enter a valid day they left service'
+                        )],
+                    'serviceperson-discharged-date-month' => ['nullable', new Month(
+                        session('serviceperson-died-in-service', Constant::YES) === Constant::YES ?
+                            'Enter a valid month they died in service' :
+                            'Enter a valid month they left service'
+                    )],
+                    'serviceperson-discharged-date-year' => 'nullable|integer|max:' . date('Y'),
+                ];
+                break;
+        }
+
+        return $rules;
     }
 
     /**
@@ -52,7 +67,29 @@ class ServicepersonDetailsRequest extends DigitalRequest
      */
     public function messages()
     {
-        return [
-        ];
+        $messages = [];
+
+        switch (session('service', ServiceBranch::ARMY)) {
+            case ServiceBranch::NAVY:
+            case ServiceBranch::RAF:
+                $messages = [
+                    'serviceperson-enlisted-date-year.max' => 'Year joined service must be in the past',
+                    'serviceperson-discharged-date-year.max' =>
+                        session('serviceperson-died-in-service', Constant::YES) === Constant::YES ?
+                            'Year of death in service must be in the past' :
+                            'Year they must be in the past',
+                ];
+                break;
+
+            case ServiceBranch::ARMY:
+                $messages = [
+                    'serviceperson-discharged-date-year.max' =>
+                        session('serviceperson-died-in-service', Constant::YES) === Constant::YES ?
+                            'Year of death must be in the past' :
+                            'Year of discharge must be in the past',
+                ];
+                break;
+        }
+        return $messages;
     }
 }

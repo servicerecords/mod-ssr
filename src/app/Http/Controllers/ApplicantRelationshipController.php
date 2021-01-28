@@ -25,7 +25,8 @@ class ApplicantRelationshipController extends Controller
             'value' => Constant::RELATION_SPOUSE,
             'children' => [
                 [
-                    'label' => 'Confirm here if you were their spouse/civil partner at the time of death',
+                    'label' => 'Confirm here if you were the spouse or civil partner at the time of the serviceperson\'s death.
+                                This action exempts you from paying the fee.',
                     'field' => 'spouse-at-death',
                     'value' => Constant::YES,
                     'type' => 'x-checkbox'
@@ -47,7 +48,8 @@ class ApplicantRelationshipController extends Controller
             'value' => Constant::RELATION_PARENT,
             'children' => [
                 [
-                    'label' => 'Confirm here if the serviceperson did NOT have a living Spouse/Civil Partner at the time of death',
+                    'label' => 'Confirm here that there was no spouse or civil partner at the time of the serviceperson\'s death.
+                                This action exempts you from paying the fee.',
                     'field' => 'no-surviving-spouse',
                     'value' => Constant::YES,
                     'type' => 'x-checkbox'
@@ -114,6 +116,11 @@ class ApplicantRelationshipController extends Controller
         }
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_APPLICANT_RELATIONSHIP);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
+
         if ($request->input('application-relationship') === Constant::RELATION_UNRELATED) {
             return redirect()->route('check-answers');
         }

@@ -26,7 +26,7 @@ class ServiceBranch
         $this->branches = [
             self::NAVY => [
                 'NAME' => 'Royal Navy or Royal Marines',
-                'SERVICE_BRANCH' => 'Navy',
+                'SERVICE_BRANCH' => 'Royal Navy',
                 'VALUE' => self::NAVY,
                 'CODE' => 'SEA',
                 'FIELDS' => [
@@ -56,7 +56,7 @@ class ServiceBranch
             ],
             self::ARMY => [
                 'NAME' => 'Army (including Territorial & Army Emergency Reserve)',
-                'SERVICE_BRANCH' => 'Army',
+                'SERVICE_BRANCH' => 'British Army',
                 'VALUE' => self::ARMY,
                 'CODE' => 'LAN',
                 'FIELDS' => [
@@ -77,11 +77,11 @@ class ServiceBranch
                         'serviceperson-additional-service-ta',
                         'serviceperson-additional-service-ta-number',
                         'serviceperson-additional-service-ta-regiment',
-                        'serviceperson-additional-service-ta-date',
+                        'serviceperson-additional-service-ta-dates',
                         'serviceperson-additional-service-aer',
                         'serviceperson-additional-service-aer-number',
                         'serviceperson-additional-service-aer-regiment',
-                        'serviceperson-additional-service-aer-date',
+                        'serviceperson-additional-service-aer-dates',
                         'serviceperson-disability-pension',
                         'serviceperson-additional-information'
                     ]
@@ -91,7 +91,7 @@ class ServiceBranch
             ],
             self::RAF => [
                 'NAME' => 'Royal Air Force (RAF)',
-                'SERVICE_BRANCH' => 'Air Force',
+                'SERVICE_BRANCH' => 'Royal Air Force',
                 'VALUE' => self::RAF,
                 'CODE' => 'AIR',
                 'FIELDS' => [
@@ -121,7 +121,7 @@ class ServiceBranch
             ],
             self::HOME_GUARD => [
                 'NAME' => 'Home Guard',
-                'SERVICE_BRANCH' => 'Army',
+                'SERVICE_BRANCH' => 'British Army',
                 'VALUE' => self::HOME_GUARD,
                 'CODE' => 'LAN',
                 'FIELDS' => [
@@ -130,24 +130,24 @@ class ServiceBranch
                         'serviceperson-county-served',
                         'serviceperson-address-when-joined',
                         'serviceperson-battalions',
-                        'serviceperson-enlisted-day',
-                        'serviceperson-enlisted-month',
-                        'serviceperson-enlisted-year',
-                        'serviceperson-discharged-day',
-                        'serviceperson-discharged-month',
-                        'serviceperson-discharged-year',
+                        'serviceperson-enlisted-date-day',
+                        'serviceperson-enlisted-date-month',
+                        'serviceperson-enlisted-date-year',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                     ],
                     'DIS' => [
                         'serviceperson-service-number',
                         'serviceperson-county-served',
                         'serviceperson-address-when-joined',
                         'serviceperson-battalions',
-                        'serviceperson-enlisted-day',
-                        'serviceperson-enlisted-month',
-                        'serviceperson-enlisted-year',
-                        'serviceperson-discharged-day',
-                        'serviceperson-discharged-month',
-                        'serviceperson-discharged-year',
+                        'serviceperson-enlisted-date-day',
+                        'serviceperson-enlisted-date-month',
+                        'serviceperson-enlisted-date-year',
+                        'serviceperson-discharged-date-day',
+                        'serviceperson-discharged-date-month',
+                        'serviceperson-discharged-date-year',
                     ]
                 ],
                 'EMAIL_TEMPLATE' =>'101ce364-49e9-443c-8e4a-befc369fbcd5',
@@ -220,6 +220,10 @@ class ServiceBranch
         }
     }
 
+    /**
+     * @param $branch
+     * @return mixed|string
+     */
     public function getServiceBranch($branch) {
         if (isset($this->branches[$branch])) {
             return $this->branches[$branch]['SERVICE_BRANCH'] ?? '';

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Forbidden - '])
 
 @section('pageTitle', __('Forbidden'))
 @section('code', '403')

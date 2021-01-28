@@ -21,10 +21,6 @@ class SendingDocumentationController extends Controller
      */
     public function index()
     {
-        if (session('serviceperson-died-in-service', Constant::YES) === Constant::YES) {
-            return redirect()->route('sending-documentation');
-        }
-
         return view('sending-documentation');
     }
 
@@ -101,6 +97,11 @@ class SendingDocumentationController extends Controller
         session(['death-certificate' => 'app/converted/' . $filename . '.pdf']);
 
         Application::getInstance()->markSectionComplete(Constant::SECTION_DEATH_CERTIFICATE);
+
+        if(Application::getInstance()->sectionComplete(Constant::SECTION_CHECK_ANSWERS)) {
+            return redirect()->route('check-answers');
+        }
+
         return redirect()->route('applicant-details');
     }
 }

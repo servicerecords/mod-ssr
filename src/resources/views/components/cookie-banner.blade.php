@@ -1,5 +1,5 @@
 <div id="global-cookie-message" class="govuk-clearfix" data-module="cookie-banner" role="region"
-     aria-label="cookie banner" data-nosnippet="">
+     aria-label="cookie banner" data-nosnippet="" style="display: none;">
     <div class="govuk-cookie-message__request govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
@@ -36,7 +36,7 @@
                        data-track-action="Cookie banner settings clicked from confirmation">change your cookie
                 settings</a> at any time.
         </p>
-        <a href="#" class="govuk-hide-button govuk" data-hide-cookie-banner="true" data-module="track-click"
-           data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide</a>
+        <a href="#" class="govuk-hide-button govuk govuk-link" data-hide-cookie-banner="true" data-module="track-click"
+           data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide<span class="govuk-visually-hidden"> cookies message</span></a>
     </div>
 </div>

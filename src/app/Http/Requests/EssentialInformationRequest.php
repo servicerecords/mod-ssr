@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Day;
+use App\Rules\Month;
 use Carbon\Carbon;
 use Illuminate\Validation\Factory as ValidationFactory;
 
@@ -9,7 +11,6 @@ class EssentialInformationRequest extends DigitalRequest
 {
     public function __construct(ValidationFactory $validationFactory)
     {
-
         $validationFactory->extend(
             'validate_dob',
             function ($attribute, $value, $parameters) {
@@ -30,7 +31,6 @@ class EssentialInformationRequest extends DigitalRequest
                         Carbon::parse($d)->isPast();
                         return true;
                     } catch (\Exception $e) {
-                        dd(request()->input($dayKey), request()->input($monthKey), request()->input($yearKey), $e);
                         return false;
                     }
                 } else {
@@ -51,9 +51,18 @@ class EssentialInformationRequest extends DigitalRequest
         return [
             'serviceperson-first-name' => 'required',
             'serviceperson-last-name' => 'required',
-            'serviceperson-date-of-birth-date-day' => 'digits_between:1,31|nullable',
-            'serviceperson-date-of-birth-date-month' => 'digits_between:1,12|nullable',
-            'serviceperson-date-of-birth-date-year' => 'required|digits:4|integer|validate_dob|max:' . date('Y'),
+            'serviceperson-date-of-birth-date-day' => [
+                new Day(
+                    request()->input('serviceperson-date-of-birth-date-month'),
+                    request()->input('serviceperson-date-of-birth-date-year')
+                ),
+                'nullable'
+            ],
+            'serviceperson-date-of-birth-date-month' => [
+                new Month(),
+                'nullable'
+            ],
+           'serviceperson-date-of-birth-date-year' => 'required|digits:4|integer|validate_dob|max:' . date('Y'),
         ];
     }
 
@@ -65,11 +74,6 @@ class EssentialInformationRequest extends DigitalRequest
         return [
             'serviceperson-first-name.required' => 'Enter any first names',
             'serviceperson-last-name.required' => 'Enter a last name',
-            'serviceperson-date-of-birth-date-month.digits_between' => 'The date of birth\'s month must be no more than 2 characters in length',
-            'serviceperson-date-of-birth-date-month.between' => 'Enter a valid month',
-            'serviceperson-date-of-birth-date-day.between' => 'Enter a valid day',
-            'serviceperson-date-of-birth-date-day.digits_between' => 'The date of birth\'s day must be no more than 2 characters in length',
-            'serviceperson-date-of-birth-date-month.max' => 'The date of birth\'s month must be no more than 2 characters in length',
             'serviceperson-date-of-birth-date-year.digits' => 'The date of birth\'s year must be 4 characters in length',
             'serviceperson-date-of-birth-date-year.required' => 'Enter a year of birth, even if it is an estimate',
             'serviceperson-date-of-birth-date-year.max' => 'Enter a date of birth (even if partial) that is in the past',

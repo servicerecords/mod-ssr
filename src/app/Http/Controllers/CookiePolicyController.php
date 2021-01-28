@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 
 class CookiePolicyController extends Controller
 {
@@ -17,9 +16,9 @@ class CookiePolicyController extends Controller
         ],
         'essential' => [
             ['name' => 'XSRF-TOKEN', 'purpose' => 'A standard cookie used to prevent a malicious exploit of a website', 'expires' => '2 hours'],
-            ['name' => 'admr_session', 'purpose' => 'Holds session data to complete the application', 'expires' => 'End of session'],
-            ['name' => 'cookies_preference_set', 'purpose' => 'Registers the input cookie preference', 'expires' => 'End of session'],
-            ['name' => 'cookies_policy', 'purpose' => 'Register the response to cookies permission question', 'expires' => 'End of session'],
+            ['name' => 'admr_session', 'purpose' => 'Holds session data to complete the application', 'expires' => 'When you close your browser'],
+            ['name' => 'cookies_preference_set', 'purpose' => 'Registers the input cookie preference', 'expires' => 'When you close your browser'],
+            ['name' => 'cookies_policy', 'purpose' => 'Register the response to cookies permission question', 'expires' => 'When you close your browser'],
         ],
         'settings' => [],
         'campaigns' => [],
@@ -34,13 +33,7 @@ class CookiePolicyController extends Controller
 
     public function save(Request $request)
     {
-        $cookie_policy = $_COOKIE['cookies_policy'];
-
-        $policy = '{"essential":true,"settings":false,"usage":true,"campaigns":false}';
-
-        setcookie('cookie_policy', $cookie_policy, 0, '/', $_SERVER['HTTP_HOST'], false, false);
-
-        return redirect('cookie-policy');
-        // dd($cookie);
+        session()->flash('flash', 'Your cookie settings were saved');
+       return redirect()->route('cookie-policy');
     }
 }
