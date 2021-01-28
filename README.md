@@ -1,6 +1,6 @@
 # MOD SERVICE RECORDS REQUEST
 
-The SSR is a relatively simple Laravel application. It runs on Laravel 6.18.2 with no requirement for a database or any persistent data of anykind. The front is a build of the Government Design System. 
+The SSR is a relatively simple Laravel application. It runs on Laravel 8 with no requirement for a database or any persistent data of anykind. The front is a build of the Government Design System. 
 
 Once cloned it is wise to run, 
 
