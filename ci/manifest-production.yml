@@ -2,7 +2,7 @@
 applications:
   - name: test-app
     routes:
-      - route: srrdigital-prodution.cloudapps.digital
+      - route: srrdigital-production.cloudapps.digital
     memory: 800M
     disk_quota: 2G
     instances: 1
